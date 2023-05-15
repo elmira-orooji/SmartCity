@@ -16,7 +16,10 @@ public class SmartCity extends Application {
     
     private double x = 0;
     private double y = 0;
-
+    private String firstname;
+    private String lastname;
+    private String personnelId;
+    private String hireDate;
     
     @Override
     public void start(Stage stage) throws Exception {
