@@ -17,8 +17,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class SmartCityFXMLController implements Initializable {
     
@@ -41,6 +43,9 @@ public class SmartCityFXMLController implements Initializable {
     private PreparedStatement prepare;
     private ResultSet result;
     
+    private double x = 0;
+    private double y = 0;
+    
     public void adminLogin(){
         
         String sql = "SELECT * FROM admin WHERE username = ? and password = ?";
@@ -61,6 +66,7 @@ public class SmartCityFXMLController implements Initializable {
                 alert.setTitle("Error!");
                 alert.setHeaderText(null);
                 alert.setContentText("Please fill the blanks");
+                alert.showAndWait();
                 
             }else{
                 if(result.next()){
@@ -68,12 +74,23 @@ public class SmartCityFXMLController implements Initializable {
                 alert.setTitle("");
                 alert.setHeaderText(null);
                 alert.setContentText("You entered successfully ^-^ "); 
+                alert.showAndWait();
                 
                 loginBtn.getScene().getWindow().hide();
-                Parent root = FXMLLoader.load(getClass().getResource(""));
+                Parent root = FXMLLoader.load(getClass().getResource("AdminPanel.fxml"));
                 Stage stage = new Stage();
                 Scene scene = new Scene(root);
                 
+                root.setOnMousePressed((MouseEvent event) ->{
+                    x = event.getSceneX();
+                    y = event.getSceneY();
+                });
+                
+                root.setOnMouseDragged((MouseEvent event) ->{
+                    stage.setX(event.getScreenX() - x);
+                    stage.setY(event.getScreenY() - y);
+                });
+                stage.initStyle(StageStyle.TRANSPARENT);
                 stage.setScene(scene);
                 stage.show();
                 
@@ -82,6 +99,7 @@ public class SmartCityFXMLController implements Initializable {
                 alert.setTitle("Your username or password is not correct");
                 alert.setHeaderText(null);
                 alert.setContentText("Incorrect Username or Password");
+                alert.showAndWait();
                 }
             }
         }catch(Exception e) {e.printStackTrace();}

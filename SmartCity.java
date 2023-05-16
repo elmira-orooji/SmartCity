@@ -12,6 +12,7 @@ import javafx.scene.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
+
 public class SmartCity extends Application {
     
     private double x = 0;
@@ -23,7 +24,7 @@ public class SmartCity extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("SmartCityFXML.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
         
         
         Scene scene = new Scene(root);
