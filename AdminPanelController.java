@@ -1,20 +1,37 @@
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 
 public class AdminPanelController implements Initializable{
 
+    @FXML
+    private AnchorPane skeleton_page;
+    
     @FXML
     private TableView<?> securityGuardsTable;
 
@@ -142,7 +159,7 @@ public class AdminPanelController implements Initializable{
     private Button securityGuardsBtn;
 
     @FXML
-    private FontAwesomeIcon clearBtndeputies;
+    private Button clearBtndeputies;
 
     @FXML
     private Button addBtnSecurityguards;
@@ -160,7 +177,7 @@ public class AdminPanelController implements Initializable{
     private Button inspectorsBtn;
 
     @FXML
-    private FontAwesomeIcon close;
+    private Button close;
 
     @FXML
     private Button addBtnMayor;
@@ -169,7 +186,7 @@ public class AdminPanelController implements Initializable{
     private Button updateBtnSecurityguards;
 
     @FXML
-    private FontAwesomeIcon minimize;
+    private Button minimize;
 
     @FXML
     private TextField phoneNo_field_securityguards;
@@ -324,8 +341,6 @@ public class AdminPanelController implements Initializable{
     @FXML
     private TableColumn<?, ?> dateOfHire_col_Mayor;
 
-    @FXML
-    private TableColumn<?, ?> phoneNumber_col_securityguards;
 
     @FXML
     private TableColumn<?, ?> totalSalary_col_securityguards;
@@ -443,11 +458,118 @@ public class AdminPanelController implements Initializable{
 
     @FXML
     private TextField firstname_field_inspectors;
+    @FXML
+    private FontAwesomeIcon clearBtnDeputies;
+    @FXML
+    private TableColumn<?, ?> phoneNo_col_securityguards;
+    @FXML
+    private TextField phoneNumber_field_securityguards;
+    
     
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
+
+    @FXML
+    private void close(ActionEvent event) {
+        System.exit(0);
+    }
+
+    @FXML
+    private void minimize(ActionEvent event) {
+        
+        Stage stage = (Stage) skeleton_page.getScene().getWindow();
+        stage.setIconified(true);
+    }
+
+    private double x = 0;
+    private double y = 0;
+    @FXML
+    private void signOut_admin() {
+        
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText(null);
+        alert.setContentText("Are you sure you want to sign out?");
+        Optional<ButtonType> option = alert.showAndWait();
+        try {
+            if (option.get().equals(ButtonType.OK)) {
+
+                signOut_admin.getScene().getWindow().hide();
+                Parent root = FXMLLoader.load(getClass().getResource("/View/LoginPage.fxml"));
+                Stage stage = new Stage();
+                Scene scene = new Scene(root);
+
+                root.setOnMousePressed((MouseEvent event) -> {
+                    x = event.getSceneX();
+                    y = event.getSceneY();
+                });
+
+                root.setOnMouseDragged((MouseEvent event) -> {
+                    stage.setX(event.getScreenX() - x);
+                    stage.setY(event.getScreenY() - y);
+
+                    stage.setOpacity(.8);
+                });
+
+                root.setOnMouseReleased((MouseEvent event) -> {
+                    stage.setOpacity(1);
+                });
+
+                stage.initStyle(StageStyle.TRANSPARENT);
+
+                stage.setScene(scene);
+                stage.show();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void switchPage(ActionEvent event){
+        
+        if(event.getSource() == mayorBtn){
+            mayorPage.setVisible(true);
+            deputiesPage.setVisible(false);
+            inspectorsPage.setVisible(false);
+            employeesPage.setVisible(false);
+            securityGuardsPage.setVisible(false);
+        }
+        else if(event.getSource() == deputiesBtn){
+            mayorPage.setVisible(false);
+            deputiesPage.setVisible(true);
+            inspectorsPage.setVisible(false);
+            employeesPage.setVisible(false);
+            securityGuardsPage.setVisible(false);
+        }
+        else if(event.getSource() == inspectorsBtn){
+            mayorPage.setVisible(false);
+            deputiesPage.setVisible(false);
+            inspectorsPage.setVisible(true);
+            employeesPage.setVisible(false);
+            securityGuardsPage.setVisible(false);
+        }
+        else if(event.getSource() == employeesBtn){
+            mayorPage.setVisible(false);
+            deputiesPage.setVisible(false);
+            inspectorsPage.setVisible(false);
+            employeesPage.setVisible(true);
+            securityGuardsPage.setVisible(false);
+        }
+        else if(event.getSource() == securityGuardsBtn){
+            mayorPage.setVisible(false);
+            deputiesPage.setVisible(false);
+            inspectorsPage.setVisible(false);
+            employeesPage.setVisible(false);
+            securityGuardsPage.setVisible(true);
+        }
+        
+    }
+    public void displayUsername(){
+        
+    }
+    
 
 }

@@ -11,9 +11,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminPanelController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane fx:id="skeleton_page" prefHeight="200.0" prefWidth="200.0">
          <children>
             <BorderPane prefHeight="600.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <top>
@@ -27,14 +27,14 @@
                                     <Font name="Tw Cen MT Italic" size="17.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="1024.0" layoutY="10.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="62.0" styleClass="close" stylesheets="@AdminPanelStyle.css" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+                              <Button fx:id="close" layoutX="1024.0" layoutY="10.0" mnemonicParsing="false" onAction="#close" prefHeight="26.0" prefWidth="62.0" styleClass="close" stylesheets="@AdminPanelStyle.css" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                                  <graphic>
-                                    <FontAwesomeIcon fx:id="close" fill="#d01384" glyphName="CLOSE" size="1.5em" />
+                                    <FontAwesomeIcon fill="#d01384" glyphName="CLOSE" size="1.5em" />
                                  </graphic>
                               </Button>
-                              <Button layoutX="986.0" layoutY="2.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="50.0" styleClass="minimize" stylesheets="@AdminPanelStyle.css" AnchorPane.topAnchor="2.0">
+                              <Button fx:id="minimize" layoutX="986.0" layoutY="2.0" mnemonicParsing="false" onAction="#minimize" prefHeight="22.0" prefWidth="50.0" styleClass="minimize" stylesheets="@AdminPanelStyle.css" AnchorPane.topAnchor="2.0">
                                  <graphic>
-                                    <FontAwesomeIcon fx:id="minimize" fill="#d01384" glyphName="MINUS" size="1.5em" />
+                                    <FontAwesomeIcon fill="#d01384" glyphName="MINUS" size="1.5em" />
                                  </graphic>
                               </Button>
                            </children></AnchorPane>
@@ -53,32 +53,32 @@
                               </Label>
                               <FontAwesomeIcon fill="#eeeeee" glyphName="USER" layoutX="68.0" layoutY="111.0" size="8em" />
                               <Line endX="100.0" layoutX="106.0" layoutY="183.0" startX="-100.0" stroke="#fffaff" />
-                              <Button fx:id="mayorBtn" contentDisplay="CENTER" layoutX="16.0" layoutY="206.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="left-btn" stylesheets="@AdminPanelStyle.css" text=" Mayor ">
+                              <Button fx:id="mayorBtn" contentDisplay="CENTER" layoutX="16.0" layoutY="206.0" mnemonicParsing="false" onAction="#switchPage" prefHeight="35.0" prefWidth="180.0" styleClass="left-btn" stylesheets="@AdminPanelStyle.css" text=" Mayor ">
                                  <font>
                                     <Font name="Times New Roman Italic" size="14.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="deputiesBtn" contentDisplay="CENTER" layoutX="16.0" layoutY="249.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="left-btn" stylesheets="@AdminPanelStyle.css" text="  Deputies">
+                              <Button fx:id="deputiesBtn" contentDisplay="CENTER" layoutX="16.0" layoutY="249.0" mnemonicParsing="false" onAction="#switchPage" prefHeight="35.0" prefWidth="180.0" styleClass="left-btn" stylesheets="@AdminPanelStyle.css" text="  Deputies">
                                  <font>
                                     <Font name="Times New Roman Italic" size="14.0" />
                                  </font>
                               </Button>
                               <FontAwesomeIcon fill="#b52086" glyphName="USERS" layoutX="58.0" layoutY="310.0" size="1.5em" />
                               <FontAwesomeIcon fill="#b52086" glyphName="USER" layoutX="54.0" layoutY="229.0" size="1.5em" />
-                              <Button fx:id="inspectorsBtn" contentDisplay="CENTER" layoutX="16.0" layoutY="295.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="left-btn" stylesheets="@AdminPanelStyle.css" text="    Inspectors">
+                              <Button fx:id="inspectorsBtn" contentDisplay="CENTER" layoutX="16.0" layoutY="295.0" mnemonicParsing="false" onAction="#switchPage" prefHeight="35.0" prefWidth="180.0" styleClass="left-btn" stylesheets="@AdminPanelStyle.css" text="    Inspectors">
                                  <font>
                                     <Font name="Times New Roman Italic" size="14.0" />
                                  </font>
                               </Button>
                               <FontAwesomeIcon fill="#b52086" glyphName="USERS" layoutX="59.0" layoutY="355.0" size="1.5em" />
-                              <Button fx:id="securityGuardsBtn" contentDisplay="CENTER" layoutX="16.0" layoutY="384.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="left-btn" stylesheets="@AdminPanelStyle.css" text="            Security guards">
+                              <Button fx:id="securityGuardsBtn" contentDisplay="CENTER" layoutX="16.0" layoutY="384.0" mnemonicParsing="false" onAction="#switchPage" prefHeight="35.0" prefWidth="180.0" styleClass="left-btn" stylesheets="@AdminPanelStyle.css" text="            Security guards">
                                  <font>
                                     <Font name="Times New Roman Italic" size="14.0" />
                                  </font>
                               </Button>
                               <FontAwesomeIcon fill="#b52086" glyphName="USERS" layoutX="48.0" layoutY="407.0" size="1.5em" />
-                              <Button fx:id="signOut_admin" contentDisplay="CENTER" layoutX="16.0" layoutY="506.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="sign-out" stylesheets="@AdminPanelStyle.css" text="  Sign out" textFill="#111111" />
-                              <Button fx:id="employeesBtn" contentDisplay="CENTER" layoutX="16.0" layoutY="340.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="left-btn" stylesheets="@AdminPanelStyle.css" text="    Employees">
+                              <Button fx:id="signOut_admin" contentDisplay="CENTER" layoutX="16.0" layoutY="506.0" mnemonicParsing="false" onAction="#signOut_admin" prefHeight="35.0" prefWidth="180.0" styleClass="sign-out" stylesheets="@AdminPanelStyle.css" text="  Sign out" textFill="#111111" />
+                              <Button fx:id="employeesBtn" contentDisplay="CENTER" layoutX="16.0" layoutY="340.0" mnemonicParsing="false" onAction="#switchPage" prefHeight="35.0" prefWidth="180.0" styleClass="left-btn" stylesheets="@AdminPanelStyle.css" text="    Employees">
                                  <font>
                                     <Font name="Times New Roman Italic" size="14.0" />
                                  </font>

@@ -1,5 +1,6 @@
 
 import java.io.*;
+import java.sql.Date;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,19 +14,49 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 
-public class SmartCity extends Application {
+public abstract class SmartCity extends Application {
     
     private double x = 0;
     private double y = 0;
-    private String firstname;
-    private String lastname;
-    private String personnelId;
-    private String hireDate;
+    protected int row;
+    protected String firstname;
+    protected String lastname;
+    protected int personnelNo;
+    protected Date hireDate;
+    protected int phoneNo;
+    protected String gender;
+    protected double history;
+    protected double basicSalary;
+    
+    public SmartCity(int row ,String firstname , String lastname ,int personnelNo ,Date hireDate ,int phoneNo ,String gender ,double history , double basicSalary){
+        
+        this.row = row;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.personnelNo = personnelNo;
+        this.hireDate = hireDate;
+        this.phoneNo = phoneNo;
+        this.gender = gender;
+        this.history = history;
+        this.basicSalary = basicSalary;
+    }
+    public abstract int getRow();
+    public abstract String getFirstname();
+    public abstract String getLastname();
+    public abstract int getPersonnelNo();
+    public abstract Date getHireDate();
+    public abstract int getPhoneNo();
+    public abstract String getGender();
+    public abstract double getHistory();
+    public abstract double getBasicSalary();
+       
+    
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
-        
+        Parent root = FXMLLoader.load(getClass().getResource("/View/LoginPage.fxml"));
+               
+
         
         Scene scene = new Scene(root);
         
