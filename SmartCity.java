@@ -27,8 +27,9 @@ public abstract class SmartCity extends Application {
     protected String gender;
     protected double history;
     protected double basicSalary;
+    protected double totalSalary;
     
-    public SmartCity(int row ,String firstname , String lastname ,int personnelNo ,Date hireDate ,int phoneNo ,String gender ,double history , double basicSalary){
+    public SmartCity(int row ,String firstname , String lastname ,int personnelNo ,Date hireDate ,int phoneNo ,String gender ,double history , double basicSalary, double totalSalary){
         
         this.row = row;
         this.firstname = firstname;
@@ -39,6 +40,7 @@ public abstract class SmartCity extends Application {
         this.gender = gender;
         this.history = history;
         this.basicSalary = basicSalary;
+        this.totalSalary = totalSalary;
     }
     public abstract int getRow();
     public abstract String getFirstname();
@@ -49,7 +51,7 @@ public abstract class SmartCity extends Application {
     public abstract String getGender();
     public abstract double getHistory();
     public abstract double getBasicSalary();
-       
+    public abstract double getTotalSalary();   
     
     
     @Override

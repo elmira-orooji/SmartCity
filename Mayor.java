@@ -4,9 +4,10 @@ import java.sql.Date;
 
 public class Mayor extends SmartCity {
     
-public Mayor(int row ,String firstname , String lastname ,int personnelNo ,Date hireDate ,int phoneNo ,String gender ,double history , double basicSalary){
+public Mayor(int row ,String firstname , String lastname ,int personnelNo ,Date hireDate
+        ,String gender,int phoneNo ,double history , double basicSalary,double totalSalary){
     
-    super(row,firstname,lastname,personnelNo,hireDate,phoneNo,gender,history,basicSalary);
+    super(row,firstname,lastname,personnelNo,hireDate,phoneNo,gender,history,basicSalary,totalSalary);
 }
  
     @Override
@@ -53,6 +54,11 @@ public Mayor(int row ,String firstname , String lastname ,int personnelNo ,Date 
     @Override
     public double getBasicSalary() {
         return super.basicSalary;
+    }
+    
+    @Override
+    public double getTotalSalary() {
+        return super.totalSalary;
     }
 
 

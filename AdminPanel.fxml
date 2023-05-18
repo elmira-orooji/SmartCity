@@ -97,7 +97,7 @@
                      <children>
                         <AnchorPane fx:id="homePage" layoutX="128.0" layoutY="78.0" prefHeight="555.0" prefWidth="888.0" styleClass="minimize" stylesheets="@AdminPanelStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane fx:id="mayorPage" layoutX="14.0" layoutY="20.0" prefHeight="555.0" prefWidth="888.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="mayorPage" layoutX="14.0" layoutY="20.0" prefHeight="555.0" prefWidth="888.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="528.0" prefWidth="856.0" stylesheets="@AdminPanelStyle.css">
                                        <children>
@@ -689,9 +689,9 @@
                                     </AnchorPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="securityGuardsPage" layoutX="14.0" layoutY="20.0" prefHeight="555.0" prefWidth="888.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="securityGuardsPage" layoutX="14.0" layoutY="20.0" prefHeight="555.0" prefWidth="888.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <AnchorPane layoutX="14.0" layoutY="17.0" prefHeight="521.0" prefWidth="853.0" stylesheets="@AdminPanelStyle.css">
+                                    <AnchorPane layoutX="14.0" layoutY="17.0" prefHeight="521.0" prefWidth="853.0" stylesheets="@AdminPanelStyle.css" visible="false">
                                        <children>
                                           <AnchorPane layoutX="19.0" layoutY="14.0" prefHeight="265.0" prefWidth="815.0" stylesheets="@AdminPanelStyle.css">
                                              <styleClass>

@@ -4,8 +4,15 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +28,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -135,7 +143,7 @@ public class AdminPanelController implements Initializable{
     private ComboBox<?> gender_box_Mayor;
 
     @FXML
-    private TableColumn<?, ?> firstname_col_Mayor;
+    private TableColumn<Mayor, String> firstname_col_Mayor;
 
     @FXML
     private TextField basicSalary_field_inspectors;
@@ -144,7 +152,7 @@ public class AdminPanelController implements Initializable{
     private TextField history_field_deputies;
 
     @FXML
-    private TableColumn<?, ?> basicSalary_col_Mayor;
+    private TableColumn<Mayor, Double> basicSalary_col_Mayor;
 
     @FXML
     private ComboBox<?> gender_box_deputies;
@@ -197,8 +205,8 @@ public class AdminPanelController implements Initializable{
     @FXML
     private TableView<?> inspectorsTable;
 
-    @FXML
-    private TableColumn<?, ?> lastname_col_Mayor;
+   @FXML
+    private TableColumn<Mayor, String> lastname_col_Mayor;
 
     @FXML
     private TableColumn<?, ?> lastname_col_inspectors;
@@ -237,7 +245,7 @@ public class AdminPanelController implements Initializable{
     private TableColumn<?, ?> history_col_securityguards;
 
     @FXML
-    private TableColumn<?, ?> personnelNo_col_Mayor;
+    private TableColumn<Mayor, Integer> personnelNo_col_Mayor;
 
     @FXML
     private Button updateBtnMayor;
@@ -279,7 +287,7 @@ public class AdminPanelController implements Initializable{
     private AnchorPane securityGuardsPage;
 
     @FXML
-    private TableColumn<?, ?> history_col_Mayor;
+    private TableColumn<Mayor, Double> history_col_Mayor;
 
     @FXML
     private TableColumn<?, ?> lastname_col_securityguards;
@@ -291,7 +299,7 @@ public class AdminPanelController implements Initializable{
     private AnchorPane employeesPage;
 
     @FXML
-    private TableView<?> tableMayor;
+    private TableView<Mayor> tableMayor;
 
     @FXML
     private TextField workingHoursPerWeek_field_employees;
@@ -339,7 +347,7 @@ public class AdminPanelController implements Initializable{
     private TextField history_field_securityguards;
 
     @FXML
-    private TableColumn<?, ?> dateOfHire_col_Mayor;
+    private TableColumn<Mayor, Date> dateOfHire_col_Mayor;
 
 
     @FXML
@@ -349,7 +357,7 @@ public class AdminPanelController implements Initializable{
     private Button clearBtnSecurityguards;
 
     @FXML
-    private TableColumn<?, ?> gender_col_Mayor;
+    private TableColumn<Mayor, String> gender_col_Mayor;
 
     @FXML
     private ComboBox<?> gender_box_inspectors;
@@ -403,7 +411,7 @@ public class AdminPanelController implements Initializable{
     private TableColumn<?, ?> phoneNo_col_employees;
 
     @FXML
-    private TableColumn<?, ?> totalSalary_col_Mayor;
+    private TableColumn<Mayor, Double> totalSalary_col_Mayor;
 
     @FXML
     private TextField totalSalary_field_inspectors;
@@ -427,13 +435,13 @@ public class AdminPanelController implements Initializable{
     private TextField dateOfHire_field_employees;
 
     @FXML
-    private TableColumn<?, ?> row_col_Mayor;
+    private TableColumn<Mayor, Integer> row_col_Mayor;
 
     @FXML
     private ComboBox<?> gender_box_securityguards;
 
     @FXML
-    private TableColumn<?, ?> phoneNo_col_Mayor;
+    private TableColumn<Mayor, Integer> phoneNo_col_Mayor;
 
     @FXML
     private TableColumn<?, ?> totalSalary_col_employees;
@@ -469,6 +477,8 @@ public class AdminPanelController implements Initializable{
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
+        ShowMayorListData();
        
     }
 
@@ -567,9 +577,72 @@ public class AdminPanelController implements Initializable{
         }
         
     }
-    public void displayUsername(){
+    private Connection connect;
+    private Statement statement;
+    private PreparedStatement prepare;
+    private ResultSet result;
+    
+    public ObservableList<Mayor> mayorData(){
         
+        ObservableList<Mayor> listData = FXCollections.observableArrayList();
+        String sql = "SELECT * FROM mayor";
+        
+        connect = Database.connectDb();
+        
+        try{
+            
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+            Mayor MayorD;
+            
+            while(result.next()){
+                MayorD = new Mayor(result.getInt("Row"), 
+                        result.getString("First name"),
+                         result.getString("Last name"),
+                         result.getInt("Personnel No."),
+                         result.getDate("Date of hire"),
+                         result.getString("Gender"),
+                         result.getInt("Phone No."),
+                         result.getDouble("History"),
+                         result.getDouble("Basic salary"),
+                         result.getDouble("Total salary"));
+                
+                listData.add(MayorD);
+            }
+            
+        }catch(Exception e){ e.printStackTrace();}
+        
+        return listData;
     }
     
+    private ObservableList<Mayor> MayorList;
+    public void ShowMayorListData(){
+        
+        MayorList = mayorData();
+        row_col_Mayor.setCellValueFactory(new PropertyValueFactory<>("row"));
+        firstname_col_Mayor.setCellValueFactory(new PropertyValueFactory<>("firstname"));
+        lastname_col_Mayor.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+        personnelNo_col_Mayor.setCellValueFactory(new PropertyValueFactory<>("personnelNo"));
+        dateOfHire_col_Mayor.setCellValueFactory(new PropertyValueFactory<>("hireDate"));
+        gender_col_Mayor.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        phoneNo_col_Mayor.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
+        history_col_Mayor.setCellValueFactory(new PropertyValueFactory<>("history"));
+        basicSalary_col_Mayor.setCellValueFactory(new PropertyValueFactory<>("basicSalary"));
+        totalSalary_col_Mayor.setCellValueFactory(new PropertyValueFactory<>("totalSalary"));
+        
+        tableMayor.setItems(MayorList);
+
+
+    }
+    
+    public void MayorEnterField(){
+        
+        Mayor mayor = tableMayor.getSelectionModel().getSelectedItem();
+        int n = tableMayor.getSelectionModel().getSelectedIndex();
+        
+        if((n -1)< -1){return;}
+        
+        row_field_Mayor.setText(String.valueOf(mayor.getRow()));
+    }
 
 }
