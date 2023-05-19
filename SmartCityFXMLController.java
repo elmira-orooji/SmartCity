@@ -5,6 +5,7 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -26,6 +28,12 @@ public class SmartCityFXMLController implements Initializable {
     
     @FXML
     private Button loginBtn;
+    
+    @FXML
+    private ToggleButton toggleButton;
+    
+    @FXML
+    private Label shownPassword;
 
     @FXML
     private FontAwesomeIcon closeBtn;
@@ -110,9 +118,11 @@ public class SmartCityFXMLController implements Initializable {
         System.exit(0);
     }
     
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
       
+        
     }    
     
 }

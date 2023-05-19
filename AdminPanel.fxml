@@ -164,7 +164,7 @@
                                                 <Font name="Tahoma" size="15.0" />
                                              </font>
                                           </Label>
-                                          <ComboBox fx:id="gender_box_Mayor" layoutX="157.0" layoutY="480.0" onAction="#GenderList" prefWidth="150.0" promptText="Select" stylesheets="@AdminPanelStyle.css">
+                                          <ComboBox fx:id="gender_box_Mayor" layoutX="157.0" layoutY="480.0" onAction="#GenderListMayor" prefWidth="150.0" promptText="Select" stylesheets="@AdminPanelStyle.css">
                                              <styleClass>
                                                 <String fx:value="borderOfBtn" />
                                                 <String fx:value="background" />
@@ -222,7 +222,7 @@
                                                 <Font name="Tahoma" size="15.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="totalSalary_field_Mayor" layoutX="562.0" layoutY="408.0" onAction="#TotalSalary" onMouseClicked="#TotalSalary" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <TextField fx:id="totalSalary_field_Mayor" layoutX="562.0" layoutY="408.0" onMouseClicked="#TotalSalaryMayor" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
                                           <FontAwesomeIcon fill="#8528a7" glyphName="DOLLAR" layoutX="693.0" layoutY="392.0" size="1.5em" />
                                           <FontAwesomeIcon fill="#8528a7" glyphName="MONEY" layoutX="688.0" layoutY="427.0" size="1.5em" />
                                        </children>
@@ -247,7 +247,7 @@
                                                 <String fx:value="shadow" />
                                              </styleClass>
                                              <children>
-                                                <TableView fx:id="deputiesTable" layoutX="16.0" layoutY="19.0" prefHeight="230.0" prefWidth="793.0" styleClass="tableDesignTop" stylesheets="@AdminPanelStyle.css">
+                                                <TableView fx:id="deputiesTable" layoutX="16.0" layoutY="19.0" onMouseClicked="#DeputiesSelect" prefHeight="230.0" prefWidth="793.0" styleClass="tableDesignTop" stylesheets="@AdminPanelStyle.css">
                                                   <columns>
                                                     <TableColumn fx:id="row_col_deputies" prefWidth="51.0" text="Row" />
                                                     <TableColumn fx:id="firstname_col_deputies" prefWidth="70.0" text="First name" />
@@ -304,12 +304,12 @@
                                              </font>
                                           </Label>
                                           <TextField fx:id="dateOfHire_field_deputies" layoutX="148.0" layoutY="437.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
-                                          <ComboBox fx:id="gender_box_deputies" layoutX="148.0" layoutY="471.0" prefWidth="150.0" promptText="Select" stylesheets="@AdminPanelStyle.css">
+                                          <ComboBox fx:id="gender_box_deputies" layoutX="148.0" layoutY="471.0" onAction="#GenderListDeputies" prefWidth="150.0" promptText="Select" stylesheets="@AdminPanelStyle.css">
                                              <styleClass>
                                                 <String fx:value="borderOfBtn" />
                                                 <String fx:value="background" />
                                              </styleClass></ComboBox>
-                                          <Button fx:id="deleteBtnDeputies" layoutX="524.0" layoutY="467.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Delete">
+                                          <Button fx:id="deleteBtnDeputies" layoutX="524.0" layoutY="467.0" mnemonicParsing="false" onAction="#DeputiesDelete" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Delete">
                                              <graphic>
                                                 <FontAwesomeIcon fill="#c520aa" glyphName="TRASH" size="1.5em" />
                                              </graphic>
@@ -318,7 +318,7 @@
                                                 <String fx:value="deletetableBtn" />
                                              </styleClass>
                                           </Button>
-                                          <Button fx:id="clearBtndeputies" layoutX="416.0" layoutY="467.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Clear">
+                                          <Button fx:id="clearBtndeputies" layoutX="416.0" layoutY="467.0" mnemonicParsing="false" onAction="#DeputiesClear" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Clear">
                                              <graphic>
                                                 <FontAwesomeIcon fx:id="clearBtnDeputies" fill="#c520aa" glyphName="BAN" size="1.5em" />
                                              </graphic>
@@ -327,7 +327,7 @@
                                                 <String fx:value="cleartableBtn" />
                                              </styleClass>
                                           </Button>
-                                          <Button fx:id="addBtnDeputies" layoutX="745.0" layoutY="467.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text=" Add">
+                                          <Button fx:id="addBtnDeputies" layoutX="745.0" layoutY="467.0" mnemonicParsing="false" onAction="#DeputiesAdd" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text=" Add">
                                              <graphic>
                                                 <FontAwesomeIcon fill="#c520aa" glyphName="PLUS" size="1.5em" />
                                              </graphic>
@@ -336,7 +336,7 @@
                                                 <String fx:value="addtableBtn" />
                                              </styleClass>
                                           </Button>
-                                          <Button fx:id="updateBtnDeputies" layoutX="637.0" layoutY="467.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Update">
+                                          <Button fx:id="updateBtnDeputies" layoutX="637.0" layoutY="467.0" mnemonicParsing="false" onAction="#DeputiesUpdate" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Update">
                                              <graphic>
                                                 <FontAwesomeIcon fill="#c520aa" glyphName="REFRESH" size="1.5em" />
                                              </graphic>
@@ -362,7 +362,7 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="totalSalary_field_deputies" layoutX="574.0" layoutY="399.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <TextField fx:id="totalSalary_field_deputies" layoutX="574.0" layoutY="399.0" onMouseClicked="#TotalSalaryDeputies" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
                                           <FontAwesomeIcon fill="#8528a7" glyphName="DOLLAR" layoutX="702.0" layoutY="383.0" size="1.5em" />
                                           <FontAwesomeIcon fill="#8528a7" glyphName="MONEY" layoutX="697.0" layoutY="418.0" size="1.5em" />
                                        </children>

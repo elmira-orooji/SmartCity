@@ -40,14 +40,14 @@
                         <Font size="13.0" />
                      </font>
                   </TextField>
-                  <PasswordField fx:id="passwordBtn" layoutX="77.0" layoutY="234.0" onAction="#adminLogin" prefHeight="25.0" prefWidth="164.0" promptText="Password" style="-fx-background-color: #ffffff; -fx-border-color: #B200ED;">
+                  <PasswordField fx:id="passwordBtn" layoutX="77.0" layoutY="234.0" onAction="#adminLogin" onKeyTyped="#PasswordFieldKeyTyped" prefHeight="25.0" prefWidth="164.0" promptText="Password" style="-fx-background-color: #ffffff; -fx-border-color: #B200ED;">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </PasswordField>
                   <FontAwesomeIcon fill="#7b158d" glyphName="USER" layoutX="58.0" layoutY="213.0" size="1.3em" />
                   <FontAwesomeIcon fill="#7b158d" glyphName="LOCK" layoutX="58.0" layoutY="254.0" size="1.3em" />
-                  <Button fx:id="loginBtn" layoutX="77.0" layoutY="304.0" mnemonicParsing="false" onAction="#adminLogin" prefHeight="32.0" prefWidth="164.0" style="-fx-border-color: #a629ae;" styleClass="login-btn" stylesheets="@LoginStyle.css" text="Login" textFill="#691a97">
+                  <Button fx:id="loginBtn" layoutX="77.0" layoutY="291.0" mnemonicParsing="false" onAction="#adminLogin" prefHeight="32.0" prefWidth="164.0" style="-fx-border-color: #a629ae;" styleClass="login-btn" stylesheets="@LoginStyle.css" text="Login" textFill="#691a97">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -62,11 +62,11 @@
                         <FontAwesomeIcon fx:id="closeBtn" fill="#9c0eae" glyphName="CLOSE" size="1.5em" />
                      </graphic>
                   </Button>
-                  <ToggleButton fx:id="toggleButton" layoutX="213.0" layoutY="237.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="19.0" style="-fx-background-color: transparent;">
+                  <Button fx:id="eyeBtn" layoutX="214.0" layoutY="237.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="23.0" style="-fx-background-color: transparent;" stylesheets="@LoginStyle.css">
                      <graphic>
-                        <FontAwesomeIcon fill="#7b158d" glyphName="EYE" wrappingWidth="12.0" />
+                        <FontAwesomeIcon fill="#7b158d" glyphName="EYE" />
                      </graphic>
-                  </ToggleButton>
+                  </Button>
                </children>
             </AnchorPane>
          </children>

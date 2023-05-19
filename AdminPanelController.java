@@ -36,8 +36,7 @@ import javafx.stage.StageStyle;
 
 
 public class AdminPanelController implements Initializable{
-    public static String username;
-    public static String path;
+    
 
     @FXML
     private AnchorPane skeleton_page;
@@ -46,7 +45,7 @@ public class AdminPanelController implements Initializable{
     private TableView<?> securityGuardsTable;
 
     @FXML
-    private TableView<?> deputiesTable;
+    private TableView<Deputies> deputiesTable;
 
     @FXML
     private Button updateBtnEmployees;
@@ -67,7 +66,7 @@ public class AdminPanelController implements Initializable{
     private AnchorPane homePage;
 
     @FXML
-    private TableColumn<?, ?> totalSalary_col_deputies;
+    private TableColumn<Deputies, Double> totalSalary_col_deputies;
 
     @FXML
     private TableColumn<?, ?> shiftWork_col_securityguards;
@@ -76,10 +75,10 @@ public class AdminPanelController implements Initializable{
     private TextField dateOfHire_field_inspectors;
 
     @FXML
-    private TableColumn<?, ?> personnelNo_col_deputies;
+    private TableColumn<Deputies, Integer> personnelNo_col_deputies;
 
     @FXML
-    private TableColumn<?, ?> gender_col_deputies;
+    private TableColumn<Deputies, String> gender_col_deputies;
 
     @FXML
     private TextField row_field_Mayor;
@@ -127,7 +126,7 @@ public class AdminPanelController implements Initializable{
     private TableColumn<?, ?> workingHoursPerWeek_col_employees;
 
     @FXML
-    private TableColumn<?, ?> phoneNo_col_deputies;
+    private TableColumn<Deputies, Integer> phoneNo_col_deputies;
 
     @FXML
     private TableColumn<?, ?> row_col_securityguards;
@@ -259,7 +258,7 @@ public class AdminPanelController implements Initializable{
     private TextField shiftWork_field_securityguards;
 
     @FXML
-    private TableColumn<?, ?> lastname_col_deputies;
+    private TableColumn<Deputies, String> lastname_col_deputies;
 
     @FXML
     private TableColumn<?, ?> basicSalary_col_deputies;
@@ -283,7 +282,7 @@ public class AdminPanelController implements Initializable{
     private TableColumn<?, ?> history_col_inspectors;
 
     @FXML
-    private TableColumn<?, ?> history_col_deputies;
+    private TableColumn<Deputies, Double> history_col_deputies;
 
     @FXML
     private AnchorPane securityGuardsPage;
@@ -380,7 +379,7 @@ public class AdminPanelController implements Initializable{
     private TextField totalSalary_field_employees;
 
     @FXML
-    private TableColumn<?, ?> row_col_deputies;
+    private TableColumn<Deputies, Integer> row_col_deputies;
 
     @FXML
     private TextField basicSalary_field_securityguards;
@@ -392,7 +391,7 @@ public class AdminPanelController implements Initializable{
     private TableColumn<?, ?> firstname_col_inspectors;
 
     @FXML
-    private TableColumn<?, ?> firstname_col_deputies;
+    private TableColumn<Deputies, String> firstname_col_deputies;
 
     @FXML
     private TextField row_field_inspectors;
@@ -419,7 +418,7 @@ public class AdminPanelController implements Initializable{
     private TextField totalSalary_field_inspectors;
 
     @FXML
-    private TableColumn<?, ?> dateOfHire_col_deputies;
+    private TableColumn<Deputies, Date> dateOfHire_col_deputies;
 
     @FXML
     private Button addBtnDeputies;
@@ -479,9 +478,10 @@ public class AdminPanelController implements Initializable{
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        GenderList();
+        GenderListMayor();
         ShowMayorListData();
-        
+        GenderListDeputies();
+        ShowDeputiesListData();
        
     }
 
@@ -549,7 +549,7 @@ public class AdminPanelController implements Initializable{
             inspectorsPage.setVisible(false);
             employeesPage.setVisible(false);
             securityGuardsPage.setVisible(false);
-            GenderList();
+            GenderListMayor();
            
         }
         else if(event.getSource() == deputiesBtn){
@@ -558,7 +558,7 @@ public class AdminPanelController implements Initializable{
             inspectorsPage.setVisible(false);
             employeesPage.setVisible(false);
             securityGuardsPage.setVisible(false);
-             GenderList();
+             GenderListDeputies();
         }
         else if(event.getSource() == inspectorsBtn){
             mayorPage.setVisible(false);
@@ -566,7 +566,7 @@ public class AdminPanelController implements Initializable{
             inspectorsPage.setVisible(true);
             employeesPage.setVisible(false);
             securityGuardsPage.setVisible(false);
-            GenderList();
+            
         }
         else if(event.getSource() == employeesBtn){
             mayorPage.setVisible(false);
@@ -574,7 +574,7 @@ public class AdminPanelController implements Initializable{
             inspectorsPage.setVisible(false);
             employeesPage.setVisible(true);
             securityGuardsPage.setVisible(false);
-            GenderList();
+            
           
         }
         else if(event.getSource() == securityGuardsBtn){
@@ -583,7 +583,7 @@ public class AdminPanelController implements Initializable{
             inspectorsPage.setVisible(false);
             employeesPage.setVisible(false);
             securityGuardsPage.setVisible(true);
-            GenderList();
+          
             
         }
         
@@ -725,13 +725,10 @@ public class AdminPanelController implements Initializable{
             }
         }catch(Exception e){e.printStackTrace();}
     }
-    public void DisplayUsername(){
-        
-        
-    }
-    
+   
     private String[] genderList = {"Female","Male"};
-    public void GenderList(){
+    
+    public void GenderListMayor(){
         
         List<String> glist = new ArrayList<>();
         
@@ -741,6 +738,19 @@ public class AdminPanelController implements Initializable{
         
         ObservableList listData = FXCollections.observableArrayList(glist);
         gender_box_Mayor.setItems(listData);
+    }
+    
+     
+    public void GenderListDeputies(){
+        
+        List<String> glist = new ArrayList<>();
+        
+        for(String data : genderList){
+            glist.add(data);
+        }
+        
+        ObservableList listData = FXCollections.observableArrayList(glist);
+        gender_box_deputies.setItems(listData);
     }
     
     public void MayorUpdate(){
@@ -862,14 +872,275 @@ public class AdminPanelController implements Initializable{
         
     }
     
-    public void TotalSalary(){
-        Mayor mayor = new Mayor();
+    public void TotalSalaryMayor(){
+       
         
         totalSalary_field_Mayor.setText(String.valueOf((0.05*Integer.parseInt(basicSalary_field_Mayor.getText())*Integer.parseInt(history_field_Mayor.getText()))+ Integer.parseInt(basicSalary_field_Mayor.getText())));
         
         totalSalary_field_Mayor.setEditable(false);
     }
+    
+    public void TotalSalaryDeputies(){
+       
+        
+        totalSalary_field_deputies.setText(String.valueOf((0.05*Integer.parseInt(basicSalary_field_deputies.getText())*Integer.parseInt(history_field_deputies.getText()))+ Integer.parseInt(basicSalary_field_deputies.getText())));
+        
+        totalSalary_field_deputies.setEditable(false);
+    }
 
+      public ObservableList<Deputies> deputiesListData(){
+        
+        ObservableList<Deputies> listData = FXCollections.observableArrayList();
+        String sql = "SELECT * FROM deputies";
+        
+        connect = Database.connectDb();
+        
+        try{
+            
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+            Deputies DeputiesD;
+            
+            while(result.next()){
+                DeputiesD = new Deputies(result.getInt("Row"), 
+                         result.getString("First_name"),
+                         result.getString("Last_name"),
+                         result.getInt("Personnel_No"),
+                         result.getDate("Date_of_hire"),
+                         result.getString("Gender"),
+                         result.getInt("Phone_No"),
+                         result.getDouble("History"),
+                         result.getDouble("Basic_salary"),
+                         result.getDouble("Total_salary"));
+                
+                listData.add(DeputiesD);
+            }
+            
+        }catch(Exception e){ e.printStackTrace();}
+        
+        return listData;
+    }
+    
+    private ObservableList<Deputies> DeputiesList;
+    
+    public void ShowDeputiesListData(){
+        
+        DeputiesList = deputiesListData();
+        row_col_deputies.setCellValueFactory(new PropertyValueFactory<>("row"));
+        firstname_col_deputies.setCellValueFactory(new PropertyValueFactory<>("firstname"));
+        lastname_col_deputies.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+        personnelNo_col_deputies.setCellValueFactory(new PropertyValueFactory<>("personnelNo"));
+        dateOfHire_col_deputies.setCellValueFactory(new PropertyValueFactory<>("hireDate"));
+        gender_col_deputies.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        phoneNo_col_deputies.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
+        history_col_deputies.setCellValueFactory(new PropertyValueFactory<>("history"));
+        basicSalary_col_deputies.setCellValueFactory(new PropertyValueFactory<>("basicSalary"));
+        totalSalary_col_deputies.setCellValueFactory(new PropertyValueFactory<>("totalSalary"));
+        
+        
+        deputiesTable.setItems(DeputiesList);
+
+
+    }
+    
+    public void DeputiesSelect(){
+        
+        Deputies deputies = deputiesTable.getSelectionModel().getSelectedItem();
+        int n = deputiesTable.getSelectionModel().getSelectedIndex();
+        
+        if((n -1)< -1){return;}
+        
+        row_field_deputies.setText(String.valueOf(deputies.getRow()));
+        firstname_field_deputies.setText(deputies.getFirstname());
+        lastname_field_deputies.setText(deputies.getLastname());
+        personnelNo_field_deputies.setText(String.valueOf(deputies.getPersonnelNo()));
+        dateOfHire_field_deputies.setText(String.valueOf(deputies.getHireDate()));
+        phoneNo_field_deputies.setText(String.valueOf(deputies.getPhoneNo()));
+        history_field_deputies.setText(String.valueOf(deputies.getHistory()));
+        basicSalary_field_deputies.setText(String.valueOf(deputies.getBasicSalary()));
+        
+
+    }
+    
+    public void DeputiesAdd(){
+        
+        Date date = new Date();
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        
+        String sql  = "INSERT INTO deputies "
+                + "(Row,First_name,Last_name,Personnel_No,Date_of_hire,Gender,Phone_No,History,Basic_salary,Total_salary)"
+                + "VALUES(?,?,?,?,?,?,?,?,?,?)";
+        
+        connect = Database.connectDb();
+        
+        try{
+            
+            if(row_field_deputies.getText().isEmpty()||firstname_field_deputies.getText().isEmpty()
+                    ||lastname_field_deputies.getText().isEmpty()||personnelNo_field_deputies.getText().isEmpty()
+                    ||dateOfHire_field_deputies.getText().isEmpty()
+                    ||gender_box_deputies.getSelectionModel().getSelectedItem()== null 
+                    ||phoneNo_field_deputies.getText().isEmpty()||history_field_deputies.getText().isEmpty()
+                    ||basicSalary_field_deputies.getText().isEmpty()){
+                
+            Alert alert = new Alert(Alert.AlertType.ERROR); 
+            alert.setTitle("Error!");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all the blanks");
+            alert.showAndWait();
+            
+            }else{
+                
+            
+            prepare = connect.prepareStatement(sql);
+            prepare.setString(1, row_field_deputies.getText());
+            prepare.setString(2, firstname_field_deputies.getText());
+            prepare.setString(3, lastname_field_deputies.getText());
+            prepare.setString(4, personnelNo_field_deputies.getText());
+            prepare.setString(5, String.valueOf(sqlDate));
+            prepare.setString(6,(String) gender_box_deputies.getSelectionModel().getSelectedItem());
+            prepare.setString(7, phoneNo_field_deputies.getText());
+            prepare.setString(8, history_field_deputies.getText());
+            prepare.setString(9, basicSalary_field_deputies.getText());
+            prepare.setString(10, totalSalary_field_deputies.getText());
+            
+            
+
+             
+             
+            prepare.executeUpdate();
+            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+            alert1.setTitle("Information");
+            alert1.setHeaderText("");
+            alert1.setContentText("Added successfully");
+            alert1.showAndWait();
+            
+            ShowDeputiesListData();
+            DeputiesClear();
+            }
+        }catch(Exception e){e.printStackTrace();}
+    }
+    
+    
+    
+    public void DeputiesUpdate(){
+        
+        Date date = new Date();
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        
+        String sql = "UPDATE mayor SET First_name = '"
+                +firstname_field_deputies.getText()+"' , Last_name = '"+lastname_field_deputies.getText()
+                +"' ,Personnel_No = '"+personnelNo_field_deputies.getText()+"' ,Gender = '"+
+                gender_box_deputies.getSelectionModel().getSelectedItem()+"' ,Phone_NO = '"+
+                phoneNo_field_deputies.getText()+"' ,History = '"+history_field_deputies.getText()
+                +"' ,Basic_salary = '"+basicSalary_field_deputies.getText()+"' ,Total_salary = '"
+                +totalSalary_field_deputies.getText()
+                +"' ,Date_of_hire = '"+dateOfHire_field_deputies.getText()+"',Date_of_hire = '"+
+                sqlDate+"' WHERE Row = '"+row_field_deputies.getText()+"'"; 
+        
+        connect = Database.connectDb();
+        
+        try{
+            if(row_field_deputies.getText().isEmpty()||firstname_field_deputies.getText().isEmpty()
+                    ||lastname_field_deputies.getText().isEmpty()||personnelNo_field_deputies.getText().isEmpty()
+                    ||dateOfHire_field_deputies.getText().isEmpty()
+                    ||gender_box_deputies.getSelectionModel().getSelectedItem()== null 
+                    ||phoneNo_field_deputies.getText().isEmpty()||history_field_deputies.getText().isEmpty()
+                    ||basicSalary_field_deputies.getText().isEmpty()){
+                
+            Alert alert = new Alert(Alert.AlertType.ERROR); 
+            alert.setTitle("Error!");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all the blanks");
+            alert.showAndWait();
+            }else{
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION); 
+                alert.setTitle("Confimation ^.^");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure do you want update mayor "+
+                                      firstname_field_deputies.getText()+"?");
+                Optional<ButtonType> option = alert.showAndWait();
+                
+                if(option.get().equals(ButtonType.OK)){
+                    statement = connect.createStatement();
+                    statement.executeUpdate(sql);
+                    
+                    Alert alert1 = new Alert(Alert.AlertType.INFORMATION); 
+                    alert1.setTitle("INFORMATION ^-^");
+                    alert1.setHeaderText(null);
+                    alert1.setContentText("Updated Successfully ^.^");
+                    alert1.showAndWait();
+                    ShowDeputiesListData();
+                    DeputiesClear();
+                }
+                
+                
+            }
+        }catch(Exception e){e.printStackTrace();}
+                
+    }
+    
+    public void DeputiesDelete(){
+        
+        String sql = "DELETE FROM deputies WHERE Row = '"
+                +row_field_deputies.getText()+"'";
+        
+        connect = Database.connectDb();
+        
+        try{
+            
+             if(row_field_deputies.getText().isEmpty()||firstname_field_deputies.getText().isEmpty()
+                    ||lastname_field_deputies.getText().isEmpty()||personnelNo_field_deputies.getText().isEmpty()
+                    ||dateOfHire_field_deputies.getText().isEmpty()
+                    ||gender_box_deputies.getSelectionModel().getSelectedItem()== null 
+                    ||phoneNo_field_deputies.getText().isEmpty()||history_field_deputies.getText().isEmpty()
+                    ||basicSalary_field_deputies.getText().isEmpty()){
+                
+            Alert alert = new Alert(Alert.AlertType.ERROR); 
+            alert.setTitle("Error!");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all the blanks");
+            alert.showAndWait();
+            }else{
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION); 
+                alert.setTitle("Confimation ^.^");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure do you want delete mayor "+
+                                      firstname_field_deputies.getText()+"?");
+                Optional<ButtonType> option = alert.showAndWait();
+                
+                if(option.get().equals(ButtonType.OK)){
+                    statement = connect.createStatement();
+                    statement.executeUpdate(sql);
+                    
+                    Alert alert1 = new Alert(Alert.AlertType.INFORMATION); 
+                    alert1.setTitle("INFORMATION ^-^");
+                    alert1.setHeaderText(null);
+                    alert1.setContentText("Deleted Successfully ^.^");
+                    alert1.showAndWait();
+                    
+                    ShowDeputiesListData();
+                    DeputiesClear();
+                }
+             }
+        }catch(Exception e){e.printStackTrace();}
+    }
+    
+    
+    public void DeputiesClear(){
+        
+        row_field_deputies.setText("");
+        firstname_field_deputies.setText("");
+        lastname_field_deputies.setText("");
+        personnelNo_field_deputies.setText("");
+        gender_box_deputies.getSelectionModel().getSelectedItem();
+        phoneNo_field_deputies.setText("");  
+        history_field_deputies.setText("");
+        basicSalary_field_deputies.setText("");
+        totalSalary_field_deputies.setText("");
+        dateOfHire_field_deputies.setText("");
+        
+        
+    }
     
      
    

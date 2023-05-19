@@ -15,6 +15,9 @@
     -fx-cursor: hand;
     
 }
+.eye{
+    -fx-background-color: transparent;
+}
 .close:hover{
      -fx-background-color: #FF0000;
 }
