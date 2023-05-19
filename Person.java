@@ -30,6 +30,7 @@ abstract public class Person {
         this.basicSalary = basicSalary;
         this.totalSalary = totalSalary;
     }
+    public Person(){}
     
     public abstract int getRow();
     public abstract String getFirstname();

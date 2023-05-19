@@ -107,7 +107,7 @@
                                                 <String fx:value="main-main-page" />
                                              </styleClass>
                                              <children>
-                                                <TableView fx:id="tableMayor" layoutX="21.0" layoutY="16.0" prefHeight="252.0" prefWidth="783.0" styleClass="tableDesignTop" stylesheets="@AdminPanelStyle.css">
+                                                <TableView fx:id="tableMayor" layoutX="21.0" layoutY="16.0" onMouseClicked="#MayorSelect" prefHeight="252.0" prefWidth="783.0" styleClass="tableDesignTop" stylesheets="@AdminPanelStyle.css">
                                                   <columns>
                                                     <TableColumn fx:id="row_col_Mayor" prefWidth="75.0" text="Row" />
                                                     <TableColumn fx:id="firstname_col_Mayor" prefWidth="82.0" text="First name" />
@@ -222,7 +222,7 @@
                                                 <Font name="Tahoma" size="15.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="totalSalary_field_Mayor" layoutX="562.0" layoutY="408.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <TextField fx:id="totalSalary_field_Mayor" layoutX="562.0" layoutY="408.0" onAction="#TotalSalary" onMouseClicked="#TotalSalary" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
                                           <FontAwesomeIcon fill="#8528a7" glyphName="DOLLAR" layoutX="693.0" layoutY="392.0" size="1.5em" />
                                           <FontAwesomeIcon fill="#8528a7" glyphName="MONEY" layoutX="688.0" layoutY="427.0" size="1.5em" />
                                        </children>

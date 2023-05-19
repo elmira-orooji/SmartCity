@@ -2,19 +2,19 @@
 import java.sql.Date;
 
 
-public class Mayor extends Person  {
-    
-    public Mayor(int row ,String firstname , String lastname ,int personnelNo ,Date hireDate
+public class Deputies extends Person {
+
+ public Deputies(int row ,String firstname , String lastname ,int personnelNo ,Date hireDate
         ,String gender,int phoneNo ,double history , double basicSalary,double totalSalary){
     
     super(row,firstname,lastname,personnelNo,hireDate,phoneNo,gender,history,basicSalary,totalSalary);
 }
  
-    public Mayor(){}
-    
+    public Deputies(){}    
+
     @Override
-    public int getRow(){
-       return super.row;
+    public int getRow() {
+        return super.row;
     }
 
     @Override
@@ -24,18 +24,18 @@ public class Mayor extends Person  {
 
     @Override
     public String getLastname() {
-       return super.lastname;
+        return super.lastname;
     }
 
     @Override
     public int getPersonnelNo() {
-        
-        return super.personnelNo;
+         return super.personnelNo;
+    
     }
 
     @Override
     public Date getHireDate() {
-       return super.hireDate;
+         return super.hireDate;
     }
 
     @Override
@@ -45,47 +45,46 @@ public class Mayor extends Person  {
 
     @Override
     public String getGender() {
-        return super.gender;
+         return super.gender;
     }
 
     @Override
     public double getHistory() {
-       return super.history;
+        return super.history;
     }
 
     @Override
     public double getBasicSalary() {
         return super.basicSalary;
     }
-    
+
     @Override
     public double getTotalSalary() {
-        return super.totalSalary;
+         return super.totalSalary;
     }
-
-
     
     
     
     
     
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
