@@ -164,12 +164,12 @@
                                                 <Font name="Tahoma" size="15.0" />
                                              </font>
                                           </Label>
-                                          <ComboBox fx:id="gender_box_Mayor" layoutX="157.0" layoutY="480.0" prefWidth="150.0" promptText="Select" stylesheets="@AdminPanelStyle.css">
+                                          <ComboBox fx:id="gender_box_Mayor" layoutX="157.0" layoutY="480.0" onAction="#GenderList" prefWidth="150.0" promptText="Select" stylesheets="@AdminPanelStyle.css">
                                              <styleClass>
                                                 <String fx:value="borderOfBtn" />
                                                 <String fx:value="background" />
                                              </styleClass></ComboBox>
-                                          <Button fx:id="addBtnMayor" layoutX="727.0" layoutY="459.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Add">
+                                          <Button fx:id="addBtnMayor" layoutX="727.0" layoutY="459.0" mnemonicParsing="false" onAction="#MayorAdd" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Add">
                                              <graphic>
                                                 <FontAwesomeIcon fill="#c520aa" glyphName="PLUS" size="1.5em" />
                                              </graphic>
@@ -178,7 +178,7 @@
                                                 <String fx:value="addtableBtn" />
                                              </styleClass>
                                           </Button>
-                                          <Button fx:id="updateBtnMayor" layoutX="620.0" layoutY="459.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Update">
+                                          <Button fx:id="updateBtnMayor" layoutX="620.0" layoutY="459.0" mnemonicParsing="false" onAction="#MayorUpdate" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Update">
                                              <graphic>
                                                 <FontAwesomeIcon fill="#c520aa" glyphName="REFRESH" size="1.5em" />
                                              </graphic>
@@ -187,7 +187,7 @@
                                                 <String fx:value="updatetableBtn" />
                                              </styleClass>
                                           </Button>
-                                          <Button fx:id="clearBtnMayor" layoutX="404.0" layoutY="459.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Clear">
+                                          <Button fx:id="clearBtnMayor" layoutX="404.0" layoutY="459.0" mnemonicParsing="false" onAction="#MayorClear" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Clear">
                                              <graphic>
                                                 <FontAwesomeIcon fill="#c520aa" glyphName="BAN" size="1.5em" />
                                              </graphic>
@@ -196,7 +196,7 @@
                                                 <String fx:value="cleartableBtn" />
                                              </styleClass>
                                           </Button>
-                                          <Button fx:id="deleteBtnMayor" layoutX="511.0" layoutY="459.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Delete">
+                                          <Button fx:id="deleteBtnMayor" layoutX="511.0" layoutY="459.0" mnemonicParsing="false" onAction="#MayorDelete" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Delete">
                                              <graphic>
                                                 <FontAwesomeIcon fill="#c520aa" glyphName="TRASH" size="1.5em" />
                                              </graphic>
@@ -691,7 +691,7 @@
                               </AnchorPane>
                               <AnchorPane fx:id="securityGuardsPage" layoutX="14.0" layoutY="20.0" prefHeight="555.0" prefWidth="888.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <AnchorPane layoutX="14.0" layoutY="17.0" prefHeight="521.0" prefWidth="853.0" stylesheets="@AdminPanelStyle.css" visible="false">
+                                    <AnchorPane layoutX="14.0" layoutY="17.0" prefHeight="521.0" prefWidth="853.0" stylesheets="@AdminPanelStyle.css">
                                        <children>
                                           <AnchorPane layoutX="19.0" layoutY="14.0" prefHeight="265.0" prefWidth="815.0" stylesheets="@AdminPanelStyle.css">
                                              <styleClass>

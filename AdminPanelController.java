@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -36,6 +36,8 @@ import javafx.stage.StageStyle;
 
 
 public class AdminPanelController implements Initializable{
+    public static String username;
+    public static String path;
 
     @FXML
     private AnchorPane skeleton_page;
@@ -143,7 +145,7 @@ public class AdminPanelController implements Initializable{
     private ComboBox<?> gender_box_Mayor;
 
     @FXML
-    private TableColumn<Mayor, String> firstname_col_Mayor;
+    private TableColumn<?, ?> firstname_col_Mayor;
 
     @FXML
     private TextField basicSalary_field_inspectors;
@@ -152,7 +154,7 @@ public class AdminPanelController implements Initializable{
     private TextField history_field_deputies;
 
     @FXML
-    private TableColumn<Mayor, Double> basicSalary_col_Mayor;
+    private TableColumn<?, ?> basicSalary_col_Mayor;
 
     @FXML
     private ComboBox<?> gender_box_deputies;
@@ -477,8 +479,9 @@ public class AdminPanelController implements Initializable{
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+        GenderList();
         ShowMayorListData();
+        
        
     }
 
@@ -546,6 +549,8 @@ public class AdminPanelController implements Initializable{
             inspectorsPage.setVisible(false);
             employeesPage.setVisible(false);
             securityGuardsPage.setVisible(false);
+            GenderList();
+           
         }
         else if(event.getSource() == deputiesBtn){
             mayorPage.setVisible(false);
@@ -553,6 +558,7 @@ public class AdminPanelController implements Initializable{
             inspectorsPage.setVisible(false);
             employeesPage.setVisible(false);
             securityGuardsPage.setVisible(false);
+             GenderList();
         }
         else if(event.getSource() == inspectorsBtn){
             mayorPage.setVisible(false);
@@ -560,6 +566,7 @@ public class AdminPanelController implements Initializable{
             inspectorsPage.setVisible(true);
             employeesPage.setVisible(false);
             securityGuardsPage.setVisible(false);
+            GenderList();
         }
         else if(event.getSource() == employeesBtn){
             mayorPage.setVisible(false);
@@ -567,6 +574,8 @@ public class AdminPanelController implements Initializable{
             inspectorsPage.setVisible(false);
             employeesPage.setVisible(true);
             securityGuardsPage.setVisible(false);
+            GenderList();
+          
         }
         else if(event.getSource() == securityGuardsBtn){
             mayorPage.setVisible(false);
@@ -574,15 +583,18 @@ public class AdminPanelController implements Initializable{
             inspectorsPage.setVisible(false);
             employeesPage.setVisible(false);
             securityGuardsPage.setVisible(true);
+            GenderList();
+            
         }
         
     }
+    
     private Connection connect;
     private Statement statement;
     private PreparedStatement prepare;
     private ResultSet result;
     
-    public ObservableList<Mayor> mayorData(){
+    public ObservableList<Mayor> mayorListData(){
         
         ObservableList<Mayor> listData = FXCollections.observableArrayList();
         String sql = "SELECT * FROM mayor";
@@ -597,15 +609,15 @@ public class AdminPanelController implements Initializable{
             
             while(result.next()){
                 MayorD = new Mayor(result.getInt("Row"), 
-                        result.getString("First name"),
-                         result.getString("Last name"),
-                         result.getInt("Personnel No."),
-                         result.getDate("Date of hire"),
+                         result.getString("First_name"),
+                         result.getString("Last_name"),
+                         result.getInt("Personnel_No"),
+                         result.getDate("Date_of_hire"),
                          result.getString("Gender"),
-                         result.getInt("Phone No."),
+                         result.getInt("Phone_No"),
                          result.getDouble("History"),
-                         result.getDouble("Basic salary"),
-                         result.getDouble("Total salary"));
+                         result.getDouble("Basic_salary"),
+                         result.getDouble("Total_salary"));
                 
                 listData.add(MayorD);
             }
@@ -616,9 +628,10 @@ public class AdminPanelController implements Initializable{
     }
     
     private ObservableList<Mayor> MayorList;
+    
     public void ShowMayorListData(){
         
-        MayorList = mayorData();
+        MayorList = mayorListData();
         row_col_Mayor.setCellValueFactory(new PropertyValueFactory<>("row"));
         firstname_col_Mayor.setCellValueFactory(new PropertyValueFactory<>("firstname"));
         lastname_col_Mayor.setCellValueFactory(new PropertyValueFactory<>("lastname"));
@@ -635,7 +648,7 @@ public class AdminPanelController implements Initializable{
 
     }
     
-    public void MayorEnterField(){
+    public void MayorSelect(){
         
         Mayor mayor = tableMayor.getSelectionModel().getSelectedItem();
         int n = tableMayor.getSelectionModel().getSelectedIndex();
@@ -643,6 +656,214 @@ public class AdminPanelController implements Initializable{
         if((n -1)< -1){return;}
         
         row_field_Mayor.setText(String.valueOf(mayor.getRow()));
+        firstname_field_Mayor.setText(mayor.getFirstname());
+        lastname_field_Mayor.setText(mayor.getLastname());
+        personnelNo_field_Mayor.setText(String.valueOf(mayor.getPersonnelNo()));
+        dateOfHire_field_Mayor.setText(String.valueOf(mayor.getHireDate()));
+        phoneNo_field_Mayor.setText(String.valueOf(mayor.getPhoneNo()));
+        history_field_Mayor.setText(String.valueOf(mayor.getHistory()));
+        basicSalary_field_Mayor.setText(String.valueOf(mayor.getBasicSalary()));
+        totalSalary_field_Mayor.setText(String.valueOf(mayor.getTotalSalary()));
+
     }
+    
+    public void MayorAdd(){
+        
+        Date date = new Date();
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        
+        String sql  = "INSERT INTO mayor "
+                + "(Row,First_name,Last_name,Personnel_No,Date_of_hire,Gender,Phone_No,History,Basic_salary,Total_salary)"
+                + "VALUES(?,?,?,?,?,?,?,?,?,?)";
+        
+        connect = Database.connectDb();
+        
+        try{
+            
+            if(row_field_Mayor.getText().isEmpty()||firstname_field_Mayor.getText().isEmpty()
+                    ||lastname_field_Mayor.getText().isEmpty()||personnelNo_field_Mayor.getText().isEmpty()
+                    ||dateOfHire_field_Mayor.getText().isEmpty()
+                    ||gender_box_Mayor.getSelectionModel().getSelectedItem()== null 
+                    ||phoneNo_field_Mayor.getText().isEmpty()||history_field_Mayor.getText().isEmpty()
+                    ||basicSalary_field_Mayor.getText().isEmpty()){
+                
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Error!");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all the blanks");
+            alert.showAndWait();
+            
+            }else{
+                
+            
+            prepare = connect.prepareStatement(sql);
+            prepare.setString(1, row_field_Mayor.getText());
+            prepare.setString(2, firstname_field_Mayor.getText());
+            prepare.setString(3, lastname_field_Mayor.getText());
+            prepare.setString(4, personnelNo_field_Mayor.getText());
+            prepare.setString(5, String.valueOf(sqlDate));
+            prepare.setString(6,(String) gender_box_Mayor.getSelectionModel().getSelectedItem());
+            prepare.setString(7, phoneNo_field_Mayor.getText());
+            prepare.setString(8, history_field_Mayor.getText());
+            prepare.setString(9, basicSalary_field_Mayor.getText());
+            prepare.setString(10, totalSalary_field_Mayor.getText());
+            
+            
+
+             
+             
+            prepare.executeUpdate();
+            Alert alert1 = new Alert(AlertType.INFORMATION);
+            alert1.setTitle("Information");
+            alert1.setHeaderText("");
+            alert1.setContentText("Added successfully");
+            alert1.showAndWait();
+            
+            ShowMayorListData();
+            MayorClear();
+            }
+        }catch(Exception e){e.printStackTrace();}
+    }
+    public void DisplayUsername(){
+        
+        
+    }
+    
+    private String[] genderList = {"Female","Male"};
+    public void GenderList(){
+        
+        List<String> glist = new ArrayList<>();
+        
+        for(String data : genderList){
+            glist.add(data);
+        }
+        
+        ObservableList listData = FXCollections.observableArrayList(glist);
+        gender_box_Mayor.setItems(listData);
+    }
+    
+    public void MayorUpdate(){
+        
+        Date date = new Date();
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        
+        String sql = "UPDATE mayor SET Row = '"+row_field_Mayor.getText()+"' ,First_name = '"
+                +firstname_field_Mayor.getText()+"' , Last_name = '"+lastname_field_Mayor.getText()
+                +"' ,Personnel_No = '"+personnelNo_field_Mayor.getText()+"' ,Gender = '"+
+                gender_box_Mayor.getSelectionModel().getSelectedItem()+"' ,Phone_NO = '"+
+                phoneNo_field_Mayor.getText()+"' ,History = '"+history_field_Mayor.getText()
+                +"' ,Basic_salary = '"+basicSalary_field_Mayor.getText()+"' ,Total_salary = '"
+                +totalSalary_field_Mayor.getText()
+                +"' ,Date_of_hire = '"+dateOfHire_field_Mayor.getText()+"',Date_of_hire = '"+
+                sqlDate; 
+        
+        connect = Database.connectDb();
+        
+        try{
+            if(row_field_Mayor.getText().isEmpty()||firstname_field_Mayor.getText().isEmpty()
+                    ||lastname_field_Mayor.getText().isEmpty()||personnelNo_field_Mayor.getText().isEmpty()
+                    ||dateOfHire_field_Mayor.getText().isEmpty()
+                    ||gender_box_Mayor.getSelectionModel().getSelectedItem()== null 
+                    ||phoneNo_field_Mayor.getText().isEmpty()||history_field_Mayor.getText().isEmpty()
+                    ||basicSalary_field_Mayor.getText().isEmpty()){
+                
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Error!");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all the blanks");
+            alert.showAndWait();
+            }else{
+                Alert alert = new Alert(AlertType.CONFIRMATION); 
+                alert.setTitle("Confimation ^.^");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure do you want delete mayor "+
+                                      firstname_field_Mayor.getText()+"?");
+                Optional<ButtonType> option = alert.showAndWait();
+                
+                if(option.get().equals(ButtonType.OK)){
+                    statement = connect.createStatement();
+                    statement.executeUpdate(sql);
+                    
+                    Alert alert1 = new Alert(AlertType.INFORMATION); 
+                    alert1.setTitle("INFORMATION ^-^");
+                    alert1.setHeaderText(null);
+                    alert1.setContentText("Deleted Successfully ^.^");
+                    alert1.showAndWait();
+                    ShowMayorListData();
+                    MayorClear();
+                }
+                
+                
+            }
+        }catch(Exception e){e.printStackTrace();}
+             
+                
+    }
+    
+    public void MayorDelete(){
+        
+        String sql = "DELETE FROM mayor WHERE Row = '"
+                +row_field_Mayor.getText()+"'";
+        
+        connect = Database.connectDb();
+        
+        try{
+            
+             if(row_field_Mayor.getText().isEmpty()||firstname_field_Mayor.getText().isEmpty()
+                    ||lastname_field_Mayor.getText().isEmpty()||personnelNo_field_Mayor.getText().isEmpty()
+                    ||dateOfHire_field_Mayor.getText().isEmpty()
+                    ||gender_box_Mayor.getSelectionModel().getSelectedItem()== null 
+                    ||phoneNo_field_Mayor.getText().isEmpty()||history_field_Mayor.getText().isEmpty()
+                    ||basicSalary_field_Mayor.getText().isEmpty()){
+                
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Error!");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all the blanks");
+            alert.showAndWait();
+            }else{
+                Alert alert = new Alert(AlertType.CONFIRMATION); 
+                alert.setTitle("Confimation ^.^");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure do you want update mayor "+
+                                      firstname_field_Mayor.getText()+"?");
+                Optional<ButtonType> option = alert.showAndWait();
+                
+                if(option.get().equals(ButtonType.OK)){
+                    statement = connect.createStatement();
+                    statement.executeUpdate(sql);
+                    
+                    Alert alert1 = new Alert(AlertType.INFORMATION); 
+                    alert1.setTitle("INFORMATION ^-^");
+                    alert1.setHeaderText(null);
+                    alert1.setContentText("Updated Successfully ^.^");
+                    alert1.showAndWait();
+                    ShowMayorListData();
+                    MayorClear();
+                }
+             }
+        }catch(Exception e){e.printStackTrace();}
+    }
+    
+    
+    public void MayorClear(){
+        
+        row_field_Mayor.setText("");
+        firstname_field_Mayor.setText("");
+        lastname_field_Mayor.setText("");
+        personnelNo_field_Mayor.setText("");
+        gender_box_Mayor.getSelectionModel().getSelectedItem();
+        phoneNo_field_Mayor.setText("");  
+        history_field_Mayor.setText("");
+        basicSalary_field_Mayor.setText("");
+        totalSalary_field_Mayor.setText("");
+        dateOfHire_field_Mayor.setText("");
+        path = "";
+        
+    }
+
+    
+     
+   
 
 }

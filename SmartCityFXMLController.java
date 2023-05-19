@@ -70,6 +70,8 @@ public class SmartCityFXMLController implements Initializable {
                 
             }else{
                 if(result.next()){
+                    
+                getData.username = usernameBtn.getText();
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("");
                 alert.setHeaderText(null);

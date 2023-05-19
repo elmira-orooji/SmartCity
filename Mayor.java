@@ -2,9 +2,9 @@
 import java.sql.Date;
 
 
-public class Mayor extends SmartCity {
+public class Mayor extends Person  {
     
-public Mayor(int row ,String firstname , String lastname ,int personnelNo ,Date hireDate
+    public Mayor(int row ,String firstname , String lastname ,int personnelNo ,Date hireDate
         ,String gender,int phoneNo ,double history , double basicSalary,double totalSalary){
     
     super(row,firstname,lastname,personnelNo,hireDate,phoneNo,gender,history,basicSalary,totalSalary);
@@ -62,20 +62,28 @@ public Mayor(int row ,String firstname , String lastname ,int personnelNo ,Date 
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

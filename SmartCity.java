@@ -14,48 +14,17 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 
-public abstract class SmartCity extends Application {
+ public class SmartCity extends Application {
     
     private double x = 0;
     private double y = 0;
-    protected int row;
-    protected String firstname;
-    protected String lastname;
-    protected int personnelNo;
-    protected Date hireDate;
-    protected int phoneNo;
-    protected String gender;
-    protected double history;
-    protected double basicSalary;
-    protected double totalSalary;
     
-    public SmartCity(int row ,String firstname , String lastname ,int personnelNo ,Date hireDate ,int phoneNo ,String gender ,double history , double basicSalary, double totalSalary){
-        
-        this.row = row;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.personnelNo = personnelNo;
-        this.hireDate = hireDate;
-        this.phoneNo = phoneNo;
-        this.gender = gender;
-        this.history = history;
-        this.basicSalary = basicSalary;
-        this.totalSalary = totalSalary;
-    }
-    public abstract int getRow();
-    public abstract String getFirstname();
-    public abstract String getLastname();
-    public abstract int getPersonnelNo();
-    public abstract Date getHireDate();
-    public abstract int getPhoneNo();
-    public abstract String getGender();
-    public abstract double getHistory();
-    public abstract double getBasicSalary();
-    public abstract double getTotalSalary();   
     
     
     @Override
     public void start(Stage stage) throws Exception {
+        
+        
         Parent root = FXMLLoader.load(getClass().getResource("/View/LoginPage.fxml"));
                
 
@@ -83,6 +52,7 @@ public abstract class SmartCity extends Application {
         stage.setScene(scene);
         stage.show();
     }
+    
     
 
     public static void main(String[] args) {
