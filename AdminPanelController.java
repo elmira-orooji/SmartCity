@@ -42,7 +42,10 @@ public class AdminPanelController implements Initializable{
     private AnchorPane skeleton_page;
     
     @FXML
-    private TableView<?> securityGuardsTable;
+    private ComboBox<?> gender_box_timework;
+    
+    @FXML
+    private TableView<Securityguards> securityGuardsTable;
 
     @FXML
     private TableView<Deputies> deputiesTable;
@@ -114,7 +117,7 @@ public class AdminPanelController implements Initializable{
     private TextField personnelNo_field_deputies;
 
     @FXML
-    private TableView<?> employeesTable;
+    private TableView<Employees> employeesTable;
 
     @FXML
     private TableColumn<?, ?> phoneNo_col_inspectors;
@@ -133,6 +136,9 @@ public class AdminPanelController implements Initializable{
 
     @FXML
     private TextField phoneNo_field_employees;
+    
+    @FXML
+    private TextField firstname_field_securityguards;
 
     @FXML
     private TextField totalSalary_field_deputies;
@@ -204,7 +210,7 @@ public class AdminPanelController implements Initializable{
     private AnchorPane inspectorsPage;
 
     @FXML
-    private TableView<?> inspectorsTable;
+    private TableView<Inspectors> inspectorsTable;
 
    @FXML
     private TableColumn<Mayor, String> lastname_col_Mayor;
@@ -241,6 +247,9 @@ public class AdminPanelController implements Initializable{
 
     @FXML
     private TableColumn<?, ?> personnelNo_col_employees;
+    
+    @FXML
+    private TableColumn<?, ?> timework_col_securityguards;
 
     @FXML
     private TableColumn<?, ?> history_col_securityguards;
@@ -316,7 +325,10 @@ public class AdminPanelController implements Initializable{
 
     @FXML
     private TextField personnelNo_field_securityguards;
-
+    
+    @FXML
+    private ComboBox<?> timework_box_securityguards;
+   
     @FXML
     private TextField lastname_field_Mayor;
 
@@ -373,7 +385,7 @@ public class AdminPanelController implements Initializable{
     private Button addBtnInspectors;
 
     @FXML
-    private TableColumn<?, ?> firstname_col_employees;
+    private TableColumn<Employees, String> firstname_col_employees;
 
     @FXML
     private TextField totalSalary_field_employees;
@@ -388,7 +400,7 @@ public class AdminPanelController implements Initializable{
     private Button mayorBtn;
 
     @FXML
-    private TableColumn<?, ?> firstname_col_inspectors;
+    private TableColumn<Inspectors, String> firstname_col_inspectors;
 
     @FXML
     private TableColumn<Deputies, String> firstname_col_deputies;
@@ -403,13 +415,13 @@ public class AdminPanelController implements Initializable{
     private Button clearBtnMayor;
 
     @FXML
-    private TableColumn<?, ?> dateOfHire_col_employees;
+    private TableColumn<Employees, Date> dateOfHire_col_employees;
 
     @FXML
     private ComboBox<?> gender_box_employees;
 
     @FXML
-    private TableColumn<?, ?> phoneNo_col_employees;
+    private TableColumn<Employees, Integer> phoneNo_col_employees;
 
     @FXML
     private TableColumn<Mayor, Double> totalSalary_col_Mayor;
@@ -427,7 +439,7 @@ public class AdminPanelController implements Initializable{
     private TextField history_field_employees;
 
     @FXML
-    private TableColumn<?, ?> basicSalary_col_employees;
+    private TableColumn<Employees, Double> basicSalary_col_employees;
 
     @FXML
     private TextField firstname_field_employees;
@@ -445,13 +457,20 @@ public class AdminPanelController implements Initializable{
     private TableColumn<Mayor, Integer> phoneNo_col_Mayor;
 
     @FXML
-    private TableColumn<?, ?> totalSalary_col_employees;
+    private TableColumn<Employees, Double> totalSalary_col_employees;
 
     @FXML
     private Button deleteBtnSecurityguards;
 
     @FXML
     private TextField history_field_inspectors;
+    
+    @FXML
+    private TextField Mayor_username_field;
+    
+     @FXML
+    private TextField Mayor_password_field;
+    
 
     @FXML
     private TextField basicSalary_field_deputies;
@@ -461,6 +480,12 @@ public class AdminPanelController implements Initializable{
 
     @FXML
     private TextField personnelNo_field_inspectors;
+    
+    @FXML
+    private TextField Mayor_username;
+    
+    @FXML
+    private TextField Mayor_password;
 
     @FXML
     private TextField row_field_deputies;
@@ -471,6 +496,14 @@ public class AdminPanelController implements Initializable{
     private FontAwesomeIcon clearBtnDeputies;
     @FXML
     private TableColumn<?, ?> phoneNo_col_securityguards;
+    
+    @FXML
+    private TableColumn<?, ?> MayorPassword_col;
+    
+    @FXML
+    private TableColumn<?, ?> MayorUsename_col;
+    
+    
     @FXML
     private TextField phoneNumber_field_securityguards;
     
@@ -482,7 +515,13 @@ public class AdminPanelController implements Initializable{
         ShowMayorListData();
         GenderListDeputies();
         ShowDeputiesListData();
-       
+        GenderListInspectors();
+        ShowInspectorsListData();
+        GenderListEmployees();
+        ShowEmployeesListData();
+        GenderListSecurity();
+        TimeworkListSecurity();
+        ShowSecurityListData();
     }
 
     @FXML
@@ -566,7 +605,7 @@ public class AdminPanelController implements Initializable{
             inspectorsPage.setVisible(true);
             employeesPage.setVisible(false);
             securityGuardsPage.setVisible(false);
-            
+            GenderListInspectors();
         }
         else if(event.getSource() == employeesBtn){
             mayorPage.setVisible(false);
@@ -574,7 +613,7 @@ public class AdminPanelController implements Initializable{
             inspectorsPage.setVisible(false);
             employeesPage.setVisible(true);
             securityGuardsPage.setVisible(false);
-            
+            GenderListEmployees();
           
         }
         else if(event.getSource() == securityGuardsBtn){
@@ -583,7 +622,8 @@ public class AdminPanelController implements Initializable{
             inspectorsPage.setVisible(false);
             employeesPage.setVisible(false);
             securityGuardsPage.setVisible(true);
-          
+            GenderListSecurity();
+            TimeworkListSecurity();
             
         }
         
@@ -617,7 +657,10 @@ public class AdminPanelController implements Initializable{
                          result.getInt("Phone_No"),
                          result.getDouble("History"),
                          result.getDouble("Basic_salary"),
-                         result.getDouble("Total_salary"));
+                         result.getDouble("Total_salary"),
+                         result.getString("mayorUsername"),
+                         result.getString("mayorPassword"));
+                
                 
                 listData.add(MayorD);
             }
@@ -642,7 +685,8 @@ public class AdminPanelController implements Initializable{
         history_col_Mayor.setCellValueFactory(new PropertyValueFactory<>("history"));
         basicSalary_col_Mayor.setCellValueFactory(new PropertyValueFactory<>("basicSalary"));
         totalSalary_col_Mayor.setCellValueFactory(new PropertyValueFactory<>("totalSalary"));
-        
+        MayorPassword_col.setCellValueFactory(new PropertyValueFactory<>("mayorPassword"));
+        MayorUsename_col.setCellValueFactory(new PropertyValueFactory<>("mayorUsername"));
         
         tableMayor.setItems(MayorList);
 
@@ -664,7 +708,10 @@ public class AdminPanelController implements Initializable{
         phoneNo_field_Mayor.setText(String.valueOf(mayor.getPhoneNo()));
         history_field_Mayor.setText(String.valueOf(mayor.getHistory()));
         basicSalary_field_Mayor.setText(String.valueOf(mayor.getBasicSalary()));
-        
+        totalSalary_field_Mayor.setText(String.valueOf(mayor.getTotalSalary()));
+        Mayor_password_field.setText(String.valueOf(mayor.MayorPassword()));
+        Mayor_username_field.setText(String.valueOf(mayor.MayorUsername()));
+
 
     }
     
@@ -674,8 +721,8 @@ public class AdminPanelController implements Initializable{
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
         
         String sql  = "INSERT INTO mayor "
-                + "(Row,First_name,Last_name,Personnel_No,Date_of_hire,Gender,Phone_No,History,Basic_salary,Total_salary)"
-                + "VALUES(?,?,?,?,?,?,?,?,?,?)";
+                + "(Row,First_name,Last_name,Personnel_No,Date_of_hire,Gender,Phone_No,History,Basic_salary,Total_salary,Mayor_Username,Mayor_Password)"
+                + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
         
         connect = Database.connectDb();
         
@@ -686,7 +733,8 @@ public class AdminPanelController implements Initializable{
                     ||dateOfHire_field_Mayor.getText().isEmpty()
                     ||gender_box_Mayor.getSelectionModel().getSelectedItem()== null 
                     ||phoneNo_field_Mayor.getText().isEmpty()||history_field_Mayor.getText().isEmpty()
-                    ||basicSalary_field_Mayor.getText().isEmpty()){
+                    ||basicSalary_field_Mayor.getText().isEmpty()|| Mayor_username_field.getText().isEmpty()
+                    || Mayor_password_field.getText().isEmpty()){
                 
             Alert alert = new Alert(AlertType.ERROR); 
             alert.setTitle("Error!");
@@ -708,6 +756,8 @@ public class AdminPanelController implements Initializable{
             prepare.setString(8, history_field_Mayor.getText());
             prepare.setString(9, basicSalary_field_Mayor.getText());
             prepare.setString(10, totalSalary_field_Mayor.getText());
+            prepare.setString(11, Mayor_username_field.getText());
+            prepare.setString(12, Mayor_password_field.getText());
             
             
 
@@ -741,17 +791,7 @@ public class AdminPanelController implements Initializable{
     }
     
      
-    public void GenderListDeputies(){
-        
-        List<String> glist = new ArrayList<>();
-        
-        for(String data : genderList){
-            glist.add(data);
-        }
-        
-        ObservableList listData = FXCollections.observableArrayList(glist);
-        gender_box_deputies.setItems(listData);
-    }
+   
     
     public void MayorUpdate(){
         
@@ -764,7 +804,7 @@ public class AdminPanelController implements Initializable{
                 gender_box_Mayor.getSelectionModel().getSelectedItem()+"' ,Phone_NO = '"+
                 phoneNo_field_Mayor.getText()+"' ,History = '"+history_field_Mayor.getText()
                 +"' ,Basic_salary = '"+basicSalary_field_Mayor.getText()+"' ,Total_salary = '"
-                +totalSalary_field_Mayor.getText()
+                +totalSalary_field_Mayor.getText()+"' ,Mayor_Username ='"+ Mayor_username_field.getText()+"' ,Mayor_Password = '"+ Mayor_password_field.getText()
                 +"' ,Date_of_hire = '"+dateOfHire_field_Mayor.getText()+"',Date_of_hire = '"+
                 sqlDate+"' WHERE Row = '"+row_field_Mayor.getText()+"'"; 
         
@@ -776,7 +816,8 @@ public class AdminPanelController implements Initializable{
                     ||dateOfHire_field_Mayor.getText().isEmpty()
                     ||gender_box_Mayor.getSelectionModel().getSelectedItem()== null 
                     ||phoneNo_field_Mayor.getText().isEmpty()||history_field_Mayor.getText().isEmpty()
-                    ||basicSalary_field_Mayor.getText().isEmpty()){
+                    ||basicSalary_field_Mayor.getText().isEmpty()||Mayor_username_field.getText().isEmpty()
+                    || Mayor_password_field.getText().isEmpty()){
                 
             Alert alert = new Alert(AlertType.ERROR); 
             alert.setTitle("Error!");
@@ -824,7 +865,8 @@ public class AdminPanelController implements Initializable{
                     ||dateOfHire_field_Mayor.getText().isEmpty()
                     ||gender_box_Mayor.getSelectionModel().getSelectedItem()== null 
                     ||phoneNo_field_Mayor.getText().isEmpty()||history_field_Mayor.getText().isEmpty()
-                    ||basicSalary_field_Mayor.getText().isEmpty()){
+                    ||basicSalary_field_Mayor.getText().isEmpty()|| Mayor_password_field.getText().isEmpty()
+                    || Mayor_username_field.getText().isEmpty()){
                 
             Alert alert = new Alert(AlertType.ERROR); 
             alert.setTitle("Error!");
@@ -868,6 +910,8 @@ public class AdminPanelController implements Initializable{
         basicSalary_field_Mayor.setText("");
         totalSalary_field_Mayor.setText("");
         dateOfHire_field_Mayor.setText("");
+        Mayor_username_field.setText("");
+        Mayor_password_field.setText("");
         
         
     }
@@ -880,14 +924,11 @@ public class AdminPanelController implements Initializable{
         totalSalary_field_Mayor.setEditable(false);
     }
     
-    public void TotalSalaryDeputies(){
-       
-        
-        totalSalary_field_deputies.setText(String.valueOf((0.05*Integer.parseInt(basicSalary_field_deputies.getText())*Integer.parseInt(history_field_deputies.getText()))+ Integer.parseInt(basicSalary_field_deputies.getText())));
-        
-        totalSalary_field_deputies.setEditable(false);
-    }
-
+   
+    
+    
+    /* Deputies Part */
+    
       public ObservableList<Deputies> deputiesListData(){
         
         ObservableList<Deputies> listData = FXCollections.observableArrayList();
@@ -1020,6 +1061,18 @@ public class AdminPanelController implements Initializable{
         }catch(Exception e){e.printStackTrace();}
     }
     
+     public void GenderListDeputies(){
+        
+        List<String> glist = new ArrayList<>();
+        
+        for(String data : genderList){
+            glist.add(data);
+        }
+        
+        ObservableList listData = FXCollections.observableArrayList(glist);
+        gender_box_deputies.setItems(listData);
+        
+    }
     
     
     public void DeputiesUpdate(){
@@ -1142,7 +1195,907 @@ public class AdminPanelController implements Initializable{
         
     }
     
+     public void TotalSalaryDeputies(){
+       
+        
+        totalSalary_field_deputies.setText(String.valueOf((0.05*Integer.parseInt(basicSalary_field_deputies.getText())*Integer.parseInt(history_field_deputies.getText()))+ Integer.parseInt(basicSalary_field_deputies.getText())));
+        
+        totalSalary_field_deputies.setEditable(false);
+    }
+
+    
+    
+    /* Inspectors Part */
+    
+    public ObservableList<Inspectors> inspectorsListData(){
+        
+        ObservableList<Inspectors> listData = FXCollections.observableArrayList();
+        String sql = "SELECT * FROM inspectors";
+        
+        connect = Database.connectDb();
+        
+        try{
+            
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+            Inspectors InspectorsD;
+            
+            while(result.next()){
+                InspectorsD = new Inspectors(result.getInt("Row"), 
+                         result.getString("First_name"),
+                         result.getString("Last_name"),
+                         result.getInt("Personnel_No"),
+                         result.getDate("Date_of_hire"),
+                         result.getString("Gender"),
+                         result.getInt("Phone_No"),
+                         result.getDouble("History"),
+                         result.getDouble("Basic_salary"),
+                         result.getDouble("Total_salary"));
+                
+                listData.add(InspectorsD);
+            }
+            
+        }catch(Exception e){ e.printStackTrace();}
+        
+        return listData;
+    }
+    
+    private ObservableList<Inspectors> InspectorsList;
+    
+    public void ShowInspectorsListData(){
+        
+        InspectorsList = inspectorsListData();
+        row_col_inspectors.setCellValueFactory(new PropertyValueFactory<>("row"));
+        firstname_col_inspectors.setCellValueFactory(new PropertyValueFactory<>("firstname"));
+        lastname_col_inspectors.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+        personnelNo_col_inspectors.setCellValueFactory(new PropertyValueFactory<>("personnelNo"));
+        dateOfHire_col_inspectors.setCellValueFactory(new PropertyValueFactory<>("hireDate"));
+        gender_col_inspectors.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        phoneNo_col_inspectors.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
+        history_col_inspectors.setCellValueFactory(new PropertyValueFactory<>("history"));
+        basicSalary_col_inspectors.setCellValueFactory(new PropertyValueFactory<>("basicSalary"));
+        totalSalary_col_inspectors.setCellValueFactory(new PropertyValueFactory<>("totalSalary"));
+        
+        
+        inspectorsTable.setItems(InspectorsList);
+
+
+    }
+    
+    public void InspectorsSelect(){
+        
+        Inspectors inspectors= inspectorsTable.getSelectionModel().getSelectedItem();
+        int n = inspectorsTable.getSelectionModel().getSelectedIndex();
+        
+        if((n -1)< -1){return;}
+        
+        row_field_inspectors.setText(String.valueOf(inspectors.getRow()));
+        firstname_field_inspectors.setText(inspectors.getFirstname());
+        lastname_field_inspectors.setText(inspectors.getLastname());
+        personnelNo_field_inspectors.setText(String.valueOf(inspectors.getPersonnelNo()));
+        dateOfHire_field_inspectors.setText(String.valueOf(inspectors.getHireDate()));
+        phoneNo_field_inspectors.setText(String.valueOf(inspectors.getPhoneNo()));
+        history_field_inspectors.setText(String.valueOf(inspectors.getHistory()));
+        basicSalary_field_inspectors.setText(String.valueOf(inspectors.getBasicSalary()));
+        
+
+    }
+    
+    public void InspectorsAdd(){
+        
+        Date date = new Date();
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        
+        String sql  = "INSERT INTO inspectors "
+                + "(Row,First_name,Last_name,Personnel_No,Date_of_hire,Gender,Phone_No,History,Basic_salary,Total_salary)"
+                + "VALUES(?,?,?,?,?,?,?,?,?,?)";
+        
+        connect = Database.connectDb();
+        
+        try{
+            
+            if(row_field_inspectors.getText().isEmpty()||firstname_field_inspectors.getText().isEmpty()
+                    ||lastname_field_inspectors.getText().isEmpty()||personnelNo_field_inspectors.getText().isEmpty()
+                    ||dateOfHire_field_inspectors.getText().isEmpty()
+                    ||gender_box_inspectors.getSelectionModel().getSelectedItem()== null 
+                    ||phoneNo_field_inspectors.getText().isEmpty()||history_field_inspectors.getText().isEmpty()
+                    ||basicSalary_field_inspectors.getText().isEmpty()){
+                
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Error!");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all the blanks");
+            alert.showAndWait();
+            
+            }else{
+                
+            
+            prepare = connect.prepareStatement(sql);
+            prepare.setString(1, row_field_inspectors.getText());
+            prepare.setString(2, firstname_field_inspectors.getText());
+            prepare.setString(3, lastname_field_inspectors.getText());
+            prepare.setString(4, personnelNo_field_inspectors.getText());
+            prepare.setString(5, String.valueOf(sqlDate));
+            prepare.setString(6,(String) gender_box_inspectors.getSelectionModel().getSelectedItem());
+            prepare.setString(7, phoneNo_field_inspectors.getText());
+            prepare.setString(8, history_field_inspectors.getText());
+            prepare.setString(9, basicSalary_field_inspectors.getText());
+            prepare.setString(10, totalSalary_field_inspectors.getText());
+            
+            
+
+             
+             
+            prepare.executeUpdate();
+            Alert alert1 = new Alert(AlertType.INFORMATION);
+            alert1.setTitle("Information");
+            alert1.setHeaderText("");
+            alert1.setContentText("Added successfully");
+            alert1.showAndWait();
+            
+            ShowInspectorsListData();
+            InspectorsClear();
+            }
+        }catch(Exception e){e.printStackTrace();}
+    }
+   
+    
+    public void GenderListInspectors(){
+        
+        List<String> glist = new ArrayList<>();
+        
+        for(String data : genderList){
+            glist.add(data);
+        }
+        
+        ObservableList listData = FXCollections.observableArrayList(glist);
+        gender_box_inspectors.setItems(listData);
+        
+    }
+    
+    public void inspectorsUpdate(){
+        
+        Date date = new Date();
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        
+        String sql = "UPDATE inspectors SET First_name = '"
+                +firstname_field_inspectors.getText()+"' , Last_name = '"+lastname_field_inspectors.getText()
+                +"' ,Personnel_No = '"+personnelNo_field_inspectors.getText()+"' ,Gender = '"+
+                gender_box_inspectors.getSelectionModel().getSelectedItem()+"' ,Phone_NO = '"+
+                phoneNo_field_inspectors.getText()+"' ,History = '"+history_field_inspectors.getText()
+                +"' ,Basic_salary = '"+basicSalary_field_inspectors.getText()+"' ,Total_salary = '"
+                +totalSalary_field_inspectors.getText()
+                +"' ,Date_of_hire = '"+dateOfHire_field_inspectors.getText()+"',Date_of_hire = '"+
+                sqlDate+"' WHERE Row = '"+row_field_inspectors.getText()+"'"; 
+        
+        connect = Database.connectDb();
+        
+        try{
+            if(row_field_inspectors.getText().isEmpty()||firstname_field_inspectors.getText().isEmpty()
+                    ||lastname_field_inspectors.getText().isEmpty()||personnelNo_field_inspectors.getText().isEmpty()
+                    ||dateOfHire_field_inspectors.getText().isEmpty()
+                    ||gender_box_inspectors.getSelectionModel().getSelectedItem()== null 
+                    ||phoneNo_field_inspectors.getText().isEmpty()||history_field_inspectors.getText().isEmpty()
+                    ||basicSalary_field_inspectors.getText().isEmpty()){
+                
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Error!");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all the blanks");
+            alert.showAndWait();
+            }else{
+                Alert alert = new Alert(AlertType.CONFIRMATION); 
+                alert.setTitle("Confimation ^.^");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure do you want update inspector "+
+                                      firstname_field_inspectors.getText()+"?");
+                Optional<ButtonType> option = alert.showAndWait();
+                
+                if(option.get().equals(ButtonType.OK)){
+                    statement = connect.createStatement();
+                    statement.executeUpdate(sql);
+                    
+                    Alert alert1 = new Alert(AlertType.INFORMATION); 
+                    alert1.setTitle("INFORMATION ^-^");
+                    alert1.setHeaderText(null);
+                    alert1.setContentText("Updated Successfully ^.^");
+                    alert1.showAndWait();
+                    ShowInspectorsListData();
+                    InspectorsClear();
+                }
+                
+                
+            }
+        }catch(Exception e){e.printStackTrace();}
+                
+    }
+    
+    public void InspectorsDelete(){
+        
+        String sql = "DELETE FROM inspectors WHERE Row = '"
+                +row_field_inspectors.getText()+"'";
+        
+        connect = Database.connectDb();
+        
+        try{
+            
+             if(row_field_inspectors.getText().isEmpty()||firstname_field_inspectors.getText().isEmpty()
+                    ||lastname_field_inspectors.getText().isEmpty()||personnelNo_field_inspectors.getText().isEmpty()
+                    ||dateOfHire_field_inspectors.getText().isEmpty()
+                    ||gender_box_inspectors.getSelectionModel().getSelectedItem()== null 
+                    ||phoneNo_field_inspectors.getText().isEmpty()||history_field_inspectors.getText().isEmpty()
+                    ||basicSalary_field_inspectors.getText().isEmpty()){
+                
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Error!");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all the blanks");
+            alert.showAndWait();
+            }else{
+                Alert alert = new Alert(AlertType.CONFIRMATION); 
+                alert.setTitle("Confimation ^.^");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure do you want delete inspector "+
+                                      firstname_field_inspectors.getText()+"?");
+                Optional<ButtonType> option = alert.showAndWait();
+                
+                if(option.get().equals(ButtonType.OK)){
+                    statement = connect.createStatement();
+                    statement.executeUpdate(sql);
+                    
+                    Alert alert1 = new Alert(AlertType.INFORMATION); 
+                    alert1.setTitle("INFORMATION ^-^");
+                    alert1.setHeaderText(null);
+                    alert1.setContentText("Deleted Successfully ^.^");
+                    alert1.showAndWait();
+                    ShowInspectorsListData();
+                    InspectorsClear();
+                }
+             }
+        }catch(Exception e){e.printStackTrace();}
+    }
+    
+    
+    public void InspectorsClear(){
+        
+        row_field_inspectors.setText("");
+        firstname_field_inspectors.setText("");
+        lastname_field_inspectors.setText("");
+        personnelNo_field_inspectors.setText("");
+        gender_box_inspectors.getSelectionModel().getSelectedItem();
+        phoneNo_field_inspectors.setText("");  
+        history_field_inspectors.setText("");
+        basicSalary_field_inspectors.setText("");
+        totalSalary_field_inspectors.setText("");
+        dateOfHire_field_inspectors.setText("");
+        
+        
+    }
+    
+    public void TotalSalaryInspectors(){
+       
+        
+        totalSalary_field_inspectors.setText(String.valueOf((0.03*Integer.parseInt(basicSalary_field_inspectors.getText())*Integer.parseInt(history_field_inspectors.getText()))+ Integer.parseInt(basicSalary_field_inspectors.getText())));
+        
+        totalSalary_field_inspectors.setEditable(false);
+    }
      
+    
+    /* Employee Part */
+    
+    public ObservableList<Employees> employeesListData(){
+        
+        ObservableList<Employees> listData = FXCollections.observableArrayList();
+        
+        String sql = "SELECT * FROM employees";
+        
+        connect = Database.connectDb();
+        
+        try{
+            
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+            Employees EmployeesD;
+            
+            while(result.next()){
+                EmployeesD = new Employees(result.getInt("Row"), 
+                         result.getString("First_name"),
+                         result.getString("Last_name"),
+                         result.getInt("Personnel_No"),
+                         result.getDate("Date_of_hire"),
+                         result.getString("Gender"),
+                         result.getInt("Phone_No"),
+                         result.getDouble("History"),
+                         result.getDouble("Basic_salary"), 
+                         result.getDouble("Working_hour"),
+                         result.getDouble("Total_salary"));
+                
+                listData.add(EmployeesD);
+            }
+            
+        }catch(Exception e){ e.printStackTrace();}
+        
+        return listData;
+    }
+    
+    private ObservableList<Employees> EmployeesList;
+    
+    public void ShowEmployeesListData(){
+        
+        EmployeesList = employeesListData();
+        row_col_employees.setCellValueFactory(new PropertyValueFactory<>("row"));
+        firstname_col_employees.setCellValueFactory(new PropertyValueFactory<>("firstname"));
+        lastname_col_employees.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+        personnelNo_col_employees.setCellValueFactory(new PropertyValueFactory<>("personnelNo"));
+        dateOfHire_col_employees.setCellValueFactory(new PropertyValueFactory<>("hireDate"));
+        gender_col_employees.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        phoneNo_col_employees.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
+        history_col_employees.setCellValueFactory(new PropertyValueFactory<>("history"));
+        basicSalary_col_employees.setCellValueFactory(new PropertyValueFactory<>("basicSalary"));
+        workingHoursPerWeek_col_employees.setCellValueFactory(new PropertyValueFactory<>("working_hour"));
+        totalSalary_col_employees.setCellValueFactory(new PropertyValueFactory<>("totalSalary"));
+        
+        
+        employeesTable.setItems(EmployeesList);
+
+
+    }
+    
+    public void EmployeesSelect(){
+        
+        Employees employees = employeesTable.getSelectionModel().getSelectedItem();
+        int n = employeesTable.getSelectionModel().getSelectedIndex();
+        
+        if((n -1)< -1){return;}
+        
+        row_field_employees.setText(String.valueOf(employees.getRow()));
+        firstname_field_employees.setText(employees.getFirstname());
+        lastname_field_employees.setText(employees.getLastname());
+        personnelNo_field_employees.setText(String.valueOf(employees.getPersonnelNo()));
+        dateOfHire_field_employees.setText(String.valueOf(employees.getHireDate()));
+        phoneNo_field_employees.setText(String.valueOf(employees.getPhoneNo()));
+        history_field_employees.setText(String.valueOf(employees.getHistory()));
+        basicSalary_field_employees.setText(String.valueOf(employees.getBasicSalary()));
+        workingHoursPerWeek_field_employees.setText(String.valueOf(employees.getWorkingHour()));
+        totalSalary_field_employees.setText(String.valueOf(employees.getTotalSalary()));
+
+    }
+    
+    public void EmployeesAdd(){
+        
+        Date date = new Date();
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        
+        String sql  = "INSERT INTO employees "
+                + "(Row,First_name,Last_name,Personnel_No,Date_of_hire,Gender,Phone_No,History,Basic_salary,Working_hour,Total_salary)"
+                + "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        
+        connect = Database.connectDb();
+        
+        try{
+            
+            if(row_field_employees.getText().isEmpty()||firstname_field_employees.getText().isEmpty()
+                    ||lastname_field_employees.getText().isEmpty()||personnelNo_field_employees.getText().isEmpty()
+                    ||dateOfHire_field_employees.getText().isEmpty()
+                    ||gender_box_employees.getSelectionModel().getSelectedItem()== null 
+                    ||phoneNo_field_employees.getText().isEmpty()||history_field_employees.getText().isEmpty()
+                    ||basicSalary_field_employees.getText().isEmpty() ||workingHoursPerWeek_field_employees.getText().isEmpty() ){
+                
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Error!");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all the blanks");
+            alert.showAndWait();
+            
+            }else{
+                
+            
+            prepare = connect.prepareStatement(sql);
+            prepare.setString(1, row_field_employees.getText());
+            prepare.setString(2, firstname_field_employees.getText());
+            prepare.setString(3, lastname_field_employees.getText());
+            prepare.setString(4, personnelNo_field_employees.getText());
+            prepare.setString(5, String.valueOf(sqlDate));
+            prepare.setString(6,(String) gender_box_employees.getSelectionModel().getSelectedItem());
+            prepare.setString(7, phoneNo_field_employees.getText());
+            prepare.setString(8, history_field_employees.getText());
+            prepare.setString(9, basicSalary_field_employees.getText());
+            prepare.setString(10,workingHoursPerWeek_field_employees.getText());
+            prepare.setString(11, totalSalary_field_employees.getText());
+            
+            
+
+             
+             
+            prepare.executeUpdate();
+            Alert alert1 = new Alert(AlertType.INFORMATION);
+            alert1.setTitle("Information");
+            alert1.setHeaderText("");
+            alert1.setContentText("Added successfully");
+            alert1.showAndWait();
+            
+            ShowEmployeesListData();
+            EmployeesClear();
+            }
+        }catch(Exception e){e.printStackTrace();}
+    }
+   
+    
+    public void GenderListEmployees(){
+        
+        List<String> glist = new ArrayList<>();
+        
+        for(String data : genderList){
+            glist.add(data);
+        }
+        
+        ObservableList listData = FXCollections.observableArrayList(glist);
+        gender_box_employees.setItems(listData);
+        
+    }
+    
+    public void employeesUpdate(){
+        
+        Date date = new Date();
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        
+        String sql = "UPDATE employees SET First_name = '"
+                +firstname_field_employees.getText()+"' , Last_name = '"+lastname_field_employees.getText()
+                +"' ,Personnel_No = '"+personnelNo_field_employees.getText()+"' ,Gender = '"+
+                gender_box_employees.getSelectionModel().getSelectedItem()+"' ,Phone_NO = '"+
+                phoneNo_field_employees.getText()+"' ,History = '"+history_field_employees.getText()
+                +"' ,Basic_salary = '"+basicSalary_field_employees.getText()+"' ,Working_hour = '" +workingHoursPerWeek_field_employees.getText()+"' ,Total_salary = '"
+                +totalSalary_field_employees.getText()
+                +"' ,Date_of_hire = '"+dateOfHire_field_employees.getText()+"',Date_of_hire = '"+
+                sqlDate+"' WHERE Row = '"+row_field_employees.getText()+"'"; 
+        
+        connect = Database.connectDb();
+        
+        try{
+            if(row_field_employees.getText().isEmpty()||firstname_field_employees.getText().isEmpty()
+                    ||lastname_field_employees.getText().isEmpty()||personnelNo_field_employees.getText().isEmpty()
+                    ||dateOfHire_field_employees.getText().isEmpty()
+                    ||gender_box_employees.getSelectionModel().getSelectedItem()== null 
+                    ||phoneNo_field_employees.getText().isEmpty()||history_field_employees.getText().isEmpty()
+                    ||basicSalary_field_employees.getText().isEmpty() || workingHoursPerWeek_field_employees.getText().isEmpty()){
+                
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Error!");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all the blanks");
+            alert.showAndWait();
+            }else{
+                Alert alert = new Alert(AlertType.CONFIRMATION); 
+                alert.setTitle("Confimation ^.^");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure do you want update employee "+
+                                      firstname_field_employees.getText()+"?");
+                Optional<ButtonType> option = alert.showAndWait();
+                
+                if(option.get().equals(ButtonType.OK)){
+                    statement = connect.createStatement();
+                    statement.executeUpdate(sql);
+                    
+                    Alert alert1 = new Alert(AlertType.INFORMATION); 
+                    alert1.setTitle("INFORMATION ^-^");
+                    alert1.setHeaderText(null);
+                    alert1.setContentText("Updated Successfully ^.^");
+                    alert1.showAndWait();
+                    ShowEmployeesListData();
+                    EmployeesClear();
+                }
+                
+                
+            }
+        }catch(Exception e){e.printStackTrace();}
+                
+    }
+    
+    public void EmployeesDelete(){
+        
+        String sql = "DELETE FROM employees WHERE Row = '"
+                +row_field_employees.getText()+"'";
+        
+        connect = Database.connectDb();
+        
+        try{
+            
+             if(row_field_employees.getText().isEmpty()||firstname_field_employees.getText().isEmpty()
+                    ||lastname_field_employees.getText().isEmpty()||personnelNo_field_employees.getText().isEmpty()
+                    ||dateOfHire_field_employees.getText().isEmpty()
+                    ||gender_box_employees.getSelectionModel().getSelectedItem()== null 
+                    ||phoneNo_field_employees.getText().isEmpty()||history_field_employees.getText().isEmpty()
+                    ||basicSalary_field_employees.getText().isEmpty() || workingHoursPerWeek_field_employees.getText().isEmpty()){
+                
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Error!");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all the blanks");
+            alert.showAndWait();
+            }else{
+                Alert alert = new Alert(AlertType.CONFIRMATION); 
+                alert.setTitle("Confimation ^.^");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure do you want delete employee "+
+                                      firstname_field_employees.getText()+"?");
+                Optional<ButtonType> option = alert.showAndWait();
+                
+                if(option.get().equals(ButtonType.OK)){
+                    statement = connect.createStatement();
+                    statement.executeUpdate(sql);
+                    
+                    Alert alert1 = new Alert(AlertType.INFORMATION); 
+                    alert1.setTitle("INFORMATION ^-^");
+                    alert1.setHeaderText(null);
+                    alert1.setContentText("Deleted Successfully ^.^");
+                    alert1.showAndWait();
+                    ShowEmployeesListData();
+                    EmployeesClear();
+                }
+             }
+        }catch(Exception e){e.printStackTrace();}
+    }
+    
+    
+    public void EmployeesClear(){
+        
+        row_field_employees.setText("");
+        firstname_field_employees.setText("");
+        lastname_field_employees.setText("");
+        personnelNo_field_employees.setText("");
+        gender_box_employees.getSelectionModel().getSelectedItem();
+        phoneNo_field_employees.setText("");  
+        history_field_employees.setText("");
+        basicSalary_field_employees.setText("");
+        totalSalary_field_employees.setText("");
+        dateOfHire_field_employees.setText("");
+        workingHoursPerWeek_field_employees.setText("");
+        
+        
+    }
+    
+    public void TotalSalaryEmployees(){
+       
+        
+        totalSalary_field_employees.setText(String.valueOf((0.03*Integer.parseInt(basicSalary_field_employees.getText())*Integer.parseInt(history_field_employees.getText()))+ Integer.parseInt(basicSalary_field_employees.getText())));
+        
+        totalSalary_field_employees.setEditable(false);
+    }
+     
+    
+    /* Securityguards Part */
+    
+     public ObservableList<Securityguards> securityListData(){
+        
+        ObservableList<Securityguards> listData = FXCollections.observableArrayList();
+        
+        String sql = "SELECT * FROM securityguards";
+        
+        connect = Database.connectDb();
+        
+        try{
+            
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+            Securityguards SecurityD;
+            
+            while(result.next()){
+                SecurityD = new Securityguards(result.getInt("Row"), 
+                         result.getString("First_name"),
+                         result.getString("Last_name"),
+                         result.getInt("Personnel_No"),
+                         result.getDate("Date_of_hire"),
+                         result.getString("Gender"),
+                         result.getInt("Phone_No"),
+                         result.getInt("Shift_work"),
+                         result.getDouble("History"),
+                         result.getString("Time_work"),
+                         result.getDouble("Basic_salary"), 
+                         result.getDouble("Total_salary"));
+                
+                listData.add(SecurityD);
+            }
+            
+        }catch(Exception e){ e.printStackTrace();}
+        
+        return listData;
+    }
+    
+    private ObservableList<Securityguards> SecurityList;
+    
+    public void ShowSecurityListData(){
+        
+        SecurityList = securityListData();
+        row_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("row"));
+        firstname_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("firstname"));
+        lastname_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+        personnelNo_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("personnelNo"));
+        dateOfHire_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("hireDate"));
+        gender_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        phoneNo_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
+        history_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("history"));
+        basicSalary_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("basicSalary"));
+        shiftWork_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("shift_work"));
+        timework_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("time_work"));
+        totalSalary_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("totalSalary"));
+        
+        
+        securityGuardsTable.setItems(SecurityList);
+
+
+    }
+    
+    public void SecuritySelect(){
+        
+        Securityguards security = securityGuardsTable.getSelectionModel().getSelectedItem();
+        int n = securityGuardsTable.getSelectionModel().getSelectedIndex();
+        
+        if((n -1)< -1){return;}
+        
+        row_field_securityguards.setText(String.valueOf(security.getRow()));
+        firstname_field_securityguards.setText(security.getFirstname());
+        lastname_field_securityguards.setText(security.getLastname());
+        personnelNo_field_securityguards.setText(String.valueOf(security.getPersonnelNo()));
+        dateOfHire_field_securityguards.setText(String.valueOf(security.getHireDate()));
+        phoneNo_field_securityguards.setText(String.valueOf(security.getPhoneNo()));
+        history_field_securityguards.setText(String.valueOf(security.getHistory()));
+        basicSalary_field_securityguards.setText(String.valueOf(security.getBasicSalary()));
+        shiftWork_field_securityguards.setText(String.valueOf(security.getShiftWork()));
+        totalSalary_field_securityguards.setText(String.valueOf(security.getTotalSalary()));
+        
+
+    }
+    
+    public void SecurityAdd(){
+        
+        Date date = new Date();
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        
+        String sql  = "INSERT INTO securityguards "
+                + "(Row,First_name,Last_name,Personnel_No,Date_of_hire,Gender,Phone_No,Shift_work,History,Time_work,Basic_salary,Total_salary)"
+                + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        
+        connect = Database.connectDb();
+        
+        try{
+            
+            if(row_field_securityguards.getText().isEmpty()||firstname_field_securityguards.getText().isEmpty()
+                    ||lastname_field_securityguards.getText().isEmpty()||personnelNo_field_securityguards.getText().isEmpty()
+                    ||dateOfHire_field_securityguards.getText().isEmpty()
+                    ||gender_box_securityguards.getSelectionModel().getSelectedItem()== null 
+                    ||phoneNo_field_securityguards.getText().isEmpty()||history_field_securityguards.getText().isEmpty()
+                    ||basicSalary_field_securityguards.getText().isEmpty() ||shiftWork_field_securityguards.getText().isEmpty()
+                    ||timework_box_securityguards.getSelectionModel().getSelectedItem()== null  ){
+                
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Error!");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all the blanks");
+            alert.showAndWait();
+            
+            }else{
+                
+            
+            prepare = connect.prepareStatement(sql);
+            prepare.setString(1, row_field_securityguards.getText());
+            prepare.setString(2, firstname_field_securityguards.getText());
+            prepare.setString(3, lastname_field_securityguards.getText());
+            prepare.setString(4, personnelNo_field_securityguards.getText());
+            prepare.setString(5, String.valueOf(sqlDate));
+            prepare.setString(6,(String) gender_box_securityguards.getSelectionModel().getSelectedItem());
+            prepare.setString(7, phoneNo_field_securityguards.getText());
+            prepare.setString(8, history_field_securityguards.getText());
+            prepare.setString(9, basicSalary_field_securityguards.getText());
+            prepare.setString(10,shiftWork_field_securityguards.getText());
+            prepare.setString(11,(String)timework_box_securityguards.getSelectionModel().getSelectedItem());
+            prepare.setString(12, totalSalary_field_securityguards.getText());
+            
+            
+
+             
+             
+            prepare.executeUpdate();
+            Alert alert1 = new Alert(AlertType.INFORMATION);
+            alert1.setTitle("Information");
+            alert1.setHeaderText("");
+            alert1.setContentText("Added successfully");
+            alert1.showAndWait();
+            
+            ShowSecurityListData();
+            SecurityClear();
+            }
+        }catch(Exception e){e.printStackTrace();}
+    }
+   
+    
+    public void GenderListSecurity(){
+        
+        List<String> glist = new ArrayList<>();
+        
+        for(String data : genderList){
+            glist.add(data);
+        }
+        
+        ObservableList listData = FXCollections.observableArrayList(glist);
+        gender_box_securityguards.setItems(listData);
+        
+    }
+    
+    private String[] timeList = {"Morning 1","Aftenoon 1","Night 2"};
+    
+    public void TimeworkListSecurity(){
+        
+        List<String> TimeworkList = new ArrayList<>();
+        
+        for(String Timedata : timeList){
+            TimeworkList.add(Timedata);
+        }
+        
+        ObservableList TimelistData = FXCollections.observableArrayList(TimeworkList);
+        timework_box_securityguards.setItems(TimelistData);
+        
+    }
+    
+    public void SecurityUpdate(){
+        
+        Date date = new Date();
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        
+        String sql = "UPDATE securityguards SET First_name = '"
+                +firstname_field_securityguards.getText()+"' , Last_name = '"+lastname_field_securityguards.getText()
+                +"' ,Personnel_No = '"+personnelNo_field_securityguards.getText()+"' ,Gender = '"+
+                gender_box_securityguards.getSelectionModel().getSelectedItem()+"' ,Phone_NO = '"+
+                phoneNo_field_securityguards.getText()+"' ,History = '"+history_field_securityguards.getText()
+                +"' ,Basic_salary = '"+basicSalary_field_securityguards.getText()+"' ,Shift_work = '" +shiftWork_field_securityguards.getText()+"' ,Total_salary = '"
+                +totalSalary_field_securityguards.getText()+"' ,Time_work = '"+ timework_box_securityguards.getSelectionModel().getSelectedItem()
+                +"' ,Date_of_hire = '"+dateOfHire_field_securityguards.getText()+"',Date_of_hire = '"+
+                sqlDate+"' WHERE Row = '"+row_field_securityguards.getText()+"'"; 
+        
+        connect = Database.connectDb();
+        
+        try{
+            if(row_field_securityguards.getText().isEmpty()||firstname_field_securityguards.getText().isEmpty()
+                    ||lastname_field_securityguards.getText().isEmpty()||personnelNo_field_securityguards.getText().isEmpty()
+                    ||dateOfHire_field_securityguards.getText().isEmpty()
+                    ||gender_box_securityguards.getSelectionModel().getSelectedItem()== null 
+                    ||phoneNo_field_securityguards.getText().isEmpty()||history_field_securityguards.getText().isEmpty()
+                    ||basicSalary_field_securityguards.getText().isEmpty() || shiftWork_field_securityguards.getText().isEmpty()
+                    ||timework_box_securityguards.getSelectionModel().getSelectedItem()== null){
+                
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Error!");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all the blanks");
+            alert.showAndWait();
+            }else{
+                Alert alert = new Alert(AlertType.CONFIRMATION); 
+                alert.setTitle("Confimation ^.^");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure do you want update securityguard "+
+                                      firstname_field_securityguards.getText()+"?");
+                Optional<ButtonType> option = alert.showAndWait();
+                
+                if(option.get().equals(ButtonType.OK)){
+                    statement = connect.createStatement();
+                    statement.executeUpdate(sql);
+                    
+                    Alert alert1 = new Alert(AlertType.INFORMATION); 
+                    alert1.setTitle("INFORMATION ^-^");
+                    alert1.setHeaderText(null);
+                    alert1.setContentText("Updated Successfully ^.^");
+                    alert1.showAndWait();
+                    ShowSecurityListData();
+                    SecurityClear();
+                }
+                
+                
+            }
+        }catch(Exception e){e.printStackTrace();}
+                
+    }
+    
+    public void SecurityDelete(){
+        
+        String sql = "DELETE FROM securityguards WHERE Row = '"
+                +row_field_securityguards.getText()+"'";
+        
+        connect = Database.connectDb();
+        
+        try{
+            
+             if(row_field_securityguards.getText().isEmpty()||firstname_field_securityguards.getText().isEmpty()
+                    ||lastname_field_securityguards.getText().isEmpty()||personnelNo_field_securityguards.getText().isEmpty()
+                    ||dateOfHire_field_securityguards.getText().isEmpty()
+                    ||gender_box_securityguards.getSelectionModel().getSelectedItem()== null 
+                    ||phoneNo_field_securityguards.getText().isEmpty()||history_field_securityguards.getText().isEmpty()
+                    ||basicSalary_field_securityguards.getText().isEmpty() || shiftWork_field_securityguards.getText().isEmpty()
+                    ||timework_box_securityguards.getSelectionModel().getSelectedItem()== null ){
+                
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Error!");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all the blanks");
+            alert.showAndWait();
+            }else{
+                Alert alert = new Alert(AlertType.CONFIRMATION); 
+                alert.setTitle("Confimation ^.^");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure do you want delete securityguard "+
+                                      firstname_field_securityguards.getText()+"?");
+                Optional<ButtonType> option = alert.showAndWait();
+                
+                if(option.get().equals(ButtonType.OK)){
+                    statement = connect.createStatement();
+                    statement.executeUpdate(sql);
+                    
+                    Alert alert1 = new Alert(AlertType.INFORMATION); 
+                    alert1.setTitle("INFORMATION ^-^");
+                    alert1.setHeaderText(null);
+                    alert1.setContentText("Deleted Successfully ^.^");
+                    alert1.showAndWait();
+                    ShowSecurityListData();
+                    SecurityClear();
+                }
+             }
+        }catch(Exception e){e.printStackTrace();}
+    }
+    
+    
+    public void SecurityClear(){
+        
+        row_field_securityguards.setText("");
+        firstname_field_securityguards.setText("");
+        lastname_field_securityguards.setText("");
+        personnelNo_field_securityguards.setText("");
+        gender_box_securityguards.getSelectionModel().getSelectedItem();
+        phoneNo_field_securityguards.setText("");  
+        history_field_securityguards.setText("");
+        basicSalary_field_securityguards.setText("");
+        totalSalary_field_securityguards.setText("");
+        dateOfHire_field_securityguards.setText("");
+        shiftWork_field_securityguards.setText("");
+        timework_box_securityguards.getSelectionModel().getSelectedItem();
+        
+        
+    }
+    
+    public void TotalSalarySecurity(){
+       
+        double t1 = 0.02*Integer.parseInt(basicSalary_field_securityguards.getText())*Integer.parseInt(history_field_securityguards.getText());
+        
+        
+        if(timeList.equals("Morning 1")){
+         double t2 = 0.01*Integer.parseInt(basicSalary_field_securityguards.getText())*Integer.parseInt(shiftWork_field_securityguards.getText())*1;
+         totalSalary_field_securityguards.setText(String.valueOf(t1+t2+Integer.parseInt(basicSalary_field_securityguards.getText())));
+        }
+        
+        if(timeList.equals("Afternoon 1")){
+         double t2 = 0.01*Integer.parseInt(basicSalary_field_securityguards.getText())*Integer.parseInt(shiftWork_field_securityguards.getText())*1;
+         totalSalary_field_securityguards.setText(String.valueOf(t1+t2+Integer.parseInt(basicSalary_field_securityguards.getText())));
+        }
+        
+        if(timeList.equals("Night 2")){
+         double t2 = 0.01*Integer.parseInt(basicSalary_field_securityguards.getText())*Integer.parseInt(shiftWork_field_securityguards.getText())*2;
+         totalSalary_field_securityguards.setText(String.valueOf(t1+t2+Integer.parseInt(basicSalary_field_securityguards.getText())));
+        }
+        
+        
+        totalSalary_field_securityguards.setEditable(false);
+    }
+     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
    
 
 }
