@@ -8,13 +8,13 @@ public class Mayor extends Person  {
     protected String mayorPassword;
     
     public Mayor(int row ,String firstname , String lastname ,int personnelNo ,Date hireDate
-        ,String gender,int phoneNo ,double history , double basicSalary,double totalSalary,String mayorUsername
-        ,String mayorPassword){
+        ,String gender,int phoneNo ,double history , double basicSalary,double totalSalary
+        
+        ){
     
     super(row,firstname,lastname,personnelNo,hireDate,phoneNo,gender,history,basicSalary,totalSalary);
     
-    this.mayorUsername = mayorUsername;
-    this.mayorPassword = mayorPassword;
+    
 }
  
     public String MayorUsername(){

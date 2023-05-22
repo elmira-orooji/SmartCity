@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -498,16 +500,19 @@ public class AdminPanelController implements Initializable{
     private TableColumn<?, ?> phoneNo_col_securityguards;
     
     @FXML
-    private TableColumn<?, ?> MayorPassword_col;
+    private TableColumn<Mayor, String> MayorPassword_col;
     
     @FXML
-    private TableColumn<?, ?> MayorUsename_col;
+    private TableColumn<Mayor, String> MayorUsename_col;
     
     
     @FXML
     private TextField phoneNumber_field_securityguards;
     
     
+    FileHandler handler;
+    
+    static ArrayList<String> mayor = new ArrayList<String>();
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -547,6 +552,8 @@ public class AdminPanelController implements Initializable{
         alert.setContentText("Are you sure you want to sign out?");
         Optional<ButtonType> option = alert.showAndWait();
         try {
+            
+             handler = new FileHandler("logger.log", true);
             if (option.get().equals(ButtonType.OK)) {
 
                 signOut_admin.getScene().getWindow().hide();
@@ -577,6 +584,9 @@ public class AdminPanelController implements Initializable{
             }
         } catch (Exception e) {
             e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message"+e);
         }
     }
     
@@ -643,6 +653,7 @@ public class AdminPanelController implements Initializable{
         
         try{
             
+            handler = new FileHandler("logger.log", true);
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
             Mayor MayorD;
@@ -657,15 +668,21 @@ public class AdminPanelController implements Initializable{
                          result.getInt("Phone_No"),
                          result.getDouble("History"),
                          result.getDouble("Basic_salary"),
-                         result.getDouble("Total_salary"),
-                         result.getString("mayorUsername"),
-                         result.getString("mayorPassword"));
+                         result.getDouble("Total_salary"));
+                         
+
+                         
                 
                 
                 listData.add(MayorD);
             }
             
-        }catch(Exception e){ e.printStackTrace();}
+        }catch(Exception e){ 
+            e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message"+e);
+        }
         
         return listData;
     }
@@ -685,8 +702,7 @@ public class AdminPanelController implements Initializable{
         history_col_Mayor.setCellValueFactory(new PropertyValueFactory<>("history"));
         basicSalary_col_Mayor.setCellValueFactory(new PropertyValueFactory<>("basicSalary"));
         totalSalary_col_Mayor.setCellValueFactory(new PropertyValueFactory<>("totalSalary"));
-        MayorPassword_col.setCellValueFactory(new PropertyValueFactory<>("mayorPassword"));
-        MayorUsename_col.setCellValueFactory(new PropertyValueFactory<>("mayorUsername"));
+        
         
         tableMayor.setItems(MayorList);
 
@@ -709,8 +725,8 @@ public class AdminPanelController implements Initializable{
         history_field_Mayor.setText(String.valueOf(mayor.getHistory()));
         basicSalary_field_Mayor.setText(String.valueOf(mayor.getBasicSalary()));
         totalSalary_field_Mayor.setText(String.valueOf(mayor.getTotalSalary()));
-        Mayor_password_field.setText(String.valueOf(mayor.MayorPassword()));
-        Mayor_username_field.setText(String.valueOf(mayor.MayorUsername()));
+        
+
 
 
     }
@@ -721,20 +737,23 @@ public class AdminPanelController implements Initializable{
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
         
         String sql  = "INSERT INTO mayor "
-                + "(Row,First_name,Last_name,Personnel_No,Date_of_hire,Gender,Phone_No,History,Basic_salary,Total_salary,Mayor_Username,Mayor_Password)"
-                + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+                + "(Row,First_name,Last_name,Personnel_No,Date_of_hire,Gender,Phone_No,History,Basic_salary,Total_salary)"
+                + "VALUES(?,?,?,?,?,?,?,?,?,?)";
         
         connect = Database.connectDb();
         
         try{
+            
+            handler = new FileHandler("logger.log", true);
             
             if(row_field_Mayor.getText().isEmpty()||firstname_field_Mayor.getText().isEmpty()
                     ||lastname_field_Mayor.getText().isEmpty()||personnelNo_field_Mayor.getText().isEmpty()
                     ||dateOfHire_field_Mayor.getText().isEmpty()
                     ||gender_box_Mayor.getSelectionModel().getSelectedItem()== null 
                     ||phoneNo_field_Mayor.getText().isEmpty()||history_field_Mayor.getText().isEmpty()
-                    ||basicSalary_field_Mayor.getText().isEmpty()|| Mayor_username_field.getText().isEmpty()
-                    || Mayor_password_field.getText().isEmpty()){
+                    ||basicSalary_field_Mayor.getText().isEmpty()
+                    
+                    ){
                 
             Alert alert = new Alert(AlertType.ERROR); 
             alert.setTitle("Error!");
@@ -756,12 +775,11 @@ public class AdminPanelController implements Initializable{
             prepare.setString(8, history_field_Mayor.getText());
             prepare.setString(9, basicSalary_field_Mayor.getText());
             prepare.setString(10, totalSalary_field_Mayor.getText());
-            prepare.setString(11, Mayor_username_field.getText());
-            prepare.setString(12, Mayor_password_field.getText());
-            
-            
+           
+           
+           mayor.add(firstname_field_Mayor.getText());
+           mayor.add(lastname_field_Mayor.getText());
 
-             
              
             prepare.executeUpdate();
             Alert alert1 = new Alert(AlertType.INFORMATION);
@@ -773,7 +791,12 @@ public class AdminPanelController implements Initializable{
             ShowMayorListData();
             MayorClear();
             }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){
+            e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message"+e);
+        }
     }
    
     private String[] genderList = {"Female","Male"};
@@ -804,20 +827,26 @@ public class AdminPanelController implements Initializable{
                 gender_box_Mayor.getSelectionModel().getSelectedItem()+"' ,Phone_NO = '"+
                 phoneNo_field_Mayor.getText()+"' ,History = '"+history_field_Mayor.getText()
                 +"' ,Basic_salary = '"+basicSalary_field_Mayor.getText()+"' ,Total_salary = '"
-                +totalSalary_field_Mayor.getText()+"' ,Mayor_Username ='"+ Mayor_username_field.getText()+"' ,Mayor_Password = '"+ Mayor_password_field.getText()
+                +totalSalary_field_Mayor.getText()
                 +"' ,Date_of_hire = '"+dateOfHire_field_Mayor.getText()+"',Date_of_hire = '"+
                 sqlDate+"' WHERE Row = '"+row_field_Mayor.getText()+"'"; 
         
         connect = Database.connectDb();
         
         try{
+            
+            
+            handler = new FileHandler("logger.log", true);
+            
             if(row_field_Mayor.getText().isEmpty()||firstname_field_Mayor.getText().isEmpty()
                     ||lastname_field_Mayor.getText().isEmpty()||personnelNo_field_Mayor.getText().isEmpty()
                     ||dateOfHire_field_Mayor.getText().isEmpty()
                     ||gender_box_Mayor.getSelectionModel().getSelectedItem()== null 
                     ||phoneNo_field_Mayor.getText().isEmpty()||history_field_Mayor.getText().isEmpty()
-                    ||basicSalary_field_Mayor.getText().isEmpty()||Mayor_username_field.getText().isEmpty()
-                    || Mayor_password_field.getText().isEmpty()){
+                    ||basicSalary_field_Mayor.getText().isEmpty()
+                    
+
+                    ){
                 
             Alert alert = new Alert(AlertType.ERROR); 
             alert.setTitle("Error!");
@@ -847,8 +876,13 @@ public class AdminPanelController implements Initializable{
                 
                 
             }
-        }catch(Exception e){e.printStackTrace();}
-                
+        }catch(Exception e){e.printStackTrace();
+        Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+        logger.addHandler(handler);
+        logger.warning("warning message"+e);
+        
+        }
+              
     }
     
     public void MayorDelete(){
@@ -860,13 +894,17 @@ public class AdminPanelController implements Initializable{
         
         try{
             
+            handler = new FileHandler("logger.log", true);
+            
              if(row_field_Mayor.getText().isEmpty()||firstname_field_Mayor.getText().isEmpty()
                     ||lastname_field_Mayor.getText().isEmpty()||personnelNo_field_Mayor.getText().isEmpty()
                     ||dateOfHire_field_Mayor.getText().isEmpty()
                     ||gender_box_Mayor.getSelectionModel().getSelectedItem()== null 
                     ||phoneNo_field_Mayor.getText().isEmpty()||history_field_Mayor.getText().isEmpty()
-                    ||basicSalary_field_Mayor.getText().isEmpty()|| Mayor_password_field.getText().isEmpty()
-                    || Mayor_username_field.getText().isEmpty()){
+                    ||basicSalary_field_Mayor.getText().isEmpty()
+                    
+
+                    ){
                 
             Alert alert = new Alert(AlertType.ERROR); 
             alert.setTitle("Error!");
@@ -894,7 +932,15 @@ public class AdminPanelController implements Initializable{
                     MayorClear();
                 }
              }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){
+            
+            e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message"+e);
+                   
+            
+        }
     }
     
     
@@ -910,8 +956,8 @@ public class AdminPanelController implements Initializable{
         basicSalary_field_Mayor.setText("");
         totalSalary_field_Mayor.setText("");
         dateOfHire_field_Mayor.setText("");
-        Mayor_username_field.setText("");
-        Mayor_password_field.setText("");
+       
+        
         
         
     }
@@ -938,6 +984,7 @@ public class AdminPanelController implements Initializable{
         
         try{
             
+            handler = new FileHandler("logger.log", true);
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
             Deputies DeputiesD;
@@ -957,7 +1004,13 @@ public class AdminPanelController implements Initializable{
                 listData.add(DeputiesD);
             }
             
-        }catch(Exception e){ e.printStackTrace();}
+        }catch(Exception e){ 
+            
+            e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message"+e);
+        }
         
         return listData;
     }
@@ -1016,6 +1069,9 @@ public class AdminPanelController implements Initializable{
         
         try{
             
+            handler = new FileHandler("logger.log", true);
+            
+            
             if(row_field_deputies.getText().isEmpty()||firstname_field_deputies.getText().isEmpty()
                     ||lastname_field_deputies.getText().isEmpty()||personnelNo_field_deputies.getText().isEmpty()
                     ||dateOfHire_field_deputies.getText().isEmpty()
@@ -1058,7 +1114,14 @@ public class AdminPanelController implements Initializable{
             ShowDeputiesListData();
             DeputiesClear();
             }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){
+            e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message"+e);
+        
+        
+        }
     }
     
      public void GenderListDeputies(){
@@ -1093,6 +1156,9 @@ public class AdminPanelController implements Initializable{
         connect = Database.connectDb();
         
         try{
+            
+            handler = new FileHandler("logger.log", true);
+            
             if(row_field_deputies.getText().isEmpty()||firstname_field_deputies.getText().isEmpty()
                     ||lastname_field_deputies.getText().isEmpty()||personnelNo_field_deputies.getText().isEmpty()
                     ||dateOfHire_field_deputies.getText().isEmpty()
@@ -1128,7 +1194,14 @@ public class AdminPanelController implements Initializable{
                 
                 
             }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){
+            e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message"+e);
+        
+        
+        }
                 
     }
     
@@ -1140,6 +1213,8 @@ public class AdminPanelController implements Initializable{
         connect = Database.connectDb();
         
         try{
+            
+            handler = new FileHandler("logger.log", true);
             
              if(row_field_deputies.getText().isEmpty()||firstname_field_deputies.getText().isEmpty()
                     ||lastname_field_deputies.getText().isEmpty()||personnelNo_field_deputies.getText().isEmpty()
@@ -1175,7 +1250,14 @@ public class AdminPanelController implements Initializable{
                     DeputiesClear();
                 }
              }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){
+            e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message"+e);
+
+       
+        }
     }
     
     
@@ -1216,6 +1298,8 @@ public class AdminPanelController implements Initializable{
         
         try{
             
+            handler = new FileHandler("logger.log", true);
+            
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
             Inspectors InspectorsD;
@@ -1235,7 +1319,13 @@ public class AdminPanelController implements Initializable{
                 listData.add(InspectorsD);
             }
             
-        }catch(Exception e){ e.printStackTrace();}
+        }catch(Exception e){ 
+            e.printStackTrace();
+        
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message");
+        }
         
         return listData;
     }
@@ -1294,6 +1384,8 @@ public class AdminPanelController implements Initializable{
         
         try{
             
+            
+            handler = new FileHandler("logger.log", true);
             if(row_field_inspectors.getText().isEmpty()||firstname_field_inspectors.getText().isEmpty()
                     ||lastname_field_inspectors.getText().isEmpty()||personnelNo_field_inspectors.getText().isEmpty()
                     ||dateOfHire_field_inspectors.getText().isEmpty()
@@ -1336,7 +1428,14 @@ public class AdminPanelController implements Initializable{
             ShowInspectorsListData();
             InspectorsClear();
             }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){
+            e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+           logger.addHandler(handler);
+           logger.warning("warning message"+e);
+        
+        
+        }
     }
    
     
@@ -1371,6 +1470,9 @@ public class AdminPanelController implements Initializable{
         connect = Database.connectDb();
         
         try{
+            
+            
+            handler = new FileHandler("logger.log", true);
             if(row_field_inspectors.getText().isEmpty()||firstname_field_inspectors.getText().isEmpty()
                     ||lastname_field_inspectors.getText().isEmpty()||personnelNo_field_inspectors.getText().isEmpty()
                     ||dateOfHire_field_inspectors.getText().isEmpty()
@@ -1406,7 +1508,16 @@ public class AdminPanelController implements Initializable{
                 
                 
             }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){
+            e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+           logger.addHandler(handler);
+           logger.warning("warning message");
+        
+        
+        
+        
+        }
                 
     }
     
@@ -1419,6 +1530,7 @@ public class AdminPanelController implements Initializable{
         
         try{
             
+            handler = new FileHandler("logger.log", true);
              if(row_field_inspectors.getText().isEmpty()||firstname_field_inspectors.getText().isEmpty()
                     ||lastname_field_inspectors.getText().isEmpty()||personnelNo_field_inspectors.getText().isEmpty()
                     ||dateOfHire_field_inspectors.getText().isEmpty()
@@ -1452,7 +1564,14 @@ public class AdminPanelController implements Initializable{
                     InspectorsClear();
                 }
              }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){
+            
+            e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message"+e);
+        
+        }
     }
     
     
@@ -1492,7 +1611,7 @@ public class AdminPanelController implements Initializable{
         connect = Database.connectDb();
         
         try{
-            
+            handler = new FileHandler("logger.log", true);
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
             Employees EmployeesD;
@@ -1513,7 +1632,14 @@ public class AdminPanelController implements Initializable{
                 listData.add(EmployeesD);
             }
             
-        }catch(Exception e){ e.printStackTrace();}
+        }catch(Exception e){
+            
+            e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message");
+        
+        }
         
         return listData;
     }
@@ -1573,6 +1699,7 @@ public class AdminPanelController implements Initializable{
         connect = Database.connectDb();
         
         try{
+            handler = new FileHandler("logger.log", true);
             
             if(row_field_employees.getText().isEmpty()||firstname_field_employees.getText().isEmpty()
                     ||lastname_field_employees.getText().isEmpty()||personnelNo_field_employees.getText().isEmpty()
@@ -1617,7 +1744,12 @@ public class AdminPanelController implements Initializable{
             ShowEmployeesListData();
             EmployeesClear();
             }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){
+            e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+           logger.addHandler(handler);
+           logger.warning("warning message"+e);
+        }
     }
    
     
@@ -1652,6 +1784,9 @@ public class AdminPanelController implements Initializable{
         connect = Database.connectDb();
         
         try{
+            
+            
+             handler = new FileHandler("logger.log", true);
             if(row_field_employees.getText().isEmpty()||firstname_field_employees.getText().isEmpty()
                     ||lastname_field_employees.getText().isEmpty()||personnelNo_field_employees.getText().isEmpty()
                     ||dateOfHire_field_employees.getText().isEmpty()
@@ -1687,7 +1822,15 @@ public class AdminPanelController implements Initializable{
                 
                 
             }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){
+            e.printStackTrace();
+        
+           Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+           logger.addHandler(handler);
+           logger.warning("warning message"+e);
+        
+        
+        }
                 
     }
     
@@ -1699,7 +1842,7 @@ public class AdminPanelController implements Initializable{
         connect = Database.connectDb();
         
         try{
-            
+            handler = new FileHandler("logger.log", true);
              if(row_field_employees.getText().isEmpty()||firstname_field_employees.getText().isEmpty()
                     ||lastname_field_employees.getText().isEmpty()||personnelNo_field_employees.getText().isEmpty()
                     ||dateOfHire_field_employees.getText().isEmpty()
@@ -1733,7 +1876,13 @@ public class AdminPanelController implements Initializable{
                     EmployeesClear();
                 }
              }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){
+            e.printStackTrace();
+        Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+        logger.addHandler(handler);
+        logger.warning("warning message"+e);
+        
+        }
     }
     
     
@@ -1769,12 +1918,12 @@ public class AdminPanelController implements Initializable{
         
         ObservableList<Securityguards> listData = FXCollections.observableArrayList();
         
-        String sql = "SELECT * FROM securityguards";
+        String sql = "SELECT * FROM securitygards";
         
         connect = Database.connectDb();
         
         try{
-            
+            handler = new FileHandler("logger.log", true);
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
             Securityguards SecurityD;
@@ -1796,7 +1945,14 @@ public class AdminPanelController implements Initializable{
                 listData.add(SecurityD);
             }
             
-        }catch(Exception e){ e.printStackTrace();}
+        }catch(Exception e){
+            
+            e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message"+e);
+        
+        }
         
         return listData;
     }
@@ -1851,7 +2007,7 @@ public class AdminPanelController implements Initializable{
         Date date = new Date();
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
         
-        String sql  = "INSERT INTO securityguards "
+        String sql  = "INSERT INTO securitygards "
                 + "(Row,First_name,Last_name,Personnel_No,Date_of_hire,Gender,Phone_No,Shift_work,History,Time_work,Basic_salary,Total_salary)"
                 + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         
@@ -1859,6 +2015,7 @@ public class AdminPanelController implements Initializable{
         
         try{
             
+            handler = new FileHandler("logger.log", true);
             if(row_field_securityguards.getText().isEmpty()||firstname_field_securityguards.getText().isEmpty()
                     ||lastname_field_securityguards.getText().isEmpty()||personnelNo_field_securityguards.getText().isEmpty()
                     ||dateOfHire_field_securityguards.getText().isEmpty()
@@ -1904,7 +2061,13 @@ public class AdminPanelController implements Initializable{
             ShowSecurityListData();
             SecurityClear();
             }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){
+            e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message"+e);
+        
+        }
     }
    
     
@@ -1941,7 +2104,7 @@ public class AdminPanelController implements Initializable{
         Date date = new Date();
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
         
-        String sql = "UPDATE securityguards SET First_name = '"
+        String sql = "UPDATE securitygards SET First_name = '"
                 +firstname_field_securityguards.getText()+"' , Last_name = '"+lastname_field_securityguards.getText()
                 +"' ,Personnel_No = '"+personnelNo_field_securityguards.getText()+"' ,Gender = '"+
                 gender_box_securityguards.getSelectionModel().getSelectedItem()+"' ,Phone_NO = '"+
@@ -1954,6 +2117,9 @@ public class AdminPanelController implements Initializable{
         connect = Database.connectDb();
         
         try{
+            
+            
+            handler = new FileHandler("logger.log", true);
             if(row_field_securityguards.getText().isEmpty()||firstname_field_securityguards.getText().isEmpty()
                     ||lastname_field_securityguards.getText().isEmpty()||personnelNo_field_securityguards.getText().isEmpty()
                     ||dateOfHire_field_securityguards.getText().isEmpty()
@@ -1990,19 +2156,27 @@ public class AdminPanelController implements Initializable{
                 
                 
             }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){
+            
+            e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message"+e);
+        
+        }
                 
     }
     
     public void SecurityDelete(){
         
-        String sql = "DELETE FROM securityguards WHERE Row = '"
+        String sql = "DELETE FROM securitygards WHERE Row = '"
                 +row_field_securityguards.getText()+"'";
         
         connect = Database.connectDb();
         
         try{
             
+            handler = new FileHandler("logger.log", true);
              if(row_field_securityguards.getText().isEmpty()||firstname_field_securityguards.getText().isEmpty()
                     ||lastname_field_securityguards.getText().isEmpty()||personnelNo_field_securityguards.getText().isEmpty()
                     ||dateOfHire_field_securityguards.getText().isEmpty()
@@ -2037,7 +2211,13 @@ public class AdminPanelController implements Initializable{
                     SecurityClear();
                 }
              }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){
+            e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message"+e);
+
+        }
     }
     
     
@@ -2064,17 +2244,18 @@ public class AdminPanelController implements Initializable{
         double t1 = 0.02*Integer.parseInt(basicSalary_field_securityguards.getText())*Integer.parseInt(history_field_securityguards.getText());
         
         
-        if(timeList.equals("Morning 1")){
+        if(timeList[1].equals("Morning 1")){
          double t2 = 0.01*Integer.parseInt(basicSalary_field_securityguards.getText())*Integer.parseInt(shiftWork_field_securityguards.getText())*1;
          totalSalary_field_securityguards.setText(String.valueOf(t1+t2+Integer.parseInt(basicSalary_field_securityguards.getText())));
         }
         
-        if(timeList.equals("Afternoon 1")){
+        
+        if(timeList[2].equals("Afternoon 1")){
          double t2 = 0.01*Integer.parseInt(basicSalary_field_securityguards.getText())*Integer.parseInt(shiftWork_field_securityguards.getText())*1;
          totalSalary_field_securityguards.setText(String.valueOf(t1+t2+Integer.parseInt(basicSalary_field_securityguards.getText())));
         }
         
-        if(timeList.equals("Night 2")){
+        if(timeList[3].equals("Night 2")){
          double t2 = 0.01*Integer.parseInt(basicSalary_field_securityguards.getText())*Integer.parseInt(shiftWork_field_securityguards.getText())*2;
          totalSalary_field_securityguards.setText(String.valueOf(t1+t2+Integer.parseInt(basicSalary_field_securityguards.getText())));
         }

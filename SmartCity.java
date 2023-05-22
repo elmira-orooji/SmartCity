@@ -25,7 +25,7 @@ import javafx.scene.layout.StackPane;
     public void start(Stage stage) throws Exception {
         
         
-        Parent root = FXMLLoader.load(getClass().getResource("/View/LoginPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
                
 
         

@@ -5,6 +5,8 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,9 +49,14 @@ public class SmartCityFXMLController implements Initializable {
     @FXML
     private TextField usernameBtn;
     
+     FileHandler handler;
+
+    
     private Connection connect;
     private PreparedStatement prepare;
+    private PreparedStatement prepareMayor;
     private ResultSet result;
+    private ResultSet resultMayor;
     
     private double x = 0;
     private double y = 0;
@@ -57,11 +64,17 @@ public class SmartCityFXMLController implements Initializable {
     public void adminLogin(){
         
         String sql = "SELECT * FROM admin WHERE username = ? and password = ?";
+        String sqlMayor = "SELECT * FROM mayor WHERE First_name = ? and Last_name = ?";
+        
         connect = (Connection) Database.connectDb();
         
         try{
             
+            handler = new FileHandler("logger.log", true);
+
             prepare = connect.prepareStatement(sql);
+            prepare = connect.prepareStatement(sqlMayor);
+            
             prepare.setString(1,usernameBtn.getText());
             prepare.setString(2,passwordBtn.getText());
             
@@ -103,6 +116,22 @@ public class SmartCityFXMLController implements Initializable {
                 stage.initStyle(StageStyle.TRANSPARENT);
                 stage.setScene(scene);
                 stage.show();
+                }
+                
+                if(resultMayor.next()){
+                    
+                AdminPanelController.mayor.get(1).equals(usernameBtn.getText()) ;
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("");
+                alert.setHeaderText(null);
+                alert.setContentText("You entered successfully ^-^ "); 
+                alert.showAndWait();
+                
+                loginBtn.getScene().getWindow().hide();
+                Parent root1 = FXMLLoader.load(getClass().getResource("MayorPannel.fxml"));
+                
+                
+                
                 
                 }else{
                 Alert alert = new Alert(AlertType.ERROR);
@@ -110,9 +139,19 @@ public class SmartCityFXMLController implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("Incorrect Username or Password");
                 alert.showAndWait();
-                }
-            }
-        }catch(Exception e) {e.printStackTrace();}
+                }}
+                
+            
+           
+                
+          
+        }catch(Exception e) {
+            
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message"+e);
+            e.printStackTrace();
+        }
     }
     public void close(){
         System.exit(0);

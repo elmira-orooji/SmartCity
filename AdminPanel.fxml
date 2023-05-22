@@ -97,7 +97,7 @@
                      <children>
                         <AnchorPane fx:id="homePage" layoutX="128.0" layoutY="78.0" prefHeight="555.0" prefWidth="888.0" styleClass="minimize" stylesheets="@AdminPanelStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane fx:id="mayorPage" layoutX="14.0" layoutY="20.0" prefHeight="555.0" prefWidth="888.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="mayorPage" layoutX="14.0" layoutY="20.0" prefHeight="555.0" prefWidth="888.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="528.0" prefWidth="856.0" stylesheets="@AdminPanelStyle.css">
                                        <children>
@@ -116,11 +116,9 @@
                                                       <TableColumn fx:id="dateOfHire_col_Mayor" prefWidth="75.0" text="Date of hire" />
                                                       <TableColumn fx:id="gender_col_Mayor" prefWidth="52.0" text="Gender" />
                                                       <TableColumn fx:id="phoneNo_col_Mayor" prefWidth="69.0" text="Phone No." />
-                                                      <TableColumn fx:id="history_col_Mayor" prefWidth="49.0" text="History" />
-                                                      <TableColumn fx:id="basicSalary_col_Mayor" text="Basic salary " />
-                                                      <TableColumn fx:id="totalSalary_col_Mayor" prefWidth="73.0" text="Total salary " />
-                                                      <TableColumn fx:id="MayorUsername_col" prefWidth="64.0" text="Username" />
-                                                      <TableColumn fx:id="MayorPassword_col" prefWidth="65.0" text="Password" />
+                                                      <TableColumn fx:id="history_col_Mayor" prefWidth="67.0" text="History" />
+                                                      <TableColumn fx:id="basicSalary_col_Mayor" prefWidth="113.0" text="Basic salary " />
+                                                      <TableColumn fx:id="totalSalary_col_Mayor" prefWidth="148.0" text="Total salary " />
                                                   </columns>
                                                 </TableView>
                                              </children>
@@ -155,18 +153,18 @@
                                                 <Font name="Tahoma" size="15.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="dateOfHire_field_Mayor" layoutX="156.0" layoutY="433.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <TextField fx:id="dateOfHire_field_Mayor" layoutX="156.0" layoutY="446.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
                                           <Label layoutX="395.0" layoutY="303.0" text="Phone No. :" textFill="#8528a7">
                                              <font>
                                                 <Font name="Tahoma" size="15.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="38.0" layoutY="464.0" text="Gender :" textFill="#8528a7">
+                                          <Label layoutX="38.0" layoutY="484.0" text="Gender :" textFill="#8528a7">
                                              <font>
                                                 <Font name="Tahoma" size="15.0" />
                                              </font>
                                           </Label>
-                                          <ComboBox fx:id="gender_box_Mayor" layoutX="157.0" layoutY="460.0" onAction="#GenderListMayor" prefWidth="150.0" promptText="Select" stylesheets="@AdminPanelStyle.css">
+                                          <ComboBox fx:id="gender_box_Mayor" layoutX="157.0" layoutY="480.0" onAction="#GenderListMayor" prefWidth="150.0" promptText="Select" stylesheets="@AdminPanelStyle.css">
                                              <styleClass>
                                                 <String fx:value="borderOfBtn" />
                                                 <String fx:value="background" />
@@ -207,7 +205,7 @@
                                                 <String fx:value="deletetableBtn" />
                                              </styleClass>
                                           </Button>
-                                          <Label layoutX="38.0" layoutY="437.0" text="Date of hire :" textFill="#8528a7">
+                                          <Label layoutX="38.0" layoutY="450.0" text="Date of hire :" textFill="#8528a7">
                                              <font>
                                                 <Font name="Tahoma" size="15.0" />
                                              </font>
@@ -227,18 +225,6 @@
                                           <TextField fx:id="totalSalary_field_Mayor" layoutX="552.0" layoutY="399.0" onMouseClicked="#TotalSalaryMayor" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
                                           <FontAwesomeIcon fill="#8528a7" glyphName="DOLLAR" layoutX="683.0" layoutY="383.0" size="1.5em" />
                                           <FontAwesomeIcon fill="#8528a7" glyphName="MONEY" layoutX="678.0" layoutY="418.0" size="1.5em" />
-                                          <TextField fx:id="Mayor_password_field" layoutX="551.0" layoutY="433.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
-                                          <Label fx:id="Username_Mayor" layoutX="394.0" layoutY="436.0" text="Password :" textFill="#8528a7">
-                                             <font>
-                                                <Font name="Tahoma" size="15.0" />
-                                             </font>
-                                          </Label>
-                                          <TextField fx:id="Mayor_username_field" layoutX="156.0" layoutY="494.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
-                                          <Label fx:id="Username_Mayor1" layoutX="38.0" layoutY="498.0" text="Username :" textFill="#8528a7">
-                                             <font>
-                                                <Font name="Tahoma" size="15.0" />
-                                             </font>
-                                          </Label>
                                        </children>
                                        <styleClass>
                                           <String fx:value="main-main-page" />
@@ -703,7 +689,7 @@
                                     </AnchorPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="securityGuardsPage" layoutX="14.0" layoutY="20.0" prefHeight="555.0" prefWidth="888.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="securityGuardsPage" layoutX="14.0" layoutY="20.0" prefHeight="555.0" prefWidth="888.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <AnchorPane layoutX="14.0" layoutY="17.0" prefHeight="521.0" prefWidth="853.0" stylesheets="@AdminPanelStyle.css">
                                        <children>
@@ -829,7 +815,7 @@
                                              </font>
                                           </Label>
                                           <FontAwesomeIcon fill="#8528a7" glyphName="DOLLAR" layoutX="694.0" layoutY="444.0" size="1.5em" />
-                                          <TextField fx:id="totalSalary_field_securityguards" layoutX="575.0" layoutY="418.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <TextField fx:id="totalSalary_field_securityguards" layoutX="575.0" layoutY="418.0" onMouseClicked="#TotalSalarySecurity" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
                                           <FontAwesomeIcon fill="#8528a7" glyphName="MONEY" layoutX="698.0" layoutY="437.0" size="1.5em" />
                                           <ComboBox fx:id="timework_box_securityguards" layoutX="169.0" layoutY="484.0" onAction="#TimeworkListSecurity" prefWidth="150.0" promptText="Select" stylesheets="@AdminPanelStyle.css">
                                              <styleClass>
