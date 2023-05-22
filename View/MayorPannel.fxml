@@ -281,12 +281,12 @@
                            </graphic>
                         </Button>
                         <FontAwesomeIcon fill="#ee37d0" glyphName="PLUS" layoutX="137.0" layoutY="311.0" size="1.5em" />
-                        <Button fx:id="closeBtn_Hospital" layoutX="734.0" layoutY="8.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="69.0" styleClass="close" stylesheets="@AdminPanelStyle.css">
+                        <Button fx:id="closeBtn_Hospital" layoutX="734.0" layoutY="14.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="69.0" styleClass="close" stylesheets="@AdminPanelStyle.css">
                            <graphic>
                               <FontAwesomeIcon fill="#e43179" glyphName="CLOSE" size="1.5em" />
                            </graphic>
                         </Button>
-                        <Button fx:id="minimizeBtn_Hospital" layoutX="680.0" layoutY="8.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="47.0" styleClass="minimize" stylesheets="@AdminPanelStyle.css">
+                        <Button fx:id="minimizeBtn_Hospital" layoutX="678.0" layoutY="14.0" mnemonicParsing="false" onAction="#minimize" prefHeight="25.0" prefWidth="47.0" styleClass="minimize" stylesheets="@AdminPanelStyle.css">
                            <graphic>
                               <FontAwesomeIcon fill="#e43179" glyphName="MINUS" size="1.5em" />
                            </graphic>
@@ -295,7 +295,7 @@
                   </AnchorPane>
                   <AnchorPane fx:id="University_page" prefHeight="630.0" prefWidth="833.0">
                      <children>
-                        <TableView fx:id="University_table" layoutX="311.0" layoutY="43.0" prefHeight="538.0" prefWidth="492.0" stylesheets="@AdminPanelStyle.css">
+                        <TableView fx:id="University_table" layoutX="311.0" layoutY="43.0" onMouseClicked="#UniversitySelect" prefHeight="538.0" prefWidth="492.0" stylesheets="@AdminPanelStyle.css">
                            <columns>
                               <TableColumn fx:id="University_col_name" prefWidth="58.0" text="Name" />
                               <TableColumn fx:id="University_col_address" prefWidth="72.0" text="Address" />
@@ -345,29 +345,29 @@
                               <Font size="13.0" />
                            </font>
                         </Label>
-                        <Button fx:id="AddBtn_university" layoutX="59.0" layoutY="283.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="   Add" />
-                        <Button fx:id="UpdateBtn_university" layoutX="60.0" layoutY="337.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Update">
+                        <Button fx:id="AddBtn_university" layoutX="59.0" layoutY="283.0" mnemonicParsing="false" onAction="#UniversityAdd" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="   Add" />
+                        <Button fx:id="UpdateBtn_university" layoutX="60.0" layoutY="337.0" mnemonicParsing="false" onAction="#UniversityUpdate" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Update">
                            <graphic>
                               <FontAwesomeIcon fill="#ee37d0" glyphName="REFRESH" size="1.5em" />
                            </graphic>
                         </Button>
-                        <Button fx:id="DeleteBtn_university" layoutX="61.0" layoutY="393.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Delete">
+                        <Button fx:id="DeleteBtn_university" layoutX="61.0" layoutY="393.0" mnemonicParsing="false" onAction="#UniversityDelete" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Delete">
                            <graphic>
                               <FontAwesomeIcon fill="#ee37d0" glyphName="TRASH" size="1.5em" />
                            </graphic>
                         </Button>
-                        <Button fx:id="ClearBtn_university" layoutX="61.0" layoutY="450.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Clear">
+                        <Button fx:id="ClearBtn_university" layoutX="61.0" layoutY="450.0" mnemonicParsing="false" onAction="#UniversityClear" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Clear">
                            <graphic>
                               <FontAwesomeIcon fill="#ee37d0" glyphName="BAN" size="1.5em" />
                            </graphic>
                         </Button>
                         <FontAwesomeIcon fill="#ee37d0" glyphName="PLUS" layoutX="137.0" layoutY="311.0" size="1.5em" />
-                        <Button fx:id="closeBtn_University" layoutX="734.0" layoutY="8.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="69.0" styleClass="close" stylesheets="@AdminPanelStyle.css">
+                        <Button fx:id="closeBtn_University" layoutX="734.0" layoutY="14.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="69.0" styleClass="close" stylesheets="@AdminPanelStyle.css">
                            <graphic>
                               <FontAwesomeIcon fill="#e43179" glyphName="CLOSE" size="1.5em" />
                            </graphic>
                         </Button>
-                        <Button fx:id="minimizeBtn_University" layoutX="680.0" layoutY="8.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="47.0" styleClass="minimize" stylesheets="@AdminPanelStyle.css">
+                        <Button fx:id="minimizeBtn_University" layoutX="681.0" layoutY="14.0" mnemonicParsing="false" onAction="#minimize" prefHeight="25.0" prefWidth="47.0" styleClass="minimize" stylesheets="@AdminPanelStyle.css">
                            <graphic>
                               <FontAwesomeIcon fill="#e43179" glyphName="MINUS" size="1.5em" />
                            </graphic>
@@ -376,7 +376,7 @@
                   </AnchorPane>
                   <AnchorPane fx:id="Language_page" prefHeight="640.0" prefWidth="823.0" visible="false">
                      <children>
-                        <TableView fx:id="Language_table" layoutX="311.0" layoutY="43.0" prefHeight="538.0" prefWidth="492.0" stylesheets="@AdminPanelStyle.css">
+                        <TableView fx:id="Language_table" layoutX="311.0" layoutY="43.0" onMouseClicked="#LanguageSelect" prefHeight="538.0" prefWidth="492.0" stylesheets="@AdminPanelStyle.css">
                            <columns>
                               <TableColumn fx:id="Language_col_name" prefWidth="58.0" text="Name" />
                               <TableColumn fx:id="Language_col_address" prefWidth="72.0" text="Address" />
@@ -426,30 +426,32 @@
                               <Font size="13.0" />
                            </font>
                         </Label>
-                        <Button fx:id="AddBtn_Language" layoutX="59.0" layoutY="283.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="   Add" />
-                        <Button fx:id="UpdateBtn_Language" layoutX="60.0" layoutY="337.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Update">
+                        <Button fx:id="AddBtn_Language" layoutX="59.0" layoutY="283.0" mnemonicParsing="false" onAction="#LanguageAdd" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="   Add" />
+                        <Button fx:id="UpdateBtn_Language" layoutX="60.0" layoutY="337.0" mnemonicParsing="false" onAction="#LanguageUpdate" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Update">
                            <graphic>
                               <FontAwesomeIcon fill="#ee37d0" glyphName="REFRESH" size="1.5em" />
                            </graphic>
                         </Button>
-                        <Button fx:id="DeleteBtn_Language" layoutX="61.0" layoutY="393.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Delete">
+                        <Button fx:id="DeleteBtn_Language" layoutX="61.0" layoutY="393.0" mnemonicParsing="false" onAction="#LanguageDelete" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Delete">
                            <graphic>
                               <FontAwesomeIcon fill="#ee37d0" glyphName="TRASH" size="1.5em" />
                            </graphic>
                         </Button>
-                        <Button fx:id="ClearBtn_Language" layoutX="61.0" layoutY="450.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Clear">
+                        <Button fx:id="ClearBtn_Language" layoutX="61.0" layoutY="450.0" mnemonicParsing="false" onAction="#LanguageClear" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Clear">
                            <graphic>
                               <FontAwesomeIcon fill="#ee37d0" glyphName="BAN" size="1.5em" />
                            </graphic>
                         </Button>
                         <FontAwesomeIcon fill="#ee37d0" glyphName="PLUS" layoutX="137.0" layoutY="311.0" size="1.5em" />
-                        <Button fx:id="closeBtn_Language" layoutX="727.0" layoutY="7.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="69.0" styleClass="close" stylesheets="@AdminPanelStyle.css">
+                        <Button fx:id="closeBtn_Language" layoutX="727.0" layoutY="16.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="69.0" styleClass="close" stylesheets="@AdminPanelStyle.css">
                            <graphic>
                               <FontAwesomeIcon fill="#e43179" glyphName="CLOSE" size="1.5em" />
                            </graphic>
                         </Button>
-                        <Button fx:id="minimizeBtn_Language" layoutX="680.0" layoutY="8.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="47.0" styleClass="minimize" stylesheets="@AdminPanelStyle.css" />
-                        <FontAwesomeIcon fill="#e43179" glyphName="MINUS" layoutX="696.0" layoutY="26.0" size="1.5em" />
+                        <Button fx:id="minimizeBtn_Language" layoutX="680.0" layoutY="17.0" mnemonicParsing="false" onAction="#minimize" prefHeight="25.0" prefWidth="47.0" styleClass="minimize" stylesheets="@AdminPanelStyle.css">
+                           <graphic>
+                              <FontAwesomeIcon fill="#e43179" glyphName="MINUS" size="1.5em" />
+                           </graphic></Button>
                      </children>
                   </AnchorPane>
                </children>

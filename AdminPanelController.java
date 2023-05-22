@@ -185,7 +185,7 @@ public class AdminPanelController implements Initializable{
     private Button addBtnEmployees;
 
     @FXML
-    private TableColumn<?, ?> gender_col_securityguards;
+    private TableColumn<Securityguards, String> gender_col_securityguards;
 
     @FXML
     private TextField dateOfHire_field_securityguards;
@@ -218,7 +218,7 @@ public class AdminPanelController implements Initializable{
     private TableColumn<Mayor, String> lastname_col_Mayor;
 
     @FXML
-    private TableColumn<?, ?> lastname_col_inspectors;
+    private TableColumn<Inspectors, String> lastname_col_inspectors;
 
     @FXML
     private Button deletebtnInspectors;
@@ -302,7 +302,7 @@ public class AdminPanelController implements Initializable{
     private TableColumn<Mayor, Double> history_col_Mayor;
 
     @FXML
-    private TableColumn<?, ?> lastname_col_securityguards;
+    private TableColumn<Securityguards, String> lastname_col_securityguards;
 
     @FXML
     private TableColumn<?, ?> totalSalary_col_inspectors;
@@ -356,7 +356,7 @@ public class AdminPanelController implements Initializable{
     private TextField totalSalary_field_securityguards;
 
     @FXML
-    private TableColumn<?, ?> firstname_col_securityguards;
+    private TableColumn<Securityguards, String> firstname_col_securityguards;
 
     @FXML
     private TextField history_field_securityguards;
@@ -366,7 +366,7 @@ public class AdminPanelController implements Initializable{
 
 
     @FXML
-    private TableColumn<?, ?> totalSalary_col_securityguards;
+    private TableColumn<Securityguards, Double> totalSalary_col_securityguards;
 
     @FXML
     private Button clearBtnSecurityguards;
@@ -497,13 +497,7 @@ public class AdminPanelController implements Initializable{
     @FXML
     private FontAwesomeIcon clearBtnDeputies;
     @FXML
-    private TableColumn<?, ?> phoneNo_col_securityguards;
-    
-    @FXML
-    private TableColumn<Mayor, String> MayorPassword_col;
-    
-    @FXML
-    private TableColumn<Mayor, String> MayorUsename_col;
+    private TableColumn<Securityguards, Integer> phoneNo_col_securityguards;
     
     
     @FXML
@@ -777,9 +771,6 @@ public class AdminPanelController implements Initializable{
             prepare.setString(10, totalSalary_field_Mayor.getText());
            
            
-           mayor.add(firstname_field_Mayor.getText());
-           mayor.add(lastname_field_Mayor.getText());
-
              
             prepare.executeUpdate();
             Alert alert1 = new Alert(AlertType.INFORMATION);
@@ -1367,7 +1358,7 @@ public class AdminPanelController implements Initializable{
         phoneNo_field_inspectors.setText(String.valueOf(inspectors.getPhoneNo()));
         history_field_inspectors.setText(String.valueOf(inspectors.getHistory()));
         basicSalary_field_inspectors.setText(String.valueOf(inspectors.getBasicSalary()));
-        
+        totalSalary_field_inspectors.setText(String.valueOf(inspectors.getTotalSalary()));
 
     }
     
@@ -1459,13 +1450,12 @@ public class AdminPanelController implements Initializable{
         
         String sql = "UPDATE inspectors SET First_name = '"
                 +firstname_field_inspectors.getText()+"' , Last_name = '"+lastname_field_inspectors.getText()
-                +"' ,Personnel_No = '"+personnelNo_field_inspectors.getText()+"' ,Gender = '"+
-                gender_box_inspectors.getSelectionModel().getSelectedItem()+"' ,Phone_NO = '"+
+                +"' , Personnel_No = '"+personnelNo_field_inspectors.getText()+"' , Date_of_hire = '"+dateOfHire_field_inspectors.getText()+"' , Gender = '"+
+                gender_box_inspectors.getSelectionModel().getSelectedItem()+"' , Phone_No = '"+
                 phoneNo_field_inspectors.getText()+"' ,History = '"+history_field_inspectors.getText()
-                +"' ,Basic_salary = '"+basicSalary_field_inspectors.getText()+"' ,Total_salary = '"
+                +"' , Basic_salary = '"+basicSalary_field_inspectors.getText()+"' , Total_salary = '"
                 +totalSalary_field_inspectors.getText()
-                +"' ,Date_of_hire = '"+dateOfHire_field_inspectors.getText()+"',Date_of_hire = '"+
-                sqlDate+"' WHERE Row = '"+row_field_inspectors.getText()+"'"; 
+                +"' WHERE Row = '"+row_field_inspectors.getText()+"'"; 
         
         connect = Database.connectDb();
         
@@ -1626,7 +1616,7 @@ public class AdminPanelController implements Initializable{
                          result.getInt("Phone_No"),
                          result.getDouble("History"),
                          result.getDouble("Basic_salary"), 
-                         result.getDouble("Working_hour"),
+                         result.getDouble("Working_hours"),
                          result.getDouble("Total_salary"));
                 
                 listData.add(EmployeesD);
@@ -1693,7 +1683,7 @@ public class AdminPanelController implements Initializable{
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
         
         String sql  = "INSERT INTO employees "
-                + "(Row,First_name,Last_name,Personnel_No,Date_of_hire,Gender,Phone_No,History,Basic_salary,Working_hour,Total_salary)"
+                + "(Row,First_name,Last_name,Personnel_No,Date_of_hire,Gender,Phone_No,History,Basic_salary,Working_hours,Total_salary)"
                 + "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
         
         connect = Database.connectDb();
@@ -1727,7 +1717,7 @@ public class AdminPanelController implements Initializable{
             prepare.setString(7, phoneNo_field_employees.getText());
             prepare.setString(8, history_field_employees.getText());
             prepare.setString(9, basicSalary_field_employees.getText());
-            prepare.setString(10,workingHoursPerWeek_field_employees.getText());
+            prepare.setString(10, workingHoursPerWeek_field_employees.getText());
             prepare.setString(11, totalSalary_field_employees.getText());
             
             
@@ -1773,13 +1763,12 @@ public class AdminPanelController implements Initializable{
         
         String sql = "UPDATE employees SET First_name = '"
                 +firstname_field_employees.getText()+"' , Last_name = '"+lastname_field_employees.getText()
-                +"' ,Personnel_No = '"+personnelNo_field_employees.getText()+"' ,Gender = '"+
-                gender_box_employees.getSelectionModel().getSelectedItem()+"' ,Phone_NO = '"+
+                +"' ,Personnel_No = '"+personnelNo_field_employees.getText()+"' ,Date_of_hire = '"+dateOfHire_field_employees.getText()+"' ,Gender = '"+
+                gender_box_employees.getSelectionModel().getSelectedItem()+"' ,Phone_No = '"+
                 phoneNo_field_employees.getText()+"' ,History = '"+history_field_employees.getText()
-                +"' ,Basic_salary = '"+basicSalary_field_employees.getText()+"' ,Working_hour = '" +workingHoursPerWeek_field_employees.getText()+"' ,Total_salary = '"
+                +"' ,Basic_salary = '"+basicSalary_field_employees.getText()+"' ,Working_hours = '" +workingHoursPerWeek_field_employees.getText()+"' ,Total_salary = '"
                 +totalSalary_field_employees.getText()
-                +"' ,Date_of_hire = '"+dateOfHire_field_employees.getText()+"',Date_of_hire = '"+
-                sqlDate+"' WHERE Row = '"+row_field_employees.getText()+"'"; 
+                +"' WHERE Row = '"+row_field_employees.getText()+"'"; 
         
         connect = Database.connectDb();
         
@@ -1969,10 +1958,10 @@ public class AdminPanelController implements Initializable{
         dateOfHire_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("hireDate"));
         gender_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("gender"));
         phoneNo_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
-        history_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("history"));
-        basicSalary_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("basicSalary"));
         shiftWork_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("shift_work"));
+        history_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("history"));
         timework_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("time_work"));
+        basicSalary_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("basicSalary"));
         totalSalary_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("totalSalary"));
         
         
@@ -1994,10 +1983,10 @@ public class AdminPanelController implements Initializable{
         personnelNo_field_securityguards.setText(String.valueOf(security.getPersonnelNo()));
         dateOfHire_field_securityguards.setText(String.valueOf(security.getHireDate()));
         phoneNo_field_securityguards.setText(String.valueOf(security.getPhoneNo()));
+        shiftWork_field_securityguards.setText(String.valueOf(security.getShiftWork()));
         history_field_securityguards.setText(String.valueOf(security.getHistory()));
         basicSalary_field_securityguards.setText(String.valueOf(security.getBasicSalary()));
-        shiftWork_field_securityguards.setText(String.valueOf(security.getShiftWork()));
-        totalSalary_field_securityguards.setText(String.valueOf(security.getTotalSalary()));
+        totalSalary_field_securityguards.setText(String.valueOf(security.getBasicSalary()));
         
 
     }
@@ -2009,7 +1998,7 @@ public class AdminPanelController implements Initializable{
         
         String sql  = "INSERT INTO securitygards "
                 + "(Row,First_name,Last_name,Personnel_No,Date_of_hire,Gender,Phone_No,Shift_work,History,Time_work,Basic_salary,Total_salary)"
-                + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
         
         connect = Database.connectDb();
         
@@ -2038,13 +2027,13 @@ public class AdminPanelController implements Initializable{
             prepare.setString(2, firstname_field_securityguards.getText());
             prepare.setString(3, lastname_field_securityguards.getText());
             prepare.setString(4, personnelNo_field_securityguards.getText());
-            prepare.setString(5, String.valueOf(sqlDate));
+            prepare.setString(5, dateOfHire_field_securityguards.getText());
             prepare.setString(6,(String) gender_box_securityguards.getSelectionModel().getSelectedItem());
             prepare.setString(7, phoneNo_field_securityguards.getText());
-            prepare.setString(8, history_field_securityguards.getText());
-            prepare.setString(9, basicSalary_field_securityguards.getText());
-            prepare.setString(10,shiftWork_field_securityguards.getText());
-            prepare.setString(11,(String)timework_box_securityguards.getSelectionModel().getSelectedItem());
+            prepare.setString(8, shiftWork_field_securityguards.getText());
+            prepare.setString(9, history_field_securityguards.getText());
+            prepare.setString(10,(String)timework_box_securityguards.getSelectionModel().getSelectedItem());
+            prepare.setString(11, basicSalary_field_securityguards.getText());
             prepare.setString(12, totalSalary_field_securityguards.getText());
             
             
@@ -2085,10 +2074,11 @@ public class AdminPanelController implements Initializable{
     }
     
     private String[] timeList = {"Morning 1","Aftenoon 1","Night 2"};
+    List<String> TimeworkList = new ArrayList<>();
     
     public void TimeworkListSecurity(){
         
-        List<String> TimeworkList = new ArrayList<>();
+        
         
         for(String Timedata : timeList){
             TimeworkList.add(Timedata);
@@ -2227,14 +2217,16 @@ public class AdminPanelController implements Initializable{
         firstname_field_securityguards.setText("");
         lastname_field_securityguards.setText("");
         personnelNo_field_securityguards.setText("");
+        dateOfHire_field_securityguards.setText("");
         gender_box_securityguards.getSelectionModel().getSelectedItem();
         phoneNo_field_securityguards.setText("");  
+        shiftWork_field_securityguards.setText("");
         history_field_securityguards.setText("");
         basicSalary_field_securityguards.setText("");
         totalSalary_field_securityguards.setText("");
-        dateOfHire_field_securityguards.setText("");
-        shiftWork_field_securityguards.setText("");
-        timework_box_securityguards.getSelectionModel().getSelectedItem();
+        
+        
+        
         
         
     }
@@ -2244,18 +2236,18 @@ public class AdminPanelController implements Initializable{
         double t1 = 0.02*Integer.parseInt(basicSalary_field_securityguards.getText())*Integer.parseInt(history_field_securityguards.getText());
         
         
-        if(timeList[1].equals("Morning 1")){
+        if(TimeworkList.get(0).equals("Morning 1")){
          double t2 = 0.01*Integer.parseInt(basicSalary_field_securityguards.getText())*Integer.parseInt(shiftWork_field_securityguards.getText())*1;
          totalSalary_field_securityguards.setText(String.valueOf(t1+t2+Integer.parseInt(basicSalary_field_securityguards.getText())));
         }
         
         
-        if(timeList[2].equals("Afternoon 1")){
+        if(TimeworkList.get(1).equals("Afternoon 1")){
          double t2 = 0.01*Integer.parseInt(basicSalary_field_securityguards.getText())*Integer.parseInt(shiftWork_field_securityguards.getText())*1;
          totalSalary_field_securityguards.setText(String.valueOf(t1+t2+Integer.parseInt(basicSalary_field_securityguards.getText())));
         }
         
-        if(timeList[3].equals("Night 2")){
+        if(TimeworkList.get(2).equals("Night 2")){
          double t2 = 0.01*Integer.parseInt(basicSalary_field_securityguards.getText())*Integer.parseInt(shiftWork_field_securityguards.getText())*2;
          totalSalary_field_securityguards.setText(String.valueOf(t1+t2+Integer.parseInt(basicSalary_field_securityguards.getText())));
         }

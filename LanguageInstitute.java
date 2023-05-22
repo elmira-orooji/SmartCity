@@ -3,14 +3,14 @@ public class LanguageInstitute extends Department {
 
     protected int teachers;
 
-    public LanguageInstitute(String department_name, String department_address, int department_code, int department_employees, double hour_work) {
+    public LanguageInstitute(String department_name, String department_address, int department_code, int department_employees, double hour_work, int teachers) {
         super(department_name, department_address, department_code, department_employees, hour_work);
     
         this.teachers = teachers;
         
     }
     
-    public int getSection(){
+    public int getTeachers(){
         return this.teachers;
     }
 

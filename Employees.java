@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Employees extends Person{
 
-    protected Double working_hour;
+    public Double working_hour;
     
     public Employees(int row ,String firstname , String lastname ,int personnelNo ,Date hireDate
         ,String gender,int phoneNo ,double history , double basicSalary,Double working_hour,double totalSalary

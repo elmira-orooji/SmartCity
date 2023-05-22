@@ -54,9 +54,8 @@ public class SmartCityFXMLController implements Initializable {
     
     private Connection connect;
     private PreparedStatement prepare;
-    private PreparedStatement prepareMayor;
     private ResultSet result;
-    private ResultSet resultMayor;
+   
     
     private double x = 0;
     private double y = 0;
@@ -64,7 +63,7 @@ public class SmartCityFXMLController implements Initializable {
     public void adminLogin(){
         
         String sql = "SELECT * FROM admin WHERE username = ? and password = ?";
-        String sqlMayor = "SELECT * FROM mayor WHERE First_name = ? and Last_name = ?";
+        
         
         connect = (Connection) Database.connectDb();
         
@@ -73,7 +72,7 @@ public class SmartCityFXMLController implements Initializable {
             handler = new FileHandler("logger.log", true);
 
             prepare = connect.prepareStatement(sql);
-            prepare = connect.prepareStatement(sqlMayor);
+            
             
             prepare.setString(1,usernameBtn.getText());
             prepare.setString(2,passwordBtn.getText());
@@ -100,7 +99,7 @@ public class SmartCityFXMLController implements Initializable {
                 alert.showAndWait();
                 
                 loginBtn.getScene().getWindow().hide();
-                Parent root = FXMLLoader.load(getClass().getResource("AdminPanel.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("/View/AdminPanel.fxml"));
                 Stage stage = new Stage();
                 Scene scene = new Scene(root);
                 
@@ -117,33 +116,18 @@ public class SmartCityFXMLController implements Initializable {
                 stage.setScene(scene);
                 stage.show();
                 }
-                
-                if(resultMayor.next()){
-                    
-                AdminPanelController.mayor.get(1).equals(usernameBtn.getText()) ;
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("");
-                alert.setHeaderText(null);
-                alert.setContentText("You entered successfully ^-^ "); 
-                alert.showAndWait();
-                
-                loginBtn.getScene().getWindow().hide();
-                Parent root1 = FXMLLoader.load(getClass().getResource("MayorPannel.fxml"));
-                
-                
-                
-                
-                }else{
+            
+                else{
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Your username or password is not correct");
                 alert.setHeaderText(null);
                 alert.setContentText("Incorrect Username or Password");
                 alert.showAndWait();
-                }}
-                
+                }
             
-           
                 
+            }
+             
           
         }catch(Exception e) {
             
@@ -152,6 +136,89 @@ public class SmartCityFXMLController implements Initializable {
             logger.warning("warning message"+e);
             e.printStackTrace();
         }
+    }
+    
+    private Connection connectMayor;
+    private PreparedStatement prepareMayor;
+    private ResultSet resultMayor;
+    
+    public void loginMayor(){
+        
+       
+        String sqlMayor = "SELECT * FROM mayor WHERE First_name = ? and Last_name = ?";
+        
+        connectMayor = (Connection) Database.connectDb();
+        
+        try{
+            
+            handler = new FileHandler("logger.log", true);
+
+            prepareMayor = connectMayor.prepareStatement(sqlMayor);
+            
+            
+            prepareMayor.setString(1,usernameBtn.getText());
+            prepareMayor.setString(2,passwordBtn.getText());
+            
+            resultMayor = prepareMayor.executeQuery();
+            
+            
+            if(usernameBtn.getText().isEmpty() || passwordBtn.getText().isEmpty())
+            {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Error!");
+                alert.setHeaderText(null);
+                alert.setContentText("Please fill the blanks");
+                alert.showAndWait();
+                
+            }else{
+                if(resultMayor.next()){
+                    
+                getData.username = usernameBtn.getText();
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("");
+                alert.setHeaderText(null);
+                alert.setContentText("You entered successfully ^-^ "); 
+                alert.showAndWait();
+                
+                loginBtn.getScene().getWindow().hide();
+                Parent root = FXMLLoader.load(getClass().getResource("/View/MayorPannel.fxml"));
+                Stage stage = new Stage();
+                Scene scene = new Scene(root);
+                
+                root.setOnMousePressed((MouseEvent event) ->{
+                    x = event.getSceneX();
+                    y = event.getSceneY();
+                });
+                
+                root.setOnMouseDragged((MouseEvent event) ->{
+                    stage.setX(event.getScreenX() - x);
+                    stage.setY(event.getScreenY() - y);
+                });
+                stage.initStyle(StageStyle.TRANSPARENT);
+                stage.setScene(scene);
+                stage.show();
+                }
+            
+                else{
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Your username or password is not correct");
+                alert.setHeaderText(null);
+                alert.setContentText("Incorrect Username or Password");
+                alert.showAndWait();
+                }
+            
+                
+            }
+             
+          
+        }catch(Exception e) {
+            
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message"+e);
+            e.printStackTrace();
+        }
+        
     }
     public void close(){
         System.exit(0);

@@ -1,4 +1,5 @@
 
+
 public abstract class Department {
 
     protected String department_name;
@@ -25,21 +26,6 @@ public abstract class Department {
     public abstract int getDepartment_employees();
     public abstract double getHour_work();
 
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     

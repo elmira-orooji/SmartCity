@@ -1,4 +1,5 @@
 
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -17,6 +18,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -358,8 +361,13 @@ public class MayorPannelController implements Initializable {
 
     @FXML
     private TableColumn<?, ?> Language_col_employees;
-
     
+    
+
+    FileHandler handler;
+    
+    
+
     @FXML
     private void close(ActionEvent event) {
         System.exit(0);
@@ -383,6 +391,9 @@ public class MayorPannelController implements Initializable {
         alert.setContentText("Are you sure you want to sign out?");
         Optional<ButtonType> option = alert.showAndWait();
         try {
+            
+             handler = new FileHandler("logger.log", true);
+             
             if (option.get().equals(ButtonType.OK)) {
 
                 signOut_mayor.getScene().getWindow().hide();
@@ -412,7 +423,12 @@ public class MayorPannelController implements Initializable {
                 stage.show();
             }
         } catch (Exception e) {
+            
             e.printStackTrace();
+            
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message"+e);
         }
     }
     
@@ -478,6 +494,8 @@ public class MayorPannelController implements Initializable {
         
         try{
             
+            handler = new FileHandler("logger.log", true);
+            
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
             Library LibraryD;
@@ -495,7 +513,12 @@ public class MayorPannelController implements Initializable {
                 listData.add(LibraryD);
             }
             
-        }catch(Exception e){ e.printStackTrace();}
+        }catch(Exception e){ e.printStackTrace();
+             Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+             logger.addHandler(handler);
+             logger.warning("warning message"+e);
+        
+        }
         
         return listData;
     }
@@ -506,7 +529,7 @@ public class MayorPannelController implements Initializable {
         
         LibraryList = LibraryListData();
         Library_col_name.setCellValueFactory(new PropertyValueFactory<>("department_name"));
-        Library_col_address.setCellValueFactory(new PropertyValueFactory<>("department_adress"));
+        Library_col_address.setCellValueFactory(new PropertyValueFactory<>("department_address"));
         Library_col_code.setCellValueFactory(new PropertyValueFactory<>("department_code"));
         Library_col_employees.setCellValueFactory(new PropertyValueFactory<>("department_employees"));
         Library_col_workhours.setCellValueFactory(new PropertyValueFactory<>("hour_work"));
@@ -578,7 +601,14 @@ public class MayorPannelController implements Initializable {
             ShowLibraryListData();
             LibraryClear();
             }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){e.printStackTrace();
+        Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+        logger.addHandler(handler);
+        logger.warning("warning message"+e);
+        
+        
+        
+        }
     }
     
      public void LibraryUpdate(){
@@ -588,11 +618,14 @@ public class MayorPannelController implements Initializable {
                 +"' ,department_code = '"+Library_field_code.getText()+"' ,department_employees = '"+
                 Library_field_employees.getText()+"' ,hour_work = '"+
                 Library_field_work_hours.getText()+"' ,library_num_of_membership = '"+Library_field_membership.getText()
-                +"' WHERE department_name =  = '"+Library_field_name.getText()+"'"; 
+                +"' WHERE department_name = '"+Library_field_name.getText()+"'"; 
         
         connect = Database.connectDb();
         
         try{
+            
+            handler = new FileHandler("logger.log", true);
+            
             if(Library_field_address.getText().isEmpty()||Library_field_code.getText().isEmpty()
                     ||Library_field_employees.getText().isEmpty()||Library_field_work_hours.getText().isEmpty()
                     ||Library_field_membership.getText().isEmpty()
@@ -626,7 +659,12 @@ public class MayorPannelController implements Initializable {
                 
                 
             }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){e.printStackTrace();
+        
+        Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+        logger.addHandler(handler);
+        logger.warning("warning message"+e);
+        }
                 
     }
      
@@ -639,6 +677,8 @@ public class MayorPannelController implements Initializable {
         connect = Database.connectDb();
         
         try{
+            
+            handler = new FileHandler("logger.log", true);
             
              if(Library_field_name.getText().isEmpty()||Library_field_address.getText().isEmpty()
                     ||Library_field_code.getText().isEmpty()||Library_field_employees.getText().isEmpty()
@@ -671,7 +711,11 @@ public class MayorPannelController implements Initializable {
                     LibraryClear();
                 }
              }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){e.printStackTrace();
+        Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+        logger.addHandler(handler);
+        logger.warning("warning message"+e);
+        }
     }
     
       
@@ -715,7 +759,12 @@ public class MayorPannelController implements Initializable {
                 listData.add(AirportD);
             }
             
-        }catch(Exception e){ e.printStackTrace();}
+        }catch(Exception e){ e.printStackTrace();
+        Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+        logger.addHandler(handler);
+        logger.warning("warning message"+e);
+        
+        }
         
         return listData;
     }
@@ -726,7 +775,7 @@ public class MayorPannelController implements Initializable {
         
         AirportList = AirportListData();
         Airport_col_name.setCellValueFactory(new PropertyValueFactory<>("department_name"));
-        Airport_col_address.setCellValueFactory(new PropertyValueFactory<>("department_adress"));
+        Airport_col_address.setCellValueFactory(new PropertyValueFactory<>("department_address"));
         Airport_col_code.setCellValueFactory(new PropertyValueFactory<>("department_code"));
         Airport_col_employees.setCellValueFactory(new PropertyValueFactory<>("department_employees"));
         Airport_col_workhours.setCellValueFactory(new PropertyValueFactory<>("hour_work"));
@@ -765,6 +814,9 @@ public class MayorPannelController implements Initializable {
         
         try{
             
+            handler = new FileHandler("logger.log", true);
+            
+            
             if(Airport_field__name.getText().isEmpty()||Airport_field_address.getText().isEmpty()
                     ||Airport_field_code.getText().isEmpty()||Airport_field_employees.getText().isEmpty()
                     ||Airport_field_work_hour.getText().isEmpty()
@@ -798,7 +850,11 @@ public class MayorPannelController implements Initializable {
             ShowAirportListData();
             AirportClear();
             }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){e.printStackTrace();
+         Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+         logger.addHandler(handler);
+         logger.warning("warning message"+e);
+        }
     }
     
      public void AirportUpdate(){
@@ -808,11 +864,13 @@ public class MayorPannelController implements Initializable {
                 +"' ,department_code = '"+Airport_field_code.getText()+"' ,department_employees = '"+
                 Airport_field_employees.getText()+"' ,hour_work = '"+
                 Airport_field_work_hour.getText()+"' ,airstrip = '"+Airport_field_airstrip.getText()
-                +"' WHERE department_name =  = '"+Airport_field__name.getText()+"'"; 
+                +"' WHERE department_name = '"+Airport_field__name.getText()+"'"; 
         
         connect = Database.connectDb();
         
         try{
+            handler = new FileHandler("logger.log", true);
+            
             if(Airport_field_address.getText().isEmpty()||Airport_field_code.getText().isEmpty()
                     ||Airport_field_employees.getText().isEmpty()||Airport_field_work_hour.getText().isEmpty()
                     ||Airport_field_airstrip.getText().isEmpty()
@@ -846,7 +904,11 @@ public class MayorPannelController implements Initializable {
                 
                 
             }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){e.printStackTrace();
+        Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+        logger.addHandler(handler);
+        logger.warning("warning message"+e);
+        }
                 
     }
      
@@ -859,6 +921,8 @@ public class MayorPannelController implements Initializable {
         connect = Database.connectDb();
         
         try{
+            
+            handler = new FileHandler("logger.log", true);
             
              if(Airport_field__name.getText().isEmpty()||Airport_field_address.getText().isEmpty()
                     ||Airport_field_code.getText().isEmpty()||Airport_field_employees.getText().isEmpty()
@@ -891,7 +955,12 @@ public class MayorPannelController implements Initializable {
                     AirportClear();
                 }
              }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){e.printStackTrace();
+        Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+        logger.addHandler(handler);
+        logger.warning("warning message"+e);
+        
+        }
     }
     
       
@@ -928,7 +997,7 @@ public class MayorPannelController implements Initializable {
                          result.getInt("department_code"),
                          result.getInt("department_employees"),
                          result.getDouble("hour_work"),
-                         result.getInt("section"));
+                         result.getInt("section_hospital"));
                          
                 
                 
@@ -946,11 +1015,11 @@ public class MayorPannelController implements Initializable {
         
         HospitalList = HospitalListData();
         Hospital_col_name.setCellValueFactory(new PropertyValueFactory<>("department_name"));
-        Hospital_col_address.setCellValueFactory(new PropertyValueFactory<>("department_adress"));
+        Hospital_col_address.setCellValueFactory(new PropertyValueFactory<>("department_address"));
         Hospital_col_code.setCellValueFactory(new PropertyValueFactory<>("department_code"));
         Hospital_col_employees.setCellValueFactory(new PropertyValueFactory<>("department_employees"));
         Hospital_col_workhours.setCellValueFactory(new PropertyValueFactory<>("hour_work"));
-        Hospital_col_section.setCellValueFactory(new PropertyValueFactory<>("section_hospital"));
+        Hospital_col_section.setCellValueFactory(new PropertyValueFactory<>("section"));
       
         
         Hospital_table.setItems(HospitalList);
@@ -1018,7 +1087,12 @@ public class MayorPannelController implements Initializable {
             ShowHospitalListData();
             HospitalClear();
             }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){e.printStackTrace();
+        Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+        logger.addHandler(handler);
+        logger.warning("warning message"+e);
+        
+        }
     }
     
      public void HospitalUpdate(){
@@ -1033,6 +1107,9 @@ public class MayorPannelController implements Initializable {
         connect = Database.connectDb();
         
         try{
+            
+            handler = new FileHandler("logger.log", true);
+            
             if(Hospital_field_address.getText().isEmpty()||Hospital_field_code.getText().isEmpty()
                     ||Hospital_field_employees.getText().isEmpty()||Hospital_field_work_hour.getText().isEmpty()
                     ||Hospital_field_section.getText().isEmpty()||Hospital_field_name.getText().isEmpty()){
@@ -1065,7 +1142,12 @@ public class MayorPannelController implements Initializable {
                 
                 
             }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){e.printStackTrace();
+        Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+        logger.addHandler(handler);
+        logger.warning("warning message"+e);
+        
+        }
                 
     }
      
@@ -1078,6 +1160,7 @@ public class MayorPannelController implements Initializable {
         connect = Database.connectDb();
         
         try{
+                handler = new FileHandler("logger.log", true);
             
              if(Hospital_field_name.getText().isEmpty()||Hospital_field_address.getText().isEmpty()
                     ||Hospital_field_code.getText().isEmpty()||Hospital_field_employees.getText().isEmpty()
@@ -1110,7 +1193,12 @@ public class MayorPannelController implements Initializable {
                     HospitalClear();
                 }
              }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){e.printStackTrace();
+          Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+          logger.addHandler(handler);
+          logger.warning("warning message"+e);
+        
+        }
     }
     
       
@@ -1137,24 +1225,31 @@ public class MayorPannelController implements Initializable {
         
         try{
             
+            handler = new FileHandler("logger.log", true);
+            
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
             Univeristy UniversityD;
             
             while(result.next()){
-                UniversityD = new Univeristy(result.getString("department_name"), 
-                         result.getString("department_adress"),
-                         result.getInt("department_code"),
-                         result.getInt("department_employees"),
-                         result.getDouble("hour_work"),
-                         result.getInt("faculties"));
+                UniversityD = new Univeristy(result.getString("uni_name"), 
+                         result.getString("uni_address"),
+                         result.getInt("uni_code"),
+                         result.getInt("uni_employees"),
+                         result.getDouble("uni_hourwork"),
+                         result.getInt("uni_faculties"));
                          
                 
                 
                 listData.add(UniversityD);
             }
             
-        }catch(Exception e){ e.printStackTrace();}
+        }catch(Exception e){ e.printStackTrace();
+        Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+        logger.addHandler(handler);
+        logger.warning("warning message"+e);
+        
+        }
         
         return listData;
     }
@@ -1164,15 +1259,15 @@ public class MayorPannelController implements Initializable {
     public void ShowUniversityListData(){
         
         UniversityList = UniversityListData();
-        Hospital_col_name.setCellValueFactory(new PropertyValueFactory<>("department_name"));
-        Hospital_col_address.setCellValueFactory(new PropertyValueFactory<>("department_adress"));
-        Hospital_col_code.setCellValueFactory(new PropertyValueFactory<>("department_code"));
-        Hospital_col_employees.setCellValueFactory(new PropertyValueFactory<>("department_employees"));
-        Hospital_col_workhours.setCellValueFactory(new PropertyValueFactory<>("hour_work"));
-        Hospital_col_section.setCellValueFactory(new PropertyValueFactory<>("section_hospital"));
+        University_col_name.setCellValueFactory(new PropertyValueFactory<>("department_name"));
+        University_col_address.setCellValueFactory(new PropertyValueFactory<>("department_address"));
+        University_col_code.setCellValueFactory(new PropertyValueFactory<>("department_code"));
+        University_col_employees.setCellValueFactory(new PropertyValueFactory<>("department_employees"));
+        University_col_workhours.setCellValueFactory(new PropertyValueFactory<>("hour_work"));
+        University_col_faculties.setCellValueFactory(new PropertyValueFactory<>("faculties"));
       
         
-        Hospital_table.setItems(HospitalList);
+        University_table.setItems(UniversityList);
 
 
     }
@@ -1184,7 +1279,7 @@ public class MayorPannelController implements Initializable {
         
         if((n -1)< -1){return;}
         
-        University_field_name.setText(String.valueOf(university));
+        University_field_name.setText(String.valueOf(university.getDepartment_name()));
         University_field_address.setText(university.getDepartment_address());
         University_field_code.setText(String.valueOf(university.getDepartment_code()));
         University_field_employees.setText(String.valueOf(university.getDepartment_employees()));
@@ -1197,7 +1292,7 @@ public class MayorPannelController implements Initializable {
        
         
         String sql  = "INSERT INTO uni "
-                + "(department_name,department_adress,department_code,department_employees,hour_work,uni_faculties)"
+                + "(uni_name,uni_address,uni_code,uni_employees,uni_hourwork,uni_faculties)"
                 + "VALUES(?,?,?,?,?,?)";
         
         connect = Database.connectDb();
@@ -1237,7 +1332,13 @@ public class MayorPannelController implements Initializable {
             ShowUniversityListData();
             UniversityClear();
             }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){
+            e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message"+e);
+        
+        }
     }
     
      public void UniversityUpdate(){
@@ -1278,25 +1379,34 @@ public class MayorPannelController implements Initializable {
                     alert1.setHeaderText(null);
                     alert1.setContentText("Updated Successfully ^.^");
                     alert1.showAndWait();
-                    ShowHospitalListData();
-                    HospitalClear();
+                    ShowUniversityListData();
+                    UniversityClear();
                 }
                 
                 
             }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){
+            
+            e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message"+e);
+        
+        }
                 
     }
      
      
       public void UniversityDelete(){
         
-        String sql = "DELETE FROM uni WHERE department_name = '"
-                +Hospital_field_name.getText()+"'";
+        String sql = "DELETE FROM uni WHERE department_code = '"
+                +University_field_code.getText()+"'";
         
         connect = Database.connectDb();
         
         try{
+            
+            handler = new FileHandler("logger.log", true);
             
              if(University_field_name.getText().isEmpty()||University_field_address.getText().isEmpty()
                     ||University_field_code.getText().isEmpty()||University_field_employees.getText().isEmpty()
@@ -1329,7 +1439,12 @@ public class MayorPannelController implements Initializable {
                     UniversityClear();
                 }
              }
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){
+            e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message");
+        }
     }
     
       
@@ -1345,6 +1460,261 @@ public class MayorPannelController implements Initializable {
     }  
     
     
+    /* Language Part */
+    
+    
+     public ObservableList<LanguageInstitute> LanguageListData(){
+        
+        ObservableList<LanguageInstitute> listData = FXCollections.observableArrayList();
+        String sql = "SELECT * FROM language";
+        
+        connect = Database.connectDb();
+        
+        try{
+            
+            handler = new FileHandler("logger.log", true);
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+            LanguageInstitute LanguageD;
+            
+            while(result.next()){
+                LanguageD = new LanguageInstitute(result.getString("department_name"), 
+                         result.getString("department_adress"),
+                         result.getInt("department_code"),
+                         result.getInt("department_employees"),
+                         result.getDouble("hour_work"),
+                         result.getInt("teachers"));
+                         
+                
+                
+                listData.add(LanguageD);
+            }
+            
+        }catch(Exception e){ 
+            e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message"+e);
+        
+        }
+        
+        return listData;
+    }
+    
+    private ObservableList<LanguageInstitute> LanguageList;
+    
+    public void ShowLanguageListData(){
+        
+        LanguageList = LanguageListData();
+        Language_col_name.setCellValueFactory(new PropertyValueFactory<>("department_name"));
+        Language_col_address.setCellValueFactory(new PropertyValueFactory<>("department_address"));
+        Language_col_code.setCellValueFactory(new PropertyValueFactory<>("department_code"));
+        Language_col_employees.setCellValueFactory(new PropertyValueFactory<>("department_employees"));
+        Language_col_workhours.setCellValueFactory(new PropertyValueFactory<>("hour_work"));
+        Language_col_teachers.setCellValueFactory(new PropertyValueFactory<>("teachers"));
+      
+        
+        Language_table.setItems(LanguageList);
+
+
+    }
+    
+    public void LanguageSelect(){
+        
+        LanguageInstitute language = Language_table.getSelectionModel().getSelectedItem();
+        int n = Language_table.getSelectionModel().getSelectedIndex();
+        
+        if((n -1)< -1){return;}
+        
+        Language_field_name.setText(String.valueOf(language.getDepartment_name()));
+        Language_field_address.setText(language.getDepartment_address());
+        Language_field_code.setText(String.valueOf(language.getDepartment_code()));
+        Language_field_employees.setText(String.valueOf(language.getDepartment_employees()));
+        Language_field_work_hour.setText(String.valueOf(language.getHour_work()));
+        Language_field_teachers.setText(String.valueOf(language.getTeachers()));
+        
+    }
+    
+    public void LanguageAdd(){
+       
+        
+        String sql  = "INSERT INTO language "
+                + "(department_name,department_adress,department_code,department_employees,hour_work,teachers_Language)"
+                + "VALUES(?,?,?,?,?,?)";
+        
+        connect = Database.connectDb();
+        
+        try{
+            
+            handler = new FileHandler("logger.log", true);
+            
+            if(Language_field_name.getText().isEmpty()||Language_field_address.getText().isEmpty()
+                    ||Language_field_code.getText().isEmpty()||Language_field_employees.getText().isEmpty()
+                    ||Language_field_work_hour.getText().isEmpty()
+                    ||Language_field_teachers.getText().isEmpty()){
+                
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Error!");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all the blanks");
+            alert.showAndWait();
+            
+            }else{
+                
+            
+            prepare = connect.prepareStatement(sql);
+            prepare.setString(1, Language_field_name.getText());
+            prepare.setString(2, Language_field_address.getText());
+            prepare.setString(3, Language_field_code.getText());
+            prepare.setString(4, Language_field_employees.getText());
+            prepare.setString(5, Language_field_work_hour.getText());
+            prepare.setString(6, Language_field_teachers.getText());
+            
+            
+            prepare.executeUpdate();
+            Alert alert1 = new Alert(AlertType.INFORMATION);
+            alert1.setTitle("Information");
+            alert1.setHeaderText("");
+            alert1.setContentText("Added successfully");
+            alert1.showAndWait();
+            
+            ShowLanguageListData();
+            LanguageClear();
+            }
+        }catch(Exception e){
+            
+            e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message"+e);
+        }
+    }
+    
+     public void LanguageUpdate(){
+        
+        
+        String sql = "UPDATE language department_adress = '"+Language_field_address.getText()
+                +"' ,department_code = '"+Language_field_code.getText()+"' ,department_employees = '"+
+                Language_field_employees.getText()+"' ,hour_work = '"+
+                Language_field_work_hour.getText()+"' ,teachers_Language  = '"+Language_field_teachers.getText()
+                +"' WHERE department_name = '"+Language_field_name.getText()+"'"; 
+        
+        connect = Database.connectDb();
+        
+        try{
+            
+             handler = new FileHandler("logger.log", true);
+             
+            if(Language_field_address.getText().isEmpty()||Language_field_code.getText().isEmpty()
+                    ||Language_field_employees.getText().isEmpty()||Language_field_work_hour.getText().isEmpty()
+                    ||Language_field_teachers.getText().isEmpty()||Language_field_name.getText().isEmpty()){
+                
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Error!");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all the blanks");
+            alert.showAndWait();
+            }else{
+                Alert alert = new Alert(AlertType.CONFIRMATION); 
+                alert.setTitle("Confimation ^.^");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure do you want update Language Institute  "+
+                                      Language_field_name.getText()+"?");
+                Optional<ButtonType> option = alert.showAndWait();
+                
+                if(option.get().equals(ButtonType.OK)){
+                    statement = connect.createStatement();
+                    statement.executeUpdate(sql);
+                    
+                    Alert alert1 = new Alert(AlertType.INFORMATION); 
+                    alert1.setTitle("INFORMATION ^-^");
+                    alert1.setHeaderText(null);
+                    alert1.setContentText("Updated Successfully ^.^");
+                    alert1.showAndWait();
+                    ShowLanguageListData();
+                    LanguageClear();
+                }
+                
+                
+            }
+        }catch(Exception e){
+            
+            e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message"+e);
+        
+        }
+                
+    }
+     
+     
+      public void LanguageDelete(){
+        
+        String sql = "DELETE FROM language WHERE department_code = '"
+                +Language_field_code.getText()+"'";
+        
+        connect = Database.connectDb();
+        
+        try{
+            
+               handler = new FileHandler("logger.log", true);
+
+             if(Language_field_name.getText().isEmpty()||Language_field_address.getText().isEmpty()
+                    ||Language_field_code.getText().isEmpty()|| Language_field_employees.getText().isEmpty()
+                    ||Language_field_work_hour.getText().isEmpty()
+                    ||Language_field_teachers.getText().isEmpty()){
+                
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Error!");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all the blanks");
+            alert.showAndWait();
+            }else{
+                Alert alert = new Alert(AlertType.CONFIRMATION); 
+                alert.setTitle("Confimation ^.^");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure do you want delete Language Institute "+
+                                      Language_field_name.getText()+"?");
+                Optional<ButtonType> option = alert.showAndWait();
+                
+                if(option.get().equals(ButtonType.OK)){
+                    statement = connect.createStatement();
+                    statement.executeUpdate(sql);
+                    
+                    Alert alert1 = new Alert(AlertType.INFORMATION); 
+                    alert1.setTitle("INFORMATION ^-^");
+                    alert1.setHeaderText(null);
+                    alert1.setContentText("Deleted Successfully ^.^");
+                    alert1.showAndWait();
+                    ShowLanguageListData();
+                    LanguageClear();
+                }
+             }
+        }catch(Exception e){
+            
+            e.printStackTrace();
+            Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
+            logger.addHandler(handler);
+            logger.warning("warning message"+e);
+        }
+    }
+    
+      
+    public void LanguageClear(){
+        
+        Language_field_name.setText("");
+        Language_field_address.setText("");
+        Language_field_code.setText("");
+        Language_field_employees.setText("");
+        Language_field_work_hour.setText("");  
+        Language_field_teachers.setText("");
+       
+    }  
+    
+    
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -1352,6 +1722,7 @@ public class MayorPannelController implements Initializable {
         ShowAirportListData();
         ShowHospitalListData();
         ShowUniversityListData();
+        ShowLanguageListData();
     }    
     
 }
