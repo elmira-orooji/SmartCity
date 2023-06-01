@@ -11,7 +11,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminPanelController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminPanelController">
    <children>
       <AnchorPane fx:id="skeleton_page" prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -710,9 +710,9 @@
                                                       <TableColumn fx:id="phoneNo_col_securityguards" prefWidth="65.0" text="Phone No." />
                                                       <TableColumn fx:id="shiftWork_col_securityguards" prefWidth="66.0" text="Shift work" />
                                                       <TableColumn fx:id="history_col_securityguards" prefWidth="46.0" text="History" />
-                                                      <TableColumn fx:id="basicSalary_col_securityguards" prefWidth="79.0" text="Basic salary " />
-                                                      <TableColumn fx:id="totalSalary_col_securityguards" prefWidth="72.0" text="Total salary" />
-                                                      <TableColumn fx:id="timework_col_securityguards" prefWidth="64.0" text="Time work" />
+                                                      <TableColumn fx:id="basicSalary_col_securityguards" prefWidth="76.0" text="Basic salary" />
+                                                      <TableColumn fx:id="totalSalary_col_securityguards" prefWidth="74.0" text="Total salary" />
+                                                      <TableColumn fx:id="timework_col_securityguards" prefWidth="65.0" text="Time work" />
                                                   </columns>
                                                 </TableView>
                                              </children>
@@ -747,26 +747,26 @@
                                              </font>
                                           </Label>
                                           <TextField fx:id="dateOfHire_field_securityguards" layoutX="169.0" layoutY="416.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
-                                          <Label layoutX="420.0" layoutY="288.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Phone No. :" textFill="#8528a7">
+                                          <Label layoutX="47.0" layoutY="484.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Phone No. :" textFill="#8528a7">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="shiftWork_field_securityguards" layoutX="575.0" layoutY="317.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
-                                          <Label layoutX="420.0" layoutY="320.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Shift work :" textFill="#8528a7">
+                                          <TextField fx:id="shiftWork_field_securityguards" layoutX="575.0" layoutY="287.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="420.0" layoutY="290.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Shift work :" textFill="#8528a7">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="phoneNumber_field_securityguards" layoutX="575.0" layoutY="285.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <TextField fx:id="phoneNumber_field_securityguards" layoutX="169.0" layoutY="481.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
                                           <Label layoutX="47.0" layoutY="455.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Gender :" textFill="#8528a7">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Label>
                                           <TextField fx:id="basicSalary_field_securityguards" layoutX="575.0" layoutY="385.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
-                                          <TextField fx:id="history_field_securityguards" layoutX="575.0" layoutY="354.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
-                                          <Label layoutX="420.0" layoutY="356.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="History :" textFill="#8528a7">
+                                          <TextField fx:id="history_field_securityguards" layoutX="575.0" layoutY="319.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="420.0" layoutY="321.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="History :" textFill="#8528a7">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
@@ -817,13 +817,13 @@
                                           <FontAwesomeIcon fill="#8528a7" glyphName="DOLLAR" layoutX="694.0" layoutY="444.0" size="1.5em" />
                                           <TextField fx:id="totalSalary_field_securityguards" layoutX="575.0" layoutY="418.0" onMouseClicked="#TotalSalarySecurity" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
                                           <FontAwesomeIcon fill="#8528a7" glyphName="MONEY" layoutX="698.0" layoutY="437.0" size="1.5em" />
-                                          <ComboBox fx:id="timework_box_securityguards" layoutX="169.0" layoutY="484.0" onAction="#TimeworkListSecurity" prefWidth="150.0" promptText="Select" stylesheets="@AdminPanelStyle.css">
+                                          <ComboBox fx:id="timework_box_securityguards" layoutX="576.0" layoutY="351.0" onAction="#TimeworkListSecurity" prefWidth="150.0" promptText="Select" stylesheets="@AdminPanelStyle.css">
                                              <styleClass>
                                                 <String fx:value="borderOfBtn" />
                                                 <String fx:value="background" />
                                              </styleClass>
                                           </ComboBox>
-                                          <Label layoutX="47.0" layoutY="486.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Time work :" textFill="#8528a7">
+                                          <Label layoutX="421.0" layoutY="354.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Time work :" textFill="#8528a7">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>

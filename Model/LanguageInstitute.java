@@ -1,19 +1,22 @@
+package Model;
 
-public class Airport extends Department {
 
-    protected int airstrip;
+import Model.Department;
+
+
+public class LanguageInstitute extends Department {
+
+    protected int Teachers;
+
+    public LanguageInstitute(String department_name, String department_address, int department_code, int department_employees, double hour_work, int Teachers) {
+        super(department_name, department_address, department_code, department_employees, hour_work);
     
-    public Airport(String department_name , String department_address ,int department_code,
-            int department_employees,double hour_work,int airstrip){
-        
-        super(department_name,department_address,department_code,department_employees,hour_work);
-        this.airstrip = airstrip;
-        
+        this.Teachers = Teachers;
         
     }
     
-    public int getAirstrip(){
-        return this.airstrip;
+    public int getTeachers(){
+        return this.Teachers;
     }
 
     @Override
@@ -40,27 +43,6 @@ public class Airport extends Department {
     public double getHour_work() {
         return super.hour_work;
     }
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
 }

@@ -1,31 +1,20 @@
+package Model;
 
 
+
+import Model.Person;
 import java.sql.Date;
 
 
-public class Mayor extends Person  {
+public class Inspectors extends Person {
     
-    protected String mayorUsername;
-    protected String mayorPassword;
     
-    public Mayor(int row ,String firstname , String lastname ,int personnelNo ,Date hireDate
-        ,String gender,int phoneNo ,double history , double basicSalary,double totalSalary
-        
-        ){
+    public Inspectors(int row ,String firstname , String lastname ,int personnelNo ,Date hireDate
+        ,String gender,int phoneNo ,double history , double basicSalary,double totalSalary){
     
     super(row,firstname,lastname,personnelNo,hireDate,phoneNo,gender,history,basicSalary,totalSalary);
-    
-    
 }
- 
-    public String MayorUsername(){
-        return this.mayorUsername;
-    }
-    
-    public String MayorPassword(){
-        return this.mayorPassword;
-    }
-    
+
     @Override
     public int getRow(){
        return super.row;
@@ -76,30 +65,6 @@ public class Mayor extends Person  {
     public double getTotalSalary() {
         return super.totalSalary;
     }
-
-
     
     
-    
-    
-    
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
