@@ -114,6 +114,8 @@ public class SmartCityFXMLController implements Initializable {
             }else{
                 
                 
+                
+                
                 if(result.next()){
                     
                 getData.username = usernameBtn.getText();
@@ -140,45 +142,44 @@ public class SmartCityFXMLController implements Initializable {
                 stage.initStyle(StageStyle.TRANSPARENT);
                 stage.setScene(scene);
                 stage.show();
+                }  else {
+
+
+                    if (resultMayor.next()) {
+
+                        getData.username = usernameBtn.getText();
+                        Alert alert = new Alert(AlertType.INFORMATION);
+                        alert.setTitle("");
+                        alert.setHeaderText(null);
+                        alert.setContentText("You entered successfully ^-^ ");
+                        alert.showAndWait();
+
+                        loginBtn.getScene().getWindow().hide();
+                        Parent root = FXMLLoader.load(getClass().getResource("/View/MayorPannel.fxml"));
+                        Stage stage = new Stage();
+                        Scene scene = new Scene(root);
+
+                        root.setOnMousePressed((MouseEvent event) -> {
+                            x = event.getSceneX();
+                            y = event.getSceneY();
+                        });
+
+                        root.setOnMouseDragged((MouseEvent event) -> {
+                            stage.setX(event.getScreenX() - x);
+                            stage.setY(event.getScreenY() - y);
+                        });
+                        stage.initStyle(StageStyle.TRANSPARENT);
+                        stage.setScene(scene);
+                        stage.show();
+                    } else {
+                        Alert alert = new Alert(AlertType.ERROR);
+                        alert.setTitle("Your username or password is not correct");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Incorrect Username or Password");
+                        alert.showAndWait();
+                    }
                 }
                 
-                if(resultMayor.next()){
-                    
-                getData.username = usernameBtn.getText();
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("");
-                alert.setHeaderText(null);
-                alert.setContentText("You entered successfully ^-^ "); 
-                alert.showAndWait();
-                
-                loginBtn.getScene().getWindow().hide();
-                Parent root = FXMLLoader.load(getClass().getResource("/View/MayorPannel.fxml"));
-                Stage stage = new Stage();
-                Scene scene = new Scene(root);
-                
-                root.setOnMousePressed((MouseEvent event) ->{
-                    x = event.getSceneX();
-                    y = event.getSceneY();
-                });
-                
-                root.setOnMouseDragged((MouseEvent event) ->{
-                    stage.setX(event.getScreenX() - x);
-                    stage.setY(event.getScreenY() - y);
-                });
-                stage.initStyle(StageStyle.TRANSPARENT);
-                stage.setScene(scene);
-                stage.show();
-                }
-            
-            
-                else{
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.setTitle("Your username or password is not correct");
-                alert.setHeaderText(null);
-                alert.setContentText("Incorrect Username or Password");
-                alert.showAndWait();
-                }
-            
                 
             }
              
