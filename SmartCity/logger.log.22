@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-06-01T17:39:24</date>
+  <millis>1685628564207</millis>
+  <sequence>0</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>Controller.MayorPannelController</class>
+  <method>UniversityUpdate</method>
+  <thread>12</thread>
+  <message>warning messagecom.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= 'ahvaz' ,uni_code = '2020' ,uni_employees = '21' ,uni_hourwork = '10.0' ,un...' at line 1</message>
+</record>
+</log>

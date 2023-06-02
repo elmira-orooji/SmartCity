@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-05-22T18:52:06</date>
+  <millis>1684768926364</millis>
+  <sequence>4</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>MayorPannelController</class>
+  <method>LanguageAdd</method>
+  <thread>12</thread>
+  <message>warning messagecom.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect integer value: 'sf' for column `smartcity`.`language`.`department_name` at row 1</message>
+</record>
+<record>
+  <date>2023-05-22T18:52:18</date>
+  <millis>1684768938305</millis>
+  <sequence>5</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>MayorPannelController</class>
+  <method>signOut_mayor</method>
+  <thread>12</thread>
+  <message>warning messagejava.lang.NullPointerException: Location is required.</message>
+</record>
+</log>

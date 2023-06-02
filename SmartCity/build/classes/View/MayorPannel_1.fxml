@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MayorPannelController">
+   <children>
+      <AnchorPane fx:id="Skeleton_mayorpannel" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <AnchorPane prefHeight="600.0" prefWidth="281.0" styleClass="left-form" stylesheets="@AdminPanelStyle.css">
+               <children>
+                  <FontAwesomeIcon fill="#eeeeee" glyphName="USER" layoutX="103.0" layoutY="144.0" size="8em" text="" />
+                  <Line endX="100.0" layoutX="141.0" layoutY="247.0" startX="-100.0" stroke="#eeeeee" />
+                  <Label layoutX="59.0" layoutY="179.0" text="Hello Mayor" textFill="#fff9f9">
+                     <font>
+                        <Font name="Vivaldi Italic" size="31.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="LibraryBtn" layoutX="52.0" layoutY="274.0" mnemonicParsing="false" onAction="#switchPage" prefHeight="35.0" prefWidth="180.0" styleClass="left-btn" stylesheets="@AdminPanelStyle.css" text="Library">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="#ab329f" glyphName="BOOK" size="1.5em" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="AirportBtn" layoutX="51.0" layoutY="316.0" mnemonicParsing="false" onAction="#switchPage" prefHeight="35.0" prefWidth="180.0" styleClass="left-btn" stylesheets="@AdminPanelStyle.css" text="Airport">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="#ab329f" glyphName="PLANE" size="1.5em" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="HospitalBtn" layoutX="53.0" layoutY="359.0" mnemonicParsing="false" onAction="#switchPage" prefHeight="35.0" prefWidth="180.0" styleClass="left-btn" stylesheets="@AdminPanelStyle.css" text="Hospital">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="#ab329f" glyphName="BED" size="1.5em" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="UniversityBtn" layoutX="53.0" layoutY="403.0" mnemonicParsing="false" onAction="#switchPage" prefHeight="35.0" prefWidth="180.0" styleClass="left-btn" stylesheets="@AdminPanelStyle.css" text="University">
+                     <graphic>
+                        <FontAwesomeIcon fill="#ae33a4" glyphName="UNIVERSITY" size="1.5em" />
+                     </graphic></Button>
+                  <Button fx:id="LanguageBtn" layoutX="53.0" layoutY="446.0" mnemonicParsing="false" onAction="#switchPage" prefHeight="35.0" prefWidth="180.0" styleClass="left-btn" stylesheets="@AdminPanelStyle.css" text="Language Institute">
+                     <graphic>
+                        <FontAwesomeIcon fill="#ab329f" glyphName="HOME" size="1.5em" />
+                     </graphic></Button>
+                  <Button fx:id="signOut_mayor" layoutX="53.0" layoutY="542.0" mnemonicParsing="false" onAction="#signOut_mayor" prefHeight="35.0" prefWidth="180.0" styleClass="left-btn" stylesheets="@AdminPanelStyle.css" text="Sign out" />
+                  <FontAwesomeIcon fill="#ae33a4" glyphName="SIGN_OUT" layoutX="78.0" layoutY="567.0" size="1.7em" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="278.0" prefHeight="600.0" prefWidth="822.0">
+               <children>
+                  <AnchorPane fx:id="Library_page" layoutX="79.0" layoutY="119.0" prefHeight="640.0" prefWidth="823.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <TableView fx:id="Library_table" layoutX="300.0" layoutY="43.0" onMouseClicked="#LibrarySelect" prefHeight="538.0" prefWidth="503.0" stylesheets="@AdminPanelStyle.css">
+                          <columns>
+                            <TableColumn fx:id="Library_col_name" prefWidth="58.0" text="Name" />
+                            <TableColumn fx:id="Library_col_address" prefWidth="72.0" text="Address" />
+                              <TableColumn fx:id="Library_col_code" prefWidth="67.0" text="Code" />
+                              <TableColumn fx:id="Library_col_employees" prefWidth="117.0" text="Num of employees" />
+                              <TableColumn fx:id="Library_col_workhours" prefWidth="76.0" text="Work hours" />
+                              <TableColumn fx:id="Library_col_membership" prefWidth="112.0" text="Membership num" />
+                          </columns>
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="borderOfBtn" />
+                           </styleClass>
+                        </TableView>
+                        <Label layoutX="14.0" layoutY="43.0" text="Library name :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="Library_field_name" layoutX="144.0" layoutY="43.0" style="-fx-border-color: #b5285e;" />
+                        <TextField fx:id="Library_field_address" layoutX="144.0" layoutY="75.0" style="-fx-border-color: #b5285e;" />
+                        <Label layoutX="14.0" layoutY="75.0" text="Library address :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="Library_field_employees" layoutX="144.0" layoutY="140.0" style="-fx-border-color: #b5285e;" />
+                        <TextField fx:id="Library_field_code" layoutX="144.0" layoutY="108.0" style="-fx-border-color: #b5285e;" />
+                        <Label layoutX="14.0" layoutY="140.0" text="Library employees :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="108.0" text="Library code :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="Library_field_work_hours" layoutX="144.0" layoutY="173.0" style="-fx-border-color: #b5285e;" />
+                        <TextField fx:id="Library_field_membership" layoutX="144.0" layoutY="205.0" style="-fx-border-color: #b5285e;" />
+                        <Label layoutX="14.0" layoutY="205.0" text="Library membership :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="173.0" text="Library work hours :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="AddBtn_Library" layoutX="53.0" layoutY="284.0" mnemonicParsing="false" onAction="#LibraryAdd" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="  Add" />
+                        <Button fx:id="UpdateBtn_Library" layoutX="53.0" layoutY="334.0" mnemonicParsing="false" onAction="#LibraryUpdate" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="    Update" />
+                        <Button fx:id="DeleteBtn_Library" layoutX="53.0" layoutY="391.0" mnemonicParsing="false" onAction="#LibraryDelete" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="    Delete" />
+                        <Button fx:id="ClearBtn_Library" layoutX="53.0" layoutY="441.0" mnemonicParsing="false" onAction="#LibraryClear" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="  Clear" />
+                        <FontAwesomeIcon fill="#b5285e" glyphName="PLUS" layoutX="124.0" layoutY="313.0" size="1.5em" />
+                        <FontAwesomeIcon fill="#b5285e" glyphName="REFRESH" layoutX="123.0" layoutY="361.0" size="1.5em" />
+                        <FontAwesomeIcon fill="#b5285e" glyphName="TRASH" layoutX="126.0" layoutY="416.0" size="1.5em" />
+                        <FontAwesomeIcon fill="#b5285e" glyphName="BAN" layoutX="125.0" layoutY="468.0" size="1.5em" />
+                        <Button layoutX="741.0" layoutY="20.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="62.0" styleClass="close" stylesheets="@AdminPanelStyle.css">
+                           <graphic>
+                              <FontAwesomeIcon fill="#e7238f" glyphName="CLOSE" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button layoutX="682.0" layoutY="20.0" mnemonicParsing="false" onAction="#minimize" prefHeight="25.0" prefWidth="47.0" styleClass="minimize" stylesheets="@AdminPanelStyle.css">
+                           <graphic>
+                              <FontAwesomeIcon fill="#e7238f" glyphName="MINUS" size="1.5em" />
+                           </graphic>
+                        </Button>
+                     </children></AnchorPane>
+                  <AnchorPane fx:id="Airport_page" prefHeight="610.0" prefWidth="823.0" visible="false">
+                     <children>
+                        <TableView fx:id="Airport_table" layoutX="311.0" layoutY="43.0" onMouseClicked="#AirportSelect" prefHeight="538.0" prefWidth="492.0" stylesheets="@AdminPanelStyle.css">
+                           <columns>
+                              <TableColumn fx:id="Airport_col_name" prefWidth="58.0" text="Name" />
+                              <TableColumn fx:id="Airport_col_address" prefWidth="72.0" text="Address" />
+                              <TableColumn fx:id="Airport_col_code" prefWidth="67.0" text="Code" />
+                              <TableColumn fx:id="Airport_col_employees" prefWidth="117.0" text="Num of employees" />
+                              <TableColumn fx:id="Airport_col_workhours" prefWidth="83.0" text="Work hours" />
+                              <TableColumn fx:id="Airport_col_airstrip" prefWidth="105.0" text="Airstrip" />
+                           </columns>
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="borderOfBtn" />
+                           </styleClass>
+                        </TableView>
+                        <Label layoutX="14.0" layoutY="43.0" text="Airport name :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="Airport_field__name" layoutX="144.0" layoutY="43.0" style="-fx-border-color: #b5285e;" />
+                        <TextField fx:id="Airport_field_address" layoutX="144.0" layoutY="75.0" style="-fx-border-color: #b5285e;" />
+                        <Label layoutX="14.0" layoutY="75.0" text="Airport address :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="Airport_field_employees" layoutX="144.0" layoutY="140.0" style="-fx-border-color: #b5285e;" />
+                        <TextField fx:id="Airport_field_code" layoutX="144.0" layoutY="108.0" style="-fx-border-color: #b5285e;" />
+                        <Label layoutX="14.0" layoutY="140.0" text="Airport employees :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="108.0" text="Airport code :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="Airport_field_work_hour" layoutX="144.0" layoutY="173.0" style="-fx-border-color: #b5285e;" />
+                        <TextField fx:id="Airport_field_airstrip" layoutX="144.0" layoutY="205.0" style="-fx-border-color: #b5285e;" />
+                        <Label layoutX="14.0" layoutY="205.0" text="Airport airstrip : " textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="173.0" text="Airport work hours :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="AddBtn_airport" layoutX="59.0" layoutY="283.0" mnemonicParsing="false" onAction="#AirportAdd" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="   Add" />
+                        <Button fx:id="UpdateBtn_airport" layoutX="60.0" layoutY="337.0" mnemonicParsing="false" onAction="#AirportUpdate" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Update">
+                           <graphic>
+                              <FontAwesomeIcon fill="#ee37d0" glyphName="REFRESH" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="DeleteBtn_airport" layoutX="61.0" layoutY="393.0" mnemonicParsing="false" onAction="#AirportDelete" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Delete">
+                           <graphic>
+                              <FontAwesomeIcon fill="#ee37d0" glyphName="TRASH" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="ClearBtn_airport" layoutX="61.0" layoutY="450.0" mnemonicParsing="false" onAction="#AirportClear" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Clear">
+                           <graphic>
+                              <FontAwesomeIcon fill="#ee37d0" glyphName="BAN" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <FontAwesomeIcon fill="#ee37d0" glyphName="PLUS" layoutX="137.0" layoutY="311.0" size="1.5em" />
+                        <Button fx:id="closeBtn_Airport" layoutX="734.0" layoutY="21.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="69.0" styleClass="close" stylesheets="@AdminPanelStyle.css">
+                           <graphic>
+                              <FontAwesomeIcon fill="#e43179" glyphName="CLOSE" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="minimizeBtn_Airport" layoutX="687.0" layoutY="21.0" mnemonicParsing="false" onAction="#minimize" prefHeight="25.0" prefWidth="47.0" styleClass="minimize" stylesheets="@AdminPanelStyle.css">
+                           <graphic>
+                              <FontAwesomeIcon fill="#e43179" glyphName="MINUS" size="1.5em" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="Hospital_page" prefHeight="620.0" prefWidth="823.0" visible="false">
+                     <children>
+                        <TableView fx:id="Hospital_table" layoutX="311.0" layoutY="43.0" onMouseClicked="#HospitalSelect" prefHeight="538.0" prefWidth="492.0" stylesheets="@AdminPanelStyle.css">
+                           <columns>
+                              <TableColumn fx:id="Hospital_col_name" prefWidth="58.0" text="Name" />
+                              <TableColumn fx:id="Hospital_col_address" prefWidth="72.0" text="Address" />
+                              <TableColumn fx:id="Hospital_col_code" prefWidth="67.0" text="Code" />
+                              <TableColumn fx:id="Hospital_col_employees" prefWidth="117.0" text="Num of employees" />
+                              <TableColumn fx:id="Hospital_col_workhours" prefWidth="83.0" text="Work hours" />
+                              <TableColumn fx:id="Hospital_col_section" prefWidth="93.0" text="Section" />
+                           </columns>
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="borderOfBtn" />
+                           </styleClass>
+                        </TableView>
+                        <Label layoutX="14.0" layoutY="43.0" text="Hospital name :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="Hospital_field_name" layoutX="144.0" layoutY="43.0" style="-fx-border-color: #b5285e;" />
+                        <TextField fx:id="Hospital_field_address" layoutX="144.0" layoutY="75.0" style="-fx-border-color: #b5285e;" />
+                        <Label layoutX="14.0" layoutY="75.0" text="Hospital address :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="Hospital_field_employees" layoutX="144.0" layoutY="140.0" style="-fx-border-color: #b5285e;" />
+                        <TextField fx:id="Hospital_field_code" layoutX="144.0" layoutY="108.0" style="-fx-border-color: #b5285e;" />
+                        <Label layoutX="14.0" layoutY="140.0" text="Hospital employees :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="108.0" text="Hospital code :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="Hospital_field_work_hour" layoutX="144.0" layoutY="173.0" style="-fx-border-color: #b5285e;" />
+                        <TextField fx:id="Hospital_field_section" layoutX="144.0" layoutY="205.0" style="-fx-border-color: #b5285e;" />
+                        <Label layoutX="14.0" layoutY="205.0" text="Hospital section : " textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="173.0" text="Hospital work hours :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="AddBtn_hospital" layoutX="59.0" layoutY="283.0" mnemonicParsing="false" onAction="#HospitalAdd" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="   Add" />
+                        <Button fx:id="UpdateBtn_hospital" layoutX="60.0" layoutY="337.0" mnemonicParsing="false" onAction="#HospitalUpdate" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Update">
+                           <graphic>
+                              <FontAwesomeIcon fill="#ee37d0" glyphName="REFRESH" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="DeleteBtn_hospital" layoutX="61.0" layoutY="393.0" mnemonicParsing="false" onAction="#HospitalDelete" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Delete">
+                           <graphic>
+                              <FontAwesomeIcon fill="#ee37d0" glyphName="TRASH" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="ClearBtn_hospital" layoutX="61.0" layoutY="450.0" mnemonicParsing="false" onAction="#HospitalClear" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Clear">
+                           <graphic>
+                              <FontAwesomeIcon fill="#ee37d0" glyphName="BAN" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <FontAwesomeIcon fill="#ee37d0" glyphName="PLUS" layoutX="137.0" layoutY="311.0" size="1.5em" />
+                        <Button fx:id="closeBtn_Hospital" layoutX="734.0" layoutY="14.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="69.0" styleClass="close" stylesheets="@AdminPanelStyle.css">
+                           <graphic>
+                              <FontAwesomeIcon fill="#e43179" glyphName="CLOSE" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="minimizeBtn_Hospital" layoutX="678.0" layoutY="14.0" mnemonicParsing="false" onAction="#minimize" prefHeight="25.0" prefWidth="47.0" styleClass="minimize" stylesheets="@AdminPanelStyle.css">
+                           <graphic>
+                              <FontAwesomeIcon fill="#e43179" glyphName="MINUS" size="1.5em" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="University_page" prefHeight="630.0" prefWidth="833.0" visible="false">
+                     <children>
+                        <TableView fx:id="University_table" layoutX="311.0" layoutY="43.0" onMouseClicked="#UniversitySelect" prefHeight="538.0" prefWidth="492.0" stylesheets="@AdminPanelStyle.css">
+                           <columns>
+                              <TableColumn fx:id="University_col_name" prefWidth="58.0" text="Name" />
+                              <TableColumn fx:id="University_col_address" prefWidth="72.0" text="Address" />
+                              <TableColumn fx:id="University_col_code" prefWidth="67.0" text="Code" />
+                              <TableColumn fx:id="University_col_employees" prefWidth="117.0" text="Num of employees" />
+                              <TableColumn fx:id="University_col_workhours" prefWidth="83.0" text="Work hours" />
+                              <TableColumn fx:id="University_col_faculties" prefWidth="93.0" text="Faculties" />
+                           </columns>
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="borderOfBtn" />
+                           </styleClass>
+                        </TableView>
+                        <Label layoutX="14.0" layoutY="43.0" text="University name :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="University_field_name" layoutX="151.0" layoutY="46.0" style="-fx-border-color: #b5285e;" />
+                        <TextField fx:id="University_field_address" layoutX="151.0" layoutY="78.0" style="-fx-border-color: #b5285e;" />
+                        <Label layoutX="14.0" layoutY="75.0" text="University address :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="University_field_employees" layoutX="151.0" layoutY="143.0" style="-fx-border-color: #b5285e;" />
+                        <TextField fx:id="University_field_code" layoutX="151.0" layoutY="111.0" style="-fx-border-color: #b5285e;" />
+                        <Label layoutX="14.0" layoutY="140.0" text="University  employees :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="108.0" text="University  code :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="University_field_work_hour" layoutX="151.0" layoutY="176.0" style="-fx-border-color: #b5285e;" />
+                        <TextField fx:id="University_field_faculties" layoutX="151.0" layoutY="208.0" style="-fx-border-color: #b5285e;" />
+                        <Label layoutX="14.0" layoutY="205.0" text="University  faculties : " textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="173.0" text="University  work hours :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="AddBtn_university" layoutX="59.0" layoutY="283.0" mnemonicParsing="false" onAction="#UniversityAdd" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="   Add" />
+                        <Button fx:id="UpdateBtn_university" layoutX="60.0" layoutY="337.0" mnemonicParsing="false" onAction="#UniversityUpdate" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Update">
+                           <graphic>
+                              <FontAwesomeIcon fill="#ee37d0" glyphName="REFRESH" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="DeleteBtn_university" layoutX="61.0" layoutY="393.0" mnemonicParsing="false" onAction="#UniversityDelete" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Delete">
+                           <graphic>
+                              <FontAwesomeIcon fill="#ee37d0" glyphName="TRASH" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="ClearBtn_university" layoutX="61.0" layoutY="450.0" mnemonicParsing="false" onAction="#UniversityClear" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Clear">
+                           <graphic>
+                              <FontAwesomeIcon fill="#ee37d0" glyphName="BAN" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <FontAwesomeIcon fill="#ee37d0" glyphName="PLUS" layoutX="137.0" layoutY="311.0" size="1.5em" />
+                        <Button fx:id="closeBtn_University" layoutX="734.0" layoutY="14.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="69.0" styleClass="close" stylesheets="@AdminPanelStyle.css">
+                           <graphic>
+                              <FontAwesomeIcon fill="#e43179" glyphName="CLOSE" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="minimizeBtn_University" layoutX="681.0" layoutY="14.0" mnemonicParsing="false" onAction="#minimize" prefHeight="25.0" prefWidth="47.0" styleClass="minimize" stylesheets="@AdminPanelStyle.css">
+                           <graphic>
+                              <FontAwesomeIcon fill="#e43179" glyphName="MINUS" size="1.5em" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="Language_page" prefHeight="640.0" prefWidth="823.0" visible="false">
+                     <children>
+                        <TableView fx:id="Language_table" layoutX="311.0" layoutY="43.0" onMouseClicked="#LanguageSelect" prefHeight="538.0" prefWidth="492.0" stylesheets="@AdminPanelStyle.css">
+                           <columns>
+                              <TableColumn fx:id="Language_col_name" prefWidth="58.0" text="Name" />
+                              <TableColumn fx:id="Language_col_address" prefWidth="72.0" text="Address" />
+                              <TableColumn fx:id="Language_col_code" prefWidth="67.0" text="Code" />
+                              <TableColumn fx:id="Language_col_employees" prefWidth="117.0" text="Num of employees" />
+                              <TableColumn fx:id="Language_col_workhours" prefWidth="83.0" text="Work hours" />
+                              <TableColumn fx:id="Language_col_teachers" prefWidth="93.0" text="Teachers" />
+                           </columns>
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="borderOfBtn" />
+                           </styleClass>
+                        </TableView>
+                        <Label layoutX="14.0" layoutY="43.0" text="Name :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="Language_field_name" layoutX="151.0" layoutY="46.0" style="-fx-border-color: #b5285e;" />
+                        <TextField fx:id="Language_field_address" layoutX="151.0" layoutY="78.0" style="-fx-border-color: #b5285e;" />
+                        <Label layoutX="14.0" layoutY="75.0" text="Address :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="Language_field_employees" layoutX="151.0" layoutY="143.0" style="-fx-border-color: #b5285e;" />
+                        <TextField fx:id="Language_field_code" layoutX="151.0" layoutY="111.0" style="-fx-border-color: #b5285e;" />
+                        <Label layoutX="14.0" layoutY="140.0" text="Employees :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="15.0" layoutY="111.0" text="Code :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="Language_field_work_hour" layoutX="151.0" layoutY="176.0" style="-fx-border-color: #b5285e;" />
+                        <TextField fx:id="Language_field_teachers" layoutX="151.0" layoutY="208.0" style="-fx-border-color: #b5285e;" />
+                        <Label layoutX="14.0" layoutY="205.0" text="Teachers  : " textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="173.0" text="Work hours :" textFill="#cd1e67">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="AddBtn_Language" layoutX="59.0" layoutY="283.0" mnemonicParsing="false" onAction="#LanguageAdd" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="   Add" />
+                        <Button fx:id="UpdateBtn_Language" layoutX="60.0" layoutY="337.0" mnemonicParsing="false" onAction="#LanguageUpdate" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Update">
+                           <graphic>
+                              <FontAwesomeIcon fill="#ee37d0" glyphName="REFRESH" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="DeleteBtn_Language" layoutX="61.0" layoutY="393.0" mnemonicParsing="false" onAction="#LanguageDelete" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Delete">
+                           <graphic>
+                              <FontAwesomeIcon fill="#ee37d0" glyphName="TRASH" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="ClearBtn_Language" layoutX="61.0" layoutY="450.0" mnemonicParsing="false" onAction="#LanguageClear" prefHeight="42.0" prefWidth="201.0" style="-fx-border-color: #b5285e;" text="Clear">
+                           <graphic>
+                              <FontAwesomeIcon fill="#ee37d0" glyphName="BAN" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <FontAwesomeIcon fill="#ee37d0" glyphName="PLUS" layoutX="137.0" layoutY="311.0" size="1.5em" />
+                        <Button fx:id="closeBtn_Language" layoutX="727.0" layoutY="16.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="69.0" styleClass="close" stylesheets="@AdminPanelStyle.css">
+                           <graphic>
+                              <FontAwesomeIcon fill="#e43179" glyphName="CLOSE" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="minimizeBtn_Language" layoutX="680.0" layoutY="17.0" mnemonicParsing="false" onAction="#minimize" prefHeight="25.0" prefWidth="47.0" styleClass="minimize" stylesheets="@AdminPanelStyle.css">
+                           <graphic>
+                              <FontAwesomeIcon fill="#e43179" glyphName="MINUS" size="1.5em" />
+                           </graphic></Button>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

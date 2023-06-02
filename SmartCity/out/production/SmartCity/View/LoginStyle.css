@@ -1,0 +1,40 @@
+.close{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+.close:hover{
+    -fx-background-color: #FF0000;
+}
+.right-part{
+    -fx-background-color: #ffffff;
+}
+.textField{
+    -fx-background-color: #ffffff;
+    -fx-font-size: 13px;
+    -fx-border-width: 1px;
+    -fx-background-radius: 4px;
+    -fx-font-family: "System";
+    -fx-border-color: #B200ED;
+    
+}
+.textField:focused{
+    -fx-background-color: #ffffff;
+    -fx-border-width: .1px;
+    -fx-border-color: #B200ED;
+}
+.login-btn{
+    -fx-cursor: hand;
+    -fx-background-color: #a629ae;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 13px;
+    -fx-font-family:"System";
+        
+}
+.login-btn:hover{
+    -fx-border-color:#a629ae;
+    -fx-background-color:#a629ae;
+    
+}
+.image{
+    content:url("C:\Users\MARYAM\Desktop\LogInPhotos");
+}
