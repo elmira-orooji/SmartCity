@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SmartCityFXMLController">
+   <children>
+      <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <AnchorPane layoutX="-2.0" layoutY="-2.0" prefHeight="404.0" prefWidth="285.0" styleClass="image" stylesheets="@LoginStyle.css">
+               <children>
+                  <ImageView fitHeight="404.0" fitWidth="305.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Image/SmartCity.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="283.0" prefHeight="404.0" prefWidth="317.0" styleClass="right-part" stylesheets="@LoginStyle.css">
+               <children>
+                  <Label layoutX="33.0" layoutY="14.0" text="Welcome Dear," textFill="#9729c3">
+                     <font>
+                        <Font name="Impact" size="27.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="33.0" layoutY="46.0" text="Login to continue" textFill="#1a689c">
+                     <font>
+                        <Font name="Ebrima" size="13.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIcon fill="#a629ae" glyphName="USERS" layoutX="126.0" layoutY="141.0" size="5em" />
+                  <TextField fx:id="usernameBtn" layoutX="77.0" layoutY="164.0" onAction="#adminLogin" promptText="Username" style="-fx-background-color: #ffffff; -fx-border-color: #B200ED;" styleClass="textField" stylesheets="@LoginStyle.css">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </TextField>
+                  <PasswordField fx:id="passwordBtn" layoutX="77.0" layoutY="202.0" onAction="#adminLogin" onKeyTyped="#passwordBtnKeyTyped" prefHeight="25.0" prefWidth="164.0" promptText="Password" style="-fx-background-color: #ffffff; -fx-border-color: #B200ED;">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </PasswordField>
+                  <FontAwesomeIcon fill="#7b158d" glyphName="USER" layoutX="58.0" layoutY="184.0" size="1.3em" />
+                  <FontAwesomeIcon fill="#7b158d" glyphName="LOCK" layoutX="58.0" layoutY="222.0" size="1.3em" />
+                  <Button fx:id="loginBtn" layoutX="76.0" layoutY="304.0" mnemonicParsing="false" onAction="#adminLogin" prefHeight="32.0" prefWidth="164.0" style="-fx-border-color: #a629ae;" styleClass="login-btn" stylesheets="@LoginStyle.css" text="Login" textFill="#691a97">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="115.0" layoutY="336.0" prefHeight="50.0" prefWidth="102.0" text="Enjoy it!" textFill="#651072">
+                     <font>
+                        <Font name="Vladimir Script" size="27.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="284.0" layoutY="6.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="27.0" styleClass="close" stylesheets="@LoginStyle.css">
+                     <graphic>
+                        <FontAwesomeIcon fx:id="closeBtn" fill="#9c0eae" glyphName="CLOSE" size="1.5em" />
+                     </graphic>
+                  </Button>
+                  <ToggleButton fx:id="toggleButton" layoutX="212.0" layoutY="205.0" mnemonicParsing="false" onAction="#toggleButton" prefHeight="25.0" prefWidth="19.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <FontAwesomeIcon fill="#7b158d" glyphName="EYE" wrappingWidth="12.0" />
+                     </graphic></ToggleButton>
+                  <Label fx:id="shownPassword" layoutX="78.0" layoutY="239.0" prefHeight="17.0" prefWidth="164.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

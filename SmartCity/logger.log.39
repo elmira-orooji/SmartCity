@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-05-24T15:30:10</date>
+  <millis>1684929610328</millis>
+  <sequence>0</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>MayorPannelController</class>
+  <method>AirportUpdate</method>
+  <thread>12</thread>
+  <message>warning messagecom.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= 'ahvaz' ,department_code = '202' ,department_employees = '23' ,hour_work = ...' at line 1</message>
+</record>
+</log>

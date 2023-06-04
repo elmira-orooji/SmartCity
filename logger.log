@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-05-29T09:18:21.213866100Z</date>
+  <millis>1685351901213</millis>
+  <nanos>866100</nanos>
+  <sequence>0</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>Model.Database</class>
+  <method>connectDb</method>
+  <thread>34</thread>
+  <message>warning messagecom.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.</message>
+</record>
+<record>
+  <date>2023-05-29T09:18:21.219820900Z</date>
+  <millis>1685351901219</millis>
+  <nanos>820900</nanos>
+  <sequence>1</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>Controller.SmartCityFXMLController</class>
+  <method>adminLogin</method>
+  <thread>34</thread>
+  <message>warning messagejava.lang.NullPointerException: Cannot invoke "com.mysql.jdbc.Connection.prepareStatement(String)" because "this.connect" is null</message>
+</record>
+<record>
+  <date>2023-05-29T09:18:23.823574Z</date>
+  <millis>1685351903823</millis>
+  <nanos>574000</nanos>
+  <sequence>2</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>Model.Database</class>
+  <method>connectDb</method>
+  <thread>34</thread>
+  <message>warning messagecom.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.</message>
+</record>
+<record>
+  <date>2023-05-29T09:18:23.826556100Z</date>
+  <millis>1685351903826</millis>
+  <nanos>556100</nanos>
+  <sequence>3</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>Controller.SmartCityFXMLController</class>
+  <method>adminLogin</method>
+  <thread>34</thread>
+  <message>warning messagejava.lang.NullPointerException: Cannot invoke "com.mysql.jdbc.Connection.prepareStatement(String)" because "this.connect" is null</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-05-29T09:19:21.844873700Z</date>
+  <millis>1685351961844</millis>
+  <nanos>873700</nanos>
+  <sequence>0</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>Model.Database</class>
+  <method>connectDb</method>
+  <thread>34</thread>
+  <message>warning messagecom.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.</message>
+</record>
+<record>
+  <date>2023-05-29T09:19:21.850911Z</date>
+  <millis>1685351961850</millis>
+  <nanos>911000</nanos>
+  <sequence>1</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>Controller.SmartCityFXMLController</class>
+  <method>adminLogin</method>
+  <thread>34</thread>
+  <message>warning messagejava.lang.NullPointerException: Cannot invoke "com.mysql.jdbc.Connection.prepareStatement(String)" because "this.connect" is null</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-05-29T10:01:35.126703Z</date>
+  <millis>1685354495126</millis>
+  <nanos>703000</nanos>
+  <sequence>0</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>Model.Database</class>
+  <method>connectDb</method>
+  <thread>34</thread>
+  <message>warning messagecom.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown database 'smartcity'</message>
+</record>
+<record>
+  <date>2023-05-29T10:01:35.134687500Z</date>
+  <millis>1685354495134</millis>
+  <nanos>687500</nanos>
+  <sequence>1</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>Controller.SmartCityFXMLController</class>
+  <method>adminLogin</method>
+  <thread>34</thread>
+  <message>warning messagejava.lang.NullPointerException: Cannot invoke "com.mysql.jdbc.Connection.prepareStatement(String)" because "this.connect" is null</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-06-02T12:59:02.993366600Z</date>
+  <millis>1685710742993</millis>
+  <nanos>366600</nanos>
+  <sequence>0</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>Model.Database</class>
+  <method>connectDb</method>
+  <thread>34</thread>
+  <message>warning messagecom.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.</message>
+</record>
+<record>
+  <date>2023-06-02T12:59:03.007365800Z</date>
+  <millis>1685710743007</millis>
+  <nanos>365800</nanos>
+  <sequence>1</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>Model.Database</class>
+  <method>connectDb</method>
+  <thread>34</thread>
+  <message>warning messagecom.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.</message>
+</record>
+<record>
+  <date>2023-06-02T12:59:03.009365800Z</date>
+  <millis>1685710743009</millis>
+  <nanos>365800</nanos>
+  <sequence>2</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>Controller.SmartCityFXMLController</class>
+  <method>adminLogin</method>
+  <thread>34</thread>
+  <message>warning messagejava.lang.NullPointerException: Cannot invoke "com.mysql.jdbc.Connection.prepareStatement(String)" because "this.connect" is null</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-06-02T13:01:20.781554Z</date>
+  <millis>1685710880781</millis>
+  <nanos>554000</nanos>
+  <sequence>0</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>Model.Database</class>
+  <method>connectDb</method>
+  <thread>34</thread>
+  <message>warning messagecom.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.</message>
+</record>
+<record>
+  <date>2023-06-02T13:01:20.792554200Z</date>
+  <millis>1685710880792</millis>
+  <nanos>554200</nanos>
+  <sequence>1</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>Model.Database</class>
+  <method>connectDb</method>
+  <thread>34</thread>
+  <message>warning messagecom.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.</message>
+</record>
+<record>
+  <date>2023-06-02T13:01:20.793554900Z</date>
+  <millis>1685710880793</millis>
+  <nanos>554900</nanos>
+  <sequence>2</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>Controller.SmartCityFXMLController</class>
+  <method>adminLogin</method>
+  <thread>34</thread>
+  <message>warning messagejava.lang.NullPointerException: Cannot invoke "com.mysql.jdbc.Connection.prepareStatement(String)" because "this.connect" is null</message>
+</record>
+<record>
+  <date>2023-06-02T13:01:49.494979900Z</date>
+  <millis>1685710909494</millis>
+  <nanos>979900</nanos>
+  <sequence>3</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>Model.Database</class>
+  <method>connectDb</method>
+  <thread>34</thread>
+  <message>warning messagecom.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.</message>
+</record>
+<record>
+  <date>2023-06-02T13:01:49.498977300Z</date>
+  <millis>1685710909498</millis>
+  <nanos>977300</nanos>
+  <sequence>4</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>Model.Database</class>
+  <method>connectDb</method>
+  <thread>34</thread>
+  <message>warning messagecom.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.</message>
+</record>
+<record>
+  <date>2023-06-02T13:01:49.500984900Z</date>
+  <millis>1685710909500</millis>
+  <nanos>984900</nanos>
+  <sequence>5</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>Controller.SmartCityFXMLController</class>
+  <method>adminLogin</method>
+  <thread>34</thread>
+  <message>warning messagejava.lang.NullPointerException: Cannot invoke "com.mysql.jdbc.Connection.prepareStatement(String)" because "this.connect" is null</message>
+</record>
+<record>
+  <date>2023-06-02T13:01:50.624674400Z</date>
+  <millis>1685710910624</millis>
+  <nanos>674400</nanos>
+  <sequence>6</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>Model.Database</class>
+  <method>connectDb</method>
+  <thread>34</thread>
+  <message>warning messagecom.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.</message>
+</record>
+<record>
+  <date>2023-06-02T13:01:50.635685900Z</date>
+  <millis>1685710910635</millis>
+  <nanos>685900</nanos>
+  <sequence>7</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>Model.Database</class>
+  <method>connectDb</method>
+  <thread>34</thread>
+  <message>warning messagecom.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.</message>
+</record>
+<record>
+  <date>2023-06-02T13:01:50.638879500Z</date>
+  <millis>1685710910638</millis>
+  <nanos>879500</nanos>
+  <sequence>8</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>Controller.SmartCityFXMLController</class>
+  <method>adminLogin</method>
+  <thread>34</thread>
+  <message>warning messagejava.lang.NullPointerException: Cannot invoke "com.mysql.jdbc.Connection.prepareStatement(String)" because "this.connect" is null</message>
+</record>
+</log>

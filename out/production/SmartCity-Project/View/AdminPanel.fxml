@@ -1,0 +1,849 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminPanelController">
+   <children>
+      <AnchorPane fx:id="skeleton_page" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <BorderPane prefHeight="600.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <AnchorPane prefHeight="45.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="39.0" layoutY="-69.0" prefHeight="35.0" prefWidth="1100.0" styleClass="top" stylesheets="@AdminPanelStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <FontAwesomeIcon fill="#f837db" glyphName="HEART" layoutX="14.0" layoutY="27.0" size="1.5em" />
+                              <Label layoutX="39.0" layoutY="14.0" text="This is a smart city">
+                                 <font>
+                                    <Font name="Tw Cen MT Italic" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="close" layoutX="1024.0" layoutY="10.0" mnemonicParsing="false" onAction="#close" prefHeight="26.0" prefWidth="62.0" styleClass="close" stylesheets="@AdminPanelStyle.css" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="#d01384" glyphName="CLOSE" size="1.5em" />
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="minimize" layoutX="986.0" layoutY="2.0" mnemonicParsing="false" onAction="#minimize" prefHeight="22.0" prefWidth="50.0" styleClass="minimize" stylesheets="@AdminPanelStyle.css" AnchorPane.topAnchor="2.0">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="#d01384" glyphName="MINUS" size="1.5em" />
+                                 </graphic>
+                              </Button>
+                           </children></AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </top>
+               <left>
+                  <AnchorPane prefHeight="555.0" prefWidth="212.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane prefHeight="555.0" prefWidth="212.0" styleClass="left-form" stylesheets="@AdminPanelStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label fx:id="welcomeAdmin" alignment="CENTER" contentDisplay="CENTER" layoutX="38.0" layoutY="125.0" text="Welcome admin" textFill="WHITE">
+                                 <font>
+                                    <Font name="Vivaldi Italic" size="25.0" />
+                                 </font>
+                              </Label>
+                              <FontAwesomeIcon fill="#eeeeee" glyphName="USER" layoutX="68.0" layoutY="111.0" size="8em" />
+                              <Line endX="100.0" layoutX="106.0" layoutY="183.0" startX="-100.0" stroke="#fffaff" />
+                              <Button fx:id="mayorBtn" contentDisplay="CENTER" layoutX="16.0" layoutY="206.0" mnemonicParsing="false" onAction="#switchPage" prefHeight="35.0" prefWidth="180.0" styleClass="left-btn" stylesheets="@AdminPanelStyle.css" text=" Mayor ">
+                                 <font>
+                                    <Font name="Times New Roman Italic" size="14.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="deputiesBtn" contentDisplay="CENTER" layoutX="16.0" layoutY="249.0" mnemonicParsing="false" onAction="#switchPage" prefHeight="35.0" prefWidth="180.0" styleClass="left-btn" stylesheets="@AdminPanelStyle.css" text="  Deputies">
+                                 <font>
+                                    <Font name="Times New Roman Italic" size="14.0" />
+                                 </font>
+                              </Button>
+                              <FontAwesomeIcon fill="#b52086" glyphName="USERS" layoutX="58.0" layoutY="310.0" size="1.5em" />
+                              <FontAwesomeIcon fill="#b52086" glyphName="USER" layoutX="54.0" layoutY="229.0" size="1.5em" />
+                              <Button fx:id="inspectorsBtn" contentDisplay="CENTER" layoutX="16.0" layoutY="295.0" mnemonicParsing="false" onAction="#switchPage" prefHeight="35.0" prefWidth="180.0" styleClass="left-btn" stylesheets="@AdminPanelStyle.css" text="    Inspectors">
+                                 <font>
+                                    <Font name="Times New Roman Italic" size="14.0" />
+                                 </font>
+                              </Button>
+                              <FontAwesomeIcon fill="#b52086" glyphName="USERS" layoutX="59.0" layoutY="355.0" size="1.5em" />
+                              <Button fx:id="securityGuardsBtn" contentDisplay="CENTER" layoutX="16.0" layoutY="384.0" mnemonicParsing="false" onAction="#switchPage" prefHeight="35.0" prefWidth="180.0" styleClass="left-btn" stylesheets="@AdminPanelStyle.css" text="            Security guards">
+                                 <font>
+                                    <Font name="Times New Roman Italic" size="14.0" />
+                                 </font>
+                              </Button>
+                              <FontAwesomeIcon fill="#b52086" glyphName="USERS" layoutX="48.0" layoutY="407.0" size="1.5em" />
+                              <Button fx:id="signOut_admin" contentDisplay="CENTER" layoutX="16.0" layoutY="506.0" mnemonicParsing="false" onAction="#signOut_admin" prefHeight="35.0" prefWidth="180.0" styleClass="sign-out" stylesheets="@AdminPanelStyle.css" text="  Sign out" textFill="#111111" />
+                              <Button fx:id="employeesBtn" contentDisplay="CENTER" layoutX="16.0" layoutY="340.0" mnemonicParsing="false" onAction="#switchPage" prefHeight="35.0" prefWidth="180.0" styleClass="left-btn" stylesheets="@AdminPanelStyle.css" text="    Employees">
+                                 <font>
+                                    <Font name="Times New Roman Italic" size="14.0" />
+                                 </font>
+                              </Button>
+                              <FontAwesomeIcon fill="#b52086" glyphName="USERS" layoutX="52.0" layoutY="319.0" size="1.5em" wrappingWidth="19.285715103149414" />
+                              <FontAwesomeIcon fill="#b52086" glyphName="USERS" layoutX="51.0" layoutY="272.0" size="1.5em" wrappingWidth="19.285715103149414" />
+                              <FontAwesomeIcon fill="#b52086" glyphName="USERS" layoutX="49.0" layoutY="363.0" size="1.5em" />
+                              <FontAwesomeIcon fill="#b52086" glyphName="SIGN_OUT" layoutX="50.0" layoutY="532.0" size="2em" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane fx:id="homePage" layoutX="128.0" layoutY="78.0" prefHeight="555.0" prefWidth="888.0" styleClass="minimize" stylesheets="@AdminPanelStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane fx:id="mayorPage" layoutX="14.0" layoutY="20.0" prefHeight="555.0" prefWidth="888.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="528.0" prefWidth="856.0" stylesheets="@AdminPanelStyle.css">
+                                       <children>
+                                          <AnchorPane layoutX="14.0" layoutY="7.0" prefHeight="284.0" prefWidth="835.0" stylesheets="@AdminPanelStyle.css" AnchorPane.bottomAnchor="230.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                                             <styleClass>
+                                                <String fx:value="shadow" />
+                                                <String fx:value="main-main-page" />
+                                             </styleClass>
+                                             <children>
+                                                <TableView fx:id="tableMayor" layoutX="21.0" layoutY="16.0" onMouseClicked="#MayorSelect" prefHeight="252.0" prefWidth="783.0" styleClass="tableDesignTop" stylesheets="@AdminPanelStyle.css">
+                                                  <columns>
+                                                    <TableColumn fx:id="row_col_Mayor" prefWidth="41.0" text="Row" />
+                                                    <TableColumn fx:id="firstname_col_Mayor" prefWidth="66.0" text="First name" />
+                                                      <TableColumn fx:id="lastname_col_Mayor" prefWidth="64.0" text="Last name" />
+                                                      <TableColumn fx:id="personnelNo_col_Mayor" prefWidth="86.0" text="Personnel No." />
+                                                      <TableColumn fx:id="dateOfHire_col_Mayor" prefWidth="75.0" text="Date of hire" />
+                                                      <TableColumn fx:id="gender_col_Mayor" prefWidth="52.0" text="Gender" />
+                                                      <TableColumn fx:id="phoneNo_col_Mayor" prefWidth="69.0" text="Phone No." />
+                                                      <TableColumn fx:id="history_col_Mayor" prefWidth="67.0" text="History" />
+                                                      <TableColumn fx:id="basicSalary_col_Mayor" prefWidth="113.0" text="Basic salary " />
+                                                      <TableColumn fx:id="totalSalary_col_Mayor" prefWidth="148.0" text="Total salary " />
+                                                  </columns>
+                                                </TableView>
+                                             </children>
+                                          </AnchorPane>
+                                          <Label layoutX="38.0" layoutY="312.0" text="Row :" textFill="#8528a7">
+                                             <font>
+                                                <Font name="Tahoma" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="row_field_Mayor" layoutX="157.0" layoutY="308.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <TextField fx:id="firstname_field_Mayor" layoutX="157.0" layoutY="340.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="38.0" layoutY="344.0" text="First name :" textFill="#8528a7">
+                                             <font>
+                                                <Font name="Tahoma" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="personnelNo_field_Mayor" layoutX="157.0" layoutY="405.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <TextField fx:id="lastname_field_Mayor" layoutX="156.0" layoutY="372.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="38.0" layoutY="417.0" text="Personnel No. :" textFill="#8528a7">
+                                             <font>
+                                                <Font name="Tahoma" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="38.0" layoutY="376.0" text="Last name :" textFill="#8528a7">
+                                             <font>
+                                                <Font name="Tahoma" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="history_field_Mayor" layoutX="552.0" layoutY="332.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="395.0" layoutY="334.0" text="History :" textFill="#8528a7">
+                                             <font>
+                                                <Font name="Tahoma" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="dateOfHire_field_Mayor" layoutX="156.0" layoutY="446.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="395.0" layoutY="303.0" text="Phone No. :" textFill="#8528a7">
+                                             <font>
+                                                <Font name="Tahoma" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="38.0" layoutY="484.0" text="Gender :" textFill="#8528a7">
+                                             <font>
+                                                <Font name="Tahoma" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <ComboBox fx:id="gender_box_Mayor" layoutX="157.0" layoutY="480.0" onAction="#GenderListMayor" prefWidth="150.0" promptText="Select" stylesheets="@AdminPanelStyle.css">
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="background" />
+                                             </styleClass></ComboBox>
+                                          <Button fx:id="addBtnMayor" layoutX="717.0" layoutY="473.0" mnemonicParsing="false" onAction="#MayorAdd" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Add">
+                                             <graphic>
+                                                <FontAwesomeIcon fill="#c520aa" glyphName="PLUS" size="1.5em" />
+                                             </graphic>
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="addtableBtn" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button fx:id="updateBtnMayor" layoutX="610.0" layoutY="473.0" mnemonicParsing="false" onAction="#MayorUpdate" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Update">
+                                             <graphic>
+                                                <FontAwesomeIcon fill="#c520aa" glyphName="REFRESH" size="1.5em" />
+                                             </graphic>
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="updatetableBtn" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button fx:id="clearBtnMayor" layoutX="393.0" layoutY="473.0" mnemonicParsing="false" onAction="#MayorClear" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Clear">
+                                             <graphic>
+                                                <FontAwesomeIcon fill="#c520aa" glyphName="BAN" size="1.5em" />
+                                             </graphic>
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="cleartableBtn" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button fx:id="deleteBtnMayor" layoutX="501.0" layoutY="473.0" mnemonicParsing="false" onAction="#MayorDelete" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Delete">
+                                             <graphic>
+                                                <FontAwesomeIcon fill="#c520aa" glyphName="TRASH" size="1.5em" />
+                                             </graphic>
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="deletetableBtn" />
+                                             </styleClass>
+                                          </Button>
+                                          <Label layoutX="38.0" layoutY="450.0" text="Date of hire :" textFill="#8528a7">
+                                             <font>
+                                                <Font name="Tahoma" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="phoneNo_field_Mayor" layoutX="552.0" layoutY="300.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <TextField fx:id="basicSalary_field_Mayor" layoutX="552.0" layoutY="364.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="395.0" layoutY="368.0" text="Basic salary (toman) :" textFill="#8528a7">
+                                             <font>
+                                                <Font name="Tahoma" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="393.0" layoutY="403.0" text="Total salary (toman) :" textFill="#8528a7">
+                                             <font>
+                                                <Font name="Tahoma" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="totalSalary_field_Mayor" layoutX="552.0" layoutY="399.0" onMouseClicked="#TotalSalaryMayor" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <FontAwesomeIcon fill="#8528a7" glyphName="DOLLAR" layoutX="683.0" layoutY="383.0" size="1.5em" />
+                                          <FontAwesomeIcon fill="#8528a7" glyphName="MONEY" layoutX="678.0" layoutY="418.0" size="1.5em" />
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="main-main-page" />
+                                          <String fx:value="shadow" />
+                                          <String fx:value="background" />
+                                       </styleClass>
+                                       <effect>
+                                          <Blend />
+                                       </effect>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="deputiesPage" layoutX="14.0" layoutY="20.0" prefHeight="555.0" prefWidth="888.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="525.0" prefWidth="853.0" stylesheets="@AdminPanelStyle.css">
+                                       <children>
+                                          <AnchorPane layoutX="15.0" layoutY="16.0" prefHeight="266.0" prefWidth="824.0" stylesheets="@AdminPanelStyle.css">
+                                             <styleClass>
+                                                <String fx:value="main-main-page" />
+                                                <String fx:value="shadow" />
+                                             </styleClass>
+                                             <children>
+                                                <TableView fx:id="deputiesTable" layoutX="16.0" layoutY="19.0" onMouseClicked="#DeputiesSelect" prefHeight="230.0" prefWidth="793.0" styleClass="tableDesignTop" stylesheets="@AdminPanelStyle.css">
+                                                  <columns>
+                                                    <TableColumn fx:id="row_col_deputies" prefWidth="51.0" text="Row" />
+                                                    <TableColumn fx:id="firstname_col_deputies" prefWidth="70.0" text="First name" />
+                                                      <TableColumn fx:id="lastname_col_deputies" prefWidth="76.0" text="Last name" />
+                                                      <TableColumn fx:id="personnelNo_col_deputies" prefWidth="101.0" text="Personnel No." />
+                                                      <TableColumn fx:id="dateOfHire_col_deputies" prefWidth="88.0" text="Date of hire" />
+                                                      <TableColumn fx:id="gender_col_deputies" prefWidth="74.0" text="Gender" />
+                                                      <TableColumn fx:id="phoneNo_col_deputies" prefWidth="88.0" text="Phone No." />
+                                                      <TableColumn fx:id="history_col_deputies" prefWidth="69.0" text="History" />
+                                                      <TableColumn fx:id="basicSalary_col_deputies" prefWidth="90.0" text="Basic salary " />
+                                                      <TableColumn fx:id="totalSalary_col_deputies" prefWidth="90.0" text="Total salary " />
+                                                  </columns>
+                                                </TableView>
+                                             </children>
+                                          </AnchorPane>
+                                          <Label layoutX="38.0" layoutY="299.0" text="Row :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="row_field_deputies" layoutX="148.0" layoutY="297.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <TextField fx:id="firstname_field_deputies" layoutX="148.0" layoutY="333.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="38.0" layoutY="335.0" text="First name :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="lastname_field_deputies" layoutX="148.0" layoutY="367.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="38.0" layoutY="369.0" text="Last name :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="personnelNo_field_deputies" layoutX="148.0" layoutY="402.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="38.0" layoutY="404.0" text="Personnel No. :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="418.0" layoutY="296.0" text="Phone No. :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="phoneNo_field_deputies" layoutX="574.0" layoutY="294.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="38.0" layoutY="477.0" text="Gender :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="38.0" layoutY="439.0" text="Date of hire :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="dateOfHire_field_deputies" layoutX="148.0" layoutY="437.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <ComboBox fx:id="gender_box_deputies" layoutX="148.0" layoutY="471.0" onAction="#GenderListDeputies" prefWidth="150.0" promptText="Select" stylesheets="@AdminPanelStyle.css">
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="background" />
+                                             </styleClass></ComboBox>
+                                          <Button fx:id="deleteBtnDeputies" layoutX="524.0" layoutY="467.0" mnemonicParsing="false" onAction="#DeputiesDelete" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Delete">
+                                             <graphic>
+                                                <FontAwesomeIcon fill="#c520aa" glyphName="TRASH" size="1.5em" />
+                                             </graphic>
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="deletetableBtn" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button fx:id="clearBtndeputies" layoutX="416.0" layoutY="467.0" mnemonicParsing="false" onAction="#DeputiesClear" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Clear">
+                                             <graphic>
+                                                <FontAwesomeIcon fx:id="clearBtnDeputies" fill="#c520aa" glyphName="BAN" size="1.5em" />
+                                             </graphic>
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="cleartableBtn" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button fx:id="addBtnDeputies" layoutX="745.0" layoutY="467.0" mnemonicParsing="false" onAction="#DeputiesAdd" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text=" Add">
+                                             <graphic>
+                                                <FontAwesomeIcon fill="#c520aa" glyphName="PLUS" size="1.5em" />
+                                             </graphic>
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="addtableBtn" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button fx:id="updateBtnDeputies" layoutX="637.0" layoutY="467.0" mnemonicParsing="false" onAction="#DeputiesUpdate" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Update">
+                                             <graphic>
+                                                <FontAwesomeIcon fill="#c520aa" glyphName="REFRESH" size="1.5em" />
+                                             </graphic>
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="updatetableBtn" />
+                                             </styleClass>
+                                          </Button>
+                                          <TextField fx:id="history_field_deputies" layoutX="574.0" layoutY="330.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="418.0" layoutY="332.0" text="History :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="418.0" layoutY="366.0" text="Basic salary (toman) :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="basicSalary_field_deputies" layoutX="574.0" layoutY="364.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="418.0" layoutY="401.0" text="Total salary (toman) :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="totalSalary_field_deputies" layoutX="574.0" layoutY="399.0" onMouseClicked="#TotalSalaryDeputies" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <FontAwesomeIcon fill="#8528a7" glyphName="DOLLAR" layoutX="702.0" layoutY="383.0" size="1.5em" />
+                                          <FontAwesomeIcon fill="#8528a7" glyphName="MONEY" layoutX="697.0" layoutY="418.0" size="1.5em" />
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="main-main-page" />
+                                          <String fx:value="shadow" />
+                                          <String fx:value="background" />
+                                       </styleClass>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="inspectorsPage" layoutX="20.0" layoutY="14.0" prefHeight="555.0" prefWidth="888.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane layoutX="18.0" layoutY="19.0" prefHeight="517.0" prefWidth="853.0" stylesheets="@AdminPanelStyle.css">
+                                       <children>
+                                          <AnchorPane layoutX="20.0" layoutY="19.0" prefHeight="263.0" prefWidth="809.0" stylesheets="@AdminPanelStyle.css">
+                                             <styleClass>
+                                                <String fx:value="shadow" />
+                                                <String fx:value="main-main-page" />
+                                             </styleClass>
+                                             <children>
+                                                <TableView fx:id="inspectorsTable" layoutX="24.0" layoutY="19.0" onMouseClicked="#InspectorsSelect" prefHeight="222.0" prefWidth="761.0" styleClass="tableDesignTop" stylesheets="@AdminPanelStyle.css">
+                                                  <columns>
+                                                    <TableColumn fx:id="row_col_inspectors" prefWidth="41.0" text="Row" />
+                                                    <TableColumn fx:id="firstname_col_inspectors" prefWidth="68.0" text="First name" />
+                                                      <TableColumn fx:id="lastname_col_inspectors" prefWidth="72.0" text="Last name" />
+                                                      <TableColumn fx:id="personnelNo_col_inspectors" prefWidth="94.0" text="Personnel No." />
+                                                      <TableColumn fx:id="dateOfHire_col_inspectors" prefWidth="74.0" text="Date of hire" />
+                                                      <TableColumn fx:id="gender_col_inspectors" prefWidth="57.0" text="Gender" />
+                                                      <TableColumn fx:id="phoneNo_col_inspectors" prefWidth="79.0" text="Phone No." />
+                                                      <TableColumn fx:id="history_col_inspectors" prefWidth="58.0" text="History" />
+                                                      <TableColumn fx:id="basicSalary_col_inspectors" prefWidth="119.0" text="Basic salary " />
+                                                      <TableColumn fx:id="totalSalary_col_inspectors" prefWidth="98.0" text="Total salary" />
+                                                  </columns>
+                                                </TableView>
+                                             </children>
+                                          </AnchorPane>
+                                          <Label layoutX="53.0" layoutY="299.0" text="Row :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="row_field_inspectors" layoutX="167.0" layoutY="297.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="53.0" layoutY="330.0" text="First name :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="firstname_field_inspectors" layoutX="167.0" layoutY="328.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="53.0" layoutY="394.0" text="Personnel No. :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="53.0" layoutY="363.0" text="Last name :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="personnelNo_field_inspectors" layoutX="167.0" layoutY="392.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <TextField fx:id="lastname_field_inspectors" layoutX="167.0" layoutY="361.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="409.0" layoutY="298.0" text="Phone No. :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="53.0" layoutY="465.0" text="Gender :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="phoneNo_field_inspectors" layoutX="572.0" layoutY="297.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <TextField fx:id="dateOfHire_field_inspectors" layoutX="167.0" layoutY="429.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="53.0" layoutY="431.0" text="Date of hire :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Button fx:id="addBtnInspectors" layoutX="735.0" layoutY="462.0" mnemonicParsing="false" onAction="#InspectorsAdd" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="    Add">
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="addtableBtn" />
+                                             </styleClass></Button>
+                                          <Button fx:id="updateBtnInspectors" layoutX="629.0" layoutY="462.0" mnemonicParsing="false" onAction="#inspectorsUpdate" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Update">
+                                             <graphic>
+                                                <FontAwesomeIcon fill="#c520aa" glyphName="REFRESH" size="1.5em" />
+                                             </graphic>
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="updatetableBtn" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button fx:id="deletebtnInspectors" layoutX="521.0" layoutY="462.0" mnemonicParsing="false" onAction="#InspectorsDelete" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="  Delete">
+                                             <graphic>
+                                                <FontAwesomeIcon fill="#c520aa" glyphName="TRASH" size="1.5em" />
+                                             </graphic>
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="deletetableBtn" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button fx:id="clearBtnInspectors" layoutX="409.0" layoutY="462.0" mnemonicParsing="false" onAction="#InspectorsClear" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="   Clear">
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="cleartableBtn" />
+                                             </styleClass></Button>
+                                          <ComboBox fx:id="gender_box_inspectors" layoutX="168.0" layoutY="463.0" onAction="#GenderListInspectors" prefWidth="150.0" promptText="Select" stylesheets="@AdminPanelStyle.css">
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="background" />
+                                             </styleClass></ComboBox>
+                                          <TextField fx:id="history_field_inspectors" layoutX="572.0" layoutY="328.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="409.0" layoutY="330.0" text="History :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="409.0" layoutY="363.0" text="Basic salary (toman) :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="basicSalary_field_inspectors" layoutX="572.0" layoutY="360.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="409.0" layoutY="395.0" text="Total salary (toman) :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="totalSalary_field_inspectors" layoutX="572.0" layoutY="392.0" onMouseClicked="#TotalSalaryInspectors" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <FontAwesomeIcon fill="#8528a7" glyphName="DOLLAR" layoutX="702.0" layoutY="381.0" size="1.5em" text="" />
+                                          <FontAwesomeIcon fill="#8528a7" glyphName="MONEY" layoutX="698.0" layoutY="411.0" size="1.5em" />
+                                          <FontAwesomeIcon fill="#c520aa" glyphName="PLUS" layoutX="755.0" layoutY="488.0" size="1.5em" />
+                                          <FontAwesomeIcon fill="#c520aa" glyphName="BAN" layoutX="429.0" layoutY="488.0" size="1.5em" />
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="shadow" />
+                                          <String fx:value="main-main-page" />
+                                          <String fx:value="background" />
+                                       </styleClass>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="employeesPage" layoutX="14.0" layoutY="14.0" prefHeight="555.0" prefWidth="888.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="530.0" prefWidth="861.0" stylesheets="@AdminPanelStyle.css">
+                                       <children>
+                                          <AnchorPane layoutX="13.0" layoutY="12.0" prefHeight="280.0" prefWidth="836.0" stylesheets="@AdminPanelStyle.css">
+                                             <styleClass>
+                                                <String fx:value="shadow" />
+                                                <String fx:value="main-main-page" />
+                                             </styleClass>
+                                             <children>
+                                                <TableView fx:id="employeesTable" layoutX="9.0" layoutY="12.0" onMouseClicked="#EmployeesSelect" prefHeight="255.0" prefWidth="817.0" styleClass="tableDesignTop" stylesheets="@AdminPanelStyle.css">
+                                                  <columns>
+                                                    <TableColumn fx:id="row_col_employees" prefWidth="34.0" text="Row" />
+                                                    <TableColumn fx:id="firstname_col_employees" prefWidth="70.0" text="First name" />
+                                                      <TableColumn fx:id="lastname_col_employees" prefWidth="68.0" text="Last name" />
+                                                      <TableColumn fx:id="personnelNo_col_employees" prefWidth="86.0" text="Personnel No." />
+                                                      <TableColumn fx:id="dateOfHire_col_employees" prefWidth="73.0" text="Date of hire" />
+                                                      <TableColumn fx:id="gender_col_employees" prefWidth="53.0" text="Gender" />
+                                                      <TableColumn fx:id="phoneNo_col_employees" prefWidth="72.0" text="Phone No." />
+                                                      <TableColumn fx:id="history_col_employees" prefWidth="46.0" text="History" />
+                                                      <TableColumn fx:id="basicSalary_col_employees" prefWidth="78.0" text="Basic salary " />
+                                                      <TableColumn fx:id="workingHoursPerWeek_col_employees" prefWidth="144.0" text="Working hours per week" />
+                                                      <TableColumn fx:id="totalSalary_col_employees" prefWidth="91.0" text="Total salary " />
+                                                  </columns>
+                                                </TableView>
+                                             </children>
+                                          </AnchorPane>
+                                          <Label layoutX="34.0" layoutY="308.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Row :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="row_field_employees" layoutX="145.0" layoutY="306.0" stylesheets="@AdminPanelStyle.css">
+                                             <styleClass>
+                                                <String fx:value="textfield" />
+                                                <String fx:value="borderOfBtn" />
+                                             </styleClass></TextField>
+                                          <Label layoutX="34.0" layoutY="340.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="First name :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="firstname_field_employees" layoutX="145.0" layoutY="338.0" stylesheets="@AdminPanelStyle.css">
+                                             <styleClass>
+                                                <String fx:value="textfield" />
+                                                <String fx:value="borderOfBtn" />
+                                             </styleClass></TextField>
+                                          <Label layoutX="34.0" layoutY="403.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Personnel No. :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="personnelNo_field_employees" layoutX="145.0" layoutY="401.0" stylesheets="@AdminPanelStyle.css">
+                                             <styleClass>
+                                                <String fx:value="textfield" />
+                                                <String fx:value="borderOfBtn" />
+                                             </styleClass></TextField>
+                                          <Label layoutX="34.0" layoutY="371.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Last name :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="lastname_field_employees" layoutX="145.0" layoutY="369.0" stylesheets="@AdminPanelStyle.css">
+                                             <styleClass>
+                                                <String fx:value="textfield" />
+                                                <String fx:value="borderOfBtn" />
+                                             </styleClass></TextField>
+                                          <TextField fx:id="dateOfHire_field_employees" layoutX="145.0" layoutY="433.0" stylesheets="@AdminPanelStyle.css">
+                                             <styleClass>
+                                                <String fx:value="textfield" />
+                                                <String fx:value="borderOfBtn" />
+                                             </styleClass></TextField>
+                                          <Label layoutX="34.0" layoutY="435.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Date of hire :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="34.0" layoutY="467.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Gender :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="407.0" layoutY="403.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Working hourse per week :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="history_field_employees" layoutX="600.0" layoutY="335.0" stylesheets="@AdminPanelStyle.css">
+                                             <styleClass>
+                                                <String fx:value="textfield" />
+                                                <String fx:value="borderOfBtn" />
+                                             </styleClass></TextField>
+                                          <Label layoutX="407.0" layoutY="302.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Phone No. :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="workingHoursPerWeek_field_employees" layoutX="600.0" layoutY="401.0" stylesheets="@AdminPanelStyle.css">
+                                             <styleClass>
+                                                <String fx:value="textfield" />
+                                                <String fx:value="borderOfBtn" />
+                                             </styleClass></TextField>
+                                          <Button fx:id="addBtnEmployees" layoutX="738.0" layoutY="467.0" mnemonicParsing="false" onAction="#EmployeesAdd" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Add">
+                                             <graphic>
+                                                <FontAwesomeIcon fill="#c520aa" glyphName="PLUS" size="1.5em" />
+                                             </graphic>
+                                             <styleClass>
+                                                <String fx:value="addtableBtn" />
+                                                <String fx:value="borderOfBtn" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button fx:id="updateBtnEmployees" layoutX="628.0" layoutY="467.0" mnemonicParsing="false" onAction="#employeesUpdate" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Update">
+                                             <graphic>
+                                                <FontAwesomeIcon fill="#c520aa" glyphName="REFRESH" size="1.5em" />
+                                             </graphic>
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="updatetableBtn" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button fx:id="deleteBtnEmployees" layoutX="517.0" layoutY="467.0" mnemonicParsing="false" onAction="#EmployeesDelete" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Delete">
+                                             <graphic>
+                                                <FontAwesomeIcon fill="#c520aa" glyphName="TRASH" size="1.5em" />
+                                             </graphic>
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="deletetableBtn" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button fx:id="clearBtnEmployees" layoutX="407.0" layoutY="467.0" mnemonicParsing="false" onAction="#EmployeesClear" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="Clear">
+                                             <graphic>
+                                                <FontAwesomeIcon fill="#c520aa" glyphName="BAN" size="1.5em" />
+                                             </graphic>
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="cleartableBtn" />
+                                             </styleClass>
+                                          </Button>
+                                          <ComboBox fx:id="gender_box_employees" layoutX="146.0" layoutY="465.0" onAction="#GenderListEmployees" prefWidth="150.0" promptText="Select" stylesheets="@AdminPanelStyle.css">
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="background" />
+                                             </styleClass></ComboBox>
+                                          <TextField fx:id="phoneNo_field_employees" layoutX="600.0" layoutY="302.0" stylesheets="@AdminPanelStyle.css">
+                                             <styleClass>
+                                                <String fx:value="textfield" />
+                                                <String fx:value="borderOfBtn" />
+                                             </styleClass></TextField>
+                                          <TextField fx:id="basicSalary_field_employees" layoutX="600.0" layoutY="369.0" stylesheets="@AdminPanelStyle.css">
+                                             <styleClass>
+                                                <String fx:value="textfield" />
+                                                <String fx:value="borderOfBtn" />
+                                             </styleClass></TextField>
+                                          <Label layoutX="407.0" layoutY="371.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Basic salary (toman) :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="407.0" layoutY="434.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Total salary (toman) :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="totalSalary_field_employees" layoutX="600.0" layoutY="432.0" onMouseClicked="#TotalSalaryEmployees" stylesheets="@AdminPanelStyle.css">
+                                             <styleClass>
+                                                <String fx:value="textfield" />
+                                                <String fx:value="borderOfBtn" />
+                                             </styleClass></TextField>
+                                          <FontAwesomeIcon fill="#8528a7" glyphName="MONEY" layoutX="723.0" layoutY="451.0" size="1.5em" />
+                                          <FontAwesomeIcon fill="#8528a7" glyphName="DOLLAR" layoutX="733.0" layoutY="387.0" size="1.5em" />
+                                          <Label layoutX="407.0" layoutY="338.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="History :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="shadow" />
+                                          <String fx:value="main-main-page" />
+                                          <String fx:value="background" />
+                                       </styleClass>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="securityGuardsPage" layoutX="14.0" layoutY="20.0" prefHeight="555.0" prefWidth="888.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane layoutX="14.0" layoutY="17.0" prefHeight="521.0" prefWidth="853.0" stylesheets="@AdminPanelStyle.css">
+                                       <children>
+                                          <AnchorPane layoutX="19.0" layoutY="14.0" prefHeight="265.0" prefWidth="815.0" stylesheets="@AdminPanelStyle.css">
+                                             <styleClass>
+                                                <String fx:value="shadow" />
+                                                <String fx:value="main-main-page" />
+                                             </styleClass>
+                                             <children>
+                                                <TableView fx:id="securityGuardsTable" layoutX="20.0" layoutY="21.0" onMouseClicked="#SecuritySelect" prefHeight="225.0" prefWidth="771.0" styleClass="tableDesignTop" stylesheets="@AdminPanelStyle.css">
+                                                  <columns>
+                                                    <TableColumn fx:id="row_col_securityguards" prefWidth="37.0" text="Row" />
+                                                    <TableColumn fx:id="firstname_col_securityguards" prefWidth="65.0" text="First name" />
+                                                      <TableColumn fx:id="lastname_col_securityguards" prefWidth="65.0" text="Last name" />
+                                                      <TableColumn fx:id="personnelNo_col_securityguards" prefWidth="85.0" text="Personnel No." />
+                                                      <TableColumn fx:id="dateOfHire_col_securityguards" prefWidth="78.0" text="Date of hire" />
+                                                      <TableColumn fx:id="gender_col_securityguards" prefWidth="47.0" text="Gender" />
+                                                      <TableColumn fx:id="phoneNo_col_securityguards" prefWidth="65.0" text="Phone No." />
+                                                      <TableColumn fx:id="shiftWork_col_securityguards" prefWidth="66.0" text="Shift work" />
+                                                      <TableColumn fx:id="history_col_securityguards" prefWidth="46.0" text="History" />
+                                                      <TableColumn fx:id="basicSalary_col_securityguards" prefWidth="76.0" text="Basic salary" />
+                                                      <TableColumn fx:id="totalSalary_col_securityguards" prefWidth="74.0" text="Total salary" />
+                                                      <TableColumn fx:id="timework_col_securityguards" prefWidth="65.0" text="Time work" />
+                                                  </columns>
+                                                </TableView>
+                                             </children>
+                                          </AnchorPane>
+                                          <Label layoutX="47.0" layoutY="290.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Row :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="row_field_securityguards" layoutX="169.0" layoutY="288.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <TextField fx:id="firstname_field_securityguards" layoutX="169.0" layoutY="320.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="47.0" layoutY="322.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="First name :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="47.0" layoutY="386.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Personnel No. :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="lastname_field_securityguards" layoutX="169.0" layoutY="352.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <TextField fx:id="personnelNo_field_securityguards" layoutX="169.0" layoutY="384.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="47.0" layoutY="354.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Last name :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="47.0" layoutY="418.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Date of hire :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="dateOfHire_field_securityguards" layoutX="169.0" layoutY="416.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="47.0" layoutY="484.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Phone No. :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="shiftWork_field_securityguards" layoutX="575.0" layoutY="287.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="420.0" layoutY="290.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Shift work :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="phoneNumber_field_securityguards" layoutX="169.0" layoutY="481.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="47.0" layoutY="455.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Gender :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="basicSalary_field_securityguards" layoutX="575.0" layoutY="385.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <TextField fx:id="history_field_securityguards" layoutX="575.0" layoutY="319.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <Label layoutX="420.0" layoutY="321.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="History :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="420.0" layoutY="388.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Basic salary (toman)  :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Button fx:id="addBtnSecurityguards" layoutX="740.0" layoutY="466.0" mnemonicParsing="false" onAction="#SecurityAdd" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="   Add">
+                                             <styleClass>
+                                                <String fx:value="addtableBtn" />
+                                                <String fx:value="borderOfBtn" />
+                                             </styleClass></Button>
+                                          <Button fx:id="updateBtnSecurityguards" layoutX="634.0" layoutY="466.0" mnemonicParsing="false" onAction="#SecurityUpdate" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text=" Update">
+                                             <graphic>
+                                                <FontAwesomeIcon fill="#c621aa" glyphName="REFRESH" size="1.5em" />
+                                             </graphic>
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="updatetableBtn" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button fx:id="clearBtnSecurityguards" layoutX="420.0" layoutY="466.0" mnemonicParsing="false" onAction="#SecurityClear" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="   Clear">
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="cleartableBtn" />
+                                             </styleClass></Button>
+                                          <Button fx:id="deleteBtnSecurityguards" layoutX="526.0" layoutY="466.0" mnemonicParsing="false" onAction="#SecurityDelete" prefHeight="41.0" prefWidth="94.0" stylesheets="@AdminPanelStyle.css" text="     Delete">
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="deletetableBtn" />
+                                             </styleClass></Button>
+                                          <ComboBox fx:id="gender_box_securityguards" layoutX="169.0" layoutY="453.0" onAction="#GenderListSecurity" prefWidth="150.0" promptText="Select" stylesheets="@AdminPanelStyle.css">
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="background" />
+                                             </styleClass></ComboBox>
+                                          <FontAwesomeIcon fill="#c621aa" glyphName="PLUS" layoutX="761.0" layoutY="492.0" size="1.5em" />
+                                          <FontAwesomeIcon fill="#8528a7" glyphName="DOLLAR" layoutX="703.0" layoutY="404.0" size="1.5em" />
+                                          <FontAwesomeIcon fill="#c520aa" glyphName="TRASH" layoutX="545.0" layoutY="492.0" size="1.5em" />
+                                          <FontAwesomeIcon fill="#c520aa" glyphName="BAN" layoutX="439.0" layoutY="492.0" size="1.5em" />
+                                          <Label layoutX="420.0" layoutY="420.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Total salary (toman) :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <FontAwesomeIcon fill="#8528a7" glyphName="DOLLAR" layoutX="694.0" layoutY="444.0" size="1.5em" />
+                                          <TextField fx:id="totalSalary_field_securityguards" layoutX="575.0" layoutY="418.0" onMouseClicked="#TotalSalarySecurity" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
+                                          <FontAwesomeIcon fill="#8528a7" glyphName="MONEY" layoutX="698.0" layoutY="437.0" size="1.5em" />
+                                          <ComboBox fx:id="timework_box_securityguards" layoutX="576.0" layoutY="351.0" onAction="#TimeworkListSecurity" prefWidth="150.0" promptText="Select" stylesheets="@AdminPanelStyle.css">
+                                             <styleClass>
+                                                <String fx:value="borderOfBtn" />
+                                                <String fx:value="background" />
+                                             </styleClass>
+                                          </ComboBox>
+                                          <Label layoutX="421.0" layoutY="354.0" styleClass="textfield" stylesheets="@AdminPanelStyle.css" text="Time work :" textFill="#8528a7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="shadow" />
+                                          <String fx:value="main-main-page" />
+                                          <String fx:value="background" />
+                                       </styleClass>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
