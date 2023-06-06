@@ -1,5 +1,13 @@
+package Controller;
 
 
+
+import Model.Database;
+import Model.Hospital;
+import Model.LanguageInstitute;
+import Model.Library;
+import Model.Airport;
+import Model.Univeristy;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -614,7 +622,7 @@ public class MayorPannelController implements Initializable {
      public void LibraryUpdate(){
         
         
-        String sql = "UPDATE library department_adress = '"+Library_field_address.getText()
+        String sql = "UPDATE library SET department_adress = '"+Library_field_address.getText()
                 +"' ,department_code = '"+Library_field_code.getText()+"' ,department_employees = '"+
                 Library_field_employees.getText()+"' ,hour_work = '"+
                 Library_field_work_hours.getText()+"' ,library_num_of_membership = '"+Library_field_membership.getText()
@@ -860,7 +868,7 @@ public class MayorPannelController implements Initializable {
      public void AirportUpdate(){
         
         
-        String sql = "UPDATE airport department_adress = '"+Airport_field_address.getText()
+        String sql = "UPDATE airport SET department_adress = '"+Airport_field_address.getText()
                 +"' ,department_code = '"+Airport_field_code.getText()+"' ,department_employees = '"+
                 Airport_field_employees.getText()+"' ,hour_work = '"+
                 Airport_field_work_hour.getText()+"' ,airstrip = '"+Airport_field_airstrip.getText()
@@ -1098,11 +1106,11 @@ public class MayorPannelController implements Initializable {
      public void HospitalUpdate(){
         
         
-        String sql = "UPDATE hospital department_adress = '"+Hospital_field_address.getText()
-                +"' ,department_code = '"+Hospital_field_code.getText()+"' ,department_employees = '"+
+        String sql = "UPDATE hospital SET department_name = '"+Hospital_field_name.getText()
+                +"' ,department_adress = '"+Hospital_field_address.getText()+"' ,department_employees = '"+
                 Hospital_field_employees.getText()+"' ,hour_work = '"+
                 Hospital_field_work_hour.getText()+"' ,section_hospital = '"+Hospital_field_section.getText()
-                +"' WHERE department_name =  = '"+Hospital_field_name.getText()+"'"; 
+                +"' WHERE department_code = '"+Hospital_field_code.getText()+"'"; 
         
         connect = Database.connectDb();
         
@@ -1344,11 +1352,11 @@ public class MayorPannelController implements Initializable {
      public void UniversityUpdate(){
         
         
-        String sql = "UPDATE uni uni_address = '"+University_field_address.getText()
-                +"' ,uni_code = '"+University_field_code.getText()+"' ,uni_employees = '"+
+        String sql = "UPDATE uni SET uni_name = '"+University_field_name.getText()
+                +"'  ,uni_address = '"+University_field_address.getText()+"' ,uni_employees = '"+
                 University_field_employees.getText()+"' ,uni_hourwork = '"+
                 University_field_work_hour.getText()+"' ,uni_faculties = '"+University_field_faculties.getText()
-                +"' WHERE uni_name =  = '"+University_field_name.getText()+"'"; 
+                +"' WHERE uni_code = '"+University_field_code.getText()+"'"; 
         
         connect = Database.connectDb();
         
@@ -1483,7 +1491,7 @@ public class MayorPannelController implements Initializable {
                          result.getInt("department_code"),
                          result.getInt("department_employees"),
                          result.getDouble("hour_work"),
-                         result.getInt("teachers"));
+                         result.getInt("teachers_Language"));
                          
                 
                 
@@ -1511,7 +1519,7 @@ public class MayorPannelController implements Initializable {
         Language_col_code.setCellValueFactory(new PropertyValueFactory<>("department_code"));
         Language_col_employees.setCellValueFactory(new PropertyValueFactory<>("department_employees"));
         Language_col_workhours.setCellValueFactory(new PropertyValueFactory<>("hour_work"));
-        Language_col_teachers.setCellValueFactory(new PropertyValueFactory<>("teachers"));
+        Language_col_teachers.setCellValueFactory(new PropertyValueFactory<>("Teachers"));
       
         
         Language_table.setItems(LanguageList);
@@ -1593,7 +1601,7 @@ public class MayorPannelController implements Initializable {
      public void LanguageUpdate(){
         
         
-        String sql = "UPDATE language department_adress = '"+Language_field_address.getText()
+        String sql = "UPDATE language SET department_adress = '"+Language_field_address.getText()
                 +"' ,department_code = '"+Language_field_code.getText()+"' ,department_employees = '"+
                 Language_field_employees.getText()+"' ,hour_work = '"+
                 Language_field_work_hour.getText()+"' ,teachers_Language  = '"+Language_field_teachers.getText()

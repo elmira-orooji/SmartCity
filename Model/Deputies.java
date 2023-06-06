@@ -1,4 +1,7 @@
+package Model;
 
+
+import Model.Person;
 import java.sql.Date;
 
 

@@ -1,4 +1,12 @@
+package Controller;
 
+
+import Model.Database;
+import Model.Deputies;
+import Model.Employees;
+import Model.Inspectors;
+import Model.Mayor;
+import Model.Securityguards;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -44,7 +52,7 @@ public class AdminPanelController implements Initializable{
     private AnchorPane skeleton_page;
     
     @FXML
-    private ComboBox<?> gender_box_timework;
+    private ComboBox<Securityguards> gender_box_timework;
     
     @FXML
     private TableView<Securityguards> securityGuardsTable;
@@ -74,7 +82,7 @@ public class AdminPanelController implements Initializable{
     private TableColumn<Deputies, Double> totalSalary_col_deputies;
 
     @FXML
-    private TableColumn<?, ?> shiftWork_col_securityguards;
+    private TableColumn<Securityguards, Integer> shiftWork_col_securityguards;
 
     @FXML
     private TextField dateOfHire_field_inspectors;
@@ -101,7 +109,7 @@ public class AdminPanelController implements Initializable{
     private Button deputiesBtn;
 
     @FXML
-    private TableColumn<?, ?> gender_col_employees;
+    private TableColumn<Employees, String> gender_col_employees;
 
     @FXML
     private Button deleteBtnEmployees;
@@ -128,7 +136,7 @@ public class AdminPanelController implements Initializable{
     private TableColumn<?, ?> row_col_employees;
 
     @FXML
-    private TableColumn<?, ?> workingHoursPerWeek_col_employees;
+    private TableColumn<Employees,Double > workingHoursPerWeek_col_employees;
 
     @FXML
     private TableColumn<Deputies, Integer> phoneNo_col_deputies;
@@ -189,6 +197,9 @@ public class AdminPanelController implements Initializable{
 
     @FXML
     private TextField dateOfHire_field_securityguards;
+    
+    @FXML
+    private TextField phoneNumber_field_securityguards;
 
     @FXML
     private Button inspectorsBtn;
@@ -251,7 +262,7 @@ public class AdminPanelController implements Initializable{
     private TableColumn<?, ?> personnelNo_col_employees;
     
     @FXML
-    private TableColumn<?, ?> timework_col_securityguards;
+    private TableColumn<Securityguards, String> timework_col_securityguards;
 
     @FXML
     private TableColumn<?, ?> history_col_securityguards;
@@ -499,11 +510,7 @@ public class AdminPanelController implements Initializable{
     @FXML
     private TableColumn<Securityguards, Integer> phoneNo_col_securityguards;
     
-    
-    @FXML
-    private TextField phoneNumber_field_securityguards;
-    
-    
+
     FileHandler handler;
     
     static ArrayList<String> mayor = new ArrayList<String>();
@@ -1638,6 +1645,7 @@ public class AdminPanelController implements Initializable{
     
     public void ShowEmployeesListData(){
         
+       
         EmployeesList = employeesListData();
         row_col_employees.setCellValueFactory(new PropertyValueFactory<>("row"));
         firstname_col_employees.setCellValueFactory(new PropertyValueFactory<>("firstname"));
@@ -1648,7 +1656,7 @@ public class AdminPanelController implements Initializable{
         phoneNo_col_employees.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
         history_col_employees.setCellValueFactory(new PropertyValueFactory<>("history"));
         basicSalary_col_employees.setCellValueFactory(new PropertyValueFactory<>("basicSalary"));
-        workingHoursPerWeek_col_employees.setCellValueFactory(new PropertyValueFactory<>("working_hour"));
+        workingHoursPerWeek_col_employees.setCellValueFactory(new PropertyValueFactory<>("Working_hour"));
         totalSalary_col_employees.setCellValueFactory(new PropertyValueFactory<>("totalSalary"));
         
         
@@ -1672,7 +1680,7 @@ public class AdminPanelController implements Initializable{
         phoneNo_field_employees.setText(String.valueOf(employees.getPhoneNo()));
         history_field_employees.setText(String.valueOf(employees.getHistory()));
         basicSalary_field_employees.setText(String.valueOf(employees.getBasicSalary()));
-        workingHoursPerWeek_field_employees.setText(String.valueOf(employees.getWorkingHour()));
+        workingHoursPerWeek_field_employees.setText(String.valueOf(employees.getWorking_hour()));
         totalSalary_field_employees.setText(String.valueOf(employees.getTotalSalary()));
 
     }
@@ -1915,6 +1923,7 @@ public class AdminPanelController implements Initializable{
             handler = new FileHandler("logger.log", true);
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
+            
             Securityguards SecurityD;
             
             while(result.next()){
@@ -1958,9 +1967,9 @@ public class AdminPanelController implements Initializable{
         dateOfHire_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("hireDate"));
         gender_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("gender"));
         phoneNo_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
-        shiftWork_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("shift_work"));
+        shiftWork_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("Shift_works"));
         history_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("history"));
-        timework_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("time_work"));
+        timework_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("Time_works"));
         basicSalary_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("basicSalary"));
         totalSalary_col_securityguards.setCellValueFactory(new PropertyValueFactory<>("totalSalary"));
         
@@ -1982,11 +1991,11 @@ public class AdminPanelController implements Initializable{
         lastname_field_securityguards.setText(security.getLastname());
         personnelNo_field_securityguards.setText(String.valueOf(security.getPersonnelNo()));
         dateOfHire_field_securityguards.setText(String.valueOf(security.getHireDate()));
-        phoneNo_field_securityguards.setText(String.valueOf(security.getPhoneNo()));
-        shiftWork_field_securityguards.setText(String.valueOf(security.getShiftWork()));
+        phoneNumber_field_securityguards.setText(String.valueOf(security.getPhoneNo()));
+        shiftWork_field_securityguards.setText(String.valueOf(security.getShift_works()));
         history_field_securityguards.setText(String.valueOf(security.getHistory()));
         basicSalary_field_securityguards.setText(String.valueOf(security.getBasicSalary()));
-        totalSalary_field_securityguards.setText(String.valueOf(security.getBasicSalary()));
+        totalSalary_field_securityguards.setText(String.valueOf(security.getTotalSalary()));
         
 
     }
@@ -2009,7 +2018,7 @@ public class AdminPanelController implements Initializable{
                     ||lastname_field_securityguards.getText().isEmpty()||personnelNo_field_securityguards.getText().isEmpty()
                     ||dateOfHire_field_securityguards.getText().isEmpty()
                     ||gender_box_securityguards.getSelectionModel().getSelectedItem()== null 
-                    ||phoneNo_field_securityguards.getText().isEmpty()||history_field_securityguards.getText().isEmpty()
+                    ||phoneNumber_field_securityguards.getText().isEmpty()|| history_field_securityguards.getText().isEmpty()
                     ||basicSalary_field_securityguards.getText().isEmpty() ||shiftWork_field_securityguards.getText().isEmpty()
                     ||timework_box_securityguards.getSelectionModel().getSelectedItem()== null  ){
                 
@@ -2027,9 +2036,9 @@ public class AdminPanelController implements Initializable{
             prepare.setString(2, firstname_field_securityguards.getText());
             prepare.setString(3, lastname_field_securityguards.getText());
             prepare.setString(4, personnelNo_field_securityguards.getText());
-            prepare.setString(5, dateOfHire_field_securityguards.getText());
+            prepare.setString(5, String.valueOf(sqlDate));
             prepare.setString(6,(String) gender_box_securityguards.getSelectionModel().getSelectedItem());
-            prepare.setString(7, phoneNo_field_securityguards.getText());
+            prepare.setString(7, phoneNumber_field_securityguards.getText());
             prepare.setString(8, shiftWork_field_securityguards.getText());
             prepare.setString(9, history_field_securityguards.getText());
             prepare.setString(10,(String)timework_box_securityguards.getSelectionModel().getSelectedItem());
@@ -2097,8 +2106,8 @@ public class AdminPanelController implements Initializable{
         String sql = "UPDATE securitygards SET First_name = '"
                 +firstname_field_securityguards.getText()+"' , Last_name = '"+lastname_field_securityguards.getText()
                 +"' ,Personnel_No = '"+personnelNo_field_securityguards.getText()+"' ,Gender = '"+
-                gender_box_securityguards.getSelectionModel().getSelectedItem()+"' ,Phone_NO = '"+
-                phoneNo_field_securityguards.getText()+"' ,History = '"+history_field_securityguards.getText()
+                gender_box_securityguards.getSelectionModel().getSelectedItem()+"' ,Phone_No = '"+
+                phoneNumber_field_securityguards.getText()+"' ,History = '"+history_field_securityguards.getText()
                 +"' ,Basic_salary = '"+basicSalary_field_securityguards.getText()+"' ,Shift_work = '" +shiftWork_field_securityguards.getText()+"' ,Total_salary = '"
                 +totalSalary_field_securityguards.getText()+"' ,Time_work = '"+ timework_box_securityguards.getSelectionModel().getSelectedItem()
                 +"' ,Date_of_hire = '"+dateOfHire_field_securityguards.getText()+"',Date_of_hire = '"+
@@ -2114,7 +2123,7 @@ public class AdminPanelController implements Initializable{
                     ||lastname_field_securityguards.getText().isEmpty()||personnelNo_field_securityguards.getText().isEmpty()
                     ||dateOfHire_field_securityguards.getText().isEmpty()
                     ||gender_box_securityguards.getSelectionModel().getSelectedItem()== null 
-                    ||phoneNo_field_securityguards.getText().isEmpty()||history_field_securityguards.getText().isEmpty()
+                    ||phoneNumber_field_securityguards.getText().isEmpty()||history_field_securityguards.getText().isEmpty()
                     ||basicSalary_field_securityguards.getText().isEmpty() || shiftWork_field_securityguards.getText().isEmpty()
                     ||timework_box_securityguards.getSelectionModel().getSelectedItem()== null){
                 
@@ -2171,7 +2180,7 @@ public class AdminPanelController implements Initializable{
                     ||lastname_field_securityguards.getText().isEmpty()||personnelNo_field_securityguards.getText().isEmpty()
                     ||dateOfHire_field_securityguards.getText().isEmpty()
                     ||gender_box_securityguards.getSelectionModel().getSelectedItem()== null 
-                    ||phoneNo_field_securityguards.getText().isEmpty()||history_field_securityguards.getText().isEmpty()
+                    ||phoneNumber_field_securityguards.getText().isEmpty()||history_field_securityguards.getText().isEmpty()
                     ||basicSalary_field_securityguards.getText().isEmpty() || shiftWork_field_securityguards.getText().isEmpty()
                     ||timework_box_securityguards.getSelectionModel().getSelectedItem()== null ){
                 
@@ -2218,8 +2227,7 @@ public class AdminPanelController implements Initializable{
         lastname_field_securityguards.setText("");
         personnelNo_field_securityguards.setText("");
         dateOfHire_field_securityguards.setText("");
-        gender_box_securityguards.getSelectionModel().getSelectedItem();
-        phoneNo_field_securityguards.setText("");  
+        phoneNumber_field_securityguards.setText("");  
         shiftWork_field_securityguards.setText("");
         history_field_securityguards.setText("");
         basicSalary_field_securityguards.setText("");

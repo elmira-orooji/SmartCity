@@ -1,3 +1,8 @@
+package Model;
+
+
+import Model.Department;
+
 
 public class Hospital extends Department {
 
@@ -8,6 +13,7 @@ public class Hospital extends Department {
             int department_employees,double hour_work ,int section){
         
         super(department_name,department_address,department_code,department_employees,hour_work);
+        
         this.section = section;
         
         

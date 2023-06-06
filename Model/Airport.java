@@ -1,20 +1,24 @@
+package Model;
 
 
-public class Library extends Department {
+import Model.Department;
 
-    protected int library_num_of_membership;
+
+public class Airport extends Department {
+
+    protected int airstrip;
     
-    public Library(String department_name , String department_address ,int department_code,
-            int department_employees,double hour_work,int library_num_of_membership){
+    public Airport(String department_name , String department_address ,int department_code,
+            int department_employees,double hour_work,int airstrip){
         
         super(department_name,department_address,department_code,department_employees,hour_work);
-        this.library_num_of_membership = library_num_of_membership;
+        this.airstrip = airstrip;
         
         
     }
     
-    public int getLibrary_num_of_membership(){
-        return this.library_num_of_membership;
+    public int getAirstrip(){
+        return this.airstrip;
     }
 
     @Override
@@ -42,5 +46,26 @@ public class Library extends Department {
         return super.hour_work;
     }
 
-   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

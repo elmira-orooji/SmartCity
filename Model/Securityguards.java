@@ -1,23 +1,31 @@
+package Model;
+
+
 
 import java.sql.Date;
 
 
-public class Employees extends Person{
+public class Securityguards extends Person{
 
-    public Double working_hour;
-    
-    public Employees(int row ,String firstname , String lastname ,int personnelNo ,Date hireDate
-        ,String gender,int phoneNo ,double history , double basicSalary,Double working_hour,double totalSalary
-        ){
+   protected int Shift_works;
+   protected String Time_works;
+   
+ public Securityguards(int row ,String firstname , String lastname ,int personnelNo ,Date hireDate
+        ,String gender,int phoneNo ,int Shift_works,double history ,String Time_works, double basicSalary,double totalSalary){
     
     super(row,firstname,lastname,personnelNo,hireDate,phoneNo,gender,history,basicSalary,totalSalary);
-    this.working_hour = working_hour;
+    
+    this.Shift_works = Shift_works;
+    this.Time_works = Time_works;
+    
 }
  
-    public Employees(){}  
+    public int getShift_works(){
+        return this.Shift_works;
+    }  
     
-    public double getWorkingHour(){
-        return this.working_hour;
+    public String getTime_works(){
+        return this.Time_works;
     }
 
     @Override
@@ -27,22 +35,23 @@ public class Employees extends Person{
 
     @Override
     public String getFirstname() {
-        return super.firstname;
+       return super.firstname;
     }
 
     @Override
     public String getLastname() {
-          return super.lastname;
+        return super.lastname;
     }
 
     @Override
     public int getPersonnelNo() {
-        return super.personnelNo;
+         return super.personnelNo;
+    
     }
 
     @Override
     public Date getHireDate() {
-        return super.hireDate;
+         return super.hireDate;
     }
 
     @Override
@@ -57,7 +66,7 @@ public class Employees extends Person{
 
     @Override
     public double getHistory() {
-       return super.history;
+        return super.history;
     }
 
     @Override
@@ -67,12 +76,8 @@ public class Employees extends Person{
 
     @Override
     public double getTotalSalary() {
-        return super.totalSalary;
+         return super.totalSalary;
     }
-
-    
-    
-    
     
     
     

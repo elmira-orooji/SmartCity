@@ -1,0 +1,31 @@
+
+  .manager-btns{
+    
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    
+}
+.manager-btns:hover{
+     -fx-background-color: linear-gradient(to right, #1e9600, #fff200, #ff0000);;
+}
+
+.left-form-manager{
+
+  -fx-background-color:linear-gradient(to bottom, #f7ff00, #db36a4);
+}
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
