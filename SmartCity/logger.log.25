@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-05-22T18:51:03</date>
+  <millis>1684768863791</millis>
+  <sequence>2</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>MayorPannelController</class>
+  <method>HospitalAdd</method>
+  <thread>12</thread>
+  <message>warning messagecom.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect integer value: 'golestan' for column `smartcity`.`hospital`.`department_name` at row 1</message>
+</record>
+<record>
+  <date>2023-05-22T18:51:39</date>
+  <millis>1684768899105</millis>
+  <sequence>3</sequence>
+  <logger>com.javacodegeeks.snippets.core</logger>
+  <level>WARNING</level>
+  <class>MayorPannelController</class>
+  <method>UniversityListData</method>
+  <thread>12</thread>
+  <message>warning messagejava.sql.SQLException: Column 'department_name' not found.</message>
+</record>
