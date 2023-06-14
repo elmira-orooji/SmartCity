@@ -38,14 +38,66 @@
 }
 .table-view{
     -fx-background-color:#ffffff;
-    -fx-border-color:linear-gradient(to bottom right, #272b3f, #256b51);
+    -fx-border-color:linear-gradient(to bottom right, #E55D87,#5FC3E4);
     -fx-border-radius:4px;
     -fx-padding:0px;
 }
-.table-view .column-header-background {
-    -fx-background-color:linear-gradient(to bottom , #fbd3e9, #bb377d);
+.table-view-manager .column-header-background {
+    -fx-background-color:linear-gradient(to right ,#E55D87,#5FC3E4);
     -fx-background-insets: 0 0 0 0;
     -f-background-radius:8px 8px 0px 0px;
+}
+.tableBtn-manager{
+    -fx-background-color:linear-gradient(to bottom right, #E55D87,#5FC3E4);
+}
+
+.setting-table-view .column-header-background {
+    -fx-background-color:linear-gradient(to bottom right, #A770EF,#CF8BF3,#FDB99B);
+    -fx-border-radius:4px;
+    -fx-padding:0px;
+}
+.tablebtn_setting{
+    -fx-background-color:linear-gradient(to bottom right, #A770EF,#CF8BF3,#FDB99B);
+}
+.Textfield-setting{
+    -fx-border-color:linear-gradient(to bottom right, #A770EF,#CF8BF3,#FDB99B);
+}
+
+.passenger-table-view .column-header-background {
+    -fx-background-color:linear-gradient( to right ,#ff00cc,#333399);
+    -fx-border-radius:4px;
+    -fx-padding:0px;
+}
+.passengerBtn{
+    
+        -fx-background-color:linear-gradient( to right ,#ff00cc,#333399);
+
+    
+}
+.passengerBorderBtn{
+    
+        -fx-border-color:linear-gradient( to right ,#ff00cc,#333399);
+
+    
+}
+.passenger-anchorpane{
+    
+    -fx-background-color:linear-gradient(to bottom right,#FEAC5E,#C779D0,#4BC0C8);
+}
+
+.table-view-employee .column-header-background {
+    -fx-background-color:linear-gradient(to bottom , #FF5F6D, #FFC371);
+    -fx-background-insets: 0 0 0 0;
+    -f-background-radius:8px 8px 0px 0px;
+}
+
+.tableBtnBorder-employee{
+    -fx-border-color:linear-gradient(to bottom right, #FF4E50, #F9D423);
+    
+}
+.tableBtnBachground-employee{
+    -fx-background-color:linear-gradient(to bottom right, #FF4E50, #F9D423);
+    
 }
 .table-view-border{
     -fx-border-color:linear-gradient(#fbd3e9, #bb377d);
@@ -54,7 +106,11 @@
 
 .anchorpane-superadmin-manager{
     
-    -fx-background-color:linear-gradient(#a80077, #66ff00);
+    -fx-background-color:linear-gradient(#ff6e7f , #bfe9ff);
+}
+.anchorpane-superadmin-employees{
+    
+    -fx-background-color:linear-gradient(#C02425, #F0CB35);
 }
 .table-view .column-header, .filter{
     -fx-background-color: transparent;
@@ -63,4 +119,45 @@
 .table-view .column-header .label{
     -fx-text-fill:#fff;
     -fx-font-family:"Arial";
+}
+
+.report-anchorpane{
+    
+     -fx-background-color:linear-gradient(#bc4e9c, #f80759);
+    
+}
+.report-cards{
+    
+    -fx-background-color:linear-gradient(to right ,#a770ef, #cf8bf3 ,#fdb99b);
+}
+.round{
+    
+    -fx-background-color:#FE7A79;
+    -fx-background-radius:100%;
+
+}
+
+.btn-table{
+    
+     -fx-background-color:linear-gradient(#ff0099, #493240);
+}
+.borderBtn-table{
+    
+     -fx-border-color:linear-gradient(#ff0099, #493240);
+}
+.salary{
+    -fx-background-color: transparent;
+}
+.anchorpane-financial{
+    
+    -fx-background-color:linear-gradient(#ED4264, #FFEDBC); ;
+}
+.table-view-financial .column-header-background{
+    
+     -fx-background-color:linear-gradient(#FF512F, #DD2476); 
+     -f-background-radius:8px 8px 0px 0px;
+}
+
+.bordertableBtn-financial{
+    -fx-border-color:linear-gradient(#FF512F, #DD2476); 
 }

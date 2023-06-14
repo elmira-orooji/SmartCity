@@ -1,0 +1,24 @@
+
+
+.anchorpane-color{
+-fx-background-color: linear-gradient(to right, #834d9b, #d04ed6);
+}
+
+.signup-btn{
+    -fx-cursor: hand;
+    -fx-background-color: linear-gradient(to right, #da22ff, #9733ee);
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 13px;
+    -fx-font-family:"System";
+    -fx-background-radius: 8px;
+        
+}
+.signup-btn:hover{
+    -fx-background-color:linear-gradient(to right, #fc00ff, #00dbde);
+   
+    
+}
+.radius{
+     -fx-background-radius: 8px;
+    
+}

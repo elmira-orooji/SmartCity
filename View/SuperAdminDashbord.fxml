@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
@@ -24,7 +25,6 @@
                               <Font name="Arial Narrow Italic" size="15.0" />
                            </font>
                         </Label>
-                        <FontAwesomeIcon fill="#c9267d" glyphName="PLANE" layoutX="14.0" layoutY="33.0" size="2.5em" />
                         <Button fx:id="close" layoutX="1018.0" layoutY="11.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="68.0" styleClass="close" stylesheets="@AdminPanelStyle.css">
                            <graphic>
                               <FontAwesomeIcon fill="#c9267d" glyphName="CLOSE" size="1.5em" text="" />
@@ -33,6 +33,11 @@
                            <graphic>
                               <FontAwesomeIcon fill="#c9267d" glyphName="MINUS" size="1.5em" />
                            </graphic></Button>
+                        <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Image/icons8-airport-48.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                </top>
@@ -47,31 +52,73 @@
                                  </image>
                               </ImageView>
                               <Line endX="100.0" layoutX="105.0" layoutY="174.0" startX="-100.0" stroke="WHITE" />
-                              <Button layoutX="19.0" layoutY="191.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="172.0" styleClass="superadmin-btns" stylesheets="@superadmindashbord.css" text="Setting" textFill="WHITE">
+                              <Button fx:id="superadmin_settingBtn" layoutX="19.0" layoutY="191.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="172.0" styleClass="superadmin-btns" stylesheets="@superadmindashbord.css" text="Setting" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Black" size="14.0" />
                                  </font></Button>
-                              <Button layoutX="20.0" layoutY="287.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="172.0" styleClass="superadmin-btns" stylesheets="@superadmindashbord.css" text="Reports" textFill="WHITE">
+                              <Button fx:id="superadmin_reportsBtn" layoutX="19.0" layoutY="383.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="172.0" styleClass="superadmin-btns" stylesheets="@superadmindashbord.css" text="Reports" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Black" size="14.0" />
                                  </font></Button>
-                              <Button layoutX="21.0" layoutY="336.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="171.0" styleClass="superadmin-btns" stylesheets="@superadmindashbord.css" text="Financial" textFill="WHITE">
+                              <Button fx:id="superadmin_financialBtn" layoutX="20.0" layoutY="432.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="171.0" styleClass="superadmin-btns" stylesheets="@superadmindashbord.css" text="Financial" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Black" size="14.0" />
                                  </font></Button>
-                              <Button layoutX="24.0" layoutY="484.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="165.0" styleClass="superadmin-btns" stylesheets="@superadmindashbord.css" text="Sign out" textFill="WHITE">
+                              <Button fx:id="superadmin_signoutBtn" layoutX="24.0" layoutY="511.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="165.0" styleClass="superadmin-btns" stylesheets="@superadmindashbord.css" text="Sign out" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Black" size="14.0" />
                                  </font></Button>
-                              <Button layoutX="20.0" layoutY="240.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="172.0" styleClass="superadmin-btns" stylesheets="@superadmindashbord.css" text="Manager" textFill="WHITE">
+                              <Button fx:id="superadmin_managerBtn" layoutX="20.0" layoutY="240.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="172.0" styleClass="superadmin-btns" stylesheets="@superadmindashbord.css" text="Manager" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Black" size="14.0" />
                                  </font></Button>
-                              <FontAwesomeIcon fill="WHITE" glyphName="DOLLAR" layoutX="38.0" layoutY="360.0" size="1.5em" />
-                              <FontAwesomeIcon fill="WHITE" glyphName="FILE" layoutX="35.0" layoutY="311.0" size="1.5em" />
-                              <FontAwesomeIcon fill="WHITE" glyphName="USER" layoutX="35.0" layoutY="264.0" size="1.5em" />
-                              <FontAwesomeIcon fill="WHITE" glyphName="WRENCH" layoutX="33.0" layoutY="213.0" size="1.5em" />
-                              <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" layoutX="32.0" layoutY="511.0" size="2em" />
+                              <Label alignment="CENTER" layoutX="53.0" layoutY="376.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="20.0" styleClass="round" stylesheets="@superadmindashbord.css" text="0" textFill="#fffefe" textOverrun="CLIP" />
+                              <Label alignment="CENTER" layoutX="53.0" layoutY="425.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="20.0" styleClass="round" stylesheets="@superadmindashbord.css" text="0" textFill="#fffefe" />
+                              <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="32.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-setting-48.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="32.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-manager-48.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="31.0" layoutY="386.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-accounting-48.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="31.0" layoutY="435.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-cash-48.png" />
+                                 </image>
+                              </ImageView>
+                              <Button fx:id="superadmin_employeesBtn" layoutX="19.0" layoutY="287.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="172.0" styleClass="superadmin-btns" stylesheets="@superadmindashbord.css" text="  Employees" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="14.0" />
+                                 </font>
+                              </Button>
+                              <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="31.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-management-48.png" />
+                                 </image>
+                              </ImageView>
+                              <Button layoutX="21.0" layoutY="330.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="172.0" styleClass="superadmin-btns" stylesheets="@superadmindashbord.css" text="  Passengers" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="14.0" />
+                                 </font>
+                              </Button>
+                              <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="31.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/download.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="32.0" layoutY="514.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-toggle-off-48.png" />
+                                 </image>
+                              </ImageView>
                            </children>
                            <styleClass>
                               <String fx:value="left-form-superadmin" />
@@ -86,222 +133,445 @@
                      <children>
                         <AnchorPane layoutX="11.0" layoutY="11.0" prefHeight="554.0" prefWidth="888.0" stylesheets="@superadmindashbord.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane layoutX="10.0" layoutY="11.0" prefHeight="511.0" prefWidth="861.0" styleClass="white" stylesheets="@superadmindashbord.css" visible="false">
+                              <AnchorPane fx:id="superadmin_setting_page" layoutX="10.0" layoutY="11.0" prefHeight="511.0" prefWidth="861.0" styleClass="white" stylesheets="@superadmindashbord.css">
                                  <children>
                                     <ImageView fitHeight="511.0" fitWidth="862.0" layoutX="541.0" pickOnBounds="true" preserveRatio="true" styleClass="white">
                                        <image>
                                           <Image url="@../Image/7270464.jpg" />
                                        </image>
                                     </ImageView>
-                                    <Label layoutX="33.0" layoutY="270.0" text="ID" textFill="#ff1baf">
+                                    <Label layoutX="33.0" layoutY="270.0" text="ID" textFill="#c916c9">
                                        <font>
-                                          <Font size="15.0" />
+                                          <Font name="Arial" size="15.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="115.0" layoutY="268.0" prefHeight="25.0" prefWidth="107.0" styleClass="table-view-border" stylesheets="@superadmindashbord.css" />
-                                    <Label layoutX="33.0" layoutY="302.0" text="Firstname" textFill="#ff1baf">
+                                    <TextField fx:id="superadmin_setting_idtextfield" layoutX="115.0" layoutY="268.0" prefHeight="25.0" prefWidth="107.0" styleClass="Textfield-setting" stylesheets="@superadmindashbord.css" />
+                                    <Label layoutX="33.0" layoutY="302.0" text="First name" textFill="#c916c9">
                                        <font>
-                                          <Font size="15.0" />
+                                          <Font name="Arial" size="15.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="115.0" layoutY="300.0" prefHeight="25.0" prefWidth="107.0" styleClass="table-view-border" stylesheets="@superadmindashbord.css" />
-                                    <Button layoutX="34.0" layoutY="443.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="116.0" styleClass="table-view-border" stylesheets="@superadmindashbord.css" text="Clear">
+                                    <TextField fx:id="superadmin_setting_firstnametextfield" layoutX="115.0" layoutY="301.0" prefHeight="25.0" prefWidth="107.0" styleClass="Textfield-setting" stylesheets="@superadmindashbord.css" />
+                                    <Button fx:id="superadmin_setting_clearBtn" layoutX="169.0" layoutY="443.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="116.0" styleClass="tablebtn_setting" stylesheets="@superadmindashbord.css" text="Clear" textFill="#fffefe">
                                        <graphic>
-                                          <FontAwesomeIcon fill="#e416c8" glyphName="BAN" />
+                                          <FontAwesomeIcon fill="WHITE" glyphName="BAN" />
                                        </graphic></Button>
-                                    <Label layoutX="33.0" layoutY="369.0" text="Username" textFill="#ff1baf">
+                                    <Label layoutX="33.0" layoutY="369.0" text="Username" textFill="#c916c9">
                                        <font>
-                                          <Font size="15.0" />
+                                          <Font name="Arial" size="15.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="115.0" layoutY="367.0" prefHeight="25.0" prefWidth="107.0" styleClass="table-view-border" stylesheets="@superadmindashbord.css" />
-                                    <TextField layoutX="115.0" layoutY="335.0" prefHeight="25.0" prefWidth="107.0" styleClass="table-view-border" stylesheets="@superadmindashbord.css" />
-                                    <Label layoutX="33.0" layoutY="337.0" text="Lastname" textFill="#ff1baf">
+                                    <TextField fx:id="superadmin_setting_usernametextfield" layoutX="115.0" layoutY="367.0" prefHeight="25.0" prefWidth="107.0" styleClass="Textfield-setting" stylesheets="@superadmindashbord.css" />
+                                    <TextField fx:id="superadmin_setting_lastnametextfield" layoutX="115.0" layoutY="335.0" prefHeight="25.0" prefWidth="107.0" styleClass="Textfield-setting" stylesheets="@superadmindashbord.css" />
+                                    <Label layoutX="33.0" layoutY="337.0" text="Last name" textFill="#c916c9">
                                        <font>
-                                          <Font size="15.0" />
+                                          <Font name="Arial" size="15.0" />
                                        </font>
                                     </Label>
-                                    <TableView layoutX="22.0" layoutY="17.0" prefHeight="200.0" prefWidth="518.0" styleClass="table-view-border" stylesheets="@superadmindashbord.css">
+                                    <TableView fx:id="superadmin_setting_table" layoutX="22.0" layoutY="17.0" prefHeight="200.0" prefWidth="518.0" styleClass="setting-table-view" stylesheets="@superadmindashbord.css">
                                       <columns>
-                                        <TableColumn prefWidth="43.0" text="ID" />
-                                        <TableColumn prefWidth="71.0" text="First name" />
-                                          <TableColumn prefWidth="72.0" text="Last name" />
-                                          <TableColumn prefWidth="68.0" text="Username" />
-                                          <TableColumn prefWidth="73.0" text="Password" />
-                                          <TableColumn prefWidth="62.0" text="Phone" />
-                                          <TableColumn prefWidth="64.0" text="Address" />
-                                          <TableColumn prefWidth="64.0" text="Email" />
+                                        <TableColumn fx:id="superadmin_setting_idCol" prefWidth="43.0" text="ID" />
+                                        <TableColumn fx:id="superadmin_setting_firstnameCol" prefWidth="71.0" text="First name" />
+                                          <TableColumn fx:id="superadmin_setting_lastnameCol" prefWidth="72.0" text="Last name" />
+                                          <TableColumn fx:id="superadmin_setting_usernameCol" prefWidth="68.0" text="Username" />
+                                          <TableColumn fx:id="superadmin_setting_passwordCol" prefWidth="73.0" text="Password" />
+                                          <TableColumn fx:id="superadmin_setting_phoneCol" prefWidth="62.0" text="Phone" />
+                                          <TableColumn fx:id="superadmin_setting_addressCol" prefWidth="64.0" text="Address" />
+                                          <TableColumn fx:id="superadmin_setting_emailCol" prefWidth="64.0" text="Email" />
                                       </columns>
                                     </TableView>
-                                    <Label layoutX="352.0" layoutY="373.0" text="Email" textFill="#ff1baf">
+                                    <Label layoutX="352.0" layoutY="373.0" text="Email" textFill="#c916c9">
                                        <font>
-                                          <Font size="15.0" />
+                                          <Font name="Arial" size="15.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="434.0" layoutY="272.0" prefHeight="25.0" prefWidth="107.0" styleClass="table-view-border" stylesheets="@superadmindashbord.css" />
-                                    <Label layoutX="352.0" layoutY="341.0" text="Address" textFill="#ff1baf">
+                                    <TextField fx:id="superadmin_setting_passwordtextfield" layoutX="434.0" layoutY="272.0" prefHeight="25.0" prefWidth="107.0" styleClass="Textfield-setting" stylesheets="@superadmindashbord.css" />
+                                    <Label layoutX="352.0" layoutY="341.0" text="Address" textFill="#c916c9">
                                        <font>
-                                          <Font size="15.0" />
+                                          <Font name="Arial" size="15.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="434.0" layoutY="339.0" prefHeight="25.0" prefWidth="107.0" styleClass="table-view-border" stylesheets="@superadmindashbord.css" />
-                                    <TextField layoutX="434.0" layoutY="304.0" prefHeight="25.0" prefWidth="107.0" styleClass="table-view-border" stylesheets="@superadmindashbord.css" />
-                                    <Label layoutX="352.0" layoutY="274.0" text="Password" textFill="#ff1baf">
+                                    <TextField fx:id="superadmin_setting_addresstextfield" layoutX="434.0" layoutY="339.0" prefHeight="25.0" prefWidth="107.0" styleClass="Textfield-setting" stylesheets="@superadmindashbord.css" />
+                                    <TextField fx:id="superadmin_setting_phonetextfield" layoutX="434.0" layoutY="304.0" prefHeight="25.0" prefWidth="107.0" styleClass="Textfield-setting" stylesheets="@superadmindashbord.css" />
+                                    <Label layoutX="352.0" layoutY="274.0" text="Password" textFill="#c916c9">
                                        <font>
-                                          <Font size="15.0" />
+                                          <Font name="Arial" size="15.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="434.0" layoutY="371.0" prefHeight="25.0" prefWidth="107.0" styleClass="table-view-border" stylesheets="@superadmindashbord.css" />
-                                    <Label layoutX="352.0" layoutY="306.0" text="Phone" textFill="#ff1baf">
+                                    <TextField fx:id="superadmin_setting_emailtextfield" layoutX="434.0" layoutY="371.0" prefHeight="25.0" prefWidth="107.0" styleClass="Textfield-setting" stylesheets="@superadmindashbord.css" />
+                                    <Label layoutX="352.0" layoutY="306.0" text="Phone" textFill="#c916c9">
                                        <font>
-                                          <Font size="15.0" />
+                                          <Font name="Arial" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Button layoutX="161.0" layoutY="443.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="116.0" styleClass="table-view-border" stylesheets="@superadmindashbord.css" text="Delete">
+                                    <Button fx:id="superadmin_setting_updateBtn" layoutX="302.0" layoutY="443.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="116.0" styleClass="tablebtn_setting" stylesheets="@superadmindashbord.css" text="Update" textFill="#fffefe">
                                        <graphic>
-                                          <FontAwesomeIcon fill="#e416c8" glyphName="TRASH" />
-                                       </graphic>
-                                    </Button>
-                                    <Button layoutX="412.0" layoutY="443.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="116.0" styleClass="table-view-border" stylesheets="@superadmindashbord.css" text="Add">
-                                       <graphic>
-                                          <FontAwesomeIcon fill="#e416c8" glyphName="PLUS" />
-                                       </graphic>
-                                    </Button>
-                                    <Button layoutX="285.0" layoutY="443.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="116.0" styleClass="table-view-border" stylesheets="@superadmindashbord.css" text="Update">
-                                       <graphic>
-                                          <FontAwesomeIcon fill="#e416c8" glyphName="REFRESH" />
+                                          <FontAwesomeIcon fill="WHITE" glyphName="REFRESH" />
                                        </graphic>
                                     </Button>
                                  </children></AnchorPane>
-                              <AnchorPane layoutX="14.0" layoutY="10.0" prefHeight="511.0" prefWidth="861.0" styleClass="anchorpane-superadmin-manager" stylesheets="@superadmindashbord.css" visible="false">
+                              <AnchorPane fx:id="superadmin_manager_page" layoutX="14.0" layoutY="10.0" prefHeight="511.0" prefWidth="861.0" styleClass="anchorpane-superadmin-manager" stylesheets="@superadmindashbord.css" visible="false">
                                  <children>
                                     <ImageView fitHeight="511.0" fitWidth="275.0" layoutX="586.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../Image/4563.jpg" />
                                        </image>
                                     </ImageView>
-                                    <TableView layoutX="19.0" layoutY="13.0" prefHeight="209.0" prefWidth="545.0" stylesheets="@superadmindashbord.css">
+                                    <TableView fx:id="superadmin_manager_table" layoutX="19.0" layoutY="13.0" prefHeight="209.0" prefWidth="545.0" styleClass="table-view-manager" stylesheets="@superadmindashbord.css">
                                       <columns>
-                                        <TableColumn prefWidth="52.0" text="ID" />
-                                        <TableColumn prefWidth="75.0" text="First name" />
-                                          <TableColumn prefWidth="76.0" text="Last name" />
-                                          <TableColumn prefWidth="71.0" text="Username" />
-                                          <TableColumn prefWidth="73.0" text="Password" />
-                                          <TableColumn prefWidth="69.0" text="Phone" />
-                                          <TableColumn prefWidth="76.0" text="Address" />
-                                          <TableColumn prefWidth="52.0" text="Email" />
+                                        <TableColumn fx:id="superadmin_manager_idCol" prefWidth="52.0" text="ID" />
+                                        <TableColumn fx:id="superadmin_manager_firstnameCol" prefWidth="75.0" text="First name" />
+                                          <TableColumn fx:id="superadmin_manager_lastnameCol" prefWidth="76.0" text="Last name" />
+                                          <TableColumn fx:id="superadmin_manager_usernameCol" prefWidth="71.0" text="Username" />
+                                          <TableColumn fx:id="superadmin_manager_passwordCol" prefWidth="73.0" text="Password" />
+                                          <TableColumn fx:id="superadmin_manager_phoneCol" prefWidth="69.0" text="Phone" />
+                                          <TableColumn fx:id="superadmin_manager_addressCol" prefWidth="76.0" text="Address" />
+                                          <TableColumn fx:id="superadmin_manager_emailCol" prefWidth="52.0" text="Email" />
+                                      </columns>
+                                    </TableView>
+                                    <Label layoutX="19.0" layoutY="249.0" stylesheets="@superadmindashbord.css" text="ID" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="superadmin_manager_idtextfield" layoutX="113.0" layoutY="243.0" />
+                                    <Label layoutX="19.0" layoutY="280.0" stylesheets="@superadmindashbord.css" text="First name" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="superadmin_manager_firstnametextfield" layoutX="113.0" layoutY="274.0" />
+                                    <TextField fx:id="superadmin_manager_usernametextfield" layoutX="113.0" layoutY="338.0" />
+                                    <Label layoutX="19.0" layoutY="313.0" stylesheets="@superadmindashbord.css" text="Last name" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="19.0" layoutY="344.0" stylesheets="@superadmindashbord.css" text="Username" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="superadmin_manager_lastnametextfield" layoutX="113.0" layoutY="307.0" />
+                                    <TextField fx:id="superadmin_manager_phonetextfield" layoutX="415.0" layoutY="280.0" />
+                                    <Label layoutX="334.0" layoutY="316.0" stylesheets="@superadmindashbord.css" text="Address" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="superadmin_manager_addresstextfield" layoutX="415.0" layoutY="313.0" />
+                                    <Label layoutX="334.0" layoutY="252.0" stylesheets="@superadmindashbord.css" text="Password" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="334.0" layoutY="283.0" stylesheets="@superadmindashbord.css" text="Phone" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="334.0" layoutY="347.0" stylesheets="@superadmindashbord.css" text="Email" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="superadmin_manager_emailtextfield" layoutX="415.0" layoutY="344.0" />
+                                    <TextField fx:id="superadmin_manager_passwordtextfield" layoutX="415.0" layoutY="249.0" />
+                                    <Button fx:id="superadmin_manager_addBtn" layoutX="427.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" styleClass="tableBtn-manager" stylesheets="@superadmindashbord.css" text="Add" textFill="WHITE">
+                                       <graphic>
+                                          <FontAwesomeIcon fill="#fcfafb" glyphName="PLUS" />
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="superadmin_manager_updateBtn" layoutX="305.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" styleClass="tableBtn-manager" stylesheets="@superadmindashbord.css" text="Update" textFill="WHITE">
+                                       <graphic>
+                                          <FontAwesomeIcon fill="#fcfafb" glyphName="REFRESH" />
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="superadmin_manager_fireBtn" layoutX="187.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" styleClass="tableBtn-manager" stylesheets="@superadmindashbord.css" text="Fire" textFill="WHITE">
+                                       <graphic>
+                                          <FontAwesomeIcon fill="#fcfafb" glyphName="TRASH" />
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="superadmin_manager_clearBtn" layoutX="65.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" styleClass="tableBtn-manager" stylesheets="@superadmindashbord.css" text="Clear" textFill="WHITE">
+                                       <graphic>
+                                          <FontAwesomeIcon fill="#fcfafb" glyphName="BAN" />
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="superadmin_reports_page" layoutX="14.0" layoutY="10.0" prefHeight="511.0" prefWidth="861.0" styleClass="report-anchorpane" stylesheets="@superadmindashbord.css" visible="false">
+                                 <children>
+                                    <AnchorPane layoutX="18.0" layoutY="24.0" prefHeight="198.0" prefWidth="294.0" styleClass="report-cards" stylesheets="@superadmindashbord.css">
+                                       <children>
+                                          <Label layoutX="30.0" layoutY="23.0" text="Passangers" textFill="WHITE">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="superadmin_reports_passengersnumber" layoutX="69.0" layoutY="50.0" text="0" textFill="WHITE">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="60.0" fitWidth="50.0" layoutX="224.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Image/icons8-beyonce-48.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fitHeight="60.0" fitWidth="50.0" layoutX="158.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Image/icons8-bolivian-girl-48.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fitHeight="60.0" fitWidth="50.0" layoutX="226.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Image/icons8-geisha-48.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fitHeight="60.0" fitWidth="50.0" layoutX="160.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Image/icons8-rihanna-48.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="337.0" layoutY="24.0" prefHeight="199.0" prefWidth="260.0" styleClass="report-cards" stylesheets="@superadmindashbord.css">
+                                       <children>
+                                          <Label layoutX="43.0" layoutY="22.0" text="Employees" textFill="WHITE">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="superadmin_reports_employeesnumber" layoutX="81.0" layoutY="55.0" text="0" textFill="WHITE">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="100.0" fitWidth="70.0" layoutX="179.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Image/icons8-management-48.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="16.0" layoutY="268.0" prefHeight="199.0" prefWidth="298.0" styleClass="report-cards" stylesheets="@superadmindashbord.css">
+                                       <children>
+                                          <Label layoutX="30.0" layoutY="23.0" text="Sold Tickets" textFill="WHITE">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="99.0" fitWidth="117.0" layoutX="181.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Image/%5BCITYPNG.COM%5DVector%20Airline%20Ticket%20Icon%20PNG%20-%201148x1113.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="superadmin_reports_soldticketnumber" layoutX="73.0" layoutY="50.0" text="0" textFill="WHITE">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="337.0" layoutY="268.0" prefHeight="199.0" prefWidth="260.0" styleClass="report-cards" stylesheets="@superadmindashbord.css">
+                                       <children>
+                                          <Label layoutX="31.0" layoutY="22.0" text="Canceled Tickets" textFill="WHITE">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="200.0" fitWidth="100.0" layoutX="146.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Image/transparent-travel-icon-plane-ticket-icon-beach-and-camping-ic-5fd2b2e1b47294.9082823316076438737391.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="163.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Image/icons8-close-16.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="superadmin_reports_canceledticketsnumber" layoutX="89.0" layoutY="51.0" text="0" textFill="WHITE">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="621.0" layoutY="24.0" prefHeight="199.0" prefWidth="220.0" styleClass="report-cards" stylesheets="@superadmindashbord.css">
+                                       <children>
+                                          <Label layoutX="27.0" layoutY="14.0" text="Flights" textFill="WHITE">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="superadmin_reports_flightnumber" layoutX="53.0" layoutY="47.0" text="0" textFill="WHITE">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="100.0" fitWidth="70.0" layoutX="141.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Image/icons8-airplane-window-open-48.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="superadmin_reports_canceledflightnumber" layoutX="53.0" layoutY="119.0" text="0" textFill="WHITE">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="22.0" layoutY="92.0" text="Canceled flight" textFill="WHITE">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="622.0" layoutY="268.0" prefHeight="199.0" prefWidth="219.0" styleClass="report-cards" stylesheets="@superadmindashbord.css">
+                                       <children>
+                                          <Label layoutX="32.0" layoutY="14.0" text="Airplane" textFill="WHITE">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="superadmin_reports_airplanenumber" layoutX="60.0" layoutY="48.0" text="0" textFill="WHITE">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="100.0" fitWidth="70.0" layoutX="136.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Image/icons8-plane-48.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="superadmin_financial_page" layoutX="14.0" layoutY="10.0" prefHeight="511.0" prefWidth="861.0" styleClass="anchorpane-financial" stylesheets="@superadmindashbord.css" visible="false">
+                                 <children>
+                                    <TextField fx:id="superadmin_financial_employees_salarytextfield" alignment="CENTER" layoutX="38.0" layoutY="422.0" prefHeight="34.0" prefWidth="153.0" promptText="Salary" styleClass="bordertableBtn-financial" stylesheets="@superadmindashbord.css" />
+                                    <Button fx:id="superadmin_financial_employees_updateBtn" layoutX="59.0" layoutY="462.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" styleClass="bordertableBtn-financial" stylesheets="@superadmindashbord.css" text="Update">
+                                       <graphic>
+                                          <FontAwesomeIcon fill="#e8133f" glyphName="REFRESH" />
+                                       </graphic>
+                                    </Button>
+                                    <TableView fx:id="superadmin_financial_employees_table" layoutX="14.0" layoutY="50.0" prefHeight="364.0" prefWidth="200.0" stylesheets="@superadmindashbord.css">
+                                      <columns>
+                                        <TableColumn fx:id="superadmin_financial_employees_usernameCol" prefWidth="100.0" text="Username" />
+                                        <TableColumn fx:id="superadmin_financial_employees_salaryCol" prefWidth="99.0" text="Salary" />
                                       </columns>
                                        <styleClass>
-                                          <String fx:value="filter" />
-                                          <String fx:value="table-view-border" />
+                                          <String fx:value="table-view-financial" />
+                                          <String fx:value="bordertableBtn-financial" />
                                        </styleClass>
                                     </TableView>
-                                    <Label layoutX="19.0" layoutY="249.0" stylesheets="@superadmindashbord.css" text="ID" textFill="WHITE">
+                                    <Label layoutX="38.0" layoutY="14.0" text="Employees Salary" textFill="WHITE">
                                        <font>
-                                          <Font size="14.0" />
+                                          <Font name="Eras Bold ITC" size="18.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="91.0" layoutY="245.0" />
-                                    <Label layoutX="19.0" layoutY="280.0" stylesheets="@superadmindashbord.css" text="First name" textFill="WHITE">
+                                    <TableView fx:id="superadmin_financial_manager_table" layoutX="231.0" layoutY="49.0" prefHeight="364.0" prefWidth="200.0" stylesheets="@superadmindashbord.css">
+                                       <columns>
+                                          <TableColumn fx:id="superadmin_financial_manager_usernameCol" prefWidth="99.0" text="Username" />
+                                          <TableColumn fx:id="superadmin_financial_manager_salaryCol" prefWidth="100.0" text="Salary" />
+                                       </columns>
+                                       <styleClass>
+                                          <String fx:value="table-view-financial" />
+                                          <String fx:value="bordertableBtn-financial" />
+                                       </styleClass>
+                                    </TableView>
+                                    <Label layoutX="260.0" layoutY="14.0" text="Manager Salary" textFill="WHITE">
                                        <font>
-                                          <Font size="14.0" />
+                                          <Font name="Eras Bold ITC" size="18.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="91.0" layoutY="276.0" />
-                                    <TextField layoutX="91.0" layoutY="340.0" />
-                                    <Label layoutX="19.0" layoutY="313.0" stylesheets="@superadmindashbord.css" text="Last name" textFill="WHITE">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="19.0" layoutY="344.0" stylesheets="@superadmindashbord.css" text="Username" textFill="WHITE">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField layoutX="91.0" layoutY="309.0" />
-                                    <TextField layoutX="415.0" layoutY="280.0" />
-                                    <Label layoutX="343.0" layoutY="317.0" stylesheets="@superadmindashbord.css" text="Address" textFill="WHITE">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField layoutX="415.0" layoutY="313.0" />
-                                    <Label layoutX="343.0" layoutY="253.0" stylesheets="@superadmindashbord.css" text="Password" textFill="WHITE">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="343.0" layoutY="284.0" stylesheets="@superadmindashbord.css" text="Phone" textFill="WHITE">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="343.0" layoutY="348.0" stylesheets="@superadmindashbord.css" text="Email" textFill="WHITE">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField layoutX="415.0" layoutY="344.0" />
-                                    <TextField layoutX="415.0" layoutY="249.0" />
-                                    <Button layoutX="427.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="Add">
+                                    <Button fx:id="superadmin_financial_manager_updateBtn" layoutX="281.0" layoutY="462.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" styleClass="bordertableBtn-financial" stylesheets="@superadmindashbord.css" text="Update">
                                        <graphic>
-                                          <FontAwesomeIcon fill="#ea11b8" glyphName="PLUS" />
+                                          <FontAwesomeIcon fill="#e8133f" glyphName="REFRESH" />
                                        </graphic>
                                     </Button>
-                                    <Button layoutX="305.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="Update">
-                                       <graphic>
-                                          <FontAwesomeIcon fill="#ea11b8" glyphName="REFRESH" />
-                                       </graphic>
-                                    </Button>
-                                    <Button layoutX="187.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="Delete">
-                                       <graphic>
-                                          <FontAwesomeIcon fill="#ea11b8" glyphName="TRASH" />
-                                       </graphic>
-                                    </Button>
-                                    <Button layoutX="65.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="Clear">
-                                       <graphic>
-                                          <FontAwesomeIcon fill="#ea11b8" glyphName="BAN" />
-                                       </graphic>
-                                    </Button>
+                                    <TextField fx:id="superadmin_financial_manager_salarytextfield" alignment="CENTER" layoutX="259.0" layoutY="424.0" prefHeight="33.0" prefWidth="153.0" promptText="Salary" styleClass="bordertableBtn-financial" stylesheets="@superadmindashbord.css" />
+                                    <TableView fx:id="superadmin_financial_passengers_table" layoutX="454.0" layoutY="48.0" prefHeight="450.0" prefWidth="393.0" stylesheets="@superadmindashbord.css">
+                                       <columns>
+                                          <TableColumn fx:id="superadmin_financial_passengers_usernameCol" prefWidth="129.0" text="Username" />
+                                          <TableColumn fx:id="superadmin_financial_passengers_walletCol" prefWidth="129.0" text="Wallet" />
+                                          <TableColumn fx:id="superadmin_financial_passengers_ticketCol" prefWidth="134.0" text="Ticket" />
+                                       </columns>
+                                       <styleClass>
+                                          <String fx:value="table-view-financial" />
+                                          <String fx:value="bordertableBtn-financial" />
+                                       </styleClass>
+                                    </TableView>
+                                    <Label layoutX="614.0" layoutY="13.0" text="Passengers " textFill="WHITE">
+                                       <font>
+                                          <Font name="Eras Bold ITC" size="18.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="14.0" layoutY="10.0" prefHeight="511.0" prefWidth="861.0" styleClass="anchorpane-superadmin-manager" stylesheets="@superadmindashbord.css" visible="false">
+                              <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="10.0" layoutY="526.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-instagram-48.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="39.0" layoutY="533.0" text="Iranairport" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="428.0" layoutY="533.0" text="Iranairport.ir" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial" size="12.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="399.0" layoutY="526.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-chrome-48.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="820.0" layoutY="533.0" text="Iranairport" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial" size="12.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="791.0" layoutY="526.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-twitter-48.png" />
+                                 </image>
+                              </ImageView>
+                              <AnchorPane fx:id="superadmin_employees_page" layoutX="8.0" layoutY="10.0" prefHeight="513.0" prefWidth="867.0" styleClass="anchorpane-superadmin-employees" stylesheets="@superadmindashbord.css" visible="false">
                                  <children>
                                     <ImageView fitHeight="511.0" fitWidth="275.0" layoutX="586.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../Image/4563.jpg" />
+                                          <Image url="@../Image/39696.jpg" />
                                        </image>
                                     </ImageView>
-                                    <TableView layoutX="19.0" layoutY="13.0" prefHeight="209.0" prefWidth="545.0" stylesheets="@superadmindashbord.css">
+                                    <TableView fx:id="superadmin_employees_table" layoutX="12.0" layoutY="13.0" prefHeight="209.0" prefWidth="564.0" styleClass="table-view-employee" stylesheets="@superadmindashbord.css">
                                        <columns>
-                                          <TableColumn prefWidth="52.0" text="ID" />
-                                          <TableColumn prefWidth="75.0" text="First name" />
-                                          <TableColumn prefWidth="76.0" text="Last name" />
-                                          <TableColumn prefWidth="71.0" text="Username" />
-                                          <TableColumn prefWidth="73.0" text="Password" />
-                                          <TableColumn prefWidth="69.0" text="Phone" />
-                                          <TableColumn prefWidth="76.0" text="Address" />
-                                          <TableColumn prefWidth="52.0" text="Email" />
+                                          <TableColumn fx:id="superadmin_employees_idCol" prefWidth="43.0" text="ID" />
+                                          <TableColumn fx:id="superadmin_employees_firstnameCol" prefWidth="68.0" text="First name" />
+                                          <TableColumn fx:id="superadmin_employees_lastnameCol" prefWidth="72.0" text="Last name" />
+                                          <TableColumn fx:id="superadmin_employees_usernameCol" prefWidth="71.0" text="Username" />
+                                          <TableColumn fx:id="superadmin_employees_passwordCol" prefWidth="68.0" text="Password" />
+                                          <TableColumn fx:id="superadmin_employees_phoneCol" prefWidth="63.0" text="Phone" />
+                                          <TableColumn fx:id="superadmin_employees_addressCol" prefWidth="66.0" text="Address" />
+                                          <TableColumn fx:id="superadmin_employees_emailCol" prefWidth="60.0" text="Email" />
+                                          <TableColumn fx:id="superadmin_employees_salaryCol" prefWidth="52.0" text="Salary" />
                                        </columns>
-                                       <styleClass>
-                                          <String fx:value="filter" />
-                                          <String fx:value="table-view-border" />
-                                       </styleClass>
                                     </TableView>
                                     <Label layoutX="19.0" layoutY="249.0" stylesheets="@superadmindashbord.css" text="ID" textFill="WHITE">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="91.0" layoutY="245.0" />
+                                    <TextField fx:id="superadmin_employees_idtextfield" layoutX="91.0" layoutY="245.0" styleClass="tableBtnBorder-employee" stylesheets="@superadmindashbord.css" />
                                     <Label layoutX="19.0" layoutY="280.0" stylesheets="@superadmindashbord.css" text="First name" textFill="WHITE">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="91.0" layoutY="276.0" />
-                                    <TextField layoutX="91.0" layoutY="340.0" />
+                                    <TextField fx:id="superadmin_employees_firstnametextfield" layoutX="91.0" layoutY="276.0" styleClass="tableBtnBorder-employee" stylesheets="@superadmindashbord.css" />
+                                    <TextField fx:id="superadmin_employees_usernametextfield" layoutX="91.0" layoutY="340.0" styleClass="tableBtnBorder-employee" stylesheets="@superadmindashbord.css" />
                                     <Label layoutX="19.0" layoutY="313.0" stylesheets="@superadmindashbord.css" text="Last name" textFill="WHITE">
                                        <font>
                                           <Font size="14.0" />
@@ -312,142 +582,144 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="91.0" layoutY="309.0" />
-                                    <TextField layoutX="415.0" layoutY="280.0" />
-                                    <Label layoutX="343.0" layoutY="317.0" stylesheets="@superadmindashbord.css" text="Address" textFill="WHITE">
+                                    <TextField fx:id="superadmin_employees_lastnametextfield" layoutX="91.0" layoutY="309.0" styleClass="tableBtnBorder-employee" stylesheets="@superadmindashbord.css" />
+                                    <TextField fx:id="superadmin_employees_phonetextfield" layoutX="425.0" layoutY="247.0" styleClass="tableBtnBorder-employee" stylesheets="@superadmindashbord.css" />
+                                    <Label layoutX="353.0" layoutY="284.0" stylesheets="@superadmindashbord.css" text="Address" textFill="WHITE">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="415.0" layoutY="313.0" />
-                                    <Label layoutX="343.0" layoutY="253.0" stylesheets="@superadmindashbord.css" text="Password" textFill="WHITE">
+                                    <TextField fx:id="superadmin_employees_addresstextfield" layoutX="425.0" layoutY="280.0" styleClass="tableBtnBorder-employee" stylesheets="@superadmindashbord.css" />
+                                    <Label layoutX="19.0" layoutY="376.0" stylesheets="@superadmindashbord.css" text="Password" textFill="WHITE">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="343.0" layoutY="284.0" stylesheets="@superadmindashbord.css" text="Phone" textFill="WHITE">
+                                    <Label layoutX="353.0" layoutY="251.0" stylesheets="@superadmindashbord.css" text="Phone" textFill="WHITE">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="343.0" layoutY="348.0" stylesheets="@superadmindashbord.css" text="Email" textFill="WHITE">
+                                    <Label layoutX="353.0" layoutY="315.0" stylesheets="@superadmindashbord.css" text="Email" textFill="WHITE">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="415.0" layoutY="344.0" />
-                                    <TextField layoutX="415.0" layoutY="249.0" />
-                                    <Button layoutX="427.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="Add">
+                                    <TextField fx:id="superadmin_employees_emailtextfield" layoutX="425.0" layoutY="311.0" styleClass="tableBtnBorder-employee" stylesheets="@superadmindashbord.css" />
+                                    <TextField fx:id="superadmin_employees_passwordtextfield" layoutX="91.0" layoutY="372.0" styleClass="tableBtnBorder-employee" stylesheets="@superadmindashbord.css" />
+                                    <Button fx:id="superadmin_employees_addBtn" layoutX="427.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" styleClass="tableBtnBachground-employee" stylesheets="@superadmindashbord.css" text="Add" textFill="WHITE">
                                        <graphic>
-                                          <FontAwesomeIcon fill="#ea11b8" glyphName="PLUS" />
+                                          <FontAwesomeIcon fill="WHITE" glyphName="PLUS" />
                                        </graphic>
                                     </Button>
-                                    <Button layoutX="305.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="Update">
+                                    <Button fx:id="superadmin_employees_updateBtn" layoutX="305.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" styleClass="tableBtnBachground-employee" stylesheets="@superadmindashbord.css" text="Update" textFill="WHITE">
                                        <graphic>
-                                          <FontAwesomeIcon fill="#ea11b8" glyphName="REFRESH" />
+                                          <FontAwesomeIcon fill="WHITE" glyphName="REFRESH" />
                                        </graphic>
                                     </Button>
-                                    <Button layoutX="187.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="Delete">
+                                    <Button fx:id="superadmin_employees_fireBtn" layoutX="187.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" styleClass="tableBtnBachground-employee" stylesheets="@superadmindashbord.css" text="Fire" textFill="WHITE">
                                        <graphic>
-                                          <FontAwesomeIcon fill="#ea11b8" glyphName="TRASH" />
+                                          <FontAwesomeIcon fill="WHITE" glyphName="TRASH" />
                                        </graphic>
                                     </Button>
-                                    <Button layoutX="65.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="Clear">
+                                    <Button fx:id="superadmin_employees_clearBtn" layoutX="65.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" styleClass="tableBtnBachground-employee" stylesheets="@superadmindashbord.css" text="Clear" textFill="WHITE">
                                        <graphic>
-                                          <FontAwesomeIcon fill="#ea11b8" glyphName="BAN" />
+                                          <FontAwesomeIcon fill="WHITE" glyphName="BAN" />
                                        </graphic>
                                     </Button>
+                                    <TextField fx:id="superadmin_employees_salarytextfield" layoutX="425.0" layoutY="345.0" styleClass="tableBtnBorder-employee" stylesheets="@superadmindashbord.css" />
+                                    <Label layoutX="353.0" layoutY="349.0" stylesheets="@superadmindashbord.css" text="Salary" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="24.0" layoutY="20.0" prefHeight="511.0" prefWidth="861.0" styleClass="anchorpane-superadmin-manager" stylesheets="@superadmindashbord.css">
+                              <AnchorPane fx:id="superadmin_passengers_page1" layoutX="14.0" layoutY="10.0" prefHeight="511.0" prefWidth="861.0" styleClass="passenger-anchorpane" stylesheets="@superadmindashbord.css" visible="false">
                                  <children>
                                     <ImageView fitHeight="511.0" fitWidth="275.0" layoutX="586.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../Image/4563.jpg" />
+                                          <Image url="@../Image/19199060.jpg" />
                                        </image>
                                     </ImageView>
-                                    <TableView layoutX="19.0" layoutY="13.0" prefHeight="209.0" prefWidth="545.0" stylesheets="@superadmindashbord.css">
+                                    <TableView fx:id="superadmin_passenger_table" layoutX="12.0" layoutY="13.0" prefHeight="209.0" prefWidth="564.0" styleClass="passenger-table-view" stylesheets="@superadmindashbord.css">
                                        <columns>
-                                          <TableColumn prefWidth="52.0" text="ID" />
-                                          <TableColumn prefWidth="75.0" text="First name" />
-                                          <TableColumn prefWidth="76.0" text="Last name" />
-                                          <TableColumn prefWidth="71.0" text="Username" />
-                                          <TableColumn prefWidth="73.0" text="Password" />
-                                          <TableColumn prefWidth="69.0" text="Phone" />
-                                          <TableColumn prefWidth="76.0" text="Address" />
-                                          <TableColumn prefWidth="52.0" text="Email" />
+                                          <TableColumn fx:id="superadmin_passenger_idCol" prefWidth="43.0" text="ID" />
+                                          <TableColumn fx:id="superadmin_passenger_firstnameCol" prefWidth="68.0" text="First name" />
+                                          <TableColumn fx:id="superadmin_passenger_lastnameCol" prefWidth="72.0" text="Last name" />
+                                          <TableColumn fx:id="superadmin_passenger_usernameCol" prefWidth="71.0" text="Username" />
+                                          <TableColumn fx:id="superadmin_passenger_passwordCol" prefWidth="68.0" text="Password" />
+                                          <TableColumn fx:id="superadmin_passenger_phoneCol" prefWidth="63.0" text="Phone" />
+                                          <TableColumn fx:id="superadmin_passenger_addressCol" prefWidth="86.0" text="Address" />
+                                          <TableColumn fx:id="superadmin_passenger_emailCol" prefWidth="92.0" text="Email" />
                                        </columns>
-                                       <styleClass>
-                                          <String fx:value="filter" />
-                                          <String fx:value="table-view-border" />
-                                       </styleClass>
                                     </TableView>
                                     <Label layoutX="19.0" layoutY="249.0" stylesheets="@superadmindashbord.css" text="ID" textFill="WHITE">
                                        <font>
-                                          <Font size="14.0" />
+                                          <Font name="Arial" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="91.0" layoutY="245.0" />
+                                    <TextField fx:id="superadmin_passenger_idtextfield" layoutX="100.0" layoutY="246.0" styleClass="passengerBorderBtn" stylesheets="@superadmindashbord.css" />
                                     <Label layoutX="19.0" layoutY="280.0" stylesheets="@superadmindashbord.css" text="First name" textFill="WHITE">
                                        <font>
-                                          <Font size="14.0" />
+                                          <Font name="Arial" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="91.0" layoutY="276.0" />
-                                    <TextField layoutX="91.0" layoutY="340.0" />
+                                    <TextField fx:id="superadmin_passenger_firstnametextfield" layoutX="100.0" layoutY="277.0" styleClass="passengerBorderBtn" stylesheets="@superadmindashbord.css" />
+                                    <TextField fx:id="superadmin_passenger_usernametextfield" layoutX="100.0" layoutY="341.0" styleClass="passengerBorderBtn" stylesheets="@superadmindashbord.css" />
                                     <Label layoutX="19.0" layoutY="313.0" stylesheets="@superadmindashbord.css" text="Last name" textFill="WHITE">
                                        <font>
-                                          <Font size="14.0" />
+                                          <Font name="Arial" size="14.0" />
                                        </font>
                                     </Label>
                                     <Label layoutX="19.0" layoutY="344.0" stylesheets="@superadmindashbord.css" text="Username" textFill="WHITE">
                                        <font>
-                                          <Font size="14.0" />
+                                          <Font name="Arial" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="91.0" layoutY="309.0" />
-                                    <TextField layoutX="415.0" layoutY="280.0" />
-                                    <Label layoutX="343.0" layoutY="317.0" stylesheets="@superadmindashbord.css" text="Address" textFill="WHITE">
+                                    <TextField fx:id="superadmin_passenger_lastnametextfield" layoutX="100.0" layoutY="310.0" styleClass="passengerBorderBtn" stylesheets="@superadmindashbord.css" />
+                                    <TextField fx:id="superadmin_passenger_phonetextfield" layoutX="425.0" layoutY="247.0" styleClass="passengerBorderBtn" stylesheets="@superadmindashbord.css" />
+                                    <Label layoutX="353.0" layoutY="284.0" stylesheets="@superadmindashbord.css" text="Address" textFill="WHITE">
                                        <font>
-                                          <Font size="14.0" />
+                                          <Font name="Arial" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="415.0" layoutY="313.0" />
-                                    <Label layoutX="343.0" layoutY="253.0" stylesheets="@superadmindashbord.css" text="Password" textFill="WHITE">
+                                    <TextField fx:id="superadmin_passenger_addresstextfield" layoutX="425.0" layoutY="280.0" styleClass="passengerBorderBtn" stylesheets="@superadmindashbord.css" />
+                                    <Label layoutX="19.0" layoutY="376.0" stylesheets="@superadmindashbord.css" text="Password" textFill="WHITE">
                                        <font>
-                                          <Font size="14.0" />
+                                          <Font name="Arial" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="343.0" layoutY="284.0" stylesheets="@superadmindashbord.css" text="Phone" textFill="WHITE">
+                                    <Label layoutX="353.0" layoutY="251.0" stylesheets="@superadmindashbord.css" text="Phone" textFill="WHITE">
                                        <font>
-                                          <Font size="14.0" />
+                                          <Font name="Arial" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="343.0" layoutY="348.0" stylesheets="@superadmindashbord.css" text="Email" textFill="WHITE">
+                                    <Label layoutX="353.0" layoutY="315.0" stylesheets="@superadmindashbord.css" text="Email" textFill="WHITE">
                                        <font>
-                                          <Font size="14.0" />
+                                          <Font name="Arial" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="415.0" layoutY="344.0" />
-                                    <TextField layoutX="415.0" layoutY="249.0" />
-                                    <Button layoutX="427.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="Add">
+                                    <TextField fx:id="superadmin_passenger_emailtextfield" layoutX="425.0" layoutY="311.0" styleClass="passengerBorderBtn" stylesheets="@superadmindashbord.css" />
+                                    <TextField fx:id="superadmin_passenger_passwordtextfield" layoutX="100.0" layoutY="373.0" styleClass="passengerBorderBtn" stylesheets="@superadmindashbord.css" />
+                                    <Button fx:id="superadmin_passenger_addBtn" layoutX="427.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" styleClass="passengerBtn" stylesheets="@superadmindashbord.css" text="Add" textFill="WHITE">
                                        <graphic>
-                                          <FontAwesomeIcon fill="#ea11b8" glyphName="PLUS" />
+                                          <FontAwesomeIcon fill="WHITE" glyphName="PLUS" />
                                        </graphic>
                                     </Button>
-                                    <Button layoutX="305.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="Update">
+                                    <Button fx:id="superadmin_passenger_updateBtn" layoutX="305.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" styleClass="passengerBtn" stylesheets="@superadmindashbord.css" text="Update" textFill="WHITE">
                                        <graphic>
-                                          <FontAwesomeIcon fill="#ea11b8" glyphName="REFRESH" />
+                                          <FontAwesomeIcon fill="WHITE" glyphName="REFRESH" />
                                        </graphic>
                                     </Button>
-                                    <Button layoutX="187.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="Delete">
+                                    <Button fx:id="superadmin_passenger_fireBtn" layoutX="187.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" styleClass="passengerBtn" stylesheets="@superadmindashbord.css" text="Fire" textFill="WHITE">
                                        <graphic>
-                                          <FontAwesomeIcon fill="#ea11b8" glyphName="TRASH" />
+                                          <FontAwesomeIcon fill="WHITE" glyphName="TRASH" />
                                        </graphic>
                                     </Button>
-                                    <Button layoutX="65.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="Clear">
+                                    <Button fx:id="superadmin_passenger_clearBtn" layoutX="65.0" layoutY="441.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" styleClass="passengerBtn" stylesheets="@superadmindashbord.css" text="Clear" textFill="WHITE">
                                        <graphic>
-                                          <FontAwesomeIcon fill="#ea11b8" glyphName="BAN" />
+                                          <FontAwesomeIcon fill="WHITE" glyphName="BAN" />
                                        </graphic>
                                     </Button>
                                  </children>

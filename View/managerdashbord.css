@@ -6,14 +6,36 @@
     
 }
 .manager-btns:hover{
-     -fx-background-color: linear-gradient(to right, #1e9600, #fff200, #ff0000);;
+     -fx-background-color: linear-gradient(to right, #1e9600, #fff200, #ff0000);
 }
 
 .left-form-manager{
 
   -fx-background-color:linear-gradient(to bottom, #f7ff00, #db36a4);
 }
-
+.table-view{
+    -fx-background-color:#ffffff;
+    -fx-border-color:linear-gradient(to bottom right, #272b3f, #256b51);
+    -fx-border-radius:4px;
+    -fx-padding:0px;
+}
+.table-view .column-header-background {
+    -fx-background-color:linear-gradient(to right , #40e0d0, #ff8c00 , #ff0080);
+    -fx-background-insets: 0 0 0 0;
+    -f-background-radius:8px 8px 0px 0px;
+}
+.table-view-border{
+    -fx-border-color:linear-gradient(#fbd3e9, #bb377d);
+    
+}
+.table-view .column-header, .filter{
+    -fx-background-color: transparent;
+    -fx-size:40px;
+}
+.table-view .column-header .label{
+    -fx-text-fill:#fff;
+    -fx-font-family:"Arial";
+}
 
     
     
