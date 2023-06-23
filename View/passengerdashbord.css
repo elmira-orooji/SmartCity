@@ -1,0 +1,27 @@
+.left-form-passenger{
+
+  -fx-background-color:linear-gradient(to right, #333333, #dd1818);
+}
+.transparent{
+    -fx-background-color: transparent;
+}
+
+.right-form-passenger{
+    
+      -fx-background-color:linear-gradient(to bottom, #EB5757, #000000);
+
+}
+.anchorpane-color-passenger{
+    
+    -fx-background-color:linear-gradient(to bottom, #fffbd5, #b20a2c);
+}
+ .passenger-btns{
+    
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    
+}
+
+.passenger-btns:hover{
+     -fx-background-color: linear-gradient(to right, #EF3B36, #FFFFFF);
+}

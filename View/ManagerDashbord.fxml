@@ -49,27 +49,27 @@
                                  </image>
                               </ImageView>
                               <Line endX="100.0" layoutX="106.0" layoutY="185.0" startX="-100.0" stroke="WHITE" />
-                              <Button layoutX="21.0" layoutY="204.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="170.0" styleClass="manager-btns" stylesheets="@managerdashbord.css" text="Setting" textFill="#f5f5f5">
+                              <Button layoutX="21.0" layoutY="237.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="170.0" styleClass="manager-btns" stylesheets="@managerdashbord.css" text="Setting" textFill="#f5f5f5">
                                  <font>
                                     <Font name="Arial Black" size="14.0" />
                                  </font>
                               </Button>
-                              <Button layoutX="21.0" layoutY="250.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="170.0" styleClass="manager-btns" stylesheets="@managerdashbord.css" text="Employees" textFill="#f5f5f5">
+                              <Button layoutX="21.0" layoutY="283.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="170.0" styleClass="manager-btns" stylesheets="@managerdashbord.css" text="  Employees" textFill="#f5f5f5">
                                  <font>
                                     <Font name="Arial Black" size="14.0" />
                                  </font>
                               </Button>
-                              <Button layoutX="21.0" layoutY="296.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="170.0" styleClass="manager-btns" stylesheets="@managerdashbord.css" text="   Passangers" textFill="#f5f5f5">
+                              <Button layoutX="21.0" layoutY="329.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="170.0" styleClass="manager-btns" stylesheets="@managerdashbord.css" text="    Passengers" textFill="#f5f5f5">
                                  <font>
                                     <Font name="Arial Black" size="14.0" />
                                  </font>
                               </Button>
-                              <Button layoutX="21.0" layoutY="341.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="170.0" styleClass="manager-btns" stylesheets="@managerdashbord.css" text="Flights" textFill="#f5f5f5">
+                              <Button layoutX="21.0" layoutY="403.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="170.0" styleClass="manager-btns" stylesheets="@managerdashbord.css" text="Flights" textFill="#f5f5f5">
                                  <font>
                                     <Font name="Arial Black" size="14.0" />
                                  </font>
                               </Button>
-                              <Button layoutX="21.0" layoutY="392.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="170.0" styleClass="manager-btns" stylesheets="@managerdashbord.css" text="Messages" textFill="#f5f5f5">
+                              <Button layoutX="21.0" layoutY="440.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="170.0" styleClass="manager-btns" stylesheets="@managerdashbord.css" text="  Messages" textFill="#f5f5f5">
                                  <font>
                                     <Font name="Arial Black" size="14.0" />
                                  </font>
@@ -79,12 +79,56 @@
                                     <Font name="Arial Black" size="14.0" />
                                  </font>
                               </Button>
-                              <FontAwesomeIcon fill="#fcfcfc" glyphName="USERS" layoutX="34.0" layoutY="320.0" size="1.5em" />
-                              <FontAwesomeIcon fill="#fcfcfc" glyphName="USERS" layoutX="34.0" layoutY="274.0" size="1.5em" />
-                              <FontAwesomeIcon fill="#fcfcfc" glyphName="WRENCH" layoutX="36.0" layoutY="228.0" size="1.5em" />
-                              <FontAwesomeIcon fill="#fcfcfc" glyphName="PLANE" layoutX="36.0" layoutY="365.0" size="1.5em" />
-                              <FontAwesomeIcon fill="#fcfcfc" glyphName="LIST" layoutX="35.0" layoutY="416.0" size="1.5em" />
-                              <FontAwesomeIcon fill="#fcfcfc" glyphName="SIGN_OUT" layoutX="35.0" layoutY="527.0" size="1.5em" />
+                              <Button layoutX="21.0" layoutY="200.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="170.0" styleClass="manager-btns" stylesheets="@managerdashbord.css" text="Home" textFill="#f5f5f5">
+                                 <font>
+                                    <Font name="Arial Black" size="14.0" />
+                                 </font>
+                              </Button>
+                              <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="30.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-home-64.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="30.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-settings-100.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="30.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-employees-64.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="30.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-male-female-user-group-48.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="31.0" layoutY="404.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-airport-100.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="31.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-comments-100.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="31.0" layoutY="504.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-export-100.png" />
+                                 </image>
+                              </ImageView>
+                              <Button layoutX="21.0" layoutY="366.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="170.0" styleClass="manager-btns" stylesheets="@managerdashbord.css" text="Planes" textFill="#f5f5f5">
+                                 <font>
+                                    <Font name="Arial Black" size="14.0" />
+                                 </font>
+                              </Button>
+                              <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="31.0" layoutY="367.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-airport-100%20(1).png" />
+                                 </image>
+                              </ImageView>
                            </children>
                         </AnchorPane>
                      </children>
@@ -93,84 +137,470 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane layoutX="53.0" layoutY="52.0" prefHeight="554.0" prefWidth="888.0" styleClass="left-form-manager" stylesheets="@managerdashbord.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane prefHeight="554.0" prefWidth="888.0" styleClass="left-form-manager" stylesheets="@managerdashbord.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane layoutX="20.0" layoutY="18.0" prefHeight="498.0" prefWidth="843.0" styleClass="background" stylesheets="@AdminPanelStyle.css">
+                              <AnchorPane layoutX="20.0" layoutY="18.0" prefHeight="498.0" prefWidth="843.0" styleClass="background" stylesheets="@AdminPanelStyle.css" visible="false">
                                  <children>
                                     <ImageView fitHeight="499.0" fitWidth="297.0" layoutX="546.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../Image/Dotted%20airplane%20trajectories%20cartoon%20illustration%20set.jpg" />
                                        </image>
                                     </ImageView>
-                                    <TableView layoutX="18.0" layoutY="26.0" prefHeight="200.0" prefWidth="524.0" stylesheets="@managerdashbord.css">
+                                    <TableView fx:id="manager_setting_table" layoutX="18.0" layoutY="26.0" prefHeight="200.0" prefWidth="524.0" stylesheets="@managerdashbord.css">
                                       <columns>
-                                        <TableColumn prefWidth="44.0" text="ID" />
-                                        <TableColumn prefWidth="66.0" text="Firstname" />
-                                          <TableColumn prefWidth="72.0" text="Lastname" />
-                                          <TableColumn prefWidth="74.0" text="Username" />
-                                          <TableColumn prefWidth="74.0" text="Password" />
-                                          <TableColumn prefWidth="63.0" text="Phone" />
-                                          <TableColumn prefWidth="66.0" text="Address" />
-                                          <TableColumn prefWidth="66.0" text="Email" />
+                                        <TableColumn fx:id="manager_setting_idCol" prefWidth="44.0" text="ID" />
+                                        <TableColumn fx:id="manager_setting_firstnameCol" prefWidth="66.0" text="Firstname" />
+                                          <TableColumn fx:id="manager_setting_lastnameCol" prefWidth="72.0" text="Lastname" />
+                                          <TableColumn fx:id="manager_setting_usernameCol" prefWidth="74.0" text="Username" />
+                                          <TableColumn fx:id="manager_setting_passwordCol" prefWidth="74.0" text="Password" />
+                                          <TableColumn fx:id="manager_setting_phoneCol" prefWidth="63.0" text="Phone" />
+                                          <TableColumn fx:id="manager_setting_addressCol" prefWidth="66.0" text="Address" />
+                                          <TableColumn fx:id="manager_setting_emailCol" prefWidth="66.0" text="Email" />
                                       </columns>
                                        <styleClass>
                                           <String fx:value="filter" />
                                           <String fx:value="table-view-border" />
                                        </styleClass>
                                     </TableView>
-                                    <Label layoutX="24.0" layoutY="251.0" text="ID" textFill="#a11e82">
+                                    <Label layoutX="24.0" layoutY="251.0" text="ID" textFill="#f52e46">
                                        <font>
                                           <Font size="13.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="91.0" layoutY="247.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
-                                    <TextField layoutX="91.0" layoutY="279.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
-                                    <Label layoutX="24.0" layoutY="283.0" text="Firstname" textFill="#a11e82">
+                                    <TextField fx:id="manager_setting_idtextfield" layoutX="91.0" layoutY="247.0" styleClass="fieldborder-table-setting" stylesheets="@managerdashbord.css" />
+                                    <TextField fx:id="manager_setting_firstnametextfield" layoutX="91.0" layoutY="279.0" styleClass="fieldborder-table-setting" stylesheets="@managerdashbord.css" />
+                                    <Label layoutX="24.0" layoutY="283.0" text="Firstname" textFill="#f52e46">
                                        <font>
                                           <Font size="13.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="91.0" layoutY="311.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
-                                    <Label layoutX="24.0" layoutY="347.0" text="Username" textFill="#a11e82">
+                                    <TextField fx:id="manager_setting_lastnametextfield" layoutX="91.0" layoutY="311.0" styleClass="fieldborder-table-setting" stylesheets="@managerdashbord.css" />
+                                    <Label layoutX="24.0" layoutY="347.0" text="Username" textFill="#f52e46">
                                        <font>
                                           <Font size="13.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="91.0" layoutY="343.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
-                                    <Label layoutX="24.0" layoutY="315.0" text="Lastname" textFill="#a11e82">
+                                    <TextField fx:id="manager_setting_usernametextfield" layoutX="91.0" layoutY="343.0" styleClass="fieldborder-table-setting" stylesheets="@managerdashbord.css" />
+                                    <Label layoutX="24.0" layoutY="315.0" text="Lastname" textFill="#f52e46">
                                        <font>
                                           <Font size="13.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="393.0" layoutY="315.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
-                                    <TextField layoutX="393.0" layoutY="251.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
-                                    <TextField layoutX="393.0" layoutY="347.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
-                                    <Label layoutX="326.0" layoutY="351.0" text="Email" textFill="#a11e82">
+                                    <TextField fx:id="manager_setting_addresstextfield" layoutX="393.0" layoutY="315.0" styleClass="fieldborder-table-setting" stylesheets="@managerdashbord.css" />
+                                    <TextField fx:id="manager_setting_passwordtextfield" layoutX="393.0" layoutY="251.0" styleClass="fieldborder-table-setting" stylesheets="@managerdashbord.css" />
+                                    <TextField fx:id="manager_setting_emailtextfield" layoutX="393.0" layoutY="347.0" styleClass="fieldborder-table-setting" stylesheets="@managerdashbord.css" />
+                                    <Label layoutX="326.0" layoutY="351.0" text="Email" textFill="#f52e46">
                                        <font>
                                           <Font size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="326.0" layoutY="287.0" text="Phone" textFill="#a11e82">
+                                    <Label layoutX="326.0" layoutY="287.0" text="Phone" textFill="#f52e46">
                                        <font>
                                           <Font size="13.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="393.0" layoutY="283.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" />
-                                    <Label layoutX="326.0" layoutY="319.0" text="Address" textFill="#a11e82">
+                                    <TextField fx:id="manager_setting_phonetextfield" layoutX="393.0" layoutY="283.0" styleClass="fieldborder-table-setting" stylesheets="@managerdashbord.css" />
+                                    <Label layoutX="326.0" layoutY="319.0" text="Address" textFill="#f52e46">
                                        <font>
                                           <Font size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="326.0" layoutY="255.0" text="Password" textFill="#a11e82">
+                                    <Label layoutX="326.0" layoutY="255.0" text="Password" textFill="#f52e46">
                                        <font>
                                           <Font size="13.0" />
                                        </font>
                                     </Label>
-                                    <Button layoutX="62.0" layoutY="422.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" text="Clear" />
-                                    <Button layoutX="172.0" layoutY="422.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" text="Delete" />
-                                    <Button layoutX="288.0" layoutY="422.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" text="Update" />
-                                    <Button layoutX="398.0" layoutY="422.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" styleClass="borderOfBtn" stylesheets="@AdminPanelStyle.css" text="Add" />
+                                    <Button fx:id="manager_setting_clearBtn" layoutX="200.0" layoutY="424.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" styleClass="Btntable-setting" stylesheets="@AdminPanelStyle.css" text="     Clear" textFill="WHITE" />
+                                    <Button fx:id="manager_setting_updateBtn" layoutX="321.0" layoutY="424.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" styleClass="Btntable-setting" stylesheets="@AdminPanelStyle.css" text="          Update" textFill="WHITE" />
+                                    <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="322.0" layoutY="425.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/icons8-available-updates-100.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="200.0" layoutY="425.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/icons8-empty-trash-100.png" />
+                                       </image>
+                                    </ImageView>
                                  </children></AnchorPane>
+                              <AnchorPane layoutX="30.0" layoutY="12.0" prefHeight="514.0" prefWidth="843.0" styleClass="background" stylesheets="@AdminPanelStyle.css" visible="false">
+                                 <children>
+                                    <ImageView fitHeight="497.0" fitWidth="278.0" layoutX="575.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/6737586.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <TableView fx:id="manager_employees_table" layoutX="20.0" layoutY="58.0" prefHeight="200.0" prefWidth="542.0" stylesheets="@managerdashbord.css">
+                                       <columns>
+                                          <TableColumn fx:id="manager_employees_idCol" prefWidth="44.0" text="ID" />
+                                          <TableColumn fx:id="manager_employees_firstnameCol" prefWidth="66.0" text="Firstname" />
+                                          <TableColumn fx:id="manager_employees_lastnameCol" prefWidth="72.0" text="Lastname" />
+                                          <TableColumn fx:id="manager_employees_usernameCol" prefWidth="74.0" text="Username" />
+                                          <TableColumn fx:id="manager_employees_passwordCol" prefWidth="74.0" text="Password" />
+                                          <TableColumn fx:id="manager_employees_phoneCol" prefWidth="63.0" text="Phone" />
+                                          <TableColumn fx:id="manager_employees_addressCol" prefWidth="66.0" text="Address" />
+                                          <TableColumn fx:id="manager_employees_emailCol" prefWidth="82.0" text="Email" />
+                                       </columns>
+                                       <styleClass>
+                                          <String fx:value="table-view-manager-employee" />
+                                          <String fx:value="tableBorder-view-manager-employee" />
+                                       </styleClass>
+                                    </TableView>
+                                    <Label layoutX="20.0" layoutY="277.0" text="ID" textFill="#e11e1e">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="manager_employees_id_textfield" layoutX="87.0" layoutY="273.0" styleClass="tableBorder-view-manager-employee" stylesheets="@managerdashbord.css" />
+                                    <TextField fx:id="manager_employees_firstname_textfield" layoutX="87.0" layoutY="305.0" styleClass="tableBorder-view-manager-employee" stylesheets="@managerdashbord.css" />
+                                    <Label layoutX="20.0" layoutY="309.0" text="Firstname" textFill="#e11e1e">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="manager_employees_lastname_textfield" layoutX="87.0" layoutY="337.0" styleClass="tableBorder-view-manager-employee" stylesheets="@managerdashbord.css" />
+                                    <Label layoutX="20.0" layoutY="373.0" text="Username" textFill="#e11e1e">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="manager_employees_username_textfield" layoutX="87.0" layoutY="369.0" styleClass="tableBorder-view-manager-employee" stylesheets="@managerdashbord.css" />
+                                    <Label layoutX="20.0" layoutY="341.0" text="Lastname" textFill="#e11e1e">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="manager_employees_address_textfield" layoutX="407.0" layoutY="335.0" styleClass="tableBorder-view-manager-employee" stylesheets="@managerdashbord.css" />
+                                    <TextField fx:id="manager_employees_password_textfield" layoutX="407.0" layoutY="271.0" styleClass="tableBorder-view-manager-employee" stylesheets="@managerdashbord.css" />
+                                    <TextField fx:id="manager_employees_email_textfield" layoutX="407.0" layoutY="367.0" styleClass="tableBorder-view-manager-employee" stylesheets="@managerdashbord.css" />
+                                    <Label layoutX="340.0" layoutY="371.0" text="Email" textFill="#e11e1e">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="340.0" layoutY="307.0" text="Phone" textFill="#e11e1e">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="manager_employees_phone_textfield" layoutX="407.0" layoutY="303.0" styleClass="tableBorder-view-manager-employee" stylesheets="@managerdashbord.css" />
+                                    <Label layoutX="340.0" layoutY="339.0" text="Address" textFill="#e11e1e">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="340.0" layoutY="275.0" text="Password" textFill="#e11e1e">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="manager_employees_fireBtn" layoutX="196.0" layoutY="432.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" styleClass="table-view-manager-employeeBtn" stylesheets="@AdminPanelStyle.css" text="     Fire" textFill="WHITE" />
+                                    <Button fx:id="manager_employees_updateBtn" layoutX="317.0" layoutY="432.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" styleClass="table-view-manager-employeeBtn" stylesheets="@AdminPanelStyle.css" text="          Update" textFill="WHITE" />
+                                    <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="318.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/icons8-available-updates-100.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="196.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/icons8-cancel-100.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Button fx:id="manager_employees_addBtn" layoutX="437.0" layoutY="432.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" styleClass="table-view-manager-employeeBtn" stylesheets="@AdminPanelStyle.css" text="          Add" textFill="WHITE" />
+                                    <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="437.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/icons8-add-user-male-100.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Button fx:id="manager_employees_clearBtn" layoutX="78.0" layoutY="432.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" styleClass="table-view-manager-employeeBtn" stylesheets="@AdminPanelStyle.css" text="     Clear" textFill="WHITE" />
+                                    <ImageView fitHeight="36.0" fitWidth="44.0" layoutX="78.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/icons8-cover-up-100.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="40.0" fitWidth="70.0" layoutX="49.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/icons8-search-64.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="manager_employees_search_textfield" layoutX="100.0" layoutY="18.0" prefHeight="26.0" prefWidth="281.0" promptText="Search" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <Line endX="100.0" layoutX="200.0" layoutY="44.0" startX="-100.0" stroke="#e1681c" strokeMiterLimit="55.0" />
+                                 </children>
+                              </AnchorPane>
+                              <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="34.0" layoutY="528.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-instagram-48.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="59.0" layoutY="532.0" text="Iranairport" textFill="WHITE" />
+                              <Label layoutX="431.0" layoutY="533.0" text="Iranairport.ir" textFill="WHITE" />
+                              <ImageView fitHeight="21.0" fitWidth="29.0" layoutX="410.0" layoutY="531.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-chrome-48.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="22.0" fitWidth="24.0" layoutX="795.0" layoutY="531.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-twitter-48.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="817.0" layoutY="532.0" text="Iranairport" textFill="WHITE" />
+                              <AnchorPane fx:id="manager_passengers_page" layoutX="23.0" layoutY="20.0" prefHeight="478.0" prefWidth="843.0" styleClass="background" stylesheets="@AdminPanelStyle.css" visible="false">
+                                 <children>
+                                    <ImageView fitHeight="512.0" fitWidth="266.0" layoutX="577.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/little-girl-travelling-with-travelling-suitcase.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <TableView fx:id="manager_passengers_table" layoutX="27.0" layoutY="58.0" prefHeight="200.0" prefWidth="535.0" stylesheets="@managerdashbord.css">
+                                       <columns>
+                                          <TableColumn fx:id="manager_passengers_idCol" prefWidth="44.0" text="ID" />
+                                          <TableColumn fx:id="manager_passengers_firstnameCol" prefWidth="66.0" text="Firstname" />
+                                          <TableColumn fx:id="manager_passengers_lastnameCol" prefWidth="72.0" text="Lastname" />
+                                          <TableColumn fx:id="manager_passengers_usernameCol" prefWidth="74.0" text="Username" />
+                                          <TableColumn fx:id="manager_passengers_passwordCol" prefWidth="74.0" text="Password" />
+                                          <TableColumn fx:id="manager_passengers_phoneCol" prefWidth="63.0" text="Phone" />
+                                          <TableColumn fx:id="manager_passengers_addressCol" prefWidth="66.0" text="Address" />
+                                          <TableColumn fx:id="manager_passengers_emailCol" prefWidth="82.0" text="Email" />
+                                       </columns>
+                                       <styleClass>
+                                          <String fx:value="table-view-manager-pass" />
+                                          <String fx:value="table-view-manager-passBtn" />
+                                       </styleClass>
+                                    </TableView>
+                                    <TextField fx:id="manager_passengers_id_textfield" alignment="CENTER" layoutX="36.0" layoutY="271.0" promptText="ID" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <Button fx:id="manager_passengers_fireBtn" layoutX="196.0" layoutY="432.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" styleClass="table-view-manager-passengers-btn" stylesheets="@AdminPanelStyle.css" text="     Fire" textFill="WHITE" />
+                                    <Button fx:id="manager_passengers_updateBtn" layoutX="317.0" layoutY="432.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" styleClass="table-view-manager-passengers-btn" stylesheets="@AdminPanelStyle.css" text="          Update" textFill="WHITE" />
+                                    <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="318.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/icons8-available-updates-100.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="196.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/icons8-cancel-100.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Button fx:id="manager_passengers_addBtn" layoutX="437.0" layoutY="432.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" styleClass="table-view-manager-passengers-btn" stylesheets="@AdminPanelStyle.css" text="          Add" textFill="WHITE" />
+                                    <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="437.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/icons8-add-user-male-100.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Button fx:id="manager_passengers_clearBtn" layoutX="78.0" layoutY="432.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" styleClass="table-view-manager-passengers-btn" stylesheets="@AdminPanelStyle.css" text="     Clear" textFill="WHITE" />
+                                    <ImageView fitHeight="36.0" fitWidth="44.0" layoutX="78.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/icons8-cover-up-100.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="28.0" fitWidth="29.0" layoutX="67.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/icons8-search-47.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="manager_passengers_search_textfield" layoutX="100.0" layoutY="18.0" prefHeight="26.0" prefWidth="281.0" promptText="Search" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <Line endX="100.0" layoutX="200.0" layoutY="44.0" startX="-100.0" stroke="#e307cf" strokeMiterLimit="55.0" />
+                                    <Line endX="100.0" layoutX="137.0" layoutY="294.0" opacity="0.68" startX="-100.0" stroke="#e307cf" />
+                                    <Line endX="100.0" layoutX="137.0" layoutY="332.0" opacity="0.68" startX="-100.0" stroke="#e307cf" />
+                                    <TextField fx:id="manager_passengers_firstname_textfield" alignment="CENTER" layoutX="36.0" layoutY="309.0" promptText="First name" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <Line endX="100.0" layoutX="137.0" layoutY="371.0" opacity="0.68" startX="-100.0" stroke="#e307cf" />
+                                    <TextField fx:id="manager_employees_lastname_textfield111" alignment="CENTER" layoutX="36.0" layoutY="348.0" promptText="Last name" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <TextField fx:id="manager_employees_username_textfield1111" alignment="CENTER" layoutX="36.0" layoutY="383.0" promptText="Username" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <Line endX="100.0" layoutX="137.0" layoutY="406.0" opacity="0.68" startX="-100.0" stroke="#e307cf" />
+                                    <TextField fx:id="manager_employees_password_textfield11111" alignment="CENTER" layoutX="336.0" layoutY="271.0" promptText="Password" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <Line endX="100.0" layoutX="437.0" layoutY="294.0" opacity="0.68" startX="-100.0" stroke="#e307cf" />
+                                    <Line endX="100.0" layoutX="437.0" layoutY="330.0" opacity="0.68" startX="-100.0" stroke="#e307cf" />
+                                    <TextField fx:id="manager_employees_phone_textfield111111" alignment="CENTER" layoutX="336.0" layoutY="307.0" promptText="Phone" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <TextField fx:id="manager_employees_address_textfield1111111" alignment="CENTER" layoutX="336.0" layoutY="336.0" promptText="Address" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <Line endX="100.0" layoutX="437.0" layoutY="359.0" opacity="0.68" startX="-100.0" stroke="#e307cf" />
+                                    <Line endX="100.0" layoutX="437.0" layoutY="394.0" opacity="0.68" startX="-100.0" stroke="#e307cf" />
+                                    <TextField fx:id="manager_employees_email_textfield11111111" alignment="CENTER" layoutX="335.0" layoutY="371.0" promptText="Email" styleClass="search" stylesheets="@managerdashbord.css" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="manager_flights_page" layoutX="30.0" layoutY="20.0" prefHeight="497.0" prefWidth="843.0" styleClass="background" stylesheets="@AdminPanelStyle.css" visible="false">
+                                 <children>
+                                    <TableView fx:id="manager_flights_table" layoutX="12.0" layoutY="58.0" prefHeight="200.0" prefWidth="822.0" stylesheets="@managerdashbord.css">
+                                       <columns>
+                                          <TableColumn fx:id="manager_passengers_idCol1" prefWidth="44.0" text="ID" />
+                                          <TableColumn fx:id="manager_passengers_firstnameCol1" prefWidth="81.0" text="Plane" />
+                                          <TableColumn fx:id="manager_passengers_lastnameCol1" prefWidth="69.0" text="From" />
+                                          <TableColumn fx:id="manager_passengers_usernameCol1" prefWidth="62.0" text="To" />
+                                          <TableColumn fx:id="manager_passengers_passwordCol1" prefWidth="74.0" text="Ticket">
+                                             <columns>
+                                                <TableColumn prefWidth="75.0" text="ID" />
+                                                <TableColumn prefWidth="75.0" text="Price" />
+                                                <TableColumn prefWidth="75.0" text="Fine" />
+                                             </columns></TableColumn>
+                                          <TableColumn fx:id="manager_passengers_phoneCol1" prefWidth="52.0" text="Date" />
+                                          <TableColumn fx:id="manager_passengers_addressCol1" prefWidth="61.0" text="Time" />
+                                          <TableColumn fx:id="manager_passengers_emailCol1" prefWidth="54.0" text="State" />
+                                          <TableColumn fx:id="manager_passengers_emailCol111" prefWidth="75.0" text="Sold tickets" />
+                                          <TableColumn fx:id="manager_passengers_emailCol1111" prefWidth="98.0" text="Passengers" />
+                                       </columns>
+                                       <styleClass>
+                                          <String fx:value="table-view-manager-pass" />
+                                          <String fx:value="table-view-managere-flightBorder" />
+                                          <String fx:value="table-view-managere-flight" />
+                                       </styleClass>
+                                    </TableView>
+                                    <TextField fx:id="manager_passengers_id_textfield1" alignment="CENTER" layoutX="36.0" layoutY="271.0" promptText="ID" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <Button fx:id="manager_passengers_fireBtn1" layoutX="319.0" layoutY="434.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" styleClass="table-view-managere-flightBackground" stylesheets="@AdminPanelStyle.css" text="     Fire" textFill="WHITE" />
+                                    <Button fx:id="manager_passengers_updateBtn1" layoutX="440.0" layoutY="434.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" styleClass="table-view-managere-flightBackground" stylesheets="@AdminPanelStyle.css" text="          Update" textFill="WHITE" />
+                                    <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="440.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/icons8-available-updates-100.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="319.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/icons8-cancel-100.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Button fx:id="manager_passengers_addBtn1" layoutX="560.0" layoutY="434.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" styleClass="table-view-managere-flightBackground" stylesheets="@AdminPanelStyle.css" text="          Add" textFill="WHITE" />
+                                    <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="560.0" layoutY="435.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/icons8-add-user-male-100.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Button fx:id="manager_passengers_clearBtn1" layoutX="201.0" layoutY="434.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" styleClass="table-view-managere-flightBackground" stylesheets="@AdminPanelStyle.css" text="     Clear" textFill="WHITE" />
+                                    <ImageView fitHeight="36.0" fitWidth="44.0" layoutX="201.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/icons8-cover-up-100.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="28.0" fitWidth="29.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/icons8-search-64%20(1).png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="manager_flights_search" layoutX="47.0" layoutY="22.0" prefHeight="26.0" prefWidth="204.0" promptText="Search" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <Line endX="100.0" layoutX="147.0" layoutY="48.0" startX="-100.0" stroke="#c93bd0" strokeMiterLimit="55.0" />
+                                    <Line endX="100.0" layoutX="137.0" layoutY="294.0" opacity="0.68" startX="-100.0" stroke="#c93bd0" />
+                                    <Line endX="100.0" layoutX="137.0" layoutY="332.0" opacity="0.68" startX="-100.0" stroke="#c93bd0" />
+                                    <TextField fx:id="manager_passengers_firstname_textfield1" alignment="CENTER" layoutX="36.0" layoutY="309.0" promptText="First name" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <Line endX="100.0" layoutX="137.0" layoutY="371.0" opacity="0.68" startX="-100.0" stroke="#c93bd0" />
+                                    <TextField fx:id="manager_employees_lastname_textfield1111" alignment="CENTER" layoutX="36.0" layoutY="348.0" promptText="Last name" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <TextField fx:id="manager_employees_username_textfield11111" alignment="CENTER" layoutX="36.0" layoutY="383.0" promptText="Username" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <Line endX="100.0" layoutX="137.0" layoutY="406.0" opacity="0.68" startX="-100.0" stroke="#c93bd0" />
+                                    <TextField fx:id="manager_employees_password_textfield111111" alignment="CENTER" layoutX="317.0" layoutY="286.0" promptText="Password" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <Line endX="100.0" layoutX="418.0" layoutY="309.0" opacity="0.68" startX="-100.0" stroke="#c93bd0" />
+                                    <Line endX="100.0" layoutX="418.0" layoutY="345.0" opacity="0.68" startX="-100.0" stroke="#c93bd0" />
+                                    <TextField fx:id="manager_employees_phone_textfield1111111" alignment="CENTER" layoutX="317.0" layoutY="322.0" promptText="Phone" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <TextField fx:id="manager_employees_address_textfield11111111" alignment="CENTER" layoutX="317.0" layoutY="351.0" promptText="Address" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <Line endX="100.0" layoutX="418.0" layoutY="374.0" opacity="0.68" startX="-100.0" stroke="#c93bd0" />
+                                    <Line endX="100.0" layoutX="418.0" layoutY="409.0" opacity="0.68" startX="-100.0" stroke="#c93bd0" />
+                                    <TextField fx:id="manager_employees_email_textfield111111111" alignment="CENTER" layoutX="316.0" layoutY="386.0" promptText="Email" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <Line endX="100.0" layoutX="687.0" layoutY="348.0" opacity="0.68" startX="-100.0" stroke="#c93bd0" />
+                                    <TextField fx:id="manager_employees_email_textfield1111111111" alignment="CENTER" layoutX="585.0" layoutY="389.0" promptText="Email" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <Line endX="100.0" layoutX="687.0" layoutY="377.0" opacity="0.68" startX="-100.0" stroke="#c93bd0" />
+                                    <TextField fx:id="manager_employees_address_textfield111111111" alignment="CENTER" layoutX="586.0" layoutY="354.0" promptText="Address" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <Line endX="100.0" layoutX="687.0" layoutY="412.0" opacity="0.68" startX="-100.0" stroke="#c93bd0" />
+                                    <TextField fx:id="manager_employees_password_textfield1111111" alignment="CENTER" layoutX="586.0" layoutY="289.0" promptText="Password" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <Line endX="100.0" layoutX="687.0" layoutY="312.0" opacity="0.68" startX="-100.0" stroke="#c93bd0" />
+                                    <TextField fx:id="manager_employees_phone_textfield11111111" alignment="CENTER" layoutX="586.0" layoutY="325.0" promptText="Phone" styleClass="search" stylesheets="@managerdashbord.css" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="manager_planes_page" layoutX="30.0" layoutY="21.0" prefHeight="500.0" prefWidth="832.0" styleClass="background" stylesheets="@AdminPanelStyle.css" visible="false">
+                                 <children>
+                                    <TableView fx:id="manager_planes_table" layoutX="14.0" layoutY="57.0" prefHeight="200.0" prefWidth="508.0" stylesheets="@managerdashbord.css">
+                                       <columns>
+                                          <TableColumn fx:id="manager_planes_idCol" prefWidth="137.0" text="ID" />
+                                          <TableColumn fx:id="manager_planes_seatsCol" prefWidth="200.0" text="Seats" />
+                                          <TableColumn fx:id="manager_planes_flightsCol" prefWidth="170.0" text="Flights" />
+                                       </columns>
+                                       <styleClass>
+                                          <String fx:value="table-view-manager-pass" />
+                                          <String fx:value="table-view-managere-flightBorder" />
+                                          <String fx:value="manager-plane-table" />
+                                       </styleClass>
+                                    </TableView>
+                                    <TextField fx:id="manager_planes_id_textfield" alignment="CENTER" layoutX="36.0" layoutY="271.0" promptText="ID" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <Button fx:id="manager_passengers_fireBtn11" layoutX="160.0" layoutY="437.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" stylesheets="@AdminPanelStyle.css" text="    Delete">
+                                       <styleClass>
+                                          <String fx:value="table-view-managere-flightBackground" />
+                                          <String fx:value="manager-plane-tableBtn" />
+                                       </styleClass></Button>
+                                    <Button fx:id="manager_passengers_updateBtn11" layoutX="281.0" layoutY="437.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" stylesheets="@AdminPanelStyle.css" text="          Update">
+                                       <styleClass>
+                                          <String fx:value="table-view-managere-flightBackground" />
+                                          <String fx:value="manager-plane-tableBtn" />
+                                       </styleClass></Button>
+                                    <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="281.0" layoutY="437.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/icons8-available-updates-100.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="160.0" layoutY="437.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/icons8-cancel-100.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Button fx:id="manager_passengers_addBtn11" layoutX="401.0" layoutY="437.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" stylesheets="@AdminPanelStyle.css" text="          Add">
+                                       <styleClass>
+                                          <String fx:value="table-view-managere-flightBackground" />
+                                          <String fx:value="manager-plane-tableBtn" />
+                                       </styleClass></Button>
+                                    <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="401.0" layoutY="438.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/icons8-add-user-male-100.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Button fx:id="manager_passengers_clearBtn11" layoutX="42.0" layoutY="437.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" stylesheets="@AdminPanelStyle.css" text="     Clear">
+                                       <styleClass>
+                                          <String fx:value="table-view-managere-flightBackground" />
+                                          <String fx:value="manager-plane-tableBtn" />
+                                       </styleClass></Button>
+                                    <ImageView fitHeight="36.0" fitWidth="44.0" layoutX="42.0" layoutY="437.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/icons8-cover-up-100.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="28.0" fitWidth="29.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/icons8-search-64%20(1).png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="manager_planes_search" layoutX="47.0" layoutY="22.0" prefHeight="26.0" prefWidth="204.0" promptText="Search" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <Line endX="100.0" layoutX="147.0" layoutY="48.0" startX="-100.0" stroke="#eb8d22" strokeMiterLimit="55.0" />
+                                    <Line endX="100.0" layoutX="137.0" layoutY="294.0" opacity="0.68" startX="-100.0" stroke="#eb8d22" />
+                                    <Line endX="100.0" layoutX="137.0" layoutY="332.0" opacity="0.68" startX="-100.0" stroke="#eb8d22" />
+                                    <TextField fx:id="manager_planes_seats_textfield" alignment="CENTER" layoutX="36.0" layoutY="309.0" promptText="Seats" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <Line endX="100.0" layoutX="410.0" layoutY="333.0" opacity="0.68" startX="-100.0" stroke="#eb8d22" />
+                                    <ImageView fitHeight="500.0" fitWidth="301.0" layoutX="540.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/airplane-flying-clouds-sunset-light.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <ComboBox layoutX="333.0" layoutY="308.0" opacity="0.65" prefWidth="150.0" promptText="Flights" styleClass="transparent" stylesheets="@AirEmployee.css" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="manager_messages_page" layoutX="34.0" layoutY="31.0" prefHeight="482.0" prefWidth="841.0" styleClass="background" stylesheets="@AdminPanelStyle.css">
+                                 <children>
+                                    <ImageView fitHeight="500.0" fitWidth="301.0" layoutX="540.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/4542107.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <AnchorPane layoutX="26.0" layoutY="20.0" prefHeight="467.0" prefWidth="200.0" styleClass="messages" stylesheets="@managerdashbord.css">
+                                       <children>
+                                          <Label layoutX="34.0" layoutY="14.0" text="Passenger masseges">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="256.0" layoutY="20.0" prefHeight="467.0" prefWidth="200.0" styleClass="messages" stylesheets="@managerdashbord.css">
+                                       <children>
+                                          <Label layoutX="30.0" layoutY="17.0" text="Employees masseges">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </AnchorPane>
                      </children>

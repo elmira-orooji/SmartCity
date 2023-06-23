@@ -133,7 +133,7 @@
                      <children>
                         <AnchorPane layoutX="11.0" layoutY="11.0" prefHeight="554.0" prefWidth="888.0" stylesheets="@superadmindashbord.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane fx:id="superadmin_setting_page" layoutX="10.0" layoutY="11.0" prefHeight="511.0" prefWidth="861.0" styleClass="white" stylesheets="@superadmindashbord.css">
+                              <AnchorPane fx:id="superadmin_setting_page" layoutX="10.0" layoutY="11.0" prefHeight="511.0" prefWidth="861.0" styleClass="white" stylesheets="@superadmindashbord.css" visible="false">
                                  <children>
                                     <ImageView fitHeight="511.0" fitWidth="862.0" layoutX="541.0" pickOnBounds="true" preserveRatio="true" styleClass="white">
                                        <image>
@@ -447,7 +447,7 @@
                                     </AnchorPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="superadmin_financial_page" layoutX="14.0" layoutY="10.0" prefHeight="511.0" prefWidth="861.0" styleClass="anchorpane-financial" stylesheets="@superadmindashbord.css" visible="false">
+                              <AnchorPane fx:id="superadmin_financial_page" layoutX="14.0" layoutY="10.0" prefHeight="511.0" prefWidth="861.0" styleClass="anchorpane-financial" stylesheets="@superadmindashbord.css">
                                  <children>
                                     <TextField fx:id="superadmin_financial_employees_salarytextfield" alignment="CENTER" layoutX="38.0" layoutY="422.0" prefHeight="34.0" prefWidth="153.0" promptText="Salary" styleClass="bordertableBtn-financial" stylesheets="@superadmindashbord.css" />
                                     <Button fx:id="superadmin_financial_employees_updateBtn" layoutX="59.0" layoutY="462.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" styleClass="bordertableBtn-financial" stylesheets="@superadmindashbord.css" text="Update">

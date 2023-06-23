@@ -8,6 +8,9 @@
 .right-part{
     -fx-background-color: #ffffff;
 }
+.transparent{
+    -fx-background-color: transparent;
+}
 .textField{
     -fx-background-color: #ffffff;
     -fx-font-size: 13px;

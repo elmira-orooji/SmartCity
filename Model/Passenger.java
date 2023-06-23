@@ -1,12 +1,12 @@
 package Model;
 
-public class Employee extends AirPerson {
-    private double salary;
+public class Passenger extends AirPerson {
+    private double wallet;
 
-    public Employee(int id, String firstname, String lastname, String username,
-                       String password, String phonenumber, String address, String email, double salary){
+    public Passenger(int id, String firstname, String lastname, String username,
+                        String password, String phonenumber, String address, String email, double wallet){
         super(id,firstname,lastname,username,password,phonenumber,address,email);
-        this.salary = salary;
+        this.wallet = wallet;
     }
 
     @Override
@@ -41,9 +41,10 @@ public class Employee extends AirPerson {
     public String getEmail(){
         return super.email;
     }
-    public double getSalary(){
-        return salary;
+    public double getWallet(){
+        return wallet;
     }
+
 
     @Override
     public void setId(int id){
@@ -77,8 +78,7 @@ public class Employee extends AirPerson {
     public void setEmail(String email){
         super.email = email;
     }
-
-    public void setSalary(double salary){
-        this.salary= salary;
+    public void setWallet(double wallet){
+        this.wallet = wallet;
     }
 }
