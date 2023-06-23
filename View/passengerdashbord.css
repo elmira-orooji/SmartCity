@@ -1,0 +1,55 @@
+.left-form-passenger{
+
+  -fx-background-color:linear-gradient(to right, #333333, #dd1818);
+}
+.transparent{
+    -fx-background-color: transparent;
+}
+
+.right-form-passenger{
+    
+      -fx-background-color:linear-gradient(to bottom, #EB5757, #000000);
+
+}
+.anchorpane-color-passenger{
+    
+    -fx-background-color:linear-gradient(to bottom, #fffbd5, #b20a2c);
+}
+ .passenger-btns{
+    
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    
+}
+
+.passenger-btns:hover{
+     -fx-background-color: linear-gradient(to right, #EF3B36, #FFFFFF);
+}
+
+.table-view-passenger{
+    -fx-background-color:#ffffff;
+    -fx-border-color:linear-gradient(to bottom right, #b92b27, #1565C0);
+    -fx-border-radius:4px;
+    -fx-padding:0px;
+}
+.table-view-passenger .column-header-background{
+    
+    -fx-background-color:linear-gradient(to right , #b92b27, #1565C0);
+    
+
+}
+.table-view-passengerBorder{
+    -fx-border-color:linear-gradient(to bottom, #b92b27, #1565C0);
+    
+}
+.passengerProfileBtn{
+    
+    -fx-background-color:linear-gradient(to bottom, #b92b27, #1565C0);
+}
+.addPriceBtn{
+    
+     -fx-background-color:linear-gradient(to bottom, #FF416C, #FF4B2B);
+}
+.shadow{
+    -fx-effect:dropshadow(three-pass-box, rgba(0,0,0,0.5), 6,0,0,0);
+}

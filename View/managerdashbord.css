@@ -5,8 +5,21 @@
     -fx-cursor: hand;
     
 }
+.search{
+    -fx-background-color: transparent;
+}
 .manager-btns:hover{
      -fx-background-color: linear-gradient(to right, #1e9600, #fff200, #ff0000);
+}
+
+.table-view-manager-passengers-btn{
+    -fx-background-color: linear-gradient(to right, #f4c4f3, #fc67fa);
+
+}
+
+.messages{
+    
+    -fx-background-color: linear-gradient(to bottom, #ffffff,#fffc00);
 }
 
 .left-form-manager{
@@ -24,6 +37,55 @@
     -fx-background-insets: 0 0 0 0;
     -f-background-radius:8px 8px 0px 0px;
 }
+.table-view-manager-employee .column-header-background {
+    -fx-background-color:linear-gradient(to right , #fe8c00,#f83600);
+    -fx-background-insets: 0 0 0 0;
+    -f-background-radius:8px 8px 0px 0px;
+}
+.table-view-manager-pass .column-header-background {
+    -fx-background-color:linear-gradient(to bottom, #f4c4f3, #fc67fa);
+    -fx-background-insets: 0 0 0 0;
+    -fx-background-radius:8px 8px 0px 0px;
+}
+.table-view-manager-passBtn{
+    -fx-border-color:linear-gradient(to bottom, #f4c4f3, #fc67fa);
+}
+.table-view-manager-employeeBtn{
+        -fx-background-color:linear-gradient(to right , #fe8c00,#f83600);
+
+}
+.table-view-managere-flight .column-header-background {
+    -fx-background-color:linear-gradient(to bottom, #eeaeca, #94bbe9);
+    -fx-background-insets: 0 0 0 0;
+    -f-background-radius:8px 8px 0px 0px;
+}
+.table-view-managere-flightBorder{
+    -fx-border-color:linear-gradient(to bottom, #eeaeca, #94bbe9);
+    
+}
+.table-view-managere-flightBackground{
+    -fx-background-color:linear-gradient(to bottom, #eeaeca, #94bbe9);
+    
+}
+.tableBorder-view-manager-employee{
+        -fx-border-color:linear-gradient(to right , #fe8c00,#f83600);
+
+}
+.manager-plane-table .column-header-background{
+    -fx-background-color:linear-gradient(to left, #C6FFDD, #FBD786 ,#f7797d);
+    -fx-background-insets: 0 0 0 0;
+    -f-background-radius:8px 8px 0px 0px;
+    
+}
+.manager-plane-tableBtn{
+    -fx-background-color:linear-gradient(to left, #C6FFDD, #FBD786 ,#f7797d);
+}
+.transparent{
+    -fx-background-color: transparent;
+}
+
+
+
 .table-view-border{
     -fx-border-color:linear-gradient(#fbd3e9, #bb377d);
     
@@ -35,6 +97,13 @@
 .table-view .column-header .label{
     -fx-text-fill:#fff;
     -fx-font-family:"Arial";
+}
+
+.Btntable-setting{
+    -fx-background-color:linear-gradient(to right , #40e0d0, #ff8c00 , #ff0080);
+}
+.fieldborder-table-setting{
+    -fx-border-color: linear-gradient(to right , #40e0d0, #ff8c00 , #ff0080);
 }
 
     

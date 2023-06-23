@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.PassengerDashbordController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <BorderPane layoutX="85.0" layoutY="90.0" prefHeight="600.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <AnchorPane prefHeight="46.0" prefWidth="1100.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <FontAwesomeIcon fill="#cc2626" glyphName="PLANE" layoutX="14.0" layoutY="33.0" size="2.5em" />
+                        <Label layoutX="50.0" layoutY="14.0" text="Start here go anywhere">
+                           <font>
+                              <Font name="Arial Narrow" size="15.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="1007.0" layoutY="11.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" styleClass="close" stylesheets="@AdminPanelStyle.css">
+                           <graphic>
+                              <FontAwesomeIcon fill="#cc2626" glyphName="CLOSE" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button layoutX="946.0" layoutY="11.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" styleClass="minimize" stylesheets="@AdminPanelStyle.css">
+                           <graphic>
+                              <FontAwesomeIcon fill="#cc2626" glyphName="MINUS" size="1.5em" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </top>
+               <left>
+                  <AnchorPane prefHeight="555.0" prefWidth="212.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutY="-8.0" prefHeight="554.0" prefWidth="212.0" styleClass="left-form-passenger" stylesheets="@passengerdashbord.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <ImageView fitHeight="81.0" fitWidth="89.0" layoutX="57.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-person-female-96.png" />
+                                 </image>
+                              </ImageView>
+                              <Button layoutX="14.0" layoutY="139.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" styleClass="passenger-btns" stylesheets="@passengerdashbord.css" text="  Profile" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="14.0" />
+                                 </font>
+                              </Button>
+                              <Line endX="100.0" layoutX="106.0" layoutY="113.0" startX="-100.0" stroke="#fcf9f9" />
+                              <Button layoutX="14.0" layoutY="188.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" styleClass="passenger-btns" stylesheets="@passengerdashbord.css" text="  Wallet" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="14.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="14.0" layoutY="237.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" styleClass="passenger-btns" stylesheets="@passengerdashbord.css" text="     Buy ticket" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="14.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="16.0" layoutY="500.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" styleClass="passenger-btns" stylesheets="@passengerdashbord.css" text="Sign out" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="14.0" />
+                                 </font>
+                              </Button>
+                              <ImageView fitHeight="47.0" fitWidth="45.0" layoutX="116.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-luggage-64.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="33.0" fitWidth="39.0" layoutX="41.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-person-female-100.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="33.0" fitWidth="39.0" layoutX="41.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-coin-wallet-100.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="33.0" fitWidth="39.0" layoutX="33.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-boarding-pass-50.png" />
+                                 </image>
+                              </ImageView>
+                              <Button layoutX="14.0" layoutY="277.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" styleClass="passenger-btns" stylesheets="@passengerdashbord.css" text="          Send message" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="14.0" />
+                                 </font>
+                              </Button>
+                              <ImageView fitHeight="33.0" fitWidth="39.0" layoutX="33.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-email-64.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="33.0" fitWidth="39.0" layoutX="33.0" layoutY="504.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-toggle-off-48.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="Right-form-employee" stylesheets="@AirEmployee.css" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="60.0" layoutY="57.0" prefHeight="554.0" prefWidth="888.0" styleClass="right-form-passenger" stylesheets="@passengerdashbord.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="16.0" layoutY="14.0" prefHeight="504.0" prefWidth="860.0" styleClass="anchorpane-color-passenger" stylesheets="@passengerdashbord.css">
+                                 <children>
+                                    <AnchorPane layoutX="143.0" layoutY="52.0" prefHeight="504.0" prefWidth="860.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <TableView fx:id="passenger_profile_taableview" layoutX="20.0" layoutY="20.0" prefHeight="200.0" prefWidth="641.0" styleClass="table-view-passenger" stylesheets="@managerdashbord.css">
+                                            <columns>
+                                              <TableColumn prefWidth="75.0" text="ID" />
+                                              <TableColumn prefWidth="75.0" text="First name" />
+                                                <TableColumn prefWidth="75.0" text="Last name" />
+                                                <TableColumn prefWidth="75.0" text="Username" />
+                                                <TableColumn prefWidth="75.0" text="Password" />
+                                                <TableColumn prefWidth="75.0" text="Phone" />
+                                                <TableColumn prefWidth="75.0" text="Address" />
+                                                <TableColumn prefWidth="114.0" text="Email" />
+                                            </columns>
+                                          </TableView>
+                                          <ImageView fitHeight="508.0" fitWidth="185.0" layoutX="677.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Image/20943446.jpg" />
+                                             </image>
+                                          </ImageView>
+                                          <TextField layoutX="93.0" layoutY="241.0" prefHeight="25.0" prefWidth="165.0" styleClass="table-view-passengerBorder" stylesheets="@passengerdashbord.css" />
+                                          <Label layoutX="20.0" layoutY="245.0" text="ID" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="20.0" layoutY="278.0" text="Firstname" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField layoutX="93.0" layoutY="276.0" prefHeight="25.0" prefWidth="165.0" styleClass="table-view-passengerBorder" stylesheets="@passengerdashbord.css" />
+                                          <TextField layoutX="93.0" layoutY="307.0" prefHeight="25.0" prefWidth="165.0" styleClass="table-view-passengerBorder" stylesheets="@passengerdashbord.css" />
+                                          <Label layoutX="20.0" layoutY="309.0" text="Lastname" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField layoutX="93.0" layoutY="340.0" prefHeight="25.0" prefWidth="165.0" styleClass="table-view-passengerBorder" stylesheets="@passengerdashbord.css" />
+                                          <Label layoutX="20.0" layoutY="342.0" text="Username" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="20.0" layoutY="373.0" text="Password" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField layoutX="93.0" layoutY="371.0" prefHeight="25.0" prefWidth="165.0" styleClass="table-view-passengerBorder" stylesheets="@passengerdashbord.css" />
+                                          <TextField layoutX="93.0" layoutY="403.0" prefHeight="25.0" prefWidth="165.0" styleClass="table-view-passengerBorder" stylesheets="@passengerdashbord.css" />
+                                          <Label layoutX="20.0" layoutY="405.0" text="Phone" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField layoutX="496.0" layoutY="241.0" prefHeight="25.0" prefWidth="165.0" styleClass="table-view-passengerBorder" stylesheets="@passengerdashbord.css" />
+                                          <Label layoutX="423.0" layoutY="243.0" text="Address" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField layoutX="496.0" layoutY="276.0" prefHeight="25.0" prefWidth="165.0" styleClass="table-view-passengerBorder" stylesheets="@passengerdashbord.css" />
+                                          <Label layoutX="423.0" layoutY="278.0" text="Email" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Button layoutX="563.0" layoutY="454.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="98.0" styleClass="passengerProfileBtn" stylesheets="@passengerdashbord.css" text="Update" textFill="WHITE" />
+                                          <Button layoutX="459.0" layoutY="454.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="98.0" styleClass="passengerProfileBtn" stylesheets="@passengerdashbord.css" text="Clear" textFill="WHITE" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="507.0" prefWidth="862.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Line endX="100.0" layoutX="379.0" layoutY="120.0" startX="-100.0" stroke="#b24545" />
+                                          <TextField fx:id="passenger_wallet_currentstock_textfield" layoutX="279.0" layoutY="88.0" prefHeight="32.0" prefWidth="199.0" styleClass="transparent" stylesheets="@passengerdashbord.css" />
+                                          <Label layoutX="90.0" layoutY="105.0" text="Your current stock" textFill="#bf3737">
+                                             <font>
+                                                <Font name="Arial Unicode MS" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Button layoutX="90.0" layoutY="214.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="395.0" stylesheets="@passengerdashbord.css" text="Add Stock" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial Unicode MS" size="12.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="addPriceBtn" />
+                                                <String fx:value="shadow" />
+                                             </styleClass>
+                                          </Button>
+                                          <TextField fx:id="passenger_wallet_addstock_textfield" layoutX="280.0" layoutY="148.0" prefHeight="32.0" prefWidth="199.0" styleClass="transparent" stylesheets="@passengerdashbord.css" />
+                                          <Label layoutX="90.0" layoutY="164.0" text="Amount you want to add" textFill="#bf3737">
+                                             <font>
+                                                <Font name="Arial Unicode MS" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Line endX="100.0" layoutX="380.0" layoutY="180.0" startX="-100.0" stroke="#b24545" />
+                                          <ImageView fitHeight="510.0" fitWidth="328.0" layoutX="534.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Image/Wavy_Bus-11_Single-05.jpg" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </AnchorPane>
+                                    <TableView layoutX="23.0" layoutY="20.0" prefHeight="200.0" prefWidth="811.0">
+                                      <columns>
+                                        <TableColumn prefWidth="75.0" text="Flight ID" />
+                                        <TableColumn prefWidth="75.0" text="Plane" />
+                                          <TableColumn prefWidth="75.0" text="From" />
+                                          <TableColumn prefWidth="75.0" text="To" />
+                                          <TableColumn prefWidth="75.0" text="Ticket">
+                                             <columns>
+                                                <TableColumn prefWidth="75.0" text="ID" />
+                                                <TableColumn prefWidth="75.0" text="Price" />
+                                                <TableColumn prefWidth="75.0" text="Fine" />
+                                             </columns>
+                                          </TableColumn>
+                                          <TableColumn prefWidth="62.0" text="Date" />
+                                          <TableColumn prefWidth="77.0" text="Time" />
+                                          <TableColumn prefWidth="61.0" text="State" />
+                                          <TableColumn prefWidth="85.0" text="Capacity" />
+                                      </columns>
+                                    </TableView>
+                                 </children></AnchorPane>
+                              <ImageView fitHeight="33.0" fitWidth="39.0" layoutX="19.0" layoutY="524.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-instagram-48.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="58.0" layoutY="532.0" text="Iranairport" textFill="WHITE" />
+                              <ImageView fitHeight="33.0" fitWidth="39.0" layoutX="399.0" layoutY="524.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-chrome-48.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="438.0" layoutY="532.0" text="Iranairport.ir" textFill="WHITE" />
+                              <Label layoutX="808.0" layoutY="532.0" text="Iranairport" textFill="WHITE" />
+                              <ImageView fitHeight="33.0" fitWidth="39.0" layoutX="769.0" layoutY="524.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/icons8-twitter-48.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </children></AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

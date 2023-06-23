@@ -1,0 +1,13 @@
+.left-form-employee{
+
+  -fx-background-color:linear-gradient(to right, #fc4a1a, #f7b733);
+}
+.transparent{
+    -fx-background-color: transparent;
+}
+
+.right-form-employee{
+    
+      -fx-background-color:linear-gradient(to right, #FF4E50, #F9D423);
+
+}
