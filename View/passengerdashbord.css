@@ -53,3 +53,11 @@
 .shadow{
     -fx-effect:dropshadow(three-pass-box, rgba(0,0,0,0.5), 6,0,0,0);
 }
+.messages{
+    
+    -fx-background-color:linear-gradient(to right , #bc4e9c, #f80759);
+    -fx-background-insets: 0 0 0 0;
+    -fx-background-radius:8px 8px 8px 8px;
+    
+
+}

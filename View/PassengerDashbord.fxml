@@ -219,25 +219,81 @@
                                           </ImageView>
                                        </children>
                                     </AnchorPane>
-                                    <TableView layoutX="23.0" layoutY="20.0" prefHeight="200.0" prefWidth="811.0">
-                                      <columns>
-                                        <TableColumn prefWidth="75.0" text="Flight ID" />
-                                        <TableColumn prefWidth="75.0" text="Plane" />
-                                          <TableColumn prefWidth="75.0" text="From" />
-                                          <TableColumn prefWidth="75.0" text="To" />
-                                          <TableColumn prefWidth="75.0" text="Ticket">
-                                             <columns>
-                                                <TableColumn prefWidth="75.0" text="ID" />
-                                                <TableColumn prefWidth="75.0" text="Price" />
-                                                <TableColumn prefWidth="75.0" text="Fine" />
-                                             </columns>
-                                          </TableColumn>
-                                          <TableColumn prefWidth="62.0" text="Date" />
-                                          <TableColumn prefWidth="77.0" text="Time" />
-                                          <TableColumn prefWidth="61.0" text="State" />
-                                          <TableColumn prefWidth="85.0" text="Capacity" />
-                                      </columns>
-                                    </TableView>
+                                    <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="496.0" prefWidth="849.0" visible="false">
+                                       <children>
+                                          <TableView layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="823.0" styleClass="passenger-btns">
+                                            <columns>
+                                              <TableColumn prefWidth="75.0" text="Flight ID" />
+                                              <TableColumn prefWidth="75.0" text="Plane" />
+                                                <TableColumn prefWidth="65.0" text="From" />
+                                                <TableColumn prefWidth="67.0" text="To" />
+                                                <TableColumn prefWidth="67.0" text="Ticket">
+                                                   <columns>
+                                                      <TableColumn prefWidth="75.0" text="ID" />
+                                                      <TableColumn prefWidth="75.0" text="Price" />
+                                                      <TableColumn prefWidth="75.0" text="Fine" />
+                                                   </columns>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="68.0" text="Date" />
+                                                <TableColumn prefWidth="75.0" text="Time" />
+                                                <TableColumn prefWidth="74.0" text="State" />
+                                                <TableColumn prefWidth="98.0" text="Capacity" />
+                                            </columns>
+                                             <stylesheets>
+                                                <URL value="@AdminPanelStyle.css" />
+                                                <URL value="@managerdashbord.css" />
+                                             </stylesheets>
+                                          </TableView>
+                                          <Button layoutX="268.0" layoutY="289.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="300.0" stylesheets="@managerdashbord.css" text="Buy" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="table-view-manager-employeeBtn" />
+                                                <String fx:value="shadow" />
+                                             </styleClass>
+                                          </Button>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="10.0" prefHeight="496.0" prefWidth="849.0">
+                                       <children>
+                                          <Button fx:id="passenger_message_sendBtn" layoutX="265.0" layoutY="375.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="300.0" text="Send" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="messages" />
+                                                <String fx:value="shadow" />
+                                             </styleClass>
+                                             <stylesheets>
+                                                <URL value="@managerdashbord.css" />
+                                                <URL value="@passengerdashbord.css" />
+                                             </stylesheets>
+                                          </Button>
+                                          <AnchorPane layoutX="186.0" layoutY="36.0" prefHeight="249.0" prefWidth="435.0" stylesheets="@passengerdashbord.css">
+                                             <styleClass>
+                                                <String fx:value="messages" />
+                                                <String fx:value="shadow" />
+                                                <String fx:value="transparent" />
+                                             </styleClass>
+                                             <children>
+                                                <Line endX="100.0" layoutX="107.0" layoutY="43.0" startX="-100.0" stroke="WHITE" />
+                                                <Label layoutX="14.0" layoutY="14.0" text="First &amp; Lastname :" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="Batang" size="12.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="passenger_message_firstlastname_textfield" layoutX="123.0" layoutY="8.0" styleClass="transparent" stylesheets="@passengerdashbord.css" />
+                                                <Label layoutX="14.0" layoutY="52.0" text="Description :" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="Batang" size="12.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="passenger_message_description_textfield" layoutX="14.0" layoutY="74.0" prefHeight="169.0" prefWidth="411.0" styleClass="transparent" stylesheets="@passengerdashbord.css" />
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
                                  </children></AnchorPane>
                               <ImageView fitHeight="33.0" fitWidth="39.0" layoutX="19.0" layoutY="524.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
