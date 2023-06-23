@@ -68,6 +68,10 @@ public class SmartCityFXMLController implements Initializable {
     private Connection connectMayor;
     private PreparedStatement prepareMayor;
     private ResultSet resultMayor;
+
+    private Connection connectSuperadmin;
+    private PreparedStatement prepareSuperadmin;
+    private ResultSet resultSuperadmin;
     
    
     
@@ -78,10 +82,12 @@ public class SmartCityFXMLController implements Initializable {
         
         String sql = "SELECT * FROM admin WHERE username = ? and password = ?";
         String sqlMayor = "SELECT * FROM mayor WHERE First_name = ? and Last_name = ?";
+        String sqlSuperadmin = "SELECT * FROM adminsuper WHERE User_name = ? and Password = ?";
         
         
         connect = (Connection) Database.connectDb();
         connectMayor = (Connection) Database.connectDb();
+        connectSuperadmin = (Connection) Database.connectDb();
         
         try{
             
@@ -89,6 +95,7 @@ public class SmartCityFXMLController implements Initializable {
 
             prepare = connect.prepareStatement(sql);
             prepareMayor = connectMayor.prepareStatement(sqlMayor);
+            prepareSuperadmin = connectSuperadmin.prepareStatement(sqlSuperadmin);
             
             
             prepare.setString(1,usernameBtn.getText());
@@ -100,6 +107,11 @@ public class SmartCityFXMLController implements Initializable {
             prepareMayor.setString(2,passwordBtn.getText());
             
             resultMayor = prepareMayor.executeQuery();
+
+            prepareSuperadmin.setString(1,usernameBtn.getText());
+            prepareSuperadmin.setString(2,passwordBtn.getText());
+
+            resultSuperadmin= prepareSuperadmin.executeQuery();
             
             
             
@@ -111,36 +123,36 @@ public class SmartCityFXMLController implements Initializable {
                 alert.setContentText("Please fill the blanks");
                 alert.showAndWait();
                 
-            }else{
-                
-                
-                if(result.next()){
-                    
-                getData.username = usernameBtn.getText();
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("");
-                alert.setHeaderText(null);
-                alert.setContentText("You entered successfully ^-^ "); 
-                alert.showAndWait();
-                
-                loginBtn.getScene().getWindow().hide();
-                Parent root = FXMLLoader.load(getClass().getResource("/View/AdminPanel.fxml"));
-                Stage stage = new Stage();
-                Scene scene = new Scene(root);
-                
-                root.setOnMousePressed((MouseEvent event) ->{
-                    x = event.getSceneX();
-                    y = event.getSceneY();
-                });
-                
-                root.setOnMouseDragged((MouseEvent event) ->{
-                    stage.setX(event.getScreenX() - x);
-                    stage.setY(event.getScreenY() - y);
-                });
-                stage.initStyle(StageStyle.TRANSPARENT);
-                stage.setScene(scene);
-                stage.show();
-                }  else {
+            }else {
+
+
+                if (result.next()) {
+
+                    getData.username = usernameBtn.getText();
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("");
+                    alert.setHeaderText(null);
+                    alert.setContentText("You entered successfully ^-^ ");
+                    alert.showAndWait();
+
+                    loginBtn.getScene().getWindow().hide();
+                    Parent root = FXMLLoader.load(getClass().getResource("/View/AdminPanel.fxml"));
+                    Stage stage = new Stage();
+                    Scene scene = new Scene(root);
+
+                    root.setOnMousePressed((MouseEvent event) -> {
+                        x = event.getSceneX();
+                        y = event.getSceneY();
+                    });
+
+                    root.setOnMouseDragged((MouseEvent event) -> {
+                        stage.setX(event.getScreenX() - x);
+                        stage.setY(event.getScreenY() - y);
+                    });
+                    stage.initStyle(StageStyle.TRANSPARENT);
+                    stage.setScene(scene);
+                    stage.show();
+                } else {
 
 
                     if (resultMayor.next()) {
@@ -170,16 +182,43 @@ public class SmartCityFXMLController implements Initializable {
                         stage.setScene(scene);
                         stage.show();
                     } else {
-                        Alert alert = new Alert(AlertType.ERROR);
-                        alert.setTitle("Your username or password is not correct");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Incorrect Username or Password");
-                        alert.showAndWait();
+                        if (resultSuperadmin.next()) {
+
+                            getData.username = usernameBtn.getText();
+                            Alert alert = new Alert(AlertType.INFORMATION);
+                            alert.setTitle("");
+                            alert.setHeaderText(null);
+                            alert.setContentText("You entered successfully ^-^ ");
+                            alert.showAndWait();
+
+                            loginBtn.getScene().getWindow().hide();
+                            Parent root = FXMLLoader.load(getClass().getResource("/View/SuperAdminDashbord.fxml"));
+                            Stage stage = new Stage();
+                            Scene scene = new Scene(root);
+
+                            root.setOnMousePressed((MouseEvent event) -> {
+                                x = event.getSceneX();
+                                y = event.getSceneY();
+                            });
+
+                            root.setOnMouseDragged((MouseEvent event) -> {
+                                stage.setX(event.getScreenX() - x);
+                                stage.setY(event.getScreenY() - y);
+                            });
+                            stage.initStyle(StageStyle.TRANSPARENT);
+                            stage.setScene(scene);
+                            stage.show();
+                        } else {
+                            Alert alert = new Alert(AlertType.ERROR);
+                            alert.setTitle("Your username or password is not correct");
+                            alert.setHeaderText(null);
+                            alert.setContentText("Incorrect Username or Password");
+                            alert.showAndWait();
+                        }
                     }
+
                 }
-                
             }
-             
           
         }catch(Exception e) {
             

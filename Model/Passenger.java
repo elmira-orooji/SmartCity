@@ -1,84 +1,121 @@
 package Model;
 
-public class Passanger extends AirPerson {
-    private double wallet;
+import java.util.ArrayList;
 
-    public Passanger(int id, String firstname, String lastname, String username,
-                        String password, String phonenumber, String address, String email, double wallet){
-        super(id,firstname,lastname,username,password,phonenumber,address,email);
+public class Passenger extends AirPerson {
+    private double wallet;
+    private int boughtticket;
+    private ArrayList<Ticket> tickets = new ArrayList<Ticket>(20);
+
+    public Passenger(int id, String firstname, String lastname, String username,
+                     String password, String phonenumber, String address, String email, double wallet, int boughtticket) {
+        super(id, firstname, lastname, username, password, phonenumber, address, email);
         this.wallet = wallet;
+        this.boughtticket = boughtticket;
+
     }
 
     @Override
-    public int getId(){
+    public int getId() {
         return super.id;
     }
+
     @Override
-    public String getFirstname(){
+    public String getFirstname() {
         return super.firstname;
     }
+
     @Override
-    public String getLastname(){
+    public String getLastname() {
         return super.lastname;
     }
+
     @Override
-    public String getUsername(){
+    public String getUsername() {
         return super.username;
     }
+
     @Override
-    public String getPassword(){
+    public String getPassword() {
         return super.password;
     }
+
     @Override
-    public String getPhonenumber(){
-        return  super.phonenumber;
+    public String getPhonenumber() {
+        return super.phonenumber;
     }
+
     @Override
-    public String getAddress(){
+    public String getAddress() {
         return super.address;
     }
+
     @Override
-    public String getEmail(){
+    public String getEmail() {
         return super.email;
     }
-    public double getWallet(){
+
+    public double getWallet() {
         return wallet;
     }
 
+    public int getBoughtticket() {
+        return boughtticket;
+    }
+
 
     @Override
-    public void setId(int id){
+    public void setId(int id) {
         super.id = id;
     }
+
     @Override
-    public void setFirstname(String firstname){
+    public void setFirstname(String firstname) {
         super.firstname = firstname;
     }
+
     @Override
-    public void setLastname(String lastname){
+    public void setLastname(String lastname) {
         super.lastname = lastname;
     }
+
     @Override
-    public void setUsername(String username){
+    public void setUsername(String username) {
         super.username = username;
     }
+
     @Override
-    public void setPassword(String password){
+    public void setPassword(String password) {
         super.password = password;
     }
+
     @Override
-    public void setPhonenumber(String phonenumber){
+    public void setPhonenumber(String phonenumber) {
         super.phonenumber = phonenumber;
     }
+
     @Override
-    public void setAddress(String address){
+    public void setAddress(String address) {
         super.address = address;
     }
+
     @Override
-    public void setEmail(String email){
+    public void setEmail(String email) {
         super.email = email;
     }
-    public void setWallet(double wallet){
+
+    public void setWallet(double wallet) {
         this.wallet = wallet;
+    }
+    public void setBoughtticket(int boughtticket) {
+        this.boughtticket = boughtticket;
+    }
+
+    public void setTickets(Ticket ticket) {
+        tickets.add(ticket);
+    }
+
+    public void rmoveTickets(int i) {
+        tickets.remove(i);
     }
 }

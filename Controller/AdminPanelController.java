@@ -518,7 +518,7 @@ public class AdminPanelController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         GenderListMayor();
-        ShowMayorListData();
+
         GenderListDeputies();
         ShowDeputiesListData();
         GenderListInspectors();
