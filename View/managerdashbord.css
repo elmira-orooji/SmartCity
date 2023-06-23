@@ -45,7 +45,7 @@
 .table-view-manager-pass .column-header-background {
     -fx-background-color:linear-gradient(to bottom, #f4c4f3, #fc67fa);
     -fx-background-insets: 0 0 0 0;
-    -f-background-radius:8px 8px 0px 0px;
+    -fx-background-radius:8px 8px 0px 0px;
 }
 .table-view-manager-passBtn{
     -fx-border-color:linear-gradient(to bottom, #f4c4f3, #fc67fa);
