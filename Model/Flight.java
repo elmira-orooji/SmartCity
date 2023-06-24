@@ -16,7 +16,13 @@ public class Flight {
     private String time;
     private FlightStatus status;
 
-    public Flight(int id, Airplane airplane, Ticket ticket, String from, String to, LocalDate date, LocalTime boarding, int soldticket, String time, FlightStatus status){
+    private int ticketid;
+    private double ticketprice;
+    private double ticketcost;
+    private int airplaneid;
+
+
+    public Flight(int id, Airplane airplane , Ticket ticket, String from, String to, LocalDate date, LocalTime boarding, int soldticket, String time, FlightStatus status,int ticketid,double ticketprice,double ticketcost,int airplaneid){
         this.id = id;
         this.airplane = airplane;
         this.ticket = ticket;
@@ -27,6 +33,10 @@ public class Flight {
         this.soldticket = soldticket;
         this.time = time ;
         this.status = status;
+        this.airplaneid = airplaneid;
+        this.ticketid = ticketid;
+        this.ticketprice = ticketprice;
+        this.ticketcost = ticketcost;
     }
 
     public int getId(){

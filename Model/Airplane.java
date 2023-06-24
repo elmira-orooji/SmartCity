@@ -7,6 +7,8 @@ public class Airplane {
      private ArrayList<Flight> flightlist = new ArrayList<Flight>(20);
 
 
+
+
      public Airplane(int id,int seats){
          this.id = id;
          this.seats = seats;
@@ -18,11 +20,15 @@ public class Airplane {
      public int getSeats(){
          return seats;
      }
-     public Flight setFlight(int i){
+     public Flight getFlight(int i){
          return flightlist.get(i);
      }
 
-     public void setId(int id){
+    public ArrayList<Flight> getFlightlist() {
+        return flightlist;
+    }
+
+    public void setId(int id){
          this.id = id;
      }
     public void setSeats(int seats) {

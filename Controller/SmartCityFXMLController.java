@@ -72,6 +72,10 @@ public class SmartCityFXMLController implements Initializable {
     private Connection connectSuperadmin;
     private PreparedStatement prepareSuperadmin;
     private ResultSet resultSuperadmin;
+
+    private Connection connectManager;
+    private PreparedStatement prepareManager;
+    private ResultSet resultManager;
     
    
     
@@ -83,11 +87,13 @@ public class SmartCityFXMLController implements Initializable {
         String sql = "SELECT * FROM admin WHERE username = ? and password = ?";
         String sqlMayor = "SELECT * FROM mayor WHERE First_name = ? and Last_name = ?";
         String sqlSuperadmin = "SELECT * FROM adminsuper WHERE User_name = ? and Password = ?";
+        String sqlManager = "SELECT * FROM manager WHERE User_name = ? and Password = ?";
         
         
         connect = (Connection) Database.connectDb();
         connectMayor = (Connection) Database.connectDb();
         connectSuperadmin = (Connection) Database.connectDb();
+        connectManager = (Connection) Database.connectDb();
         
         try{
             
@@ -96,6 +102,7 @@ public class SmartCityFXMLController implements Initializable {
             prepare = connect.prepareStatement(sql);
             prepareMayor = connectMayor.prepareStatement(sqlMayor);
             prepareSuperadmin = connectSuperadmin.prepareStatement(sqlSuperadmin);
+            prepareManager = connect.prepareStatement(sqlManager);
             
             
             prepare.setString(1,usernameBtn.getText());
@@ -112,6 +119,11 @@ public class SmartCityFXMLController implements Initializable {
             prepareSuperadmin.setString(2,passwordBtn.getText());
 
             resultSuperadmin= prepareSuperadmin.executeQuery();
+
+            prepareManager.setString(1,usernameBtn.getText());
+            prepareManager.setString(2,passwordBtn.getText());
+
+            resultManager= prepareManager.executeQuery();
             
             
             
@@ -209,17 +221,46 @@ public class SmartCityFXMLController implements Initializable {
                             stage.setScene(scene);
                             stage.show();
                         } else {
-                            Alert alert = new Alert(AlertType.ERROR);
-                            alert.setTitle("Your username or password is not correct");
-                            alert.setHeaderText(null);
-                            alert.setContentText("Incorrect Username or Password");
-                            alert.showAndWait();
-                        }
-                    }
+                            if (resultManager.next()) {
 
+                                getData.username = usernameBtn.getText();
+                                Alert alert = new Alert(AlertType.INFORMATION);
+                                alert.setTitle("");
+                                alert.setHeaderText(null);
+                                alert.setContentText("You entered successfully ^-^ ");
+                                alert.showAndWait();
+
+                                loginBtn.getScene().getWindow().hide();
+                                Parent root = FXMLLoader.load(getClass().getResource("/View/ManagerDashbord.fxml"));
+                                Stage stage = new Stage();
+                                Scene scene = new Scene(root);
+
+                                root.setOnMousePressed((MouseEvent event) -> {
+                                    x = event.getSceneX();
+                                    y = event.getSceneY();
+                                });
+
+                                root.setOnMouseDragged((MouseEvent event) -> {
+                                    stage.setX(event.getScreenX() - x);
+                                    stage.setY(event.getScreenY() - y);
+                                });
+                                stage.initStyle(StageStyle.TRANSPARENT);
+                                stage.setScene(scene);
+                                stage.show();
+
+
+                            } else {
+                                Alert alert = new Alert(AlertType.ERROR);
+                                alert.setTitle("Your username or password is not correct");
+                                alert.setHeaderText(null);
+                                alert.setContentText("Incorrect Username or Password");
+                                alert.showAndWait();
+                            }
+                        }
+
+                    }
                 }
             }
-          
         }catch(Exception e) {
             
             Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");

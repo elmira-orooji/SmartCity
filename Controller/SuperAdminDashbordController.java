@@ -1368,8 +1368,8 @@ public class SuperAdminDashbordController implements Initializable {
 
 
         String sql  = "INSERT INTO passenger "
-                + "(Id,First_name,Last_name,User_name,Password,Phone_No,Address,Email,Wallet)"
-                + "VALUES(?,?,?,?,?,?,?,?,?)";
+                + "(Id,First_name,Last_name,User_name,Password,Phone_No,Address,Email,Wallet,Tickets)"
+                + "VALUES(?,?,?,?,?,?,?,?,?,?)";
 
         connect = Database.connectDb();
 
@@ -1418,6 +1418,7 @@ public class SuperAdminDashbordController implements Initializable {
                 prepare.setString(7, superadmin_passenger_addresstextfield.getText());
                 prepare.setString(8,superadmin_passenger_emailtextfield.getText());
                 prepare.setDouble(9,0);
+                prepare.setInt(10,0);
 
 
 
