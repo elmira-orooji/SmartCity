@@ -105,16 +105,16 @@
                            <children>
                               <AnchorPane fx:id="employee_profile_page" layoutX="14.0" layoutY="14.0" prefHeight="497.0" prefWidth="847.0" styleClass="anchorpane-employee" stylesheets="@AirEmployee.css">
                                  <children>
-                                    <TableView layoutX="15.0" layoutY="14.0" prefHeight="200.0" prefWidth="618.0" styleClass="employee-profile-table">
+                                    <TableView fx:id="employee_profile_table" layoutX="15.0" layoutY="14.0" prefHeight="200.0" prefWidth="618.0" styleClass="employee-profile-table">
                                       <columns>
-                                        <TableColumn prefWidth="75.0" text="ID" />
-                                        <TableColumn prefWidth="75.0" text="firstname" />
-                                          <TableColumn prefWidth="75.0" text="Lastname" />
-                                          <TableColumn prefWidth="75.0" text="Username" />
-                                          <TableColumn prefWidth="75.0" text="Password" />
-                                          <TableColumn prefWidth="75.0" text="Phone" />
-                                          <TableColumn prefWidth="75.0" text="address" />
-                                          <TableColumn prefWidth="92.0" text="Email" />
+                                        <TableColumn fx:id="employee_profile_idCol" prefWidth="75.0" text="ID" />
+                                        <TableColumn fx:id="employee_profile_firstnameCol" prefWidth="75.0" text="firstname" />
+                                          <TableColumn fx:id="employee_profile_lastnameCol" prefWidth="75.0" text="Lastname" />
+                                          <TableColumn fx:id="employee_profile_usernameCol" prefWidth="75.0" text="Username" />
+                                          <TableColumn fx:id="employee_profile_passwordCol" prefWidth="75.0" text="Password" />
+                                          <TableColumn fx:id="employee_profile_phoneCol" prefWidth="75.0" text="Phone" />
+                                          <TableColumn fx:id="employee_profile_addressCol" prefWidth="75.0" text="address" />
+                                          <TableColumn fx:id="employee_profile_emailCol" prefWidth="92.0" text="Email" />
                                       </columns>
                                        <stylesheets>
                                           <URL value="@AirEmployee.css" />
@@ -126,13 +126,13 @@
                                           <Font name="Ebrima Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="108.0" layoutY="229.0" styleClass="table-view-manager-passBtn" stylesheets="@managerdashbord.css" />
+                                    <TextField fx:id="employee_profile_id_textfield" layoutX="108.0" layoutY="229.0" styleClass="table-view-manager-passBtn" stylesheets="@managerdashbord.css" />
                                     <Label layoutX="22.0" layoutY="267.0" text="First name" textFill="#fcf8f8">
                                        <font>
                                           <Font name="Ebrima Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="108.0" layoutY="264.0" styleClass="table-view-manager-passBtn" stylesheets="@managerdashbord.css" />
+                                    <TextField fx:id="employee_profile_firstname_textfield" layoutX="108.0" layoutY="264.0" styleClass="table-view-manager-passBtn" stylesheets="@managerdashbord.css" />
                                     <Label layoutX="22.0" layoutY="299.0" text="Last name" textFill="#fcf8f8">
                                        <font>
                                           <Font name="Ebrima Bold" size="15.0" />
@@ -143,9 +143,9 @@
                                           <Font name="Ebrima Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="108.0" layoutY="331.0" styleClass="table-view-manager-passBtn" stylesheets="@managerdashbord.css" />
-                                    <TextField layoutX="108.0" layoutY="296.0" styleClass="table-view-manager-passBtn" stylesheets="@managerdashbord.css" />
-                                    <TextField layoutX="484.0" layoutY="302.0" styleClass="table-view-manager-passBtn" stylesheets="@managerdashbord.css" />
+                                    <TextField fx:id="employee_profile_username_textfield" layoutX="108.0" layoutY="331.0" styleClass="table-view-manager-passBtn" stylesheets="@managerdashbord.css" />
+                                    <TextField fx:id="employee_profile_lastname_textfield" layoutX="108.0" layoutY="296.0" styleClass="table-view-manager-passBtn" stylesheets="@managerdashbord.css" />
+                                    <TextField fx:id="employee_profile_email_textfield" layoutX="484.0" layoutY="302.0" styleClass="table-view-manager-passBtn" stylesheets="@managerdashbord.css" />
                                     <Label layoutX="22.0" layoutY="368.0" text="Password" textFill="#fcf8f8">
                                        <font>
                                           <Font name="Ebrima Bold" size="15.0" />
@@ -156,7 +156,7 @@
                                           <Font name="Ebrima Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="484.0" layoutY="235.0" styleClass="table-view-manager-passBtn" stylesheets="@managerdashbord.css" />
+                                    <TextField fx:id="employee_profile_phone_textfield" layoutX="484.0" layoutY="235.0" styleClass="table-view-manager-passBtn" stylesheets="@managerdashbord.css" />
                                     <Label layoutX="398.0" layoutY="305.0" text="Email" textFill="#fcf8f8">
                                        <font>
                                           <Font name="Ebrima Bold" size="15.0" />
@@ -167,9 +167,9 @@
                                           <Font name="Ebrima Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="108.0" layoutY="365.0" styleClass="table-view-manager-passBtn" stylesheets="@managerdashbord.css" />
-                                    <TextField layoutX="484.0" layoutY="267.0" styleClass="table-view-manager-passBtn" stylesheets="@managerdashbord.css" />
-                                    <TextField layoutX="484.0" layoutY="338.0" styleClass="table-view-manager-passBtn" stylesheets="@managerdashbord.css" />
+                                    <TextField fx:id="employee_profile_password_textfield" layoutX="108.0" layoutY="365.0" styleClass="table-view-manager-passBtn" stylesheets="@managerdashbord.css" />
+                                    <TextField fx:id="employee_profile_address_textfield" layoutX="484.0" layoutY="267.0" styleClass="table-view-manager-passBtn" stylesheets="@managerdashbord.css" />
+                                    <TextField fx:id="employee_profile_salary_textfield" layoutX="484.0" layoutY="338.0" styleClass="table-view-manager-passBtn" stylesheets="@managerdashbord.css" />
                                     <Label layoutX="398.0" layoutY="341.0" text="Salary" textFill="#fcf8f8">
                                        <font>
                                           <Font name="Ebrima Bold" size="15.0" />
@@ -180,8 +180,8 @@
                                           <Image url="@../Image/5939837.jpg" />
                                        </image>
                                     </ImageView>
-                                    <Button layoutX="525.0" layoutY="434.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="86.0" styleClass="manager-plane-tableBtn" stylesheets="@managerdashbord.css" text="Update" textFill="#793838" />
-                                    <Button layoutX="427.0" layoutY="434.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="86.0" styleClass="manager-plane-tableBtn" stylesheets="@managerdashbord.css" text="Clear" textFill="#793838" />
+                                    <Button fx:id="employee_profile_updateBtn" layoutX="525.0" layoutY="434.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="86.0" styleClass="manager-plane-tableBtn" stylesheets="@managerdashbord.css" text="Update" textFill="#793838" />
+                                    <Button fx:id="employee_profile_clearBtn" layoutX="427.0" layoutY="434.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="86.0" styleClass="manager-plane-tableBtn" stylesheets="@managerdashbord.css" text="Clear" textFill="#793838" />
                                  </children>
                               </AnchorPane>
                               <ImageView fitHeight="39.0" fitWidth="36.0" layoutX="387.0" layoutY="511.0" pickOnBounds="true" preserveRatio="true">

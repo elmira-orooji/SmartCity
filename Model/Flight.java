@@ -3,7 +3,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 public class Flight {
-    private int id;
+    private Integer id;
     private Airplane airplane;
 
     private Ticket ticket;
@@ -22,7 +22,7 @@ public class Flight {
     private int airplaneid;
 
 
-    public Flight(int id, Airplane airplane , Ticket ticket, String from, String to, LocalDate date, LocalTime boarding, int soldticket, String time, FlightStatus status,int ticketid,double ticketprice,double ticketcost,int airplaneid){
+    public Flight(Integer id, Airplane airplane , Ticket ticket, String from, String to, LocalDate date, LocalTime boarding, int soldticket, String time, FlightStatus status,int ticketid,double ticketprice,double ticketcost,int airplaneid){
         this.id = id;
         this.airplane = airplane;
         this.ticket = ticket;
@@ -39,7 +39,7 @@ public class Flight {
         this.ticketcost = ticketcost;
     }
 
-    public int getId(){
+    public Integer getId(){
         return id;
     }
     public Airplane getAirplane(){

@@ -1,23 +1,25 @@
 package Model;
 
 import java.util.ArrayList;
+
 public class Airplane {
-    private int id;
-    private int seats;
+    private Integer id;
+    private Integer seats;
      private ArrayList<Flight> flightlist = new ArrayList<Flight>(20);
 
 
 
 
-     public Airplane(int id,int seats){
+     public Airplane(Integer id,Integer seats){
          this.id = id;
          this.seats = seats;
      }
 
-     public int getId(){
+     
+     public Integer getId(){
          return id;
      }
-     public int getSeats(){
+     public Integer getSeats(){
          return seats;
      }
      public Flight getFlight(int i){

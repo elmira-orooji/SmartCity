@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -15,7 +21,8 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import de.jensd.fx.glyphs.fontawesome.*?>
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ManagerDashbordController">
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ManagerDashbordController">
    <children>
       <AnchorPane fx:id="manager_skeleton_page" prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -217,7 +224,7 @@
                                        </image>
                                     </ImageView>
                                  </children></AnchorPane>
-                              <AnchorPane fx:id="manager_employees_page" layoutX="30.0" layoutY="12.0" prefHeight="514.0" prefWidth="843.0" styleClass="background" stylesheets="@AdminPanelStyle.css">
+                              <AnchorPane fx:id="manager_employees_page" layoutX="30.0" layoutY="12.0" prefHeight="514.0" prefWidth="843.0" styleClass="background" stylesheets="@AdminPanelStyle.css" visible="false">
                                  <children>
                                     <ImageView fitHeight="497.0" fitWidth="278.0" layoutX="575.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -401,7 +408,7 @@
                                           <Image url="@../Image/icons8-search-47.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="manager_passengers_search_textfield" layoutX="100.0" layoutY="18.0" prefHeight="26.0" prefWidth="281.0" promptText="Search" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <TextField fx:id="manager_passengers_search_textfield" layoutX="100.0" layoutY="18.0" onKeyTyped="#passenger_search" prefHeight="26.0" prefWidth="281.0" promptText="Search" styleClass="search" stylesheets="@managerdashbord.css" />
                                     <Line endX="100.0" layoutX="200.0" layoutY="44.0" startX="-100.0" stroke="#e307cf" strokeMiterLimit="55.0" />
                                     <Line endX="100.0" layoutX="137.0" layoutY="294.0" opacity="0.68" startX="-100.0" stroke="#e307cf" />
                                     <Line endX="100.0" layoutX="137.0" layoutY="332.0" opacity="0.68" startX="-100.0" stroke="#e307cf" />
@@ -476,7 +483,7 @@
                                           <Image url="@../Image/icons8-search-64%20(1).png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="manager_flights_search" layoutX="47.0" layoutY="22.0" prefHeight="26.0" prefWidth="204.0" promptText="Search" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <TextField fx:id="manager_flights_search" layoutX="47.0" layoutY="22.0" onKeyTyped="#flight_search" prefHeight="26.0" prefWidth="204.0" promptText="Search" styleClass="search" stylesheets="@managerdashbord.css" />
                                     <Line endX="100.0" layoutX="147.0" layoutY="48.0" startX="-100.0" stroke="#c93bd0" strokeMiterLimit="55.0" />
                                     <Line endX="100.0" layoutX="137.0" layoutY="294.0" opacity="0.68" startX="-100.0" stroke="#c93bd0" />
                                     <Line endX="100.0" layoutX="137.0" layoutY="332.0" opacity="0.68" startX="-100.0" stroke="#c93bd0" />
@@ -562,7 +569,7 @@
                                           <Image url="@../Image/icons8-search-64%20(1).png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="manager_planes_search" layoutX="47.0" layoutY="22.0" prefHeight="26.0" prefWidth="204.0" promptText="Search" styleClass="search" stylesheets="@managerdashbord.css" />
+                                    <TextField fx:id="manager_planes_search" layoutX="47.0" layoutY="22.0" onKeyTyped="#airplane_search" prefHeight="26.0" prefWidth="204.0" promptText="Search" styleClass="search" stylesheets="@managerdashbord.css" />
                                     <Line endX="100.0" layoutX="147.0" layoutY="48.0" startX="-100.0" stroke="#eb8d22" strokeMiterLimit="55.0" />
                                     <Line endX="100.0" layoutX="137.0" layoutY="294.0" opacity="0.68" startX="-100.0" stroke="#eb8d22" />
                                     <Line endX="100.0" layoutX="137.0" layoutY="332.0" opacity="0.68" startX="-100.0" stroke="#eb8d22" />

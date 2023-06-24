@@ -142,6 +142,55 @@ public class EmployeeDashbordController implements Initializable {
     private TextField employee_flight_date_textfield;
 
     
+    @FXML
+    private TextField employee_profile_lastname_textfield;
+    @FXML
+    private TableView<?> employee_profile_table;
+    @FXML
+    private TextField employee_profile_password_textfield;
+
+    @FXML
+    private TextField employee_profile_id_textfield;
+    @FXML
+    private TableColumn<?, ?> employee_profile_lastnameCol;
+
+    @FXML
+    private TableColumn<?, ?> employee_profile_idCol;
+ 
+    @FXML
+    private TextField employee_profile_salary_textfield;
+    @FXML
+    private TextField employee_profile_phone_textfield;
+    @FXML
+    private TableColumn<?, ?> employee_profile_usernameCol;
+    @FXML
+    private Button employee_profile_clearBtn;
+    @FXML
+    private TableColumn<?, ?> employee_profile_phoneCol;
+
+    @FXML
+    private TableColumn<?, ?> employee_profile_addressCol;
+
+    @FXML
+    private TextField employee_profile_address_textfield;
+
+    @FXML
+    private Button employee_profile_updateBtn;
+
+    @FXML
+    private TableColumn<?, ?> employee_profile_firstnameCol;
+    @FXML
+    private TextField employee_profile_firstname_textfield;
+    @FXML
+    private TableColumn<?, ?> employee_profile_emailCol;
+    @FXML
+    private TextField employee_profile_email_textfield;
+
+    @FXML
+    private TextField employee_profile_username_textfield;
+
+
+    
     
     
     @Override

@@ -9,7 +9,7 @@ public class Manager extends AirPerson{
     }
 
     @Override
-    public int getId(){
+    public Integer getId(){
         return super.id;
     }
     @Override
@@ -47,7 +47,7 @@ public class Manager extends AirPerson{
 
 
     @Override
-    public void setId(int id){
+    public void setId(Integer id){
         super.id = id;
     }
     @Override

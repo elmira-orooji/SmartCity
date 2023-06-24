@@ -8,7 +8,7 @@ public class AdminSuper extends AirPerson{
     }
 
     @Override
-    public int getId(){
+    public Integer getId(){
         return super.id;
     }
     @Override
@@ -42,8 +42,7 @@ public class AdminSuper extends AirPerson{
     }
 
 
-    @Override
-    public void setId(int id){
+    public void setId(Integer id){
         super.id = id;
     }
     @Override
@@ -74,5 +73,7 @@ public class AdminSuper extends AirPerson{
     public void setEmail(String email){
         super.email = email;
     }
+
+    
 
 }

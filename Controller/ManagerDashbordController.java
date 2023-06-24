@@ -19,6 +19,8 @@ import static javafx.collections.FXCollections.observableList;
 import com.mysql.fabric.xmlrpc.base.Value;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -461,6 +463,7 @@ public class ManagerDashbordController implements Initializable {
             manager_planes_page.setVisible(false);
             manager_flights_page.setVisible(false);
             manager_messages_page.setVisible(false);
+            passenger_search();
 
         } else if (event.getSource() == manager_planesBtn) {
             manager_setting_page.setVisible(false);
@@ -469,6 +472,9 @@ public class ManagerDashbordController implements Initializable {
             manager_planes_page.setVisible(true);
             manager_flights_page.setVisible(false);
             manager_messages_page.setVisible(false);
+            
+            airplane_search();
+            
         } else if (event.getSource() == manager_flightsBtn) {
             manager_setting_page.setVisible(false);
             manager_employees_page.setVisible(false);
@@ -476,6 +482,7 @@ public class ManagerDashbordController implements Initializable {
             manager_planes_page.setVisible(false);
             manager_flights_page.setVisible(true);
             manager_messages_page.setVisible(false);
+            flight_search();
 
         } else if (event.getSource() == manager_massagesBtn) {
             manager_setting_page.setVisible(false);
@@ -893,7 +900,7 @@ public class ManagerDashbordController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confimation ^.^");
             alert.setHeaderText(null);
-            alert.setContentText("Are you sure do you want delete employee "+
+            alert.setContentText("Are you sure do you want fire employee "+
                     manager_employees_id_textfield.getText()+"?");
             Optional<ButtonType> option = alert.showAndWait();
 
@@ -904,7 +911,7 @@ public class ManagerDashbordController implements Initializable {
                 Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
                 alert1.setTitle("INFORMATION ^-^");
                 alert1.setHeaderText(null);
-                alert1.setContentText("Deleted Successfully ^.^");
+                alert1.setContentText("Fired Successfully ^.^");
                 alert1.showAndWait();
                 ShowEmployeeListData();
                 EmployeeClear();
@@ -1053,6 +1060,49 @@ public class ManagerDashbordController implements Initializable {
 
         manager_passengers_table.setItems(PassengerList);
 
+    }
+    
+     public void passenger_search(){
+         
+    FilteredList<Passenger> filter = new FilteredList<>(PassengerList, e -> true);
+
+        manager_passengers_search_textfield.textProperty().addListener((Observable, oldValue, newValue) -> {
+
+            filter.setPredicate(predicatePassenger -> {
+
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String searchKey = newValue.toLowerCase();
+
+                if (predicatePassenger.getId().toString().contains(searchKey)) {
+                    return true;
+                } else if (predicatePassenger.getFirstname().toLowerCase().contains(searchKey)) {
+                    return true;
+                } else if (predicatePassenger.getLastname().toLowerCase().contains(searchKey)) {
+                    return true;
+                } else if (predicatePassenger.getUsername().toLowerCase().contains(searchKey)) {
+                    return true;
+                } else if (predicatePassenger.getPassword().toLowerCase().contains(searchKey)) {
+                    return true;
+                } else if (predicatePassenger.getPhonenumber().toLowerCase().contains(searchKey)) {
+                    return true;
+                } else if (predicatePassenger.getAddress().toString().contains(searchKey)) {
+                    return true;
+                } else if (predicatePassenger.getEmail().toString().contains(searchKey)) {
+                    return true;
+                } 
+                else {
+                    return false;
+                }
+            });
+        });
+
+        SortedList<Passenger> sortList = new SortedList<>(filter);
+
+        sortList.comparatorProperty().bind(manager_passengers_table.comparatorProperty());
+        manager_passengers_table.setItems(sortList);
     }
 
     public void PassengerSelect(){
@@ -1348,6 +1398,38 @@ public class ManagerDashbordController implements Initializable {
 //        ObservableList listData = FXCollections.observableArrayList(flightsid);
 //        manager_planes_flightCombobox.setItems(listData);
     }
+    
+     public void airplane_search(){
+         
+      FilteredList<Airplane> filter = new FilteredList<>(PlaneList, e -> true);
+
+        manager_planes_search.textProperty().addListener((Observable, oldValue, newValue) -> {
+
+            
+            filter.setPredicate(predicateAirplane -> {
+
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String searchKey = newValue.toLowerCase();
+
+                if (predicateAirplane.getId().toString().contains(searchKey)) {
+                    return true;
+                } else if (predicateAirplane.getSeats().toString().contains(searchKey)) {
+                    return true;
+                
+                } else {
+                    return false;
+                }
+            });
+        });
+
+        SortedList<Airplane> sortList = new SortedList<>(filter);
+
+        sortList.comparatorProperty().bind(manager_planes_table.comparatorProperty());
+        manager_planes_table.setItems(sortList);
+    }
 
 
 
@@ -1625,6 +1707,39 @@ String str = "hi";
 
         manager_flights_table.setItems(FlightList);
 
+    }
+    
+    public void flight_search(){
+         
+    FilteredList<Flight> filter = new FilteredList<>(FlightList, e -> true);
+
+        manager_flights_search.textProperty().addListener((Observable, oldValue, newValue) -> {
+
+            filter.setPredicate(predicateFlight -> {
+
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String searchKey = newValue.toLowerCase();
+
+                if (predicateFlight.getId().toString().contains(searchKey)) {
+                    return true;
+                } else if (predicateFlight.getFrom().toLowerCase().contains(searchKey)) {
+                    return true;
+                } else if (predicateFlight.getTo().toLowerCase().contains(searchKey)) {
+                    return true;
+                } 
+                else {
+                    return false;
+                }
+            });
+        });
+
+        SortedList<Flight> sortList = new SortedList<>(filter);
+
+        sortList.comparatorProperty().bind(manager_flights_table.comparatorProperty());
+        manager_flights_table.setItems(sortList);
     }
 
     public void FlightSelect(){

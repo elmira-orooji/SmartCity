@@ -7,7 +7,7 @@ public class Passenger extends AirPerson {
     private int boughtticket;
     private ArrayList<Ticket> tickets = new ArrayList<Ticket>(20);
 
-    public Passenger(int id, String firstname, String lastname, String username,
+    public Passenger(Integer id, String firstname, String lastname, String username,
                      String password, String phonenumber, String address, String email, double wallet, int boughtticket) {
         super(id, firstname, lastname, username, password, phonenumber, address, email);
         this.wallet = wallet;
@@ -16,7 +16,7 @@ public class Passenger extends AirPerson {
     }
 
     @Override
-    public int getId() {
+    public Integer getId() {
         return super.id;
     }
 
@@ -63,59 +63,46 @@ public class Passenger extends AirPerson {
         return boughtticket;
     }
 
-
     @Override
-    public void setId(int id) {
-        super.id = id;
+    public void setId(Integer id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void setFirstname(String firstname) {
-        super.firstname = firstname;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void setLastname(String lastname) {
-        super.lastname = lastname;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void setUsername(String username) {
-        super.username = username;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void setPassword(String password) {
-        super.password = password;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void setPhonenumber(String phonenumber) {
-        super.phonenumber = phonenumber;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void setAddress(String address) {
-        super.address = address;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void setEmail(String email) {
-        super.email = email;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void setWallet(double wallet) {
-        this.wallet = wallet;
-    }
-    public void setBoughtticket(int boughtticket) {
-        this.boughtticket = boughtticket;
-    }
-
-    public void setTickets(Ticket ticket) {
-        tickets.add(ticket);
-    }
-
-    public void rmoveTickets(int i) {
-        tickets.remove(i);
-    }
+    
+   
 }
