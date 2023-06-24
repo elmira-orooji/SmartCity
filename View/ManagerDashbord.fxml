@@ -133,7 +133,7 @@
                      <children>
                         <AnchorPane prefHeight="554.0" prefWidth="888.0" styleClass="left-form-manager" stylesheets="@managerdashbord.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane fx:id="manager_setting_page" layoutX="20.0" layoutY="18.0" prefHeight="498.0" prefWidth="843.0" styleClass="background" stylesheets="@AdminPanelStyle.css">
+                              <AnchorPane fx:id="manager_setting_page" layoutX="20.0" layoutY="18.0" prefHeight="498.0" prefWidth="843.0" styleClass="background" stylesheets="@AdminPanelStyle.css" visible="false">
                                  <children>
                                     <ImageView fitHeight="499.0" fitWidth="297.0" layoutX="544.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
