@@ -6,6 +6,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import static javafx.collections.FXCollections.observableList;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -19,7 +21,7 @@ import javafx.scene.layout.AnchorPane;
 
 public class ManagerDashbordController implements Initializable {
     
-    ObservableList<Airplane> fligthData;
+   
     
     @FXML
     private TableColumn manager_planes_flightsCol;
@@ -375,7 +377,8 @@ public class ManagerDashbordController implements Initializable {
     @FXML
     private TableView<?> manager_planes_table;
     
-    
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -129,7 +129,7 @@
                      <children>
                         <AnchorPane prefHeight="554.0" prefWidth="888.0" styleClass="left-form-manager" stylesheets="@managerdashbord.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane fx:id="manager_setting_page" layoutX="20.0" layoutY="18.0" prefHeight="498.0" prefWidth="843.0" styleClass="background" stylesheets="@AdminPanelStyle.css">
+                              <AnchorPane fx:id="manager_setting_page" layoutX="20.0" layoutY="18.0" prefHeight="498.0" prefWidth="843.0" styleClass="background" stylesheets="@AdminPanelStyle.css" visible="false">
                                  <children>
                                     <ImageView fitHeight="499.0" fitWidth="297.0" layoutX="546.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -416,7 +416,7 @@
                                     <TextField fx:id="manager_passengers_email_textfield" alignment="CENTER" layoutX="335.0" layoutY="371.0" promptText="Email" styleClass="search" stylesheets="@managerdashbord.css" />
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="manager_flights_page" layoutX="30.0" layoutY="20.0" prefHeight="497.0" prefWidth="843.0" styleClass="background" stylesheets="@AdminPanelStyle.css" visible="false">
+                              <AnchorPane fx:id="manager_flights_page" layoutX="30.0" layoutY="20.0" prefHeight="497.0" prefWidth="843.0" styleClass="background" stylesheets="@AdminPanelStyle.css">
                                  <children>
                                     <TableView fx:id="manager_flights_table" layoutX="12.0" layoutY="58.0" prefHeight="200.0" prefWidth="822.0" stylesheets="@managerdashbord.css">
                                        <columns>

@@ -11,3 +11,31 @@
       -fx-background-color:linear-gradient(to right, #FF4E50, #F9D423);
 
 }
+.anchorpane-employee{
+    
+      -fx-background-color:linear-gradient(to left, #833ab4, #fd1d1d, #fcb045);
+
+}
+.employee-btns{
+    
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    
+}
+.employee-btns:hover{
+     -fx-background-color: linear-gradient(to right, #FF512F, #DD2476);
+}
+.table-view{
+    -fx-background-color:#ffffff;
+    -fx-border-color:linear-gradient(to bottom right, #272b3f, #256b51);
+    -fx-border-radius:4px;
+    -fx-padding:0px;
+    -fx-font-family : "Arial";
+}
+.employee-profile-table .column-header-background{
+    
+    -fx-background-color:linear-gradient(to left, #C6FFDD, #FBD786 ,#f7797d);
+    -fx-background-insets: 0 0 0 0;
+    -fx-background-radius:8px 8px 0px 0px;
+    
+}
