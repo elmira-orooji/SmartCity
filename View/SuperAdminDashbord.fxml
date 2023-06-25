@@ -81,8 +81,6 @@
                                  <font>
                                     <Font name="Arial Black" size="14.0" />
                                  </font></Button>
-                              <Label alignment="CENTER" layoutX="53.0" layoutY="376.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="20.0" styleClass="round" stylesheets="@superadmindashbord.css" text="0" textFill="#fffefe" textOverrun="CLIP" />
-                              <Label alignment="CENTER" layoutX="53.0" layoutY="425.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="20.0" styleClass="round" stylesheets="@superadmindashbord.css" text="0" textFill="#fffefe" />
                               <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="32.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Image/icons8-setting-48.png" />
@@ -308,7 +306,7 @@
                                     </Button>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="superadmin_reports_page" layoutX="14.0" layoutY="10.0" prefHeight="511.0" prefWidth="861.0" styleClass="report-anchorpane" stylesheets="@superadmindashbord.css">
+                              <AnchorPane fx:id="superadmin_reports_page" layoutX="14.0" layoutY="10.0" prefHeight="511.0" prefWidth="861.0" styleClass="report-anchorpane" stylesheets="@superadmindashbord.css" visible="false">
                                  <children>
                                     <AnchorPane layoutX="18.0" layoutY="24.0" prefHeight="198.0" prefWidth="294.0" styleClass="report-cards" stylesheets="@superadmindashbord.css">
                                        <children>
@@ -640,7 +638,7 @@
                                     </Button>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="superadmin_passengers_page1" layoutX="14.0" layoutY="10.0" prefHeight="511.0" prefWidth="861.0" styleClass="passenger-anchorpane" stylesheets="@superadmindashbord.css" visible="false">
+                              <AnchorPane fx:id="superadmin_passengers_page1" layoutX="14.0" layoutY="10.0" prefHeight="511.0" prefWidth="861.0" styleClass="passenger-anchorpane" stylesheets="@superadmindashbord.css">
                                  <children>
                                     <ImageView fitHeight="511.0" fitWidth="275.0" layoutX="586.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                                        <image>

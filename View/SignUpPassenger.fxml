@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SignUpPassengerController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -25,28 +25,30 @@
             </AnchorPane>
             <AnchorPane layoutX="290.0" layoutY="4.0" prefHeight="400.0" prefWidth="322.0" styleClass="anchorpane-color" stylesheets="@signuppassenger.css">
                <children>
-                  <Label layoutX="60.0" layoutY="14.0" text="Start here , go anywhere" textFill="WHITE">
+                  <Label layoutX="60.0" layoutY="5.0" text="Start here , go anywhere" textFill="WHITE">
                      <font>
                         <Font name="Eras Demi ITC" size="17.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="signup_idtextfield" alignment="TOP_CENTER" layoutX="68.0" layoutY="48.0" prefHeight="30.0" prefWidth="182.0" promptText="ID" styleClass="radius" stylesheets="@signuppassenger.css" />
-                  <TextField fx:id="signup_firstnametextfield" alignment="TOP_CENTER" layoutX="68.0" layoutY="85.0" prefHeight="30.0" prefWidth="182.0" promptText="Firstname" styleClass="radius" stylesheets="@signuppassenger.css" />
-                  <TextField fx:id="signup_lastnametextfield" alignment="TOP_CENTER" layoutX="68.0" layoutY="122.0" prefHeight="30.0" prefWidth="182.0" promptText="Lastname" styleClass="radius" stylesheets="@signuppassenger.css" />
-                  <TextField fx:id="signup_passwordtextfield" alignment="TOP_CENTER" layoutX="68.0" layoutY="196.0" prefHeight="30.0" prefWidth="182.0" promptText="Password" styleClass="radius" stylesheets="@signuppassenger.css" />
-                  <TextField fx:id="signup_usernametextfield" alignment="TOP_CENTER" layoutX="68.0" layoutY="159.0" prefHeight="30.0" prefWidth="182.0" promptText="Username" styleClass="radius" stylesheets="@signuppassenger.css" />
-                  <TextField fx:id="signup_phonetextfield" alignment="TOP_CENTER" layoutX="68.0" layoutY="233.0" prefHeight="30.0" prefWidth="182.0" promptText="Phone" styleClass="radius" stylesheets="@signuppassenger.css" />
-                  <TextField fx:id="signup_emailtextfield" alignment="TOP_CENTER" layoutX="68.0" layoutY="269.0" prefHeight="30.0" prefWidth="182.0" promptText="Email" styleClass="radius" stylesheets="@signuppassenger.css" />
-                  <TextField fx:id="signup_wallettextfield" alignment="TOP_CENTER" layoutX="68.0" layoutY="306.0" prefHeight="30.0" prefWidth="182.0" promptText="Wallet credit" styleClass="radius" stylesheets="@signuppassenger.css" />
-                  <CheckBox fx:id="signup_rulecheck" layoutX="64.0" layoutY="344.0" mnemonicParsing="false" text="I have read and accept the rules" textFill="WHITE" />
-                  <Button fx:id="signup_registerBtn" layoutX="69.0" layoutY="368.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="182.0" styleClass="signup-btn" stylesheets="@signuppassenger.css" text="Register" textFill="#680e0e" />
-                  <Button fx:id="signup_closeBtn" layoutX="278.0" layoutY="2.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="38.0" styleClass="close" stylesheets="@AdminPanelStyle.css">
+                  <TextField fx:id="signup_idtextfield" alignment="TOP_CENTER" layoutX="68.0" layoutY="36.0" prefHeight="18.0" prefWidth="182.0" promptText="ID" styleClass="radius" stylesheets="@signuppassenger.css" />
+                  <TextField fx:id="signup_firstnametextfield" alignment="TOP_CENTER" layoutX="68.0" layoutY="67.0" prefHeight="18.0" prefWidth="182.0" promptText="Firstname" styleClass="radius" stylesheets="@signuppassenger.css" />
+                  <TextField fx:id="signup_lastnametextfield" alignment="TOP_CENTER" layoutX="68.0" layoutY="98.0" prefHeight="18.0" prefWidth="182.0" promptText="Lastname" styleClass="radius" stylesheets="@signuppassenger.css" />
+                  <TextField fx:id="signup_passwordtextfield" alignment="TOP_CENTER" layoutX="69.0" layoutY="162.0" prefHeight="18.0" prefWidth="182.0" promptText="Password" styleClass="radius" stylesheets="@signuppassenger.css" />
+                  <TextField fx:id="signup_usernametextfield" alignment="TOP_CENTER" layoutX="69.0" layoutY="129.0" prefHeight="22.0" prefWidth="182.0" promptText="Username" styleClass="radius" stylesheets="@signuppassenger.css" />
+                  <TextField fx:id="signup_phonetextfield" alignment="TOP_CENTER" layoutX="68.0" layoutY="194.0" prefHeight="18.0" prefWidth="182.0" promptText="Phone" styleClass="radius" stylesheets="@signuppassenger.css" />
+                  <TextField fx:id="signup_emailtextfield" alignment="TOP_CENTER" layoutX="68.0" layoutY="228.0" prefHeight="22.0" prefWidth="182.0" promptText="Email" styleClass="radius" stylesheets="@signuppassenger.css" />
+                  <TextField fx:id="signup_wallettextfield" alignment="TOP_CENTER" layoutX="68.0" layoutY="262.0" prefHeight="18.0" prefWidth="182.0" promptText="Wallet credit" styleClass="radius" stylesheets="@signuppassenger.css" />
+                  <Button fx:id="signup_registerBtn" layoutX="69.0" layoutY="372.0" mnemonicParsing="false" onAction="#signUp" prefHeight="26.0" prefWidth="182.0" styleClass="signup-btn" stylesheets="@signuppassenger.css" text="Register" textFill="#680e0e" />
+                  <Button fx:id="signup_closeBtn" layoutX="278.0" layoutY="2.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="38.0" styleClass="close" stylesheets="@AdminPanelStyle.css">
                      <graphic>
                         <FontAwesomeIcon fill="#fcfcfc" glyphName="CLOSE" size="1.5em" />
                      </graphic>
                   </Button>
-                  <Button fx:id="signup_backBtn" layoutX="6.0" layoutY="3.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="38.0" styleClass="minimize" stylesheets="@AdminPanelStyle.css" />
+                  <Button fx:id="signup_backBtn" layoutX="6.0" layoutY="3.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="38.0" styleClass="minimize" stylesheets="@AdminPanelStyle.css" />
                   <FontAwesomeIcon fill="#fcfcfc" glyphName="BACKWARD" layoutX="8.0" layoutY="20.0" size="1.5em" />
+                  <TextField fx:id="signup_answer_textfield" alignment="TOP_CENTER" layoutX="70.0" layoutY="325.0" prefHeight="18.0" prefWidth="182.0" promptText="Answer" styleClass="radius" stylesheets="@signuppassenger.css" />
+                  <ComboBox fx:id="signup_questionCombobox" layoutX="72.0" layoutY="294.0" prefHeight="25.0" prefWidth="176.0" promptText="Questions" />
+                  <CheckBox fx:id="signup_checkbox" layoutX="72.0" layoutY="350.0" mnemonicParsing="false" text="I read the rules and accepted" textFill="#fcfcfc" />
                </children>
             </AnchorPane>
          </children>

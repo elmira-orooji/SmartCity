@@ -46,6 +46,9 @@ public class SmartCityFXMLController implements Initializable {
 
     @FXML
     private FontAwesomeIcon closeBtn;
+    
+    @FXML
+    private Button signup;
 
     @FXML
     private AnchorPane main_form;
@@ -55,6 +58,10 @@ public class SmartCityFXMLController implements Initializable {
 
     @FXML
     private TextField usernameBtn;
+    
+    @FXML
+    private Button login_forgetpasswordBtn;
+
     
     
     
@@ -274,6 +281,58 @@ public class SmartCityFXMLController implements Initializable {
     
     public void close(){
         System.exit(0);
+    }
+    
+    public void signUpPassenger(){
+        
+        try{
+        signup.getScene().getWindow().hide();
+                                Parent root = FXMLLoader.load(getClass().getResource("/View/SignUpPassenger.fxml"));
+                                Stage stage = new Stage();
+                                Scene scene = new Scene(root);
+
+                                root.setOnMousePressed((MouseEvent event) -> {
+                                    x = event.getSceneX();
+                                    y = event.getSceneY();
+                                });
+
+                                root.setOnMouseDragged((MouseEvent event) -> {
+                                    stage.setX(event.getScreenX() - x);
+                                    stage.setY(event.getScreenY() - y);
+                                });
+                                stage.initStyle(StageStyle.TRANSPARENT);
+                                stage.setScene(scene);
+                                stage.show();
+        }catch(Exception e){e.printStackTrace();}
+        
+        
+    }
+    
+    public void forgetPasswordBtn(){
+        
+        try{
+        login_forgetpasswordBtn.getScene().getWindow().hide();
+                                Parent root = FXMLLoader.load(getClass().getResource("/View/ForgetPassword.fxml"));
+                             
+        
+                                Stage stage = new Stage();
+                                Scene scene = new Scene(root);
+
+                                root.setOnMousePressed((MouseEvent event) -> {
+                                    x = event.getSceneX();
+                                    y = event.getSceneY();
+                                });
+
+                                root.setOnMouseDragged((MouseEvent event) -> {
+                                    stage.setX(event.getScreenX() - x);
+                                    stage.setY(event.getScreenY() - y);
+                                });
+                                stage.initStyle(StageStyle.TRANSPARENT);
+                                stage.setScene(scene);
+                                stage.show();
+        }catch(Exception e){e.printStackTrace();}
+        
+        
     }
     
     @FXML

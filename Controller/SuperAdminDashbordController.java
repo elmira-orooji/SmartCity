@@ -405,6 +405,9 @@ public class SuperAdminDashbordController implements Initializable {
         ShowEmployeeSalaryListData();
         ShowManagerSalaryListData();
         ShowPassengerWalletListData();
+        PassengerCounter();
+        EmployeeCounter();
+        
     }
 
     @FXML
@@ -447,6 +450,7 @@ public class SuperAdminDashbordController implements Initializable {
             superadmin_manager_page.setVisible(false);
             superadmin_passengers_page1.setVisible(false);
             superadmin_reports_page.setVisible(false);
+            EmployeeCounter();
 
         }
         else if(event.getSource() == superadmin_passengersbtn){
@@ -456,6 +460,7 @@ public class SuperAdminDashbordController implements Initializable {
             superadmin_employees_page.setVisible(false);
             superadmin_manager_page.setVisible(false);
             superadmin_reports_page.setVisible(false);
+            PassengerCounter();
         }
         else if(event.getSource() == superadmin_reportsBtn){
             superadmin_reports_page.setVisible(true);
@@ -1869,5 +1874,79 @@ public class SuperAdminDashbordController implements Initializable {
         if((n -1)< -1){return;}
 
     }
+    
+//*************************************************************************************
+
+
+
+//    Reports page :
+    
+    public void PassengerCounter() {
+
+        String sql = "SELECT COUNT(id) FROM passenger" ;
+
+        connect = Database.connectDb();
+        int countData = 0;
+        try {
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            while (result.next()) {
+                countData = result.getInt("COUNT(id)");
+            }
+            superadmin_reports_passengersnumber.setText(String.valueOf(countData));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+    
+    public void EmployeeCounter() {
+
+        String sql = "SELECT COUNT(id) FROM employee" ;
+
+        connect = Database.connectDb();
+        int countData = 0;
+        try {
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            while (result.next()) {
+                countData = result.getInt("COUNT(id)");
+            }
+            superadmin_reports_employeesnumber.setText(String.valueOf(countData));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+    
+    public void AirplaneCounter() {
+
+        String sql = "SELECT COUNT(id) FROM plane" ;
+
+        connect = Database.connectDb();
+        int countData = 0;
+        try {
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            while (result.next()) {
+                countData = result.getInt("COUNT(id)");
+            }
+            superadmin_reports_airplanenumber.setText(String.valueOf(countData));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    
+    
+    
+    
 
 }
