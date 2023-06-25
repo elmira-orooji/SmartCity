@@ -1,7 +1,7 @@
 package Model;
 
 abstract public class AirPerson {
-    protected int id;
+    protected Integer id;
     protected String firstname;
     protected String lastname;
     protected String username;
@@ -11,7 +11,7 @@ abstract public class AirPerson {
     protected String email;
 
 
-    public AirPerson(int id,String firstname,String lastname,String username,
+    public AirPerson(Integer id,String firstname,String lastname,String username,
                      String password,String phonenumber,String address,String email){
 
         this.id = id;
@@ -24,7 +24,7 @@ abstract public class AirPerson {
         this.email = email;
     }
 
-    public abstract int getId();
+    public abstract Integer getId();
     public abstract String getFirstname();
     public abstract String getLastname();
     public abstract String getUsername();
@@ -33,7 +33,7 @@ abstract public class AirPerson {
     public abstract String getAddress();
     public abstract String getEmail();
 
-    public abstract void setId(int id);
+    public abstract void setId(Integer id);
     public abstract void setFirstname(String firstname);
     public abstract void setLastname(String lastname);
     public abstract void setUsername(String username);

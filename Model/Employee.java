@@ -7,7 +7,7 @@ public class Employee extends AirPerson {
     public static ArrayList<String> employeeArrayList = new ArrayList<String>(20);
     private static ArrayList<String> employeemessage = new ArrayList<String>(20);
 
-    public Employee(int id, String firstname, String lastname, String username,
+    public Employee(Integer id, String firstname, String lastname, String username,
                        String password, String phonenumber, String address, String email, double salary){
         super(id,firstname,lastname,username,password,phonenumber,address,email);
         this.salary = salary;
@@ -16,7 +16,7 @@ public class Employee extends AirPerson {
 
 
     @Override
-    public int getId(){
+    public Integer getId(){
         return super.id;
     }
     @Override
@@ -57,7 +57,7 @@ public class Employee extends AirPerson {
 
 
     @Override
-    public void setId(int id){
+    public void setId(Integer id){
         super.id = id;
     }
     @Override

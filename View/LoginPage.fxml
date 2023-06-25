@@ -67,12 +67,12 @@
                         <FontAwesomeIcon fill="#7b158d" glyphName="EYE" wrappingWidth="12.0" />
                      </graphic></ToggleButton>
                   <Label fx:id="shownPassword" layoutX="78.0" layoutY="239.0" prefHeight="17.0" prefWidth="164.0" />
-                  <Button fx:id="signup" layoutX="77.0" layoutY="329.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="164.0" style="-fx-border-color: #a629ae;" styleClass="login-btn" stylesheets="@LoginStyle.css" text="Sign up" textFill="#691a97">
+                  <Button fx:id="signup" layoutX="77.0" layoutY="329.0" mnemonicParsing="false" onAction="#signUpPassenger" prefHeight="32.0" prefWidth="164.0" style="-fx-border-color: #a629ae;" styleClass="login-btn" stylesheets="@LoginStyle.css" text="Sign up" textFill="#691a97">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Button>
-                  <Button layoutX="77.0" layoutY="256.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="167.0" styleClass="transparent" stylesheets="@LoginStyle.css" text="Forget password?" textFill="#800c6a" />
+                  <Button fx:id="login_forgetpasswordBtn" layoutX="77.0" layoutY="256.0" mnemonicParsing="false" onAction="#forgetPasswordBtn" prefHeight="25.0" prefWidth="167.0" styleClass="transparent" stylesheets="@LoginStyle.css" text="Forget password?" textFill="#800c6a" />
                </children>
             </AnchorPane>
          </children>

@@ -2,18 +2,13 @@
 package Controller;
 
 import Model.Database;
+import Controller.ForgetPasswordController;
 import java.net.URL;
 import java.sql.Connection;
-import java.util.*;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -29,8 +24,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+public class ChangePasswordController implements Initializable {
 
-public class ForgetPasswordController implements Initializable {
     
     @FXML
     private Button changepassword_changeBtn;
@@ -40,13 +35,12 @@ public class ForgetPasswordController implements Initializable {
 
     @FXML
     private Button changepassword_close;
-
+    
     @FXML
     private PasswordField changepassword_password;
 
     @FXML
     private PasswordField changepassword_Confirmpassword;
-
 
     @FXML
     private Button forgetpassword_backBtn;
@@ -113,6 +107,9 @@ public class ForgetPasswordController implements Initializable {
     private TextField signup_passwordtextfield;
 
     @FXML
+    private TextField ChangePassword_username;
+    
+    @FXML
     private Button signup_backBtn;
 
     @FXML
@@ -124,87 +121,22 @@ public class ForgetPasswordController implements Initializable {
     @FXML
     private ComboBox<?> signup_questionCombobox;
     
-    public String getUsername(){
-        
-        return forgetpassword_username_textfield.getText();
-    }
-    
-    public void close(){
-        System.exit(0);
-    }
-    public void back(){
-        
-        try{
-        forgetpassword_backBtn.getScene().getWindow().hide();
-                                Parent root = FXMLLoader.load(getClass().getResource("/View/LoginPage.fxml"));
-                                Stage stage = new Stage();
-                                Scene scene = new Scene(root);
-
-                                root.setOnMousePressed((MouseEvent event) -> {
-                                    x = event.getSceneX();
-                                    y = event.getSceneY();
-                                });
-
-                                root.setOnMouseDragged((MouseEvent event) -> {
-                                    stage.setX(event.getScreenX() - x);
-                                    stage.setY(event.getScreenY() - y);
-                                });
-                                stage.initStyle(StageStyle.TRANSPARENT);
-                                stage.setScene(scene);
-                                stage.show();
-        }catch(Exception e){e.printStackTrace();}
-        
-        
-        
-    }
-    
-    
     private Connection connect;
     private PreparedStatement prepare;
     private ResultSet result;
     private Statement statement;
-    
-    
     private double x = 0;
     private double y = 0;
     
-     
-    public void forgetPassword(){
+    public void close(){
+        System.exit(0);
+    }
+    
+    public void back(){
         
-         if(forgetpassword_username_textfield.getText().isEmpty() || forgetpassword_questionCombobox.getSelectionModel().getSelectedItem() == null
-                || forgetpassword_answer_textfield.getText().isEmpty()){
-                
-            
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error!");
-                alert.setHeaderText(null);
-                alert.setContentText("Please fill all the blanks");
-                alert.showAndWait();
-            
-        
-        }else{
-             
-             String dataCheck = "SELECT Username, Questions, Answer FROM signup "
-                     + "WHERE Username = ? AND Questions = ? AND Answer = ?";
-             
-             connect = Database.connectDb();
-             
-             try{
-                 
-               prepare = connect.prepareStatement(dataCheck);
-               prepare.setString(1, forgetpassword_username_textfield.getText());
-               prepare.setString(2, (String)forgetpassword_questionCombobox.getSelectionModel().getSelectedItem());
-               prepare.setString(3, forgetpassword_answer_textfield.getText());
-               
-               result = prepare.executeQuery();
-               
-               if(result.next()){
-                   
-                    try{
-                                forgetpassword_resetpasswordBtn.getScene().getWindow().hide();
-                                Parent root = FXMLLoader.load(getClass().getResource("/View/ChangePassword.fxml"));
-                             
-        
+        try{
+        changepassword_backBtn.getScene().getWindow().hide();
+                                Parent root = FXMLLoader.load(getClass().getResource("/View/ForgetPassword.fxml"));
                                 Stage stage = new Stage();
                                 Scene scene = new Scene(root);
 
@@ -220,29 +152,10 @@ public class ForgetPasswordController implements Initializable {
                                 stage.initStyle(StageStyle.TRANSPARENT);
                                 stage.setScene(scene);
                                 stage.show();
-                                
-                                
         }catch(Exception e){e.printStackTrace();}
-               
-               }else{
-                   
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error!");
-                alert.setHeaderText(null);
-                alert.setContentText("Wrong information");
-                alert.showAndWait();
-                   
-               }
-                 
-                 
-             }catch(Exception e){e.printStackTrace();}
-             
-             
-             
-             
-             
-         }
-
+        
+        
+        
     }
     
     public void changePassword(){
@@ -277,7 +190,7 @@ public class ForgetPasswordController implements Initializable {
             
             
             String UpdateData = "UPDATE signup SET Password = ? "
-                    + "WHERE Username = '" + forgetpassword_username_textfield.getText() + "'";
+                    + "WHERE Username = '" + ChangePassword_username.getText() + "'";
             
             connect = Database.connectDb();
             
@@ -306,28 +219,11 @@ public class ForgetPasswordController implements Initializable {
         
     }
     
-    private String[] questionList = {"What's your favourite food?","What's your favourite color?", "What's your father name?"};
-    public void forgetListQuestion(){
-        
-        List<String> listQ = new ArrayList<>();
-        
-        for(String data : questionList ){
-            listQ.add(data);
-            
-        }
-        
-        ObservableList listData = FXCollections.observableArrayList(listQ);
-        forgetpassword_questionCombobox.setItems(listData);
-    }
-    
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        forgetListQuestion();
-        
-        
+       
     }    
     
 }
