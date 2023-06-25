@@ -4,9 +4,11 @@ import java.util.ArrayList;
 public class Airplane {
     private int id;
     private int seats;
-     private ArrayList<Flight> flightlist = new ArrayList<Flight>(20);
+     private ArrayList<Integer> flightlistid = new ArrayList<Integer>(20);
+    private static ArrayList<Airplane> airplanelist = new ArrayList<Airplane>(20);
 
 
+    public Airplane airplane;
 
 
      public Airplane(int id,int seats){
@@ -20,12 +22,15 @@ public class Airplane {
      public int getSeats(){
          return seats;
      }
-     public Flight getFlight(int i){
-         return flightlist.get(i);
-     }
+//     public Flight getFlight(int i){
+//         return flightlist.get(i);
+//     }
 
-    public ArrayList<Flight> getFlightlist() {
-        return flightlist;
+    public ArrayList<Integer> getFlightlistid() {
+        return flightlistid;
+    }
+    public static ArrayList<Airplane> getAirplanelist(){
+         return airplanelist;
     }
 
     public void setId(int id){
@@ -34,13 +39,13 @@ public class Airplane {
     public void setSeats(int seats) {
         this.seats = seats;
     }
-    public void setFlightlist(Flight newflightlist){
-         flightlist.add(newflightlist);
-     }
-
-
-     public void rmoveflight(int i){
-         flightlist.remove(i);
-     }
+//    public void setFlightlist(Flight newflightlist){
+//         flightlist.add(newflightlist);
+//     }
+//
+//
+//     public void rmoveflight(int i){
+//         flightlist.remove(i);
+//     }
 
 }

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class Passenger extends AirPerson {
     private double wallet;
     private int boughtticket;
+    public static ArrayList<String> passengerArrayList = new ArrayList<String>(20);
+    private static ArrayList<String> passengermessage = new ArrayList<String>(20);
     private ArrayList<Ticket> tickets = new ArrayList<Ticket>(20);
 
     public Passenger(int id, String firstname, String lastname, String username,
@@ -63,6 +65,9 @@ public class Passenger extends AirPerson {
         return boughtticket;
     }
 
+    public static ArrayList<String> getPassengermessage() {
+        return passengermessage;
+    }
 
     @Override
     public void setId(int id) {

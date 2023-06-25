@@ -1,13 +1,19 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class Employee extends AirPerson {
     private double salary;
+    public static ArrayList<String> employeeArrayList = new ArrayList<String>(20);
+    private static ArrayList<String> employeemessage = new ArrayList<String>(20);
 
     public Employee(int id, String firstname, String lastname, String username,
                        String password, String phonenumber, String address, String email, double salary){
         super(id,firstname,lastname,username,password,phonenumber,address,email);
         this.salary = salary;
     }
+
+
 
     @Override
     public int getId(){
@@ -44,6 +50,11 @@ public class Employee extends AirPerson {
     public double getSalary(){
         return salary;
     }
+
+    public static ArrayList<String> getEmployeemessage() {
+        return employeeArrayList;
+    }
+
 
     @Override
     public void setId(int id){

@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 <?import de.jensd.fx.glyphs.fontawesome.*?>
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.PassengerDashbordController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PassengerDashbordController">
    <children>
       <AnchorPane fx:id="passenger_skleton" prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -25,12 +29,12 @@
                               <Font name="Arial Narrow" size="15.0" />
                            </font>
                         </Label>
-                        <Button fx:id="passenger_close" layoutX="1007.0" layoutY="11.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" styleClass="close" stylesheets="@AdminPanelStyle.css">
+                        <Button fx:id="passenger_close" layoutX="1007.0" layoutY="11.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="79.0" styleClass="close" stylesheets="@AdminPanelStyle.css">
                            <graphic>
                               <FontAwesomeIcon fill="#cc2626" glyphName="CLOSE" size="1.5em" />
                            </graphic>
                         </Button>
-                        <Button fx:id="passenger_minimize" layoutX="946.0" layoutY="11.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" styleClass="minimize" stylesheets="@AdminPanelStyle.css">
+                        <Button fx:id="passenger_minimize" layoutX="946.0" layoutY="11.0" mnemonicParsing="false" onAction="#minimize" prefHeight="25.0" prefWidth="54.0" styleClass="minimize" stylesheets="@AdminPanelStyle.css">
                            <graphic>
                               <FontAwesomeIcon fill="#cc2626" glyphName="MINUS" size="1.5em" />
                            </graphic>
@@ -48,23 +52,23 @@
                                     <Image url="@../Image/icons8-passenger-64%20(1).png" />
                                  </image>
                               </ImageView>
-                              <Button fx:id="passenger_profileBtn" layoutX="14.0" layoutY="139.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" styleClass="passenger-btns" stylesheets="@passengerdashbord.css" text="  Profile" textFill="WHITE">
+                              <Button fx:id="passenger_profileBtn" layoutX="14.0" layoutY="139.0" mnemonicParsing="false" onAction="#switchPage" prefHeight="40.0" prefWidth="180.0" styleClass="passenger-btns" stylesheets="@passengerdashbord.css" text="  Profile" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Black" size="14.0" />
                                  </font>
                               </Button>
                               <Line endX="100.0" layoutX="106.0" layoutY="113.0" startX="-100.0" stroke="#fcf9f9" />
-                              <Button fx:id="passenger_walletBtn" layoutX="14.0" layoutY="188.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" styleClass="passenger-btns" stylesheets="@passengerdashbord.css" text="  Wallet" textFill="WHITE">
+                              <Button fx:id="passenger_walletBtn" layoutX="14.0" layoutY="188.0" mnemonicParsing="false" onAction="#switchPage" prefHeight="40.0" prefWidth="180.0" styleClass="passenger-btns" stylesheets="@passengerdashbord.css" text="  Wallet" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Black" size="14.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="passenger_buy_ticket_Btn" layoutX="14.0" layoutY="237.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" styleClass="passenger-btns" stylesheets="@passengerdashbord.css" text="     Buy ticket" textFill="WHITE">
+                              <Button fx:id="passenger_buy_ticket_Btn" layoutX="14.0" layoutY="237.0" mnemonicParsing="false" onAction="#switchPage" prefHeight="40.0" prefWidth="180.0" styleClass="passenger-btns" stylesheets="@passengerdashbord.css" text="     Buy ticket" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Black" size="14.0" />
                                  </font>
                               </Button>
-                              <Button layoutX="16.0" layoutY="500.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" styleClass="passenger-btns" stylesheets="@passengerdashbord.css" text="Sign out" textFill="WHITE">
+                              <Button fx:id="passenger_signout_btn" layoutX="16.0" layoutY="500.0" mnemonicParsing="false" onAction="#signOut_manager" prefHeight="40.0" prefWidth="180.0" styleClass="passenger-btns" stylesheets="@passengerdashbord.css" text="Sign out" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Black" size="14.0" />
                                  </font>
@@ -84,7 +88,7 @@
                                     <Image url="@../Image/icons8-boarding-pass-50.png" />
                                  </image>
                               </ImageView>
-                              <Button fx:id="passenger_send_message_Btn" layoutX="14.0" layoutY="277.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" styleClass="passenger-btns" stylesheets="@passengerdashbord.css" text="          Send message" textFill="WHITE">
+                              <Button fx:id="passenger_send_message_Btn" layoutX="14.0" layoutY="277.0" mnemonicParsing="false" onAction="#switchPage" prefHeight="40.0" prefWidth="180.0" styleClass="passenger-btns" stylesheets="@passengerdashbord.css" text="          Send message" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Black" size="14.0" />
                                  </font>
@@ -111,9 +115,9 @@
                            <children>
                               <AnchorPane layoutX="16.0" layoutY="14.0" prefHeight="504.0" prefWidth="860.0" styleClass="anchorpane-color-passenger" stylesheets="@passengerdashbord.css">
                                  <children>
-                                    <AnchorPane fx:id="passenger_profile_page" layoutX="143.0" layoutY="52.0" prefHeight="504.0" prefWidth="860.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <AnchorPane fx:id="passenger_profile_page" layoutX="143.0" layoutY="52.0" prefHeight="504.0" prefWidth="860.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <TableView fx:id="passenger_profile_table" layoutX="20.0" layoutY="20.0" prefHeight="200.0" prefWidth="641.0" styleClass="table-view-passenger" stylesheets="@managerdashbord.css">
+                                          <TableView fx:id="passenger_profile_table" layoutX="20.0" layoutY="20.0" onMouseClicked="#PassengerSelect" prefHeight="200.0" prefWidth="641.0" styleClass="table-view-passenger" stylesheets="@managerdashbord.css">
                                             <columns>
                                               <TableColumn fx:id="passenger_profile_idCol" prefWidth="75.0" text="ID" />
                                               <TableColumn fx:id="passenger_profile_firstnameCol" prefWidth="75.0" text="First name" />
@@ -178,11 +182,11 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </Label>
-                                          <Button fx:id="passenger_profile_updateBtn" layoutX="563.0" layoutY="454.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="98.0" styleClass="passengerProfileBtn" stylesheets="@passengerdashbord.css" text="Update" textFill="WHITE" />
-                                          <Button fx:id="passenger_profile_clearBtn" layoutX="459.0" layoutY="454.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="98.0" styleClass="passengerProfileBtn" stylesheets="@passengerdashbord.css" text="Clear" textFill="WHITE" />
+                                          <Button fx:id="passenger_profile_updateBtn" layoutX="563.0" layoutY="454.0" mnemonicParsing="false" onAction="#PassengerUpdate" prefHeight="39.0" prefWidth="98.0" styleClass="passengerProfileBtn" stylesheets="@passengerdashbord.css" text="Update" textFill="WHITE" />
+                                          <Button fx:id="passenger_profile_clearBtn" layoutX="459.0" layoutY="454.0" mnemonicParsing="false" onAction="#PassengerClear" prefHeight="39.0" prefWidth="98.0" styleClass="passengerProfileBtn" stylesheets="@passengerdashbord.css" text="Clear" textFill="WHITE" />
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane fx:id="passenger_wallet_page" prefHeight="507.0" prefWidth="862.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <AnchorPane fx:id="passenger_wallet_page" prefHeight="507.0" prefWidth="862.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
                                           <Line endX="100.0" layoutX="379.0" layoutY="120.0" startX="-100.0" stroke="#b24545" />
                                           <TextField fx:id="passenger_wallet_currentstock_textfield" layoutX="279.0" layoutY="88.0" prefHeight="32.0" prefWidth="199.0" styleClass="transparent" stylesheets="@passengerdashbord.css" />
@@ -191,7 +195,7 @@
                                                 <Font name="Arial Unicode MS" size="16.0" />
                                              </font>
                                           </Label>
-                                          <Button fx:id="passenger_wallet_addstockBtn" layoutX="90.0" layoutY="214.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="395.0" stylesheets="@passengerdashbord.css" text="Add Stock" textFill="WHITE">
+                                          <Button fx:id="passenger_wallet_addstockBtn" layoutX="90.0" layoutY="214.0" mnemonicParsing="false" onAction="#addStock" prefHeight="48.0" prefWidth="395.0" stylesheets="@passengerdashbord.css" text="Add Stock" textFill="WHITE">
                                              <font>
                                                 <Font name="Arial Unicode MS" size="12.0" />
                                              </font>
@@ -216,7 +220,7 @@
                                     </AnchorPane>
                                     <AnchorPane fx:id="passenger_buy_ticket_page" layoutX="10.0" layoutY="10.0" prefHeight="496.0" prefWidth="849.0" visible="false">
                                        <children>
-                                          <TableView fx:id="passenger_buy_ticket_table" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="823.0" styleClass="passenger-btns">
+                                          <TableView fx:id="passenger_buy_ticket_table" layoutX="14.0" layoutY="14.0" onMouseClicked="#FlightSelect" prefHeight="200.0" prefWidth="823.0" styleClass="passenger-btns">
                                             <columns>
                                               <TableColumn fx:id="passenger_buy_ticket_flightidCol" prefWidth="75.0" text="Flight ID" />
                                               <TableColumn fx:id="passenger_buy_ticket_planeCol" prefWidth="75.0" text="Plane" />
@@ -232,14 +236,14 @@
                                                 <TableColumn fx:id="passenger_buy_ticket_dateCol" prefWidth="68.0" text="Date" />
                                                 <TableColumn fx:id="passenger_buy_ticket_timeCol" prefWidth="75.0" text="Time" />
                                                 <TableColumn fx:id="passenger_buy_ticket_stateCol" prefWidth="74.0" text="State" />
-                                                <TableColumn fx:id="passenger_buy_ticket_capacityCol" prefWidth="98.0" text="Capacity" />
+                                                <TableColumn fx:id="passenger_buy_ticket_capacityCol" prefWidth="98.0" text="SoldTicket" />
                                             </columns>
                                              <stylesheets>
                                                 <URL value="@AdminPanelStyle.css" />
                                                 <URL value="@managerdashbord.css" />
                                              </stylesheets>
                                           </TableView>
-                                          <Button fx:id="passenger_buy_ticket_buyBtn" layoutX="268.0" layoutY="289.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="300.0" stylesheets="@managerdashbord.css" text="Buy" textFill="WHITE">
+                                          <Button fx:id="passenger_buy_ticket_buyBtn" layoutX="268.0" layoutY="289.0" mnemonicParsing="false" onAction="#Buyticket" prefHeight="72.0" prefWidth="300.0" stylesheets="@managerdashbord.css" text="Buy" textFill="WHITE">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
@@ -252,7 +256,7 @@
                                     </AnchorPane>
                                     <AnchorPane fx:id="passenger_send_message_page" layoutX="10.0" prefHeight="496.0" prefWidth="849.0" visible="false">
                                        <children>
-                                          <Button fx:id="passenger_message_sendBtn" layoutX="265.0" layoutY="375.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="300.0" text="Send" textFill="WHITE">
+                                          <Button fx:id="passenger_message_sendBtn" layoutX="265.0" layoutY="375.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="72.0" prefWidth="300.0" text="Send" textFill="WHITE">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>

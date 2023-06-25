@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
@@ -36,7 +37,7 @@ import javafx.stage.StageStyle;
 
 public class ManagerDashbordController implements Initializable {
 
-    private ArrayList<Airplane> Airplanes = new ArrayList<Airplane>(20);
+//    private ArrayList<Airplane> Airplanes = new ArrayList<Airplane>(20);
 
     ObservableList<Airplane> fligthData;
 
@@ -420,6 +421,7 @@ public class ManagerDashbordController implements Initializable {
         ShowPlaneListData();
         ShowFlightListData();
         statusbox();
+        ShowMassages();
     }
 
     @FXML
@@ -469,6 +471,7 @@ public class ManagerDashbordController implements Initializable {
             manager_planes_page.setVisible(true);
             manager_flights_page.setVisible(false);
             manager_messages_page.setVisible(false);
+
         } else if (event.getSource() == manager_flightsBtn) {
             manager_setting_page.setVisible(false);
             manager_employees_page.setVisible(false);
@@ -707,6 +710,7 @@ public class ManagerDashbordController implements Initializable {
             logger.warning("warning message" + e);
         }
     }
+
     public boolean regexemail(String a) {
 
         String regex = "[a-zA-Z0-9.-_]{6,30}@[ge]mail.com";
@@ -719,21 +723,21 @@ public class ManagerDashbordController implements Initializable {
     }
 //************************************************************************************************
 
-    public ObservableList<Employee> EmployeeListData(){
+    public ObservableList<Employee> EmployeeListData() {
 
         ObservableList<Employee> listData = FXCollections.observableArrayList();
         String sql = "SELECT * FROM employee";
 
         connect = Database.connectDb();
 
-        try{
+        try {
 
             handler = new FileHandler("logger.log", true);
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
             Employee employee;
 
-            while(result.next()){
+            while (result.next()) {
                 employee = new Employee(result.getInt("Id"),
                         result.getString("First_name"),
                         result.getString("Last_name"),
@@ -745,22 +749,22 @@ public class ManagerDashbordController implements Initializable {
                         result.getDouble("Salary"));
 
 
-
                 listData.add(employee);
             }
 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
             logger.addHandler(handler);
-            logger.warning("warning message"+e);
+            logger.warning("warning message" + e);
         }
 
         return listData;
     }
 
     private ObservableList<Employee> EmployeeList;
-    public void ShowEmployeeListData(){
+
+    public void ShowEmployeeListData() {
 
         EmployeeList = EmployeeListData();
         manager_employees_idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -776,12 +780,14 @@ public class ManagerDashbordController implements Initializable {
 
     }
 
-    public void EmployeeSelect(){
+    public void EmployeeSelect() {
 
-        Employee employee2=  manager_employees_table.getSelectionModel().getSelectedItem();
-        int n =  manager_employees_table.getSelectionModel().getSelectedIndex();
+        Employee employee2 = manager_employees_table.getSelectionModel().getSelectedItem();
+        int n = manager_employees_table.getSelectionModel().getSelectedIndex();
 
-        if((n -1)< -1){return;}
+        if ((n - 1) < -1) {
+            return;
+        }
 
         manager_employees_id_textfield.setText(String.valueOf(employee2.getId()));
         manager_employees_firstname_textfield.setText(employee2.getFirstname());
@@ -793,26 +799,26 @@ public class ManagerDashbordController implements Initializable {
         manager_employees_email_textfield.setText(String.valueOf(employee2.getEmail()));
     }
 
-    public void AddEmployee(){
+    public void AddEmployee() {
 
 
-        String sql  = "INSERT INTO employee "
+        String sql = "INSERT INTO employee "
                 + "(Id,First_name,Last_name,User_name,Password,Phone_No,Address,Email,Salary)"
                 + "VALUES(?,?,?,?,?,?,?,?,?)";
 
         connect = Database.connectDb();
 
-        try{
+        try {
 
             handler = new FileHandler("logger.log", true);
 
-            if(manager_employees_id_textfield.getText().isEmpty()|| manager_employees_firstname_textfield.getText().isEmpty()
-                    ||  manager_employees_lastname_textfield.getText().isEmpty()||  manager_employees_username_textfield.getText().isEmpty()
-                    ||  manager_employees_password_textfield.getText().isEmpty()
-                    || manager_employees_phone_textfield.getText().isEmpty()|| manager_employees_email_textfield.getText().isEmpty()
-                    |  manager_employees_address_textfield.getText().isEmpty()
+            if (manager_employees_id_textfield.getText().isEmpty() || manager_employees_firstname_textfield.getText().isEmpty()
+                    || manager_employees_lastname_textfield.getText().isEmpty() || manager_employees_username_textfield.getText().isEmpty()
+                    || manager_employees_password_textfield.getText().isEmpty()
+                    || manager_employees_phone_textfield.getText().isEmpty() || manager_employees_email_textfield.getText().isEmpty()
+                    | manager_employees_address_textfield.getText().isEmpty()
 
-            ){
+            ) {
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error!");
@@ -820,34 +826,33 @@ public class ManagerDashbordController implements Initializable {
                 alert.setContentText("Please fill all the blanks");
                 alert.showAndWait();
 
-            }else if(!regexemail( manager_employees_email_textfield.getText())){
+            } else if (!regexemail(manager_employees_email_textfield.getText())) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error!");
                 alert.setHeaderText(null);
                 alert.setContentText("Please enter a real email !");
                 alert.showAndWait();
 
-            }else if(!regexphonenumber( manager_employees_phone_textfield.getText())) {
+            } else if (!regexphonenumber(manager_employees_phone_textfield.getText())) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error!");
                 alert.setHeaderText(null);
                 alert.setContentText("Please enter a real phone number !");
                 alert.showAndWait();
 
-            }else{
+            } else {
 
 
                 prepare = connect.prepareStatement(sql);
                 prepare.setString(1, manager_employees_id_textfield.getText());
                 prepare.setString(2, manager_employees_firstname_textfield.getText());
-                prepare.setString(3,manager_employees_lastname_textfield.getText());
+                prepare.setString(3, manager_employees_lastname_textfield.getText());
                 prepare.setString(4, manager_employees_username_textfield.getText());
                 prepare.setString(5, manager_employees_password_textfield.getText());
                 prepare.setString(6, manager_employees_phone_textfield.getText());
                 prepare.setString(7, manager_employees_address_textfield.getText());
-                prepare.setString(8,manager_employees_email_textfield.getText());
-                prepare.setDouble(9,0);
-
+                prepare.setString(8, manager_employees_email_textfield.getText());
+                prepare.setDouble(9, 0);
 
 
                 prepare.executeUpdate();
@@ -860,15 +865,15 @@ public class ManagerDashbordController implements Initializable {
                 ShowEmployeeListData();
                 EmployeeClear();
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
             logger.addHandler(handler);
-            logger.warning("warning message"+e);
+            logger.warning("warning message" + e);
         }
     }
 
-    public void EmployeeClear(){
+    public void EmployeeClear() {
 
         manager_employees_id_textfield.setText("");
         manager_employees_firstname_textfield.setText("");
@@ -881,23 +886,23 @@ public class ManagerDashbordController implements Initializable {
 
     }
 
-    public void Employeefire(){
+    public void Employeefire() {
 
         String sql = "DELETE FROM employee WHERE Id = '"
-                + manager_employees_id_textfield.getText()+"'";
+                + manager_employees_id_textfield.getText() + "'";
 
         connect = Database.connectDb();
 
-        try{
+        try {
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confimation ^.^");
             alert.setHeaderText(null);
-            alert.setContentText("Are you sure do you want delete employee "+
-                    manager_employees_id_textfield.getText()+"?");
+            alert.setContentText("Are you sure do you want delete employee " +
+                    manager_employees_id_textfield.getText() + "?");
             Optional<ButtonType> option = alert.showAndWait();
 
-            if(option.get().equals(ButtonType.OK)){
+            if (option.get().equals(ButtonType.OK)) {
                 statement = connect.createStatement();
                 statement.executeUpdate(sql);
 
@@ -910,70 +915,70 @@ public class ManagerDashbordController implements Initializable {
                 EmployeeClear();
             }
 
-        }catch(Exception e){
+        } catch (Exception e) {
 
             e.printStackTrace();
             Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
             logger.addHandler(handler);
-            logger.warning("warning message"+e);
+            logger.warning("warning message" + e);
 
 
         }
     }
 
-    public void EmployeeUpdate(){
+    public void EmployeeUpdate() {
 
 
-        String sql = "UPDATE employee SET First_name = '"+  manager_employees_firstname_textfield.getText()
-                +"' ,Last_name = '"+  manager_employees_lastname_textfield.getText()+"' ,User_name= '"+
-                manager_employees_username_textfield.getText()+"',Password = '"+  manager_employees_password_textfield.getText()+"' ,Phone_no = '"+
-                manager_employees_phone_textfield.getText()+"' ,Address = '"+  manager_employees_address_textfield.getText()
-                +"' ,Email = '"+ manager_employees_email_textfield.getText()+"' WHERE Id = '"+  manager_employees_id_textfield.getText()+"'";
+        String sql = "UPDATE employee SET First_name = '" + manager_employees_firstname_textfield.getText()
+                + "' ,Last_name = '" + manager_employees_lastname_textfield.getText() + "' ,User_name= '" +
+                manager_employees_username_textfield.getText() + "',Password = '" + manager_employees_password_textfield.getText() + "' ,Phone_no = '" +
+                manager_employees_phone_textfield.getText() + "' ,Address = '" + manager_employees_address_textfield.getText()
+                + "' ,Email = '" + manager_employees_email_textfield.getText() + "' WHERE Id = '" + manager_employees_id_textfield.getText() + "'";
 
         connect = Database.connectDb();
 
-        try{
+        try {
 
 
             handler = new FileHandler("logger.log", true);
 
-            if( manager_employees_id_textfield.getText().isEmpty()||manager_employees_firstname_textfield.getText().isEmpty()
-                    || manager_employees_lastname_textfield.getText().isEmpty()||manager_employees_username_textfield.getText().isEmpty()
-                    ||manager_employees_password_textfield.getText().isEmpty()
-                    ||manager_employees_phone_textfield.getText().isEmpty()|| manager_employees_address_textfield.getText().isEmpty()
-                    ||manager_employees_email_textfield.getText().isEmpty()
+            if (manager_employees_id_textfield.getText().isEmpty() || manager_employees_firstname_textfield.getText().isEmpty()
+                    || manager_employees_lastname_textfield.getText().isEmpty() || manager_employees_username_textfield.getText().isEmpty()
+                    || manager_employees_password_textfield.getText().isEmpty()
+                    || manager_employees_phone_textfield.getText().isEmpty() || manager_employees_address_textfield.getText().isEmpty()
+                    || manager_employees_email_textfield.getText().isEmpty()
 
 
-            ){
+            ) {
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error!");
                 alert.setHeaderText(null);
                 alert.setContentText("Please fill all the blanks");
                 alert.showAndWait();
-            }else if(!regexemail(manager_employees_email_textfield.getText())){
+            } else if (!regexemail(manager_employees_email_textfield.getText())) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error!");
                 alert.setHeaderText(null);
                 alert.setContentText("Please enter a real email !");
                 alert.showAndWait();
 
-            }else if(!regexphonenumber(manager_employees_phone_textfield.getText())) {
+            } else if (!regexphonenumber(manager_employees_phone_textfield.getText())) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error!");
                 alert.setHeaderText(null);
                 alert.setContentText("Please enter a real phone number !");
                 alert.showAndWait();
 
-            }else{
+            } else {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Confimation ^.^");
                 alert.setHeaderText(null);
-                alert.setContentText("Are you sure do you want update "+
-                        manager_employees_id_textfield.getText()+"?");
+                alert.setContentText("Are you sure do you want update " +
+                        manager_employees_id_textfield.getText() + "?");
                 Optional<ButtonType> option = alert.showAndWait();
 
-                if(option.get().equals(ButtonType.OK)){
+                if (option.get().equals(ButtonType.OK)) {
                     statement = connect.createStatement();
                     statement.executeUpdate(sql);
 
@@ -988,30 +993,31 @@ public class ManagerDashbordController implements Initializable {
 
 
             }
-        }catch(Exception e){e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
             Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
             logger.addHandler(handler);
-            logger.warning("warning message"+e);
+            logger.warning("warning message" + e);
         }
     }
 
 //****************************************************************************************************
 
-    public ObservableList<Passenger> PassengerListData(){
+    public ObservableList<Passenger> PassengerListData() {
 
         ObservableList<Passenger> listData = FXCollections.observableArrayList();
         String sql = "SELECT * FROM passenger";
 
         connect = Database.connectDb();
 
-        try{
+        try {
 
             handler = new FileHandler("logger.log", true);
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
             Passenger passenger;
 
-            while(result.next()){
+            while (result.next()) {
                 passenger = new Passenger(result.getInt("Id"),
                         result.getString("First_name"),
                         result.getString("Last_name"),
@@ -1024,22 +1030,22 @@ public class ManagerDashbordController implements Initializable {
                         result.getInt("Tickets"));
 
 
-
                 listData.add(passenger);
             }
 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
             logger.addHandler(handler);
-            logger.warning("warning message"+e);
+            logger.warning("warning message" + e);
         }
 
         return listData;
     }
 
     private ObservableList<Passenger> PassengerList;
-    public void ShowPassengerListData(){
+
+    public void ShowPassengerListData() {
 
         PassengerList = PassengerListData();
         manager_passengers_idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -1055,12 +1061,14 @@ public class ManagerDashbordController implements Initializable {
 
     }
 
-    public void PassengerSelect(){
+    public void PassengerSelect() {
 
-        Passenger passenger2=  manager_passengers_table.getSelectionModel().getSelectedItem();
-        int n =  manager_passengers_table.getSelectionModel().getSelectedIndex();
+        Passenger passenger2 = manager_passengers_table.getSelectionModel().getSelectedItem();
+        int n = manager_passengers_table.getSelectionModel().getSelectedIndex();
 
-        if((n -1)< -1){return;}
+        if ((n - 1) < -1) {
+            return;
+        }
 
         manager_passengers_id_textfield.setText(String.valueOf(passenger2.getId()));
         manager_passengers_firstname_textfield.setText(passenger2.getFirstname());
@@ -1073,26 +1081,26 @@ public class ManagerDashbordController implements Initializable {
 
     }
 
-    public void AddPassenger(){
+    public void AddPassenger() {
 
 
-        String sql  = "INSERT INTO passenger "
+        String sql = "INSERT INTO passenger "
                 + "(Id,First_name,Last_name,User_name,Password,Phone_No,Address,Email,Wallet,Tickets)"
                 + "VALUES(?,?,?,?,?,?,?,?,?,?)";
 
         connect = Database.connectDb();
 
-        try{
+        try {
 
             handler = new FileHandler("logger.log", true);
 
-            if(manager_passengers_id_textfield.getText().isEmpty()|| manager_passengers_firstname_textfield.getText().isEmpty()
-                    || manager_passengers_lastname_textfield.getText().isEmpty()||  manager_passengers_username_textfield.getText().isEmpty()
-                    ||  manager_passengers_password_textfield.getText().isEmpty()
-                    || manager_passengers_phone_textfield.getText().isEmpty()||manager_passengers_address_textfield.getText().isEmpty()
-                    ||manager_passengers_email_textfield.getText().isEmpty()
+            if (manager_passengers_id_textfield.getText().isEmpty() || manager_passengers_firstname_textfield.getText().isEmpty()
+                    || manager_passengers_lastname_textfield.getText().isEmpty() || manager_passengers_username_textfield.getText().isEmpty()
+                    || manager_passengers_password_textfield.getText().isEmpty()
+                    || manager_passengers_phone_textfield.getText().isEmpty() || manager_passengers_address_textfield.getText().isEmpty()
+                    || manager_passengers_email_textfield.getText().isEmpty()
 
-            ){
+            ) {
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error!");
@@ -1100,21 +1108,21 @@ public class ManagerDashbordController implements Initializable {
                 alert.setContentText("Please fill all the blanks");
                 alert.showAndWait();
 
-            }else if(!regexemail(manager_passengers_email_textfield.getText())){
+            } else if (!regexemail(manager_passengers_email_textfield.getText())) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error!");
                 alert.setHeaderText(null);
                 alert.setContentText("Please enter a real email !");
                 alert.showAndWait();
 
-            }else if(!regexphonenumber(manager_passengers_phone_textfield.getText())) {
+            } else if (!regexphonenumber(manager_passengers_phone_textfield.getText())) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error!");
                 alert.setHeaderText(null);
                 alert.setContentText("Please enter a real phone number !");
                 alert.showAndWait();
 
-            }else{
+            } else {
 
 
                 prepare = connect.prepareStatement(sql);
@@ -1126,9 +1134,8 @@ public class ManagerDashbordController implements Initializable {
                 prepare.setString(6, manager_passengers_phone_textfield.getText());
                 prepare.setString(7, manager_passengers_address_textfield.getText());
                 prepare.setString(8, manager_passengers_email_textfield.getText());
-                prepare.setDouble(9,0);
-                prepare.setInt(10,0);
-
+                prepare.setDouble(9, 0);
+                prepare.setInt(10, 0);
 
 
                 prepare.executeUpdate();
@@ -1141,15 +1148,15 @@ public class ManagerDashbordController implements Initializable {
                 ShowPassengerListData();
                 PassengerClear();
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
             logger.addHandler(handler);
-            logger.warning("warning message"+e);
+            logger.warning("warning message" + e);
         }
     }
 
-    public void PassengerClear(){
+    public void PassengerClear() {
 
         manager_passengers_id_textfield.setText("");
         manager_passengers_firstname_textfield.setText("");
@@ -1162,23 +1169,23 @@ public class ManagerDashbordController implements Initializable {
 
     }
 
-    public void Passengerdelete(){
+    public void Passengerdelete() {
 
         String sql = "DELETE FROM passenger WHERE Id = '"
-                +manager_passengers_id_textfield.getText()+"'";
+                + manager_passengers_id_textfield.getText() + "'";
 
         connect = Database.connectDb();
 
-        try{
+        try {
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confimation ^.^");
             alert.setHeaderText(null);
-            alert.setContentText("Are you sure do you want delete passenger "+
-                    manager_passengers_id_textfield.getText()+"?");
+            alert.setContentText("Are you sure do you want delete passenger " +
+                    manager_passengers_id_textfield.getText() + "?");
             Optional<ButtonType> option = alert.showAndWait();
 
-            if(option.get().equals(ButtonType.OK)){
+            if (option.get().equals(ButtonType.OK)) {
                 statement = connect.createStatement();
                 statement.executeUpdate(sql);
 
@@ -1191,70 +1198,70 @@ public class ManagerDashbordController implements Initializable {
                 PassengerClear();
             }
 
-        }catch(Exception e){
+        } catch (Exception e) {
 
             e.printStackTrace();
             Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
             logger.addHandler(handler);
-            logger.warning("warning message"+e);
+            logger.warning("warning message" + e);
 
 
         }
     }
 
-    public void PassengerUpdate(){
+    public void PassengerUpdate() {
 
 
-        String sql = "UPDATE passenger SET First_name = '"+ manager_passengers_firstname_textfield.getText()
-                +"' ,Last_name = '"+ manager_passengers_lastname_textfield.getText()+"' ,User_name= '"+
-                manager_passengers_username_textfield.getText()+"',Password = '"+ manager_passengers_password_textfield.getText()+"' ,Phone_no = '"+
-                manager_passengers_phone_textfield.getText()+"' ,Address = '"+ manager_passengers_address_textfield.getText()
-                +"' ,Email = '"+manager_passengers_email_textfield.getText()+"' WHERE Id = '"+ manager_passengers_id_textfield.getText()+"'";
+        String sql = "UPDATE passenger SET First_name = '" + manager_passengers_firstname_textfield.getText()
+                + "' ,Last_name = '" + manager_passengers_lastname_textfield.getText() + "' ,User_name= '" +
+                manager_passengers_username_textfield.getText() + "',Password = '" + manager_passengers_password_textfield.getText() + "' ,Phone_no = '" +
+                manager_passengers_phone_textfield.getText() + "' ,Address = '" + manager_passengers_address_textfield.getText()
+                + "' ,Email = '" + manager_passengers_email_textfield.getText() + "' WHERE Id = '" + manager_passengers_id_textfield.getText() + "'";
 
         connect = Database.connectDb();
 
-        try{
+        try {
 
 
             handler = new FileHandler("logger.log", true);
 
-            if(manager_passengers_id_textfield.getText().isEmpty()|| manager_passengers_firstname_textfield.getText().isEmpty()
-                    ||manager_passengers_lastname_textfield.getText().isEmpty()|| manager_passengers_password_textfield.getText().isEmpty()
+            if (manager_passengers_id_textfield.getText().isEmpty() || manager_passengers_firstname_textfield.getText().isEmpty()
+                    || manager_passengers_lastname_textfield.getText().isEmpty() || manager_passengers_password_textfield.getText().isEmpty()
                     || manager_passengers_username_textfield.getText().isEmpty()
-                    || manager_passengers_phone_textfield.getText().isEmpty()||manager_passengers_email_textfield.getText().isEmpty()
+                    || manager_passengers_phone_textfield.getText().isEmpty() || manager_passengers_email_textfield.getText().isEmpty()
                     || manager_passengers_id_textfield.getText().isEmpty()
 
 
-            ){
+            ) {
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error!");
                 alert.setHeaderText(null);
                 alert.setContentText("Please fill all the blanks");
                 alert.showAndWait();
-            }else if(!regexemail(manager_passengers_email_textfield.getText())){
+            } else if (!regexemail(manager_passengers_email_textfield.getText())) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error!");
                 alert.setHeaderText(null);
                 alert.setContentText("Please enter a real email !");
                 alert.showAndWait();
 
-            }else if(!regexphonenumber( manager_passengers_phone_textfield.getText())) {
+            } else if (!regexphonenumber(manager_passengers_phone_textfield.getText())) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error!");
                 alert.setHeaderText(null);
                 alert.setContentText("Please enter a real phone number !");
                 alert.showAndWait();
 
-            }else{
+            } else {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Confimation ^.^");
                 alert.setHeaderText(null);
-                alert.setContentText("Are you sure do you want update "+
-                        manager_passengers_id_textfield.getText()+"?");
+                alert.setContentText("Are you sure do you want update " +
+                        manager_passengers_id_textfield.getText() + "?");
                 Optional<ButtonType> option = alert.showAndWait();
 
-                if(option.get().equals(ButtonType.OK)){
+                if (option.get().equals(ButtonType.OK)) {
                     statement = connect.createStatement();
                     statement.executeUpdate(sql);
 
@@ -1269,53 +1276,53 @@ public class ManagerDashbordController implements Initializable {
 
 
             }
-        }catch(Exception e){e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
             Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
             logger.addHandler(handler);
-            logger.warning("warning message"+e);
+            logger.warning("warning message" + e);
         }
     }
 
 
-
 //*************************************************************************************
 
-//1111
-    public ObservableList<Airplane> PlaneListData(){
+    //1111
+    public ObservableList<Airplane> PlaneListData() {
 
         ObservableList<Airplane> listData = FXCollections.observableArrayList();
         String sql = "SELECT * FROM plane";
 
         connect = Database.connectDb();
 
-        try{
+        try {
 
             handler = new FileHandler("logger.log", true);
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
             Airplane plane;
 
-            while(result.next()){
+            while (result.next()) {
                 plane = new Airplane(result.getInt("Id"),
                         result.getInt("Seats"));
-
 
 
                 listData.add(plane);
             }
 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
             logger.addHandler(handler);
-            logger.warning("warning message"+e);
+            logger.warning("warning message" + e);
         }
 
         return listData;
     }
 
     private ObservableList<Airplane> PlaneList;
-    public void ShowPlaneListData(){
+
+    public void ShowPlaneListData() {
 
         PlaneList = PlaneListData();
         manager_planes_idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -1323,51 +1330,64 @@ public class ManagerDashbordController implements Initializable {
 
 
         manager_planes_table.setItems(PlaneList);
+        Airplane.getAirplanelist().addAll( PlaneListData());
+        FlightListData();
 
     }
 
-    public void PlaneSelect(){
 
-        Airplane plane2=  manager_planes_table.getSelectionModel().getSelectedItem();
-        int n =  manager_planes_table.getSelectionModel().getSelectedIndex();
+    public void PlaneSelect() {
 
-        if((n -1)< -1){return;}
+        Airplane plane2 = manager_planes_table.getSelectionModel().getSelectedItem();
+        int n = manager_planes_table.getSelectionModel().getSelectedIndex();
+
+        if ((n - 1) < -1) {
+            return;
+        }
 
         manager_planes_id_textfield.setText(String.valueOf(plane2.getId()));
         manager_planes_seats_textfield.setText(String.valueOf(plane2.getSeats()));
 
-//        Flight newflight = new Flight(11,plane2);
-//        plane2.setFlightlist(newflight);
-//
-//        List<Integer> flightsid = new ArrayList<>();
-//
-//        for(Flight flight : plane2.getFlightlist() ){
-//           flightsid.add(flight.getId());
-//        }
-//
-//        ObservableList listData = FXCollections.observableArrayList(flightsid);
-//        manager_planes_flightCombobox.setItems(listData);
+        for(int i=0;i<Airplane.getAirplanelist().size();i++){
+            if(Airplane.getAirplanelist().get(i).getId()== plane2.getId()){
+
+                List<Integer> flights1 = new ArrayList<>();
+
+                System.out.println(Airplane.getAirplanelist().get(i).getFlightlistid().size());
+
+                for(int j=0; j<Airplane.getAirplanelist().get(i).getFlightlistid().size();j++){
+                    int data = Airplane.getAirplanelist().get(i).getFlightlistid().get(j);
+                    flights1.add(data);
+
+                }
+
+
+                ObservableList listData = FXCollections.observableArrayList(flights1);
+                manager_planes_flightCombobox.setItems(listData);
+
+
+            }
+        }
+
+
     }
 
 
+    public void AddPlane() {
 
 
-
-    public void AddPlane(){
-
-
-        String sql  = "INSERT INTO plane "
+        String sql = "INSERT INTO plane "
                 + "(Id,Seats)"
                 + "VALUES(?,?)";
 
         connect = Database.connectDb();
 
-        try{
+        try {
 
             handler = new FileHandler("logger.log", true);
 
-            if( manager_planes_id_textfield.getText().isEmpty()|| manager_planes_seats_textfield.getText().isEmpty()
-            ){
+            if (manager_planes_id_textfield.getText().isEmpty() || manager_planes_seats_textfield.getText().isEmpty()
+            ) {
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error!");
@@ -1375,18 +1395,18 @@ public class ManagerDashbordController implements Initializable {
                 alert.setContentText("Please fill all the blanks");
                 alert.showAndWait();
 
-            }else{
+            } else {
 
 
                 prepare = connect.prepareStatement(sql);
-                prepare.setString(1,manager_planes_id_textfield.getText());
+                prepare.setString(1, manager_planes_id_textfield.getText());
                 prepare.setString(2, manager_planes_seats_textfield.getText());
 
                 int newid = Integer.parseInt(manager_planes_id_textfield.getText());
                 int newseats = Integer.parseInt(manager_planes_seats_textfield.getText());
 
-                Airplane flightplane = new Airplane(newid,newseats);
-                Airplanes.add(flightplane);
+                Airplane.getAirplanelist().add(new Airplane(newid, newseats));
+
 
 
                 prepare.executeUpdate();
@@ -1399,15 +1419,15 @@ public class ManagerDashbordController implements Initializable {
                 ShowPlaneListData();
                 PlaneClear();
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
             logger.addHandler(handler);
-            logger.warning("warning message"+e);
+            logger.warning("warning message" + e);
         }
     }
 
-    public void PlaneClear(){
+    public void PlaneClear() {
 
         manager_planes_id_textfield.setText("");
         manager_planes_seats_textfield.setText("");
@@ -1415,23 +1435,23 @@ public class ManagerDashbordController implements Initializable {
 
     }
 
-    public void Planedelete(){
+    public void Planedelete() {
 
         String sql = "DELETE FROM plane WHERE Id = '"
-                +manager_planes_id_textfield.getText()+"'";
+                + manager_planes_id_textfield.getText() + "'";
 
         connect = Database.connectDb();
 
-        try{
+        try {
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confimation ^.^");
             alert.setHeaderText(null);
-            alert.setContentText("Are you sure do you want delete passenger "+
-                    manager_planes_id_textfield.getText()+"?");
+            alert.setContentText("Are you sure do you want delete passenger " +
+                    manager_planes_id_textfield.getText() + "?");
             Optional<ButtonType> option = alert.showAndWait();
 
-            if(option.get().equals(ButtonType.OK)){
+            if (option.get().equals(ButtonType.OK)) {
                 statement = connect.createStatement();
                 statement.executeUpdate(sql);
 
@@ -1444,47 +1464,47 @@ public class ManagerDashbordController implements Initializable {
                 PlaneClear();
             }
 
-        }catch(Exception e){
+        } catch (Exception e) {
 
             e.printStackTrace();
             Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
             logger.addHandler(handler);
-            logger.warning("warning message"+e);
+            logger.warning("warning message" + e);
 
 
         }
     }
 
-    public void PlaneUpdate(){
+    public void PlaneUpdate() {
 
 
-        String sql = "UPDATE plane SET Seats = '"+ manager_planes_seats_textfield.getText()
-                +"'  WHERE Id = '"+manager_planes_id_textfield.getText()+"'";
+        String sql = "UPDATE plane SET Seats = '" + manager_planes_seats_textfield.getText()
+                + "'  WHERE Id = '" + manager_planes_id_textfield.getText() + "'";
 
         connect = Database.connectDb();
 
-        try{
+        try {
 
 
             handler = new FileHandler("logger.log", true);
 
-            if(manager_planes_id_textfield.getText().isEmpty()|| manager_planes_seats_textfield.getText().isEmpty()
-            ){
+            if (manager_planes_id_textfield.getText().isEmpty() || manager_planes_seats_textfield.getText().isEmpty()
+            ) {
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error!");
                 alert.setHeaderText(null);
                 alert.setContentText("Please fill all the blanks");
                 alert.showAndWait();
-            }else{
+            } else {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Confimation ^.^");
                 alert.setHeaderText(null);
-                alert.setContentText("Are you sure do you want update "+
-                        manager_planes_id_textfield.getText()+"?");
+                alert.setContentText("Are you sure do you want update " +
+                        manager_planes_id_textfield.getText() + "?");
                 Optional<ButtonType> option = alert.showAndWait();
 
-                if(option.get().equals(ButtonType.OK)){
+                if (option.get().equals(ButtonType.OK)) {
                     statement = connect.createStatement();
                     statement.executeUpdate(sql);
 
@@ -1494,15 +1514,16 @@ public class ManagerDashbordController implements Initializable {
                     alert1.setContentText("Updated Successfully ^.^");
                     alert1.showAndWait();
                     ShowPlaneListData();
-                   PlaneClear();
+                    PlaneClear();
                 }
 
 
             }
-        }catch(Exception e){e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
             Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
             logger.addHandler(handler);
-            logger.warning("warning message"+e);
+            logger.warning("warning message" + e);
         }
     }
 
@@ -1511,65 +1532,76 @@ public class ManagerDashbordController implements Initializable {
     //22222
 
     Ticket ticket1;
-    public ObservableList<Flight> FlightListData(){
+
+    public ObservableList<Flight> FlightListData() {
 
         ObservableList<Flight> listData = FXCollections.observableArrayList();
         String sql = "SELECT * FROM flight";
 
         connect = Database.connectDb();
 
-        try{
+        try {
 
             handler = new FileHandler("logger.log", true);
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
 
 
+            try {
 
 
+                while (result.next()) {
 
-            try{
+                    Flight flight;
+//                    ticket1 = new Ticket(result.getInt("Ticketid"),
+//                            result.getInt("Ticketprice"),
+//                            result.getInt("Ticketfine"));
 
-
-            while(result.next()) {
-
-                Flight flight;
-                ticket1 = new Ticket(result.getInt("Ticketid"),
-                        result.getInt("Ticketprice"),
-                        result.getInt("Ticketfine"));
-
-                Airplane airplane1 = null;
-                int airplaneid =  result.getInt("Airplaneid");
-                for(Airplane airplane : Airplanes){
-                    if(airplane.getId()==result.getInt("Airplaneid")){
-                        airplane1  = airplane;
-                        break;
+                    Airplane airplane1 = null;
+                    for (Airplane airplane : Airplane.getAirplanelist()) {
+                        if (airplane.getId() == result.getInt("Airplaneid")) {
+                            airplane1 = airplane;
+                            break;
+                        }
                     }
+
+//                    LocalDate date = result.getDate("Date").toLocalDate();
+//                    LocalTime time = result.getTime("Time").toLocalTime();
+                    FlightStatus status = FlightStatus.valueOf(result.getString("Flightstatus"));
+                    flight = new Flight(result.getInt("Id"),
+                            airplane1,
+                            new Ticket(result.getInt("Ticketid"),
+                            result.getInt("Ticketprice"),
+                            result.getInt("Ticketfine")),
+                            result.getString("Fromwhere"),
+                            result.getString("Towhere"),
+                            result.getDate("Date").toLocalDate(),
+                            result.getTime("Time").toLocalTime(),
+                            result.getInt("Soldticket"),
+                            FlightStatus.valueOf(result.getString("Flightstatus")),
+                            result.getInt("Airplaneid"),
+                            result.getInt("Ticketid"),
+                            result.getInt("Ticketprice"),
+                            result.getInt("Ticketfine")
+
+                    );
+                    listData.add(flight);
+
+
+                    for (int i=0; i<Airplane.getAirplanelist().size();i++) {
+                        Airplane newairplane = Airplane.getAirplanelist().get(i);
+                        int airplaneid =result.getInt("Airplaneid");
+                        int airflightid = result.getInt("Id");
+                        if (Airplane.getAirplanelist().get(i).getId() == airplaneid) {
+                            Airplane.getAirplanelist().get(i).getFlightlistid().add(airflightid);
+
+                        }
+
+                    }
+
                 }
 
-                LocalDate date = result.getDate("Date").toLocalDate();
-                LocalTime time = result.getTime("Time").toLocalTime();
-                FlightStatus status = FlightStatus.valueOf(result.getString("Flightstatus"));
-                flight = new Flight(result.getInt("Id"),
-                        airplane1,
-                        ticket1,
-                        result.getString("Fromwhere"),
-                        result.getString("Towhere"),
-                        date,
-                        time,
-                        result.getInt("Soldticket"),
-                        result.getString("Hours"),
-                        status,
-                        result.getInt("Airplaneid"),
-                        result.getInt("Ticketid"),
-                        result.getInt("Ticketprice"),
-                        result.getInt("Ticketfine")
-
-                        );
-                listData.add(flight);
-            }
-
-                }catch(Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
                 logger.addHandler(handler);
@@ -1578,25 +1610,34 @@ public class ManagerDashbordController implements Initializable {
             }
 
 
-
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
             logger.addHandler(handler);
-            logger.warning("warning message"+e);
+            logger.warning("warning message" + e);
         }
 
         return listData;
     }
 
-    public void statusbox(){
-        manager_flight_statusCombobox1.setItems( FXCollections.observableArrayList( FlightStatus.values()));
+    public void statusbox() {
+
+        List<Enum> state = new ArrayList<>();
+
+        for (Enum data : FlightStatus.values()) {
+            state.add(data);
+        }
+
+        ObservableList listData = FXCollections.observableArrayList(state);
+        manager_flight_statusCombobox1.setItems(listData);
+
     }
 
     private ObservableList<Flight> FlightList;
-    public void ShowFlightListData(){
 
-String str = "hi";
+    public void ShowFlightListData() {
+
+
         FlightList = FlightListData();
         manager_flight_idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         manager_flight_fromCol.setCellValueFactory(new PropertyValueFactory<>("from"));
@@ -1611,103 +1652,89 @@ String str = "hi";
         manager_flight_ticket_fineCol.setCellValueFactory(new PropertyValueFactory<>("ticketcost"));
 
 
-
-//            List<String> status = new ArrayList<>();
-//
-//            for(String data : FlightStatus){
-//                status.add(data);
-//            }
-//
-//            ObservableList listData = FXCollections.observableArrayList(status);
-//        manager_flight_statusCombobox1.setItems(listData);
-
-
-
         manager_flights_table.setItems(FlightList);
 
     }
 
-    public void FlightSelect(){
+    public void FlightSelect() {
 
-        Flight flight2=  manager_flights_table.getSelectionModel().getSelectedItem();
-        int n =  manager_flights_table.getSelectionModel().getSelectedIndex();
+        Flight flight2 = manager_flights_table.getSelectionModel().getSelectedItem();
+        int n = manager_flights_table.getSelectionModel().getSelectedIndex();
 
-        if((n -1)< -1){return;}
+        if ((n - 1) < -1) {
+            return;
+        }
 
-        manager_flight_idCol.setText(String.valueOf(flight2.getId()));
-        manager_flight_planeCol.setText(String.valueOf(flight2.getAirplane().getId()));
-        manager_flight_fromCol.setText(String.valueOf(flight2.getFrom()));
-        manager_flight_toCol.setText(String.valueOf(flight2.getTo()));
-        manager_flight_ticket_idCol.setText(String.valueOf(flight2.getTicket().getId()));
-        manager_flight_ticket_priceCol.setText(String.valueOf(flight2.getTicket().getPrice()));
-        manager_flight_ticket_fineCol.setText(String.valueOf(flight2.getTicket().getCost()));
-        manager_flight_soldticketsCol.setText(String.valueOf(flight2.getSoldticket()));
-        manager_flight_stateCol.setText(String.valueOf(flight2.getStatus()));
+        manager_flight_id_textfield.setText(String.valueOf(flight2.getId()));
+        manager_flight_plane_textfield.setText(String.valueOf(flight2.getAirplaneid()));
+        manager_flight_from_textfield.setText(String.valueOf(flight2.getFrom()));
+        manager_flight_to_textfield.setText(String.valueOf(flight2.getTo()));
+        manager_flight_date_textfield.setText(String.valueOf(flight2.getDate()));
+        manager_flight_time_textfield.setText(String.valueOf(flight2.getBoarding()));
+        manager_flight_ticket_id_textfield.setText(String.valueOf(flight2.getTicketid()));
+        manager_flight_ticket_price_textfield.setText(String.valueOf(flight2.getTicketprice()));
+        manager_flight_ticket_fine_textfield.setText(String.valueOf(flight2.getTicketcost()));
+        manager_flight_soldtickets_textfield.setText(String.valueOf(flight2.getSoldticket()));
 
 
-
-//        Flight newflight = new Flight(11,plane2);
-//        plane2.setFlightlist(newflight);
-//
-//        List<Integer> flightsid = new ArrayList<>();
-//
-//        for(Flight flight : plane2.getFlightlist() ){
-//           flightsid.add(flight.getId());
-//        }
-//
-//        ObservableList listData = FXCollections.observableArrayList(flightsid);
-//        manager_planes_flightCombobox.setItems(listData);
     }
 
 
+    public void AddFlight() {
 
 
-
-    public void AddFlight(){
-
-
-        String sql  = "INSERT INTO flight "
-                + "(Id,Airpplaneid,Fromwhere,Towhwre,Ticketid,Ticketprice,Ticketfine,Date,Time,Soldticket,Hours,Status)"
+        String sql = "INSERT INTO flight "
+                + "(Id,Fromwhere,Towhere,Date,Time,Soldticket,Hours,Flightstatus,Airplaneid,Ticketid,Ticketprice,Ticketfine)"
                 + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
 
         connect = Database.connectDb();
 
-        try{
+        try {
 
             handler = new FileHandler("logger.log", true);
 
-            if( manager_flight_id_textfield.getText().isEmpty()|| manager_flight_plane_textfield.getText().isEmpty()
-                    || manager_flight_from_textfield.getText().isEmpty()|| manager_flight_to_textfield.getText().isEmpty()
-                    || manager_flight_ticket_fine_textfield.getText().isEmpty()||  manager_flight_ticket_id_textfield.getText().isEmpty()
-                    || manager_flight_ticket_price_textfield.getText().isEmpty()|| manager_flight_date_textfield.getText().isEmpty()
-                    || manager_flight_time_textfield.getText().isEmpty()|| manager_flight_soldtickets_textfield.getText().isEmpty()
-                    || manager_flight_statusCombobox1.getSelectionModel().getSelectedItem()== null
-            ){
+            if (manager_flight_id_textfield.getText().isEmpty() || manager_flight_plane_textfield.getText().isEmpty()
+                    || manager_flight_from_textfield.getText().isEmpty() || manager_flight_to_textfield.getText().isEmpty()
+                    || manager_flight_ticket_fine_textfield.getText().isEmpty() || manager_flight_ticket_id_textfield.getText().isEmpty()
+                    || manager_flight_ticket_price_textfield.getText().isEmpty() || manager_flight_date_textfield.getText().isEmpty()
+                    || manager_flight_time_textfield.getText().isEmpty() || manager_flight_soldtickets_textfield.getText().isEmpty()
+                    || manager_flight_statusCombobox1.getSelectionModel().getSelectedItem() == null || !checkplane()
+            ) {
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error!");
                 alert.setHeaderText(null);
-                alert.setContentText("Please fill all the blanks");
+                alert.setContentText("Please fill all the blanks  correctly");
                 alert.showAndWait();
 
-            }else{
+            } else {
 
 
                 prepare = connect.prepareStatement(sql);
                 prepare.setString(1, manager_flight_id_textfield.getText());
-                prepare.setString(2, manager_flight_plane_textfield.getText());
-                prepare.setString(3,  manager_flight_from_textfield.getText());
-                prepare.setString(4,  manager_flight_to_textfield.getText());
-                prepare.setString(5,  manager_flight_ticket_id_textfield.getText());
-                prepare.setString(6,  manager_flight_ticket_price_textfield.getText());
-                prepare.setString(7,  manager_flight_ticket_fine_textfield.getText());
-                prepare.setString(8,  manager_flight_date_textfield.getText());
-                prepare.setString(9,  manager_flight_time_textfield.getText());
-                prepare.setString(10,  manager_flight_soldtickets_textfield.getText());
-                prepare.setString(11,  (String) manager_flight_statusCombobox1.getSelectionModel().getSelectedItem());
+                prepare.setString(2, manager_flight_from_textfield.getText());
+                prepare.setString(3, manager_flight_to_textfield.getText());
+                prepare.setString(4, manager_flight_date_textfield.getText());
+                prepare.setString(5, manager_flight_time_textfield.getText());
+                prepare.setString(6, manager_flight_soldtickets_textfield.getText());
+                prepare.setDouble(7, 2);
+                prepare.setString(8, String.valueOf(manager_flight_statusCombobox1.getSelectionModel().getSelectedItem()));
+                prepare.setString(9, manager_flight_plane_textfield.getText());
+                prepare.setString(10, manager_flight_ticket_id_textfield.getText());
+                prepare.setString(11, manager_flight_ticket_price_textfield.getText());
+                prepare.setString(12, manager_flight_ticket_fine_textfield.getText());
 
 
+                for (int i=0; i<Airplane.getAirplanelist().size();i++) {
+                    Airplane newairplane = Airplane.getAirplanelist().get(i);
+                    int airplaneid = Integer.parseInt(manager_flight_plane_textfield.getText());
+                    int airflightid = Integer.parseInt(manager_flight_id_textfield.getText());
+                    if (Airplane.getAirplanelist().get(i).getId() == airplaneid) {
+                        Airplane.getAirplanelist().get(i).getFlightlistid().add(airflightid);
 
+                    }
+
+                }
 
 
 
@@ -1721,13 +1748,14 @@ String str = "hi";
                 alert1.showAndWait();
 
                 ShowFlightListData();
-               FlightClear();
+                FlightClear();
             }
-        }catch(Exception e){
+        } catch (
+                Exception e) {
             e.printStackTrace();
             Logger logger = Logger.getLogger("com.javacodegeeks.snippets.core");
             logger.addHandler(handler);
-            logger.warning("warning message"+e);
+            logger.warning("warning message" + e);
         }
     }
 
@@ -1743,9 +1771,7 @@ String str = "hi";
         manager_flight_date_textfield.setText("");
         manager_flight_time_textfield.setText("");
         manager_flight_soldtickets_textfield.setText("");
-        manager_flight_statusCombobox1.getSelectionModel().getSelectedItem().equals("");
-
-
+//        manager_flight_statusCombobox1.getSelectionModel().getSelectedItem().equals("");
 
 
 
@@ -1794,15 +1820,15 @@ String str = "hi";
     public void FlightUpdate(){
 
 
-        String sql = "UPDATE mayor SET Airplaneid = '"
-                +manager_flight_plane_textfield.getText()+"' , FromWhere = '"+manager_flight_from_textfield.getText()
-                +"' ,Towhere = '"+manager_flight_to_textfield.getText()+"'  ,Ticketid = '"+
-                manager_flight_ticket_id_textfield.getText()+"' ,Ticketprice = '"+ manager_flight_ticket_price_textfield.getText()
-                +"' ,Ticketfine = '"+manager_flight_ticket_fine_textfield.getText()+"' ,Date = '"
+        String sql = "UPDATE flight SET  FromWhere = '"+manager_flight_from_textfield.getText()
+                +"' ,Towhere = '"+manager_flight_to_textfield.getText()+"'   ,Date = '"
                 +manager_flight_date_textfield.getText()
                 +"' ,Time = '"+manager_flight_time_textfield.getText()+"',Soldticket = '"+
                 manager_flight_soldtickets_textfield.getText()+"',Flightstatus = '"+
-                manager_flight_statusCombobox1.getSelectionModel().getSelectedItem()+"' WHERE Id = '"+manager_flight_id_textfield.getText()+"'";
+                manager_flight_statusCombobox1.getSelectionModel().getSelectedItem()+"', Airplaneid = '"
+                  +manager_flight_plane_textfield.getText()+"'  ,Ticketid = '" +
+                  manager_flight_ticket_id_textfield.getText()+"' ,Ticketprice = '"+ manager_flight_ticket_price_textfield.getText()
+                    +"' ,Ticketfine = '"+manager_flight_ticket_fine_textfield.getText()+"'   WHERE Id = '"+manager_flight_id_textfield.getText()+"'";
 
         connect = Database.connectDb();
 
@@ -1816,13 +1842,13 @@ String str = "hi";
                     || manager_flight_ticket_fine_textfield.getText().isEmpty()||  manager_flight_ticket_id_textfield.getText().isEmpty()
                     || manager_flight_ticket_price_textfield.getText().isEmpty()|| manager_flight_date_textfield.getText().isEmpty()
                     || manager_flight_time_textfield.getText().isEmpty()|| manager_flight_soldtickets_textfield.getText().isEmpty()
-                    || manager_flight_statusCombobox1.getSelectionModel().getSelectedItem()== null
+                    || manager_flight_statusCombobox1.getSelectionModel().getSelectedItem()== null || !checkplane()
             ){
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error!");
                 alert.setHeaderText(null);
-                alert.setContentText("Please fill all the blanks");
+                alert.setContentText("Please fill all the blanks correctly");
                 alert.showAndWait();
             }else{
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -1835,6 +1861,17 @@ String str = "hi";
                 if(option.get().equals(ButtonType.OK)){
                     statement = connect.createStatement();
                     statement.executeUpdate(sql);
+
+                    for (int i=0; i<Airplane.getAirplanelist().size();i++) {
+                        Airplane newairplane = Airplane.getAirplanelist().get(i);
+                        int airid = Integer.parseInt(manager_flight_plane_textfield.getText());
+                        int airflightid = Integer.parseInt(manager_flight_id_textfield.getText());
+                        if (Airplane.getAirplanelist().get(i).getId() == airid) {
+                            Airplane.getAirplanelist().get(i).getFlightlistid().add( airflightid);
+
+                        }
+
+                    }
 
                     Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
                     alert1.setTitle("INFORMATION ^-^");
@@ -1854,8 +1891,39 @@ String str = "hi";
         }
     }
 
+    public boolean checkplane(){
+        for(int i=0; i<Airplane.getAirplanelist().size();i++){
+            Airplane airplane = Airplane.getAirplanelist().get(i);
+            if(manager_flight_plane_textfield.getText().equals(String.valueOf(airplane.getId()))){
+                return true;
+            }
+
+        }
+        return false;
+        }
 
 
+//********************************************************************************************************
+
+
+    public void ShowMassages() {
+        String text1="";
+
+            for (int i = 0; i < Passenger.getPassengermessage().size(); i += 2) {
+                 text1 += "   " + Passenger.getPassengermessage().get(i) + " : " + Passenger.getPassengermessage().get(i + 1) + "\n";
+            }
+        manager_messages_passenger_textfield.setText(text1);
+
+        String text2="";
+
+        for (int j = 0; j < Employee.getEmployeemessage().size(); j += 2) {
+            text2 += "   " + Employee.getEmployeemessage().get(j) + " : " + Employee.getEmployeemessage().get(j + 1) + "\n";
+        }
+        manager_messages_employees_textfield.setText(text2);
+
+
+
+    }
 
 
 

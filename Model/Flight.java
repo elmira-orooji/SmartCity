@@ -1,4 +1,6 @@
 package Model;
+import javafx.scene.control.SingleSelectionModel;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -13,16 +15,19 @@ public class Flight {
     private LocalTime boarding;
     private int soldticket;
     private ArrayList<Passenger> passengerlist = new ArrayList<Passenger>(20);
+    private static ArrayList<Flight>flightlist = new ArrayList<Flight>(20);
+
     private String time;
     private FlightStatus status;
 
+    private int airplaneid;
     private int ticketid;
     private double ticketprice;
     private double ticketcost;
-    private int airplaneid;
 
 
-    public Flight(int id, Airplane airplane , Ticket ticket, String from, String to, LocalDate date, LocalTime boarding, int soldticket, String time, FlightStatus status,int ticketid,double ticketprice,double ticketcost,int airplaneid){
+
+    public Flight(int id,  Airplane airplane , Ticket ticket, String from, String to, LocalDate date, LocalTime boarding, int soldticket, FlightStatus status,int ticketid,double ticketprice,double ticketcost,int airplaneid){
         this.id = id;
         this.airplane = airplane;
         this.ticket = ticket;
@@ -31,13 +36,14 @@ public class Flight {
         this.date = date;
         this.boarding = boarding;
         this.soldticket = soldticket;
-        this.time = time ;
+
         this.status = status;
         this.airplaneid = airplaneid;
         this.ticketid = ticketid;
         this.ticketprice = ticketprice;
         this.ticketcost = ticketcost;
     }
+
 
     public int getId(){
         return id;
@@ -54,6 +60,18 @@ public class Flight {
     public String getTo(){
         return to;
     }
+    public double getTicketprice(){
+        return ticketprice;
+    }
+    public int getAirplaneid(){
+        return airplaneid;
+    }
+    public int getTicketid(){
+        return ticketid;
+    }
+    public double getTicketcost(){
+        return ticketcost;
+    }
     public LocalDate getDate(){
         return date;
     }
@@ -63,8 +81,15 @@ public class Flight {
     public int getSoldticket(){
         return soldticket;
     }
+    public ArrayList<Passenger> getPassengerlist(){
+        return passengerlist;
+    }
 
-//    public ArrayList<Passanger> getPassangerlist() {
+    public static ArrayList<Flight> getFlightlist() {
+        return flightlist;
+    }
+
+    //    public ArrayList<Passanger> getPassangerlist() {
 //        return passangerlist;
 //    }
     public Passenger getpassengerlist(int i){

@@ -4,6 +4,8 @@ package Controller;
 
 
 import Model.Database;
+import Model.Employee;
+import Model.Passenger;
 import Model.getData;
 import com.mysql.jdbc.Connection;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -34,6 +36,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class SmartCityFXMLController implements Initializable {
+
+    public Employee employee1;
     
     @FXML
     private Button loginBtn;
@@ -76,6 +80,14 @@ public class SmartCityFXMLController implements Initializable {
     private Connection connectManager;
     private PreparedStatement prepareManager;
     private ResultSet resultManager;
+
+    private Connection connectEmployee;
+    private PreparedStatement prepareEmployee;
+    private ResultSet resultEmployee;
+
+    private Connection connectPassenger;
+    private PreparedStatement preparePassenger;
+    private ResultSet resultPassenger;
     
    
     
@@ -88,54 +100,69 @@ public class SmartCityFXMLController implements Initializable {
         String sqlMayor = "SELECT * FROM mayor WHERE First_name = ? and Last_name = ?";
         String sqlSuperadmin = "SELECT * FROM adminsuper WHERE User_name = ? and Password = ?";
         String sqlManager = "SELECT * FROM manager WHERE User_name = ? and Password = ?";
-        
-        
+        String sqlemployee = "SELECT * FROM employee WHERE User_name = ? and Password = ?";
+        String sqlpassenger = "SELECT * FROM passenger WHERE User_name = ? and Password = ?";
+
+
+
         connect = (Connection) Database.connectDb();
         connectMayor = (Connection) Database.connectDb();
         connectSuperadmin = (Connection) Database.connectDb();
         connectManager = (Connection) Database.connectDb();
+        connectEmployee = (Connection) Database.connectDb();
+        connectPassenger = (Connection) Database.connectDb();
         
-        try{
-            
+        try {
+
             handler = new FileHandler("logger.log", true);
 
             prepare = connect.prepareStatement(sql);
             prepareMayor = connectMayor.prepareStatement(sqlMayor);
             prepareSuperadmin = connectSuperadmin.prepareStatement(sqlSuperadmin);
             prepareManager = connect.prepareStatement(sqlManager);
-            
-            
-            prepare.setString(1,usernameBtn.getText());
-            prepare.setString(2,passwordBtn.getText());
-            
+            prepareEmployee = connect.prepareStatement(sqlemployee);
+            preparePassenger = connect.prepareStatement(sqlpassenger);
+
+
+            prepare.setString(1, usernameBtn.getText());
+            prepare.setString(2, passwordBtn.getText());
+
             result = prepare.executeQuery();
-            
-            prepareMayor.setString(1,usernameBtn.getText());
-            prepareMayor.setString(2,passwordBtn.getText());
-            
+
+            prepareMayor.setString(1, usernameBtn.getText());
+            prepareMayor.setString(2, passwordBtn.getText());
+
             resultMayor = prepareMayor.executeQuery();
 
-            prepareSuperadmin.setString(1,usernameBtn.getText());
-            prepareSuperadmin.setString(2,passwordBtn.getText());
+            prepareSuperadmin.setString(1, usernameBtn.getText());
+            prepareSuperadmin.setString(2, passwordBtn.getText());
 
-            resultSuperadmin= prepareSuperadmin.executeQuery();
+            resultSuperadmin = prepareSuperadmin.executeQuery();
 
-            prepareManager.setString(1,usernameBtn.getText());
-            prepareManager.setString(2,passwordBtn.getText());
+            prepareManager.setString(1, usernameBtn.getText());
+            prepareManager.setString(2, passwordBtn.getText());
 
-            resultManager= prepareManager.executeQuery();
-            
-            
-            
-            if(usernameBtn.getText().isEmpty() || passwordBtn.getText().isEmpty())
-            {
+            resultManager = prepareManager.executeQuery();
+
+            prepareEmployee.setString(1, usernameBtn.getText());
+            prepareEmployee.setString(2, passwordBtn.getText());
+
+            resultEmployee = prepareEmployee.executeQuery();
+
+            preparePassenger.setString(1, usernameBtn.getText());
+            preparePassenger.setString(2, passwordBtn.getText());
+
+            resultPassenger = preparePassenger.executeQuery();
+
+
+            if (usernameBtn.getText().isEmpty() || passwordBtn.getText().isEmpty()) {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error!");
                 alert.setHeaderText(null);
                 alert.setContentText("Please fill the blanks");
                 alert.showAndWait();
-                
-            }else {
+
+            } else {
 
 
                 if (result.next()) {
@@ -250,14 +277,84 @@ public class SmartCityFXMLController implements Initializable {
 
 
                             } else {
-                                Alert alert = new Alert(AlertType.ERROR);
-                                alert.setTitle("Your username or password is not correct");
-                                alert.setHeaderText(null);
-                                alert.setContentText("Incorrect Username or Password");
-                                alert.showAndWait();
-                            }
-                        }
 
+
+                                if (resultEmployee.next()) {
+
+                                    getData.username = usernameBtn.getText();
+                                    Alert alert = new Alert(AlertType.INFORMATION);
+                                    alert.setTitle("");
+                                    alert.setHeaderText(null);
+                                    alert.setContentText("You entered successfully ^-^ ");
+                                    alert.showAndWait();
+
+                                    Employee.employeeArrayList.clear();
+                                    Employee.employeeArrayList.add(usernameBtn.getText());
+                                    Employee.employeeArrayList.add(passwordBtn.getText());
+
+//
+                                    loginBtn.getScene().getWindow().hide();
+                                    Parent root = FXMLLoader.load(getClass().getResource("/View/EmployeeDashbord.fxml"));
+                                    Stage stage = new Stage();
+                                    Scene scene = new Scene(root);
+
+                                    root.setOnMousePressed((MouseEvent event) -> {
+                                        x = event.getSceneX();
+                                        y = event.getSceneY();
+                                    });
+
+                                    root.setOnMouseDragged((MouseEvent event) -> {
+                                        stage.setX(event.getScreenX() - x);
+                                        stage.setY(event.getScreenY() - y);
+                                    });
+                                    stage.initStyle(StageStyle.TRANSPARENT);
+                                    stage.setScene(scene);
+                                    stage.show();
+                                } else {
+
+                                    if (resultPassenger.next()) {
+
+                                        getData.username = usernameBtn.getText();
+                                        Alert alert = new Alert(AlertType.INFORMATION);
+                                        alert.setTitle("");
+                                        alert.setHeaderText(null);
+                                        alert.setContentText("You entered successfully ^-^ ");
+                                        alert.showAndWait();
+
+                                        Passenger.passengerArrayList.clear();
+                                        Passenger.passengerArrayList.add(usernameBtn.getText());
+                                        Passenger.passengerArrayList.add(passwordBtn.getText());
+
+//
+                                        loginBtn.getScene().getWindow().hide();
+                                        Parent root = FXMLLoader.load(getClass().getResource("/View/PassengerDashbord.fxml"));
+                                        Stage stage = new Stage();
+                                        Scene scene = new Scene(root);
+
+                                        root.setOnMousePressed((MouseEvent event) -> {
+                                            x = event.getSceneX();
+                                            y = event.getSceneY();
+                                        });
+
+                                        root.setOnMouseDragged((MouseEvent event) -> {
+                                            stage.setX(event.getScreenX() - x);
+                                            stage.setY(event.getScreenY() - y);
+                                        });
+                                        stage.initStyle(StageStyle.TRANSPARENT);
+                                        stage.setScene(scene);
+                                        stage.show();
+                                    } else {
+
+                                        Alert alert = new Alert(AlertType.ERROR);
+                                        alert.setTitle("Your username or password is not correct");
+                                        alert.setHeaderText(null);
+                                        alert.setContentText("Incorrect Username or Password");
+                                        alert.showAndWait();
+                                    }
+                                }
+                            }
+
+                        }
                     }
                 }
             }
